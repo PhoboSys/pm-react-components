@@ -1,0 +1,30 @@
+{
+  "name": "pm-global-header",
+  "version": "0.1.0",
+  "description": "Application's global header which header, navigation bar and connect bar",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "rm -rf dist && NODE_ENV=production babel --watch src --out-dir dist --copy-files",
+    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
+    "autolink:webstaking": "npm link && cd ../pm-webstaking && npm link pm-global-header",
+    "autolink:webtrader": "npm link && cd ../pm-webtrader && npm link pm-global-header"
+  },
+  "author": "Phobosys",
+  "license": "UNLICENSED",
+  "files": ["dist"],
+  "peerDependencies": {
+    "react": ">=17.0.2",
+    "react-dom": ">=17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/preset-react": "^7.22.5"
+  },
+  "dependencies": {
+    "clsx": "^2.0.0",
+    "prop-types": "^15.8.1"
+  }
+}

@@ -1,0 +1,227 @@
+.profilebar {
+  user-select: none;
+
+  &:hover {
+    .inner {
+      border: 1px solid var(--profilebar-border-hover-color);
+      background: var(--profilebar-bg-hover);
+
+      .cash {
+        background: var(--profilebar-cash-bg-hover);
+      }
+
+      .action {
+        background: var(--profilebar-cash-bg-hover);
+      }
+    }
+  }
+
+  .inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--profilebar-border-color);
+    border-radius: 77px;
+    padding: 9px;
+    width: 100%;
+    cursor: pointer;
+    transition: background-color .3s linear, border-color .3s linear;
+
+    &:active:not(:has(.cash:active, .action:active)) {
+      background: var(--profilebar-bg-active);
+
+      .cash {
+        background: var(--profilebar-cash-bg-parent-active);
+      }
+
+      .action {
+        background: var(--profilebar-cash-bg-parent-active);
+      }
+    }
+
+    .cash {
+      display: flex;
+      align-self: stretch;
+      align-items: center;
+      min-width: 105px;
+      padding: 0 15px 0 10px;
+      background: var(--profilebar-cash-bg);
+      border-radius: 77px;
+      transition: background-color .3s linear;
+
+      &:active:not(:has(.difference:active)) {
+        background: var(--profilebar-cash-bg-active);
+      }
+
+      .value {
+        margin-left: 10px;
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: var(--profilebar-cash-color);
+      }
+    }
+
+    .account {
+      display: flex;
+      flex-direction: column;
+      margin: 0 24px;
+
+      .wallet {
+        font-family: 'Roboto', sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: var(--profilebar-wallet-address-color);
+      }
+
+      .name {
+        font-weight: 500;
+        font-size: 13px;
+        line-height: 15px;
+        color: var(--profilebar-account-name-color);
+        margin-top: 4px;
+      }
+    }
+
+    .action {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      width: 38px;
+      height: 38px;
+      background: var(--profilebar-cash-bg);
+      transition: background-color .3s linear;
+
+      &:active {
+        background: var(--profilebar-cash-bg-active);
+      }
+    }
+  }
+
+  a {
+    svg {
+      display: none;
+      &~svg {
+        display: unset;
+      }
+    }
+    &:hover {
+      svg {
+        display: unset;
+        &~svg {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.difference {
+  display: none;
+  position: absolute;
+  font-weight: 700;
+  font-size: 18px;
+  left: 50%;
+  pointer-events: none;
+}
+
+.increase {
+  position: relative;
+
+  .value {
+    animation: greenness 3s cubic-bezier(0.6, 0, 0.3, 1) 1;
+  }
+
+  .difference {
+    display: block;
+    background: var(--profilebar-cash-diffrenece-bg);
+    padding: 8px 10px 8px 8px;
+    color: var(--profilebar-cash-increase-color);
+    animation: fadeUp 15s cubic-bezier(0, 0, 0.4, 1) 1;
+    transform: translateY(0);
+    opacity: 0;
+
+    @keyframes fadeUp {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+    }
+  }
+
+  @keyframes greenness {
+    0% {
+      color: var(--profilebar-cash-color);
+      transform: scale(1);
+    }
+    70% {
+      color: var(--profilebar-cash-increase-color);
+      transform: scale(1.05);
+    }
+    100% {
+      color: var(--profilebar-cash-color);
+      transform: scale(1);
+    }
+  }
+
+}
+
+.decrease {
+  position: relative;
+
+  .value {
+    animation: redness 2s cubic-bezier(0.6, 0, 0.3, 1) 1;
+  }
+
+  .difference {
+    display: block;
+    background: #212233;
+    padding: 8px 10px 8px 8px;
+    color: var(--profilebar-cash-decrease-color);
+    animation: fadeDown 10s cubic-bezier(0, 0, 0.4, 1) 1;
+    transform: translateY(0);
+    opacity: 0;
+
+    span {
+      display: none;
+    }
+
+    @keyframes fadeDown {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(+100%);
+        opacity: 0;
+      }
+    }
+  }
+
+  @keyframes redness {
+    0% {
+      color: var(--profilebar-cash-color);
+      transform: scale(1);
+    }
+    50% {
+      color: var(--profilebar-cash-decrease-color);
+      transform: scale(0.95);
+    }
+    100% {
+      color: var(--profilebar-cash-color);
+      transform: scale(1);
+    }
+  }
+}
+
+.spinner {
+  margin: 0 auto;
+}
