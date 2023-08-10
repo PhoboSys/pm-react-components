@@ -34,6 +34,8 @@ const useChangeERC20 = (number, currency) => {
 }
 
 const ProfileBar = ({
+  className,
+  innerClassName,
   currency,
   balance,
   account,
@@ -45,7 +47,9 @@ const ProfileBar = ({
 
   const [difference, changeid] = useChangeERC20(balance, currency)
 
-  const handleClick = useCallback(() => onProfileClick(account.toLowerCase()), [])
+  const handleClick = useCallback(() => {
+    if (onProfileClick) onProfileClick(account.toLowerCase())
+  }, [])
 
   const handleDisconnectClick = useCallback((e) => {
     e.stopPropagation()
@@ -57,8 +61,8 @@ const ProfileBar = ({
   }, [])
 
   return (
-    <div className={css.profilebar} onClick={handleClick}>
-      <div className={css.inner}>
+    <div className={cn(css.profilebar, className)} onClick={handleClick}>
+      <div className={cn(css.inner, innerClassName)}>
         <div
           key={changeid}
           className={cn(css.cash, {
@@ -96,6 +100,8 @@ const ProfileBar = ({
 }
 
 ProfileBar.propTypes = {
+  className: PropTypes.string,
+  innerClassName: PropTypes.string,
   currency: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.string,

@@ -54,7 +54,9 @@ var useChangeERC20 = function useChangeERC20(number, currency) {
 };
 var ProfileBar = function ProfileBar(_ref) {
   var _cn;
-  var currency = _ref.currency,
+  var className = _ref.className,
+    innerClassName = _ref.innerClassName,
+    currency = _ref.currency,
     balance = _ref.balance,
     account = _ref.account,
     chainName = _ref.chainName,
@@ -66,7 +68,7 @@ var ProfileBar = function ProfileBar(_ref) {
     difference = _useChangeERC2[0],
     changeid = _useChangeERC2[1];
   var handleClick = (0, _react.useCallback)(function () {
-    return onProfileClick(account.toLowerCase());
+    if (onProfileClick) onProfileClick(account.toLowerCase());
   }, []);
   var handleDisconnectClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
@@ -76,10 +78,10 @@ var ProfileBar = function ProfileBar(_ref) {
     e.stopPropagation();
   }, []);
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: _ProfileBarModule["default"].profilebar,
+    className: (0, _clsx["default"])(_ProfileBarModule["default"].profilebar, className),
     onClick: handleClick
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: _ProfileBarModule["default"].inner
+    className: (0, _clsx["default"])(_ProfileBarModule["default"].inner, innerClassName)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     key: changeid,
     className: (0, _clsx["default"])(_ProfileBarModule["default"].cash, (_cn = {}, _defineProperty(_cn, _ProfileBarModule["default"].increase, difference && (0, _calcUtils.isPositive)(difference)), _defineProperty(_cn, _ProfileBarModule["default"].decrease, difference && (0, _calcUtils.isNegative)(difference)), _cn)),
@@ -105,6 +107,8 @@ var ProfileBar = function ProfileBar(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), /*#__PURE__*/_react["default"].createElement(_Connect["default"], null))));
 };
 ProfileBar.propTypes = {
+  className: _propTypes["default"].string,
+  innerClassName: _propTypes["default"].string,
   currency: _propTypes["default"].string,
   balance: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   account: _propTypes["default"].string,
