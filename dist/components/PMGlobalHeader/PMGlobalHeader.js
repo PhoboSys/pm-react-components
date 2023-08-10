@@ -22,7 +22,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"]; if (null != _i) { var _s, _e, _x, _r, _arr = [], _n = !0, _d = !1; try { if (_x = (_i = _i.call(arr)).next, 0 === i) { if (Object(_i) !== _i) return; _n = !1; } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0); } catch (err) { _d = !0, _e = err; } finally { try { if (!_n && null != _i["return"] && (_r = _i["return"](), Object(_r) !== _r)) return; } finally { if (_d) throw _e; } } return _arr; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var PMGlobalHeader = function PMGlobalHeader(_ref) {
-  var logoFill = _ref.logoFill,
+  var headerClassName = _ref.headerClassName,
+    connectClassName = _ref.connectClassName,
+    profileBarClassName = _ref.profileBarClassName,
+    profileBarInnerClassName = _ref.profileBarInnerClassName,
+    logoFill = _ref.logoFill,
     isConnected = _ref.isConnected,
     isConnectBarOpenedControlled = _ref.isConnectBarOpened,
     account = _ref.account,
@@ -31,9 +35,11 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     chainName = _ref.chainName,
     connectors = _ref.connectors,
     activeNavigationItem = _ref.activeNavigationItem,
+    onConnectClick = _ref.onConnectClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onConnectorClick = _ref.onConnectorClick,
     onProfileClick = _ref.onProfileClick,
+    onCloseIconClick = _ref.onCloseIconClick,
     children = _ref.children;
   var isContolled = isConnectBarOpenedControlled !== undefined;
   var _useState = (0, _react.useState)(false),
@@ -47,16 +53,25 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     return setConnectBarOpened(false);
   }, []);
   var handleConnectClick = (0, _react.useCallback)(function () {
+    if (onConnectClick) onConnectClick();
     if (!isContolled) openConnectBar();
-  }, [isContolled, openConnectBar]);
+  }, [isContolled, openConnectBar, onConnectClick]);
   var handleConnectorClick = (0, _react.useCallback)(function (connectorId) {
-    onConnectorClick(connectorId);
+    if (onConnectorClick) onConnectorClick(connectorId);
     if (!isContolled) closeConnectBar();
   }, [isContolled, onConnectorClick, closeConnectBar]);
+  var handleCloseIconClick = (0, _react.useCallback)(function () {
+    if (onCloseIconClick) onCloseIconClick();
+    if (!isContolled) closeConnectBar();
+  }, [isContolled, onCloseIconClick, closeConnectBar]);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
     logoFill: logoFill,
     active: activeNavigationItem
-  }), /*#__PURE__*/_react["default"].createElement(_Header["default"], null, children, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_Header["default"], {
+    className: headerClassName
+  }, children, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
+    className: profileBarClassName,
+    innerClassName: profileBarInnerClassName,
     balance: balance,
     currency: currency,
     account: account,
@@ -64,15 +79,20 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onDisconnectClick: onDisconnectClick,
     onProfileClick: onProfileClick
   }) : /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
+    className: connectClassName,
     onClick: handleConnectClick
   })), /*#__PURE__*/_react["default"].createElement(_ConnectBar["default"], {
     isOpened: isContolled ? isConnectBarOpenedControlled : isConnectBarOpened,
     connectors: connectors,
-    onCloseIconClick: closeConnectBar,
+    onCloseIconClick: handleCloseIconClick,
     onConnectorClick: handleConnectorClick
   }));
 };
 PMGlobalHeader.propTypes = {
+  headerClassName: _propTypes["default"].string,
+  connectClassName: _propTypes["default"].string,
+  profileBarClassName: _propTypes["default"].string,
+  profileBarInnerClassName: _propTypes["default"].string,
   logoFill: _propTypes["default"].string,
   isConnected: _propTypes["default"].bool,
   isConnectBarOpened: _propTypes["default"].bool,
@@ -82,8 +102,11 @@ PMGlobalHeader.propTypes = {
   chainName: _propTypes["default"].string,
   connectors: _propTypes["default"].array,
   activeNavigationItem: _propTypes["default"].string,
+  onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func,
+  onProfileClick: _propTypes["default"].func,
+  onCloseIconClick: _propTypes["default"].func,
   children: _propTypes["default"].node
 };
 var _default = /*#__PURE__*/_react["default"].memo(PMGlobalHeader);

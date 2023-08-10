@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import cn from 'clsx'
 
 import { useTranslate } from '@lib/i18n-utils'
 
 import css from './Connect.module.scss'
 
-const Connect = ({ onClick }) => {
+const Connect = ({ className, onClick }) => {
   const t = useTranslate()
   return (
-    <div className={css.connect}>
+    <div className={cn(css.connect, className)}>
       <a
         title={t('Connect Wallet')}
         className={css.connectButton}
@@ -21,6 +22,7 @@ const Connect = ({ onClick }) => {
 }
 
 Connect.propTypes = {
+  className: PropTypes.string,
   onClick: PropTypes.func
 }
 

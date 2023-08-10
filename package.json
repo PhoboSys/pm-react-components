@@ -8,7 +8,8 @@
     "start": "rm -rf dist && NODE_ENV=production babel --watch src --out-dir dist --copy-files",
     "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
     "autolink:webstaking": "npm link && cd ../pm-webstaking && npm link pm-global-header",
-    "autolink:webtrader": "npm link && cd ../pm-webtrader && npm link pm-global-header"
+    "autolink:webtrader": "npm link && cd ../pm-webtrader && npm link pm-global-header",
+    "autolink:all": "npm link && cd ../pm-webtrader && npm link pm-global-header && cd ../pm-webstaking && npm link pm-global-header"
   },
   "author": "Phobosys",
   "license": "UNLICENSED",
