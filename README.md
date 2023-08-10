@@ -2,6 +2,15 @@
 
 ## SCSS variables:
 
+#### Sizeing
+
+- --navbar-width
+- --navbar-logo-height
+- --header-left
+- --header-height
+
+#### Colors
+
 - --header-bg
 - --navbar-border-color
 - --navbar-icon-bg-hover

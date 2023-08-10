@@ -1,7 +1,7 @@
 {
   "name": "pm-global-header",
   "version": "0.1.0",
-  "description": "Application's global header which header, navigation bar and connect bar",
+  "description": "Application's global header with header, navigation bar and connect bar",
   "private": true,
   "main": "dist/index.js",
   "scripts": {
