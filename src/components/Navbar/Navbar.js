@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import ButtonProvider from '../common/Button'
 import LogoIcon from '../SVG/Logo'
 import TradeIcon from '../SVG/Trade'
-import StatisticsIcon from '../SVG/Statistics'
 import StakingIcon from '../SVG/Staking'
 import MentoringIcon from '../SVG/Mentoring'
 
@@ -13,7 +12,6 @@ import css from './Navbar.module.scss'
 
 const menuItems = [
   { name: 'trade', icon: <TradeIcon /> },
-  { name: 'statistics', icon: <StatisticsIcon /> },
   { name: 'staking', icon: <StakingIcon /> },
   { name: 'mentoring', icon: <MentoringIcon /> },
 ]

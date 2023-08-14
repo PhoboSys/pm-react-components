@@ -10,7 +10,6 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Button = _interopRequireDefault(require("../common/Button"));
 var _Logo = _interopRequireDefault(require("../SVG/Logo"));
 var _Trade = _interopRequireDefault(require("../SVG/Trade"));
-var _Statistics = _interopRequireDefault(require("../SVG/Statistics"));
 var _Staking = _interopRequireDefault(require("../SVG/Staking"));
 var _Mentoring = _interopRequireDefault(require("../SVG/Mentoring"));
 var _NavbarModule = _interopRequireDefault(require("./Navbar.module.scss"));
@@ -22,9 +21,6 @@ function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input ==
 var menuItems = [{
   name: 'trade',
   icon: /*#__PURE__*/_react["default"].createElement(_Trade["default"], null)
-}, {
-  name: 'statistics',
-  icon: /*#__PURE__*/_react["default"].createElement(_Statistics["default"], null)
 }, {
   name: 'staking',
   icon: /*#__PURE__*/_react["default"].createElement(_Staking["default"], null)

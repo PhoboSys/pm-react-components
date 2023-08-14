@@ -23,6 +23,7 @@
 - --profilebar-cash-bg
 - --profilebar-cash-bg-hover
 - --profilebar-cash-bg-active
+- --profilebar-cash-bg-parent-hover
 - --profilebar-cash-bg-parent-active
 - --profilebar-cash-color
 - --profilebar-cash-diffrenece-bg

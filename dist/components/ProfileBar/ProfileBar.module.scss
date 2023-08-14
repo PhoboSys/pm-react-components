@@ -8,11 +8,11 @@
       background: var(--profilebar-bg-hover);
 
       .cash {
-        background: var(--profilebar-cash-bg-hover);
+        background: var(----profilebar-cash-bg-parent-hover);
       }
 
       .action {
-        background: var(--profilebar-cash-bg-hover);
+        background: var(----profilebar-cash-bg-parent-hover);
       }
     }
   }
@@ -30,14 +30,6 @@
 
     &:active:not(:has(.cash:active, .action:active)) {
       background: var(--profilebar-bg-active);
-
-      .cash {
-        background: var(--profilebar-cash-bg-parent-active);
-      }
-
-      .action {
-        background: var(--profilebar-cash-bg-parent-active);
-      }
     }
 
     .cash {
@@ -49,6 +41,10 @@
       background: var(--profilebar-cash-bg);
       border-radius: 77px;
       transition: background-color .3s linear;
+
+      &:hover {
+        background: var(--profilebar-cash-bg-hover);
+      }
 
       &:active:not(:has(.difference:active)) {
         background: var(--profilebar-cash-bg-active);
@@ -100,6 +96,7 @@
 
       &:hover {
         opacity: 1;
+        background: var(--profilebar-cash-bg-parent-active);
       }
 
       &:active {
