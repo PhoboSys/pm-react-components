@@ -69,11 +69,11 @@ var ProfileBar = function ProfileBar(_ref) {
     changeid = _useChangeERC2[1];
   var handleClick = (0, _react.useCallback)(function () {
     if (onProfileClick) onProfileClick(account.toLowerCase());
-  }, []);
+  }, [onProfileClick]);
   var handleDisconnectClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
     onDisconnectClick();
-  }, []);
+  }, [onDisconnectClick]);
   var handleBalanceClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
   }, []);

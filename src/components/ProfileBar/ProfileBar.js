@@ -49,12 +49,12 @@ const ProfileBar = ({
 
   const handleClick = useCallback(() => {
     if (onProfileClick) onProfileClick(account.toLowerCase())
-  }, [])
+  }, [onProfileClick])
 
   const handleDisconnectClick = useCallback((e) => {
     e.stopPropagation()
     onDisconnectClick()
-  }, [])
+  }, [onDisconnectClick])
 
   const handleBalanceClick = useCallback((e) => {
     e.stopPropagation()
