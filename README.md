@@ -12,10 +12,14 @@
 #### Colors
 
 - --header-bg
+- --navbar-bg
 - --navbar-border-color
 - --navbar-icon-bg-hover
 - --navbar-icon-bg-active
 - --navbar-icon-bg-selected
+- --navbar-label-color
+- --navbar-label-color-selected
+- --navbar-expanded-box-shadow
 - --profilebar-bg-hover
 - --profilebar-bg-active
 - --profilebar-border-color

@@ -13,6 +13,7 @@ const PMGlobalHeader = ({
   profileBarClassName,
   profileBarInnerClassName,
   logoFill,
+  logoLabelFill,
   isConnected,
   isConnectBarOpened: isConnectBarOpenedControlled,
   account,
@@ -52,7 +53,7 @@ const PMGlobalHeader = ({
 
   return (
     <>
-      <Navbar logoFill={logoFill} active={activeNavigationItem} />
+      <Navbar logoFill={logoFill} logoLabelFill={logoLabelFill} active={activeNavigationItem} />
       <Header className={headerClassName}>
         {children}
         {isConnected ? (
@@ -89,6 +90,7 @@ PMGlobalHeader.propTypes = {
   profileBarClassName: PropTypes.string,
   profileBarInnerClassName: PropTypes.string,
   logoFill: PropTypes.string,
+  logoLabelFill: PropTypes.string,
   isConnected: PropTypes.bool,
   isConnectBarOpened: PropTypes.bool,
   account: PropTypes.string,

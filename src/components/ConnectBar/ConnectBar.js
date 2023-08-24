@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
-import { useTransition } from './ConnectBar.utils'
+import { useTransition } from '../../hooks/useTransition'
 import ArrowForward from '../SVG/ArrowForward'
 import Connector from '../Connector'
 
