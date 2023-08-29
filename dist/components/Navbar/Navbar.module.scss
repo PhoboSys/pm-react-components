@@ -22,50 +22,41 @@
 .navbar {
   display: flex;
   padding-bottom: 8px;
+  flex-direction: column;
 }
 
 .logo {
-  height: var(--navbar-logo-height);
   display: flex;
+  height: var(--navbar-logo-height);
+  padding: 0 calc((var(--navbar-width) - 48px) / 2);
+  column-gap: calc((var(--navbar-width) - 48px) / 2);
   align-items: center;
-  justify-content: center;
   user-select: none;
+
+  svg {
+    flex-shrink: 0;
+  }
 }
 
-.menuIcons {
+.menu {
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  padding-left: 0;
+  padding: 0 calc((var(--navbar-width) - 56px) / 2);
   margin: 19px 0;
   list-style: none;
 }
 
-.menuIcon {
+.menuItem {
   display: flex;
-  justify-content: center;
-  position: relative;
-
-  &~.menuIcon {
-    margin-top: 16px;
-  }
-
-  &.active {
-    .button {
-      background: var(--navbar-icon-bg-selected);
-
-      &:hover {
-        background: var(--navbar-icon-bg-selected);
-      }
-    }
-  }
-}
-
-.button {
+  align-items: center;
   border-radius: 20px;
   transition: background-color .3s linear;
-  width: 56px;
-  height: 56px;
+  column-gap: calc((var(--navbar-width) - 56px) / 2);
+  width: auto;
+  height: auto;
+  cursor: pointer;
+  user-select: none;
 
   &:hover {
     background: var(--navbar-icon-bg-hover);
@@ -74,35 +65,32 @@
   &:active {
     background: var(--navbar-icon-bg-active);
   }
-}
 
-.icons {
-  width: var(--navbar-width);
-  min-width: var(--navbar-width);
-}
-
-.logoLabel {
-  height: 80px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-
-.menuLabels {
-  margin-top: 19px;
-  padding-left: 0;
-  list-style: none;
-}
-
-.menuLabel {
-  display: flex;
-  align-items: center;
-  height: 56px;
-  margin-bottom: 16px;
-  color: var(--navbar-label-color);
-  cursor: pointer;
+  &~.menuItem {
+    margin-top: 16px;
+  }
 
   &.active {
-    color: var(--navbar-label-color-selected);
-  } 
+    background: var(--navbar-icon-bg-selected);
+
+    &:hover {
+      background: var(--navbar-icon-bg-selected);
+    }
+
+    .label {
+      color: var(--navbar-label-color-selected);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  min-width: 56px;
+  height: 56px;
+  justify-content: center;
+  align-items: center;
+}
+
+.label {
+  color: var(--navbar-label-color);
 }
