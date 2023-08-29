@@ -53,8 +53,7 @@
   border-radius: 20px;
   transition: background-color .3s linear;
   column-gap: calc((var(--navbar-width) - 56px) / 2);
-  width: auto;
-  height: auto;
+  min-width: 56px;
   cursor: pointer;
   user-select: none;
 
