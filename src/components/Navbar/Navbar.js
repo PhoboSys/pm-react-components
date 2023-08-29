@@ -41,48 +41,25 @@ const NavBar = ({ logoFill, logoLabelFill, active }) => {
   }, [toggleNavbar])
 
   return (
-    <div className={cn(css.container, { [css.expanded]: opening })}>
+    <div className={cn(css.container, { [css.expanded]: mount && opening })}>
       <div className={css.navbar}>
-
-        <div className={css.icons}>
-          <a href="/" className={css.logo} tabIndex={-1}>
-            <LogoIcon fill={logoFill} />
-          </a>
-          <ul className={css.menuIcons}>
-            {menuItems.map(({ name, icon }) => (
-              <li
-                key={name}
-                className={cn(css.menuIcon, { [css.active]: active === name })}
-                onClick={handleMenuItemClick}
-                {...(active === name ? {'data-active': '1'} : {})}
-              >
-                <ButtonProvider className={css.button}>
-                  {icon}
-                </ButtonProvider>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        {mount && (
-          <div className={css.labels}>
-            <a href="/" className={css.logoLabel} tabIndex={-1}>
-              <LogoLabel fill={logoLabelFill} />
-            </a>
-            <ul className={css.menuLabels}>
-              {menuItems.map(({ name, label }) => (
-                <li
-                  key={name}
-                  className={cn(css.menuLabel, { [css.active]: active === name })}
-                  onClick={handleMenuItemClick}
-                  {...(active === name ? {'data-active': '1'} : {})}
-                >
-                  {label}
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
+        <a href="/" className={css.logo} tabIndex={-1}>
+          <LogoIcon fill={logoFill} />
+          <LogoLabel fill={logoLabelFill} />
+        </a>
+        <ul className={css.menu}>
+          {menuItems.map(({ name, label, icon }) => (
+            <li
+              key={name}
+              className={cn(css.menuItem, { [css.active]: active === name })}
+              onClick={handleMenuItemClick}
+              {...(active === name ? {'data-active': '1'} : {})}
+            >
+              <span className={css.icon}>{icon}</span>
+              <span className={css.label}>{label}</span>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   )

@@ -68,52 +68,35 @@ var NavBar = function NavBar(_ref) {
     }
   }, [toggleNavbar]);
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])(_NavbarModule["default"].container, _defineProperty({}, _NavbarModule["default"].expanded, opening))
+    className: (0, _clsx["default"])(_NavbarModule["default"].container, _defineProperty({}, _NavbarModule["default"].expanded, mount && opening))
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _NavbarModule["default"].navbar
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: _NavbarModule["default"].icons
   }, /*#__PURE__*/_react["default"].createElement("a", {
     href: "/",
     className: _NavbarModule["default"].logo,
     tabIndex: -1
   }, /*#__PURE__*/_react["default"].createElement(_Logo["default"], {
     fill: logoFill
+  }), /*#__PURE__*/_react["default"].createElement(_LogoLabel["default"], {
+    fill: logoLabelFill
   })), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: _NavbarModule["default"].menuIcons
+    className: _NavbarModule["default"].menu
   }, menuItems.map(function (_ref2) {
     var name = _ref2.name,
+      label = _ref2.label,
       icon = _ref2.icon;
     return /*#__PURE__*/_react["default"].createElement("li", _extends({
       key: name,
-      className: (0, _clsx["default"])(_NavbarModule["default"].menuIcon, _defineProperty({}, _NavbarModule["default"].active, active === name)),
+      className: (0, _clsx["default"])(_NavbarModule["default"].menuItem, _defineProperty({}, _NavbarModule["default"].active, active === name)),
       onClick: handleMenuItemClick
     }, active === name ? {
       'data-active': '1'
-    } : {}), /*#__PURE__*/_react["default"].createElement(_Button["default"], {
-      className: _NavbarModule["default"].button
-    }, icon));
-  }))), mount && /*#__PURE__*/_react["default"].createElement("div", {
-    className: _NavbarModule["default"].labels
-  }, /*#__PURE__*/_react["default"].createElement("a", {
-    href: "/",
-    className: _NavbarModule["default"].logoLabel,
-    tabIndex: -1
-  }, /*#__PURE__*/_react["default"].createElement(_LogoLabel["default"], {
-    fill: logoLabelFill
-  })), /*#__PURE__*/_react["default"].createElement("ul", {
-    className: _NavbarModule["default"].menuLabels
-  }, menuItems.map(function (_ref3) {
-    var name = _ref3.name,
-      label = _ref3.label;
-    return /*#__PURE__*/_react["default"].createElement("li", _extends({
-      key: name,
-      className: (0, _clsx["default"])(_NavbarModule["default"].menuLabel, _defineProperty({}, _NavbarModule["default"].active, active === name)),
-      onClick: handleMenuItemClick
-    }, active === name ? {
-      'data-active': '1'
-    } : {}), label);
-  })))));
+    } : {}), /*#__PURE__*/_react["default"].createElement("span", {
+      className: _NavbarModule["default"].icon
+    }, icon), /*#__PURE__*/_react["default"].createElement("span", {
+      className: _NavbarModule["default"].label
+    }, label));
+  }))));
 };
 NavBar.propTypes = {
   active: _propTypes["default"].string,
