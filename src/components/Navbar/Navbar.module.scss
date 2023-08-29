@@ -71,14 +71,17 @@
   }
 
   &.active {
-    background: var(--navbar-icon-bg-selected);
 
-    &:hover {
-      background: var(--navbar-icon-bg-selected);
+    &:hover, &:active {
+      background: transparent;
     }
 
     .label {
       color: var(--navbar-label-color-selected);
+    }
+
+    .icon {
+      background: var(--navbar-icon-bg-selected);
     }
   }
 }
@@ -87,6 +90,7 @@
   display: flex;
   min-width: 56px;
   height: 56px;
+  border-radius: 20px;
   justify-content: center;
   align-items: center;
 }
