@@ -11,6 +11,9 @@
 
 #### Colors
 
+- --pm-gh-copy-icon-color
+- --pm-gh-copy-icon-color-hover
+- --pm-gh-spinner-color
 - --header-bg
 - --navbar-bg
 - --navbar-border-color
@@ -54,3 +57,17 @@
 - --connect-bar-close-icon-background-color-active
 - --connect-bar-policy-color
 - --connect-bar-policy-hyperlink-color
+- --statistics-bar-background-color
+- --statistics-bar-box-shadow
+- --statistics-bar-close-icon-border-color
+- --statistics-bar-close-icon-background-color
+- --statistics-bar-close-icon-background-color-hover
+- --statistics-bar-close-icon-border-color-hover
+- --statistics-bar-close-icon-background-color-active
+- --statistics-bar-close-icon-border-color-active
+- --statistics-bar-stats-border-color
+- --statistics-bar-stats-title-bg
+- --statistics-bar-tab-bg-color
+- --statistics-bar-stats-table-bg
+- --statistics-bar-stats-table-secondary-color
+- --statistics-bar-stats-table-tr-border-color
