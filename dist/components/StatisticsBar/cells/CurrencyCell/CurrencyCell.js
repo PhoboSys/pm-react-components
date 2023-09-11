@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _TokenCurrencyCell = _interopRequireDefault(require("../TokenCurrencyCell"));
-var _ConvertedCurrencyCell = _interopRequireDefault(require("../ConvertedCurrencyCell"));
+var _FormattedCurrencyCell = _interopRequireDefault(require("../FormattedCurrencyCell"));
 var _CurrencyCellModule = _interopRequireDefault(require("./CurrencyCell.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var CurrencyCell = function CurrencyCell(_ref) {
@@ -22,7 +22,7 @@ var CurrencyCell = function CurrencyCell(_ref) {
     currency: currency
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CurrencyCellModule["default"].converted
-  }, "(", /*#__PURE__*/_react["default"].createElement(_ConvertedCurrencyCell["default"], {
+  }, "(", /*#__PURE__*/_react["default"].createElement(_FormattedCurrencyCell["default"], {
     amount: convertedAmount,
     currency: convertedCurrency
   }), ")"));

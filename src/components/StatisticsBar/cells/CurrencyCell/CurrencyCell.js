@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import TokenCurrencyCell from '../TokenCurrencyCell'
-import ConvertedCurrencyCell from '../ConvertedCurrencyCell'
+import FormattedCurrencyCell from '../FormattedCurrencyCell'
 
 import css from './CurrencyCell.module.scss'
 
@@ -12,7 +12,7 @@ const CurrencyCell = ({ amount, currency, convertedAmount, convertedCurrency }) 
       <TokenCurrencyCell amount={amount} currency={currency} />
       <span className={css.converted}>
         &#40;
-        <ConvertedCurrencyCell
+        <FormattedCurrencyCell
           amount={convertedAmount}
           currency={convertedCurrency}
         />

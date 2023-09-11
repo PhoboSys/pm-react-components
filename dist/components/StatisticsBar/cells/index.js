@@ -3,12 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-Object.defineProperty(exports, "ConvertedCurrencyCell", {
-  enumerable: true,
-  get: function get() {
-    return _ConvertedCurrencyCell["default"];
-  }
-});
 Object.defineProperty(exports, "CurrencyCell", {
   enumerable: true,
   get: function get() {
@@ -19,6 +13,12 @@ Object.defineProperty(exports, "DateCell", {
   enumerable: true,
   get: function get() {
     return _DateCell["default"];
+  }
+});
+Object.defineProperty(exports, "FormattedCurrencyCell", {
+  enumerable: true,
+  get: function get() {
+    return _FormattedCurrencyCell["default"];
   }
 });
 Object.defineProperty(exports, "TokenCurrencyCell", {
@@ -35,7 +35,7 @@ Object.defineProperty(exports, "WinCell", {
 });
 var _DateCell = _interopRequireDefault(require("./DateCell"));
 var _WinCell = _interopRequireDefault(require("./WinCell"));
-var _ConvertedCurrencyCell = _interopRequireDefault(require("./ConvertedCurrencyCell"));
+var _FormattedCurrencyCell = _interopRequireDefault(require("./FormattedCurrencyCell"));
 var _TokenCurrencyCell = _interopRequireDefault(require("./TokenCurrencyCell"));
 var _CurrencyCell = _interopRequireDefault(require("./CurrencyCell"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }

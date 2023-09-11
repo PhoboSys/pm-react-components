@@ -18,7 +18,7 @@ var cellRenderers = {
       return "".concat(row.value.account, " / ").concat(row.value.total);
     }
     if (row.name === 'earned') {
-      return /*#__PURE__*/_react["default"].createElement(_cells.ConvertedCurrencyCell, {
+      return /*#__PURE__*/_react["default"].createElement(_cells.FormattedCurrencyCell, {
         amount: row.value.convertedAmount,
         currency: row.value.convertedCurrency
       });

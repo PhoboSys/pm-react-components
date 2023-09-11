@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import cn from 'clsx'
 
 import BalanceCurrency from '../../../common/Balance'
-import ConvertedCurrencyCell from '../ConvertedCurrencyCell'
+import FormattedCurrencyCell from '../FormattedCurrencyCell'
 
 import css from './TokenCurrencyCell.module.scss'
 
@@ -32,7 +32,7 @@ const TokenCurrencyCell = ({
         size={iconSize}
       />
       <span className={cn(css.amount, amountClassName)}>
-        <ConvertedCurrencyCell amount={amount} />
+        <FormattedCurrencyCell amount={amount} token />
       </span>
     </div>
   )

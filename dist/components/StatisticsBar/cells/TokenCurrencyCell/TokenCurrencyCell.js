@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _Balance = _interopRequireDefault(require("../../../common/Balance"));
-var _ConvertedCurrencyCell = _interopRequireDefault(require("../ConvertedCurrencyCell"));
+var _FormattedCurrencyCell = _interopRequireDefault(require("../FormattedCurrencyCell"));
 var _TokenCurrencyCellModule = _interopRequireDefault(require("./TokenCurrencyCell.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -33,8 +33,9 @@ var TokenCurrencyCell = function TokenCurrencyCell(_ref) {
     size: iconSize
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].amount, amountClassName)
-  }, /*#__PURE__*/_react["default"].createElement(_ConvertedCurrencyCell["default"], {
-    amount: amount
+  }, /*#__PURE__*/_react["default"].createElement(_FormattedCurrencyCell["default"], {
+    amount: amount,
+    token: true
   })));
 };
 TokenCurrencyCell.propTypes = {

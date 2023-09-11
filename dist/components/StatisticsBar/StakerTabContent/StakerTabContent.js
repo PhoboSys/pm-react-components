@@ -32,7 +32,7 @@ var cellRenderers = {
       });
     }
   },
-  earned: function earned(row) {
+  claimed: function claimed(row) {
     return /*#__PURE__*/_react["default"].createElement(_cells.TokenCurrencyCell, {
       amount: row.value.amount,
       currency: row.value.currency
@@ -55,8 +55,8 @@ var PredictorTabContent = function PredictorTabContent(_ref) {
       label: 'Name',
       dataKey: 'name'
     }, {
-      label: 'Earned',
-      cellRenderer: cellRenderers.earned
+      label: 'Claimed',
+      cellRenderer: cellRenderers.claimed
     }];
   }, []);
   return /*#__PURE__*/_react["default"].createElement(_TabContent["default"], {

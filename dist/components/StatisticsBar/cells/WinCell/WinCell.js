@@ -16,7 +16,7 @@ var WinCell = function WinCell(_ref) {
     className: _WinCellModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: _WinCellModule["default"].count
-  }, (0, _htmlUtils.htmlCurrency)(count)), /*#__PURE__*/_react["default"].createElement("span", {
+  }, count), /*#__PURE__*/_react["default"].createElement("span", {
     className: _WinCellModule["default"].percent
   }, "(", (0, _htmlUtils.htmlPercent)(percent), ")"));
 };

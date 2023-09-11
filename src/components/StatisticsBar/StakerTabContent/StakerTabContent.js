@@ -24,7 +24,7 @@ const cellRenderers = {
       return <DateCell date={row.value} />
     }
   },
-  earned: (row) => (
+  claimed: (row) => (
     <TokenCurrencyCell
       amount={row.value.amount}
       currency={row.value.currency}
@@ -39,7 +39,7 @@ const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
   ], [])
   const tokenStatsColumns = useMemo(() => [
     { label: 'Name', dataKey: 'name' },
-    { label: 'Earned', cellRenderer: cellRenderers.earned },
+    { label: 'Claimed', cellRenderer: cellRenderers.claimed },
   ], [])
 
   return (

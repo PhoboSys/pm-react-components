@@ -22,7 +22,7 @@ var cellRenderers = {
       });
     }
     if (row.name === 'wagered') {
-      return /*#__PURE__*/_react["default"].createElement(_cells.ConvertedCurrencyCell, {
+      return /*#__PURE__*/_react["default"].createElement(_cells.FormattedCurrencyCell, {
         amount: row.value.convertedAmount,
         currency: row.value.convertedCurrency
       });

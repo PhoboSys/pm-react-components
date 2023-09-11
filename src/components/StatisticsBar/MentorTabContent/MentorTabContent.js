@@ -2,7 +2,7 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import { TokenCurrencyCell, DateCell } from '../cells'
-import { ConvertedCurrencyCell } from '../cells'
+import { FormattedCurrencyCell } from '../cells'
 import TabContent from '../TabContent'
 
 const cellRenderers = {
@@ -12,7 +12,7 @@ const cellRenderers = {
     }
     if (row.name === 'earned') {
       return (
-        <ConvertedCurrencyCell
+        <FormattedCurrencyCell
           amount={row.value.convertedAmount}
           currency={row.value.convertedCurrency}
         />
