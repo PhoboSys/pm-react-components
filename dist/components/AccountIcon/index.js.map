@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","names":["_AccountIcon","_interopRequireDefault","require","obj","__esModule"],"sources":["../../../src/components/AccountIcon/index.js"],"sourcesContent":["export { default } from './AccountIcon';"],"mappings":";;;;;;;;;;;AAAA,IAAAA,YAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAwC,SAAAD,uBAAAE,GAAA,WAAAA,GAAA,IAAAA,GAAA,CAAAC,UAAA,GAAAD,GAAA,gBAAAA,GAAA"}

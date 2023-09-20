@@ -2,7 +2,6 @@ import React, { useCallback, useState } from 'react'
 import cn from 'clsx'
 import PropTypes from 'prop-types'
 
-import ButtonProvider from '../common/Button'
 import { useTransition } from '../../hooks/useTransition'
 import LogoIcon from '../SVG/Logo'
 import TradeIcon from '../SVG/Trade'
@@ -51,9 +50,9 @@ const NavBar = ({ logoFill, logoLabelFill, active }) => {
           {menuItems.map(({ name, label, icon }) => (
             <li
               key={name}
-              className={cn(css.menuItem, { [css.active]: active === name })}
+              className={css.menuItem}
               onClick={handleMenuItemClick}
-              {...(active === name ? {'data-active': '1'} : {})}
+              {...(active === name ? {'data-active': ''} : {})}
             >
               <span className={css.icon}>{icon}</span>
               <span className={css.label}>{label}</span>

@@ -5,6 +5,7 @@ import Navbar from '../Navbar'
 import Header from '../Header'
 import ProfileBar from '../ProfileBar'
 import ConnectBar from '../ConnectBar'
+import StatisticsBar from '../StatisticsBar'
 import Connect from '../Connect'
 
 const PMGlobalHeader = ({
@@ -14,42 +15,64 @@ const PMGlobalHeader = ({
   profileBarInnerClassName,
   logoFill,
   logoLabelFill,
+  currencyFill,
   isConnected,
   isConnectBarOpened: isConnectBarOpenedControlled,
+  isStatisticsBarOpened: isStatisticsBarOpenedControlled,
   account,
   balance,
   currency,
   chainName,
   connectors,
   activeNavigationItem,
+  statistics,
   onConnectClick,
   onDisconnectClick,
   onConnectorClick,
   onProfileClick,
-  onCloseIconClick,
+  onProfileIconClick,
+  onStatisticsBarCloseClick,
+  onConnectBarCloseClick,
   children,
 }) => {
-  const isContolled = isConnectBarOpenedControlled !== undefined
+  const isConnectBarContolled = isConnectBarOpenedControlled !== undefined
+  const isStatisticsBarContolled = isStatisticsBarOpenedControlled !== undefined
 
   const [isConnectBarOpened, setConnectBarOpened] = useState(false)
+  const [isStatisticsBarOpened, setStatisticsBarOpened] = useState(false)
   
   const openConnectBar = useCallback(() => setConnectBarOpened(true), [])
   const closeConnectBar = useCallback(() => setConnectBarOpened(false), [])
 
   const handleConnectClick = useCallback(() => {
     if (onConnectClick) onConnectClick()
-    if (!isContolled) openConnectBar()
-  }, [isContolled, openConnectBar, onConnectClick])
+    if (!isConnectBarContolled) openConnectBar()
+  }, [isConnectBarContolled, openConnectBar, onConnectClick])
 
   const handleConnectorClick = useCallback((connectorId) => {
     if (onConnectorClick) onConnectorClick(connectorId)
-    if (!isContolled) closeConnectBar()
-  }, [isContolled, onConnectorClick, closeConnectBar])
+    if (!isConnectBarContolled) closeConnectBar()
+  }, [isConnectBarContolled, onConnectorClick, closeConnectBar])
 
-  const handleCloseIconClick = useCallback(() => {
-    if (onCloseIconClick) onCloseIconClick()
-    if (!isContolled) closeConnectBar()
-  }, [isContolled, onCloseIconClick, closeConnectBar])
+  const handleConnectBarCloseClick = useCallback(() => {
+    if (onConnectBarCloseClick) onConnectBarCloseClick()
+    if (!isConnectBarContolled) closeConnectBar()
+  }, [isConnectBarContolled, onConnectBarCloseClick, closeConnectBar])
+
+  const handleCloseStatisticsBar = useCallback(() => {
+    if (!isStatisticsBarContolled) setStatisticsBarOpened(false)
+    if (onStatisticsBarCloseClick) onStatisticsBarCloseClick()
+  }, [isStatisticsBarContolled, onStatisticsBarCloseClick])
+
+  const handleProfileIconClick = useCallback(() => {
+    if (!isStatisticsBarContolled) setStatisticsBarOpened(true)
+    if (onProfileIconClick) onProfileIconClick()
+  }, [isStatisticsBarContolled, onProfileIconClick])
+
+  const handleDisconnectClick = useCallback(() => {
+    if (!isStatisticsBarContolled) setStatisticsBarOpened(false)
+    if (onDisconnectClick) onDisconnectClick()
+  }, [isStatisticsBarContolled, onDisconnectClick])
 
   return (
     <>
@@ -60,26 +83,35 @@ const PMGlobalHeader = ({
           <ProfileBar
             className={profileBarClassName}
             innerClassName={profileBarInnerClassName}
+            currencyFill={currencyFill}
             balance={balance}
             currency={currency}
             account={account}
             chainName={chainName}
             onDisconnectClick={onDisconnectClick}
-            onProfileClick={onProfileClick}
+            onClick={onProfileClick}
+            onIconClick={handleProfileIconClick}
           />
         ) : (
-            <Connect
-              className={connectClassName}
-              onClick={handleConnectClick}
-            />
+          <Connect
+            className={connectClassName}
+            onClick={handleConnectClick}
+          />
         )}
       </Header>
       <ConnectBar
-        isOpened={isContolled ? isConnectBarOpenedControlled : isConnectBarOpened}
+        isOpened={isConnectBarContolled ? isConnectBarOpenedControlled : isConnectBarOpened}
         connectors={connectors}
-        onCloseIconClick={handleCloseIconClick}
+        onCloseClick={handleConnectBarCloseClick}
         onConnectorClick={handleConnectorClick}
       />
+      {isConnected && <StatisticsBar
+        account={account}
+        isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
+        statistics={statistics}
+        onCloseClick={handleCloseStatisticsBar}
+        onDisconnectClick={handleDisconnectClick}
+      />}
     </>
   )
 }
@@ -91,19 +123,24 @@ PMGlobalHeader.propTypes = {
   profileBarInnerClassName: PropTypes.string,
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
+  currencyFill: PropTypes.string,
   isConnected: PropTypes.bool,
   isConnectBarOpened: PropTypes.bool,
+  isStatisticsBarOpened: PropTypes.bool,
   account: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currency: PropTypes.string,
   chainName: PropTypes.string,
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
+  statistics: PropTypes.object,
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
   onProfileClick: PropTypes.func,
-  onCloseIconClick: PropTypes.func,
+  onProfileIconClick: PropTypes.func,
+  onConnectBarCloseClick: PropTypes.func,
+  onStatisticsBarCloseClick: PropTypes.func,
   children: PropTypes.node,
 }
 

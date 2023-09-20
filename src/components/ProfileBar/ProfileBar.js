@@ -2,14 +2,12 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import cn from 'clsx'
 import PropTypes from 'prop-types'
 
-import { useTranslate } from '@lib/i18n-utils'
 import { htmlAddress, htmlCurrency } from '@lib/html-utils'
 import { isPositive, isNegative, sub } from '@lib/calc-utils'
 
 import BalanceCurrency from '../common/Balance'
 import Spinner from '../common/Spinner'
-import Disconnect from '../SVG/Disconnect'
-import Connect from '../SVG/Connect'
+import AccountIcon from '../AccountIcon'
 
 import css from './ProfileBar.module.scss'
 
@@ -36,25 +34,24 @@ const useChangeERC20 = (number, currency) => {
 const ProfileBar = ({
   className,
   innerClassName,
+  currencyFill,
   currency,
   balance,
   account,
   chainName,
-  onDisconnectClick,
-  onProfileClick,
+  onClick,
+  onIconClick,
 }) => {
-  const t = useTranslate()
-
   const [difference, changeid] = useChangeERC20(balance, currency)
 
   const handleClick = useCallback(() => {
-    if (onProfileClick) onProfileClick(account.toLowerCase())
-  }, [onProfileClick])
+    if (onClick) onClick(account.toLowerCase())
+  }, [onClick])
 
-  const handleDisconnectClick = useCallback((e) => {
+  const handleIconClick = useCallback((e) => {
     e.stopPropagation()
-    onDisconnectClick()
-  }, [onDisconnectClick])
+    if (onIconClick) onIconClick(account.toLowerCase())
+  }, [onIconClick])
 
   const handleBalanceClick = useCallback((e) => {
     e.stopPropagation()
@@ -71,7 +68,7 @@ const ProfileBar = ({
           })}
           onClick={handleBalanceClick}
         >
-          <BalanceCurrency currency={currency} />
+          <BalanceCurrency fill={currencyFill} currency={currency} />
           {balance && balance !== 0 ? (
             <span className={css.value}>{htmlCurrency(balance)}</span>
           ) : (
@@ -86,14 +83,11 @@ const ProfileBar = ({
           <div className={css.wallet}>{htmlAddress(account)}</div>
           <div className={css.name}>{chainName}</div>
         </div>
-        <a
-          title={t('Disconnect Wallet')}
+        <AccountIcon
           className={css.action}
-          onClick={handleDisconnectClick}
-        >
-          <Disconnect/>
-          <Connect/>
-        </a>
+          account={account}
+          onClick={handleIconClick}
+        />
       </div>
     </div>
   )
@@ -102,11 +96,13 @@ const ProfileBar = ({
 ProfileBar.propTypes = {
   className: PropTypes.string,
   innerClassName: PropTypes.string,
+  currencyFill: PropTypes.string,
   currency: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.string,
   chainName: PropTypes.string,
-  onDisconnectClick: PropTypes.func
+  onClick: PropTypes.func,
+  onIconClick: PropTypes.func,
 }
 
 export default React.memo(ProfileBar)

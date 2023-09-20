@@ -8,7 +8,12 @@ import Connector from '../Connector'
 
 import css from './ConnectBar.module.scss'
 
-const ConnectBar = ({ connectors, isOpened, onCloseIconClick, onConnectorClick }) => {
+const ConnectBar = ({
+  connectors,
+  isOpened,
+  onCloseClick,
+  onConnectorClick,
+}) => {
 
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened, timeout)
@@ -21,7 +26,7 @@ const ConnectBar = ({ connectors, isOpened, onCloseIconClick, onConnectorClick }
         <span>Connect to Wallet</span>
         <span
           className={css.close}
-          onClick={onCloseIconClick}
+          onClick={onCloseClick}
         >
           <ArrowForward />
         </span>
@@ -43,7 +48,7 @@ const ConnectBar = ({ connectors, isOpened, onCloseIconClick, onConnectorClick }
 ConnectBar.propTypes = {
   isOpened: PropTypes.bool,
   connectors: PropTypes.array,
-  onCloseIconClick: PropTypes.func,
+  onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
 }
 
