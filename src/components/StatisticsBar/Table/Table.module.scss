@@ -51,7 +51,7 @@
   height: 48px;
   line-height: 48px;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--statistics-bar-stats-table-secondary-color);
 
   &:not([data-column="0"]) {
@@ -67,7 +67,7 @@
   line-height: 46px;
   padding: 0;
   font-size: 12px;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--statistics-bar-stats-table-secondary-color);
   text-transform: capitalize;
   text-align: left;
