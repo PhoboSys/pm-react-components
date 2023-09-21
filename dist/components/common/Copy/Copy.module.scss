@@ -7,7 +7,7 @@
 .popper {
   padding: 5px;
   border-radius: 3px;
-  background: #111111;
+  backdrop-filter: blur(25px);
   font-size: 12px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 0px;
 }
@@ -24,15 +24,18 @@
     display: block;
     width: 8px;
     height: 8px;
-    background: #111111;
+    backdrop-filter: blur(25px);
     transform: rotate(45deg);
   }
 }
 
 .icon {
-  width: 14px;
-  height: 14px;
   display: flex;
   margin-left: 7px;
   cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
 }
