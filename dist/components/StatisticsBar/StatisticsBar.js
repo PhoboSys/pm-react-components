@@ -34,11 +34,13 @@ var StatisticsBar = function StatisticsBar(_ref) {
   var _statistics$predictor, _statistics$predictor2, _statistics$mentor, _statistics$mentor2, _statistics$staker, _statistics$staker2;
   var isOpened = _ref.isOpened,
     account = _ref.account,
+    statisticsAccount = _ref.statisticsAccount,
     statistics = _ref.statistics,
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick;
+  var accountAddress = statisticsAccount || account;
   var timeout = 100; //ms
-  var _useTransition = (0, _useTransition3.useTransition)(isOpened, timeout),
+  var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!accountAddress, timeout),
     _useTransition2 = _slicedToArray(_useTransition, 2),
     mount = _useTransition2[0],
     opening = _useTransition2[1];
@@ -49,18 +51,18 @@ var StatisticsBar = function StatisticsBar(_ref) {
     className: _StatisticsBarModule["default"].top
   }, /*#__PURE__*/_react["default"].createElement("a", {
     title: 'Disconnect',
-    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].disconnect),
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].disconnect, _defineProperty({}, _StatisticsBarModule["default"].hidden, !!statisticsAccount && account !== statisticsAccount)),
     onClick: onDisconnectClick
   }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), /*#__PURE__*/_react["default"].createElement(_Connect["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].account
   }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
     className: _StatisticsBarModule["default"].icon,
-    account: account
+    account: accountAddress
   }), /*#__PURE__*/_react["default"].createElement(_Copy["default"], {
-    text: account,
+    text: accountAddress,
     className: _StatisticsBarModule["default"].address,
     iconClassName: _StatisticsBarModule["default"].copyIcon
-  }, (0, _htmlUtils.htmlAddress)(account))), /*#__PURE__*/_react["default"].createElement("a", {
+  }, (0, _htmlUtils.htmlAddress)(accountAddress))), /*#__PURE__*/_react["default"].createElement("a", {
     title: 'Close bar',
     className: _StatisticsBarModule["default"].action,
     onClick: onCloseClick
@@ -82,6 +84,8 @@ var StatisticsBar = function StatisticsBar(_ref) {
 };
 StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,
+  account: _propTypes["default"].string,
+  statisticsAccount: _propTypes["default"].string,
   connectors: _propTypes["default"].array,
   statistics: _propTypes["default"].object,
   onCloseClick: _propTypes["default"].func,

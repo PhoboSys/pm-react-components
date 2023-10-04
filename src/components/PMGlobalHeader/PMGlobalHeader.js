@@ -20,6 +20,7 @@ const PMGlobalHeader = ({
   isConnectBarOpened: isConnectBarOpenedControlled,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
   account,
+  statisticsAccount,
   balance,
   currency,
   chainName,
@@ -105,8 +106,9 @@ const PMGlobalHeader = ({
         onCloseClick={handleConnectBarCloseClick}
         onConnectorClick={handleConnectorClick}
       />
-      {isConnected && <StatisticsBar
+      {<StatisticsBar
         account={account}
+        statisticsAccount={statisticsAccount}
         isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
         statistics={statistics}
         onCloseClick={handleCloseStatisticsBar}
@@ -128,6 +130,7 @@ PMGlobalHeader.propTypes = {
   isConnectBarOpened: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
   account: PropTypes.string,
+  statisticsAccount: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currency: PropTypes.string,
   chainName: PropTypes.string,
