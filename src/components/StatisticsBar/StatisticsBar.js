@@ -20,12 +20,14 @@ import css from './StatisticsBar.module.scss'
 const StatisticsBar = ({
   isOpened,
   account,
+  statisticsAccount,
   statistics,
   onCloseClick,
   onDisconnectClick,
 }) => {
+  const accountAddress = statisticsAccount || account
   const timeout = 100 //ms
-  const [mount, opening] = useTransition(isOpened, timeout)
+  const [mount, opening] = useTransition(isOpened && !!accountAddress, timeout)
 
   if (!mount) return null
 
@@ -35,20 +37,26 @@ const StatisticsBar = ({
       <div className={css.top}>
         <a
           title={'Disconnect'}
-          className={cn(css.action, css.disconnect)}
+          className={cn(
+            css.action,
+            css.disconnect,
+            {
+              [css.hidden]: (!!statisticsAccount && (account !== statisticsAccount)),
+            }
+          )}
           onClick={onDisconnectClick}
         >
           <Disconnect/>
           <Connect/>
         </a>
         <div className={css.account}>
-          <AccountIcon className={css.icon} account={account} />
+          <AccountIcon className={css.icon} account={accountAddress} />
           <Copy
-            text={account}
+            text={accountAddress}
             className={css.address}
             iconClassName={css.copyIcon}
           >
-            {htmlAddress(account)}
+            {htmlAddress(accountAddress)}
           </Copy>
         </div>
         <a
@@ -93,6 +101,8 @@ const StatisticsBar = ({
 
 StatisticsBar.propTypes = {
   isOpened: PropTypes.bool,
+  account: PropTypes.string,
+  statisticsAccount: PropTypes.string,
   connectors: PropTypes.array,
   statistics: PropTypes.object,
   onCloseClick: PropTypes.func,

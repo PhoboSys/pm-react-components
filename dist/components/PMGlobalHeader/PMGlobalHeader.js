@@ -34,6 +34,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isConnectBarOpenedControlled = _ref.isConnectBarOpened,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
     account = _ref.account,
+    statisticsAccount = _ref.statisticsAccount,
     balance = _ref.balance,
     currency = _ref.currency,
     chainName = _ref.chainName,
@@ -113,8 +114,9 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     connectors: connectors,
     onCloseClick: handleConnectBarCloseClick,
     onConnectorClick: handleConnectorClick
-  }), isConnected && /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
     account: account,
+    statisticsAccount: statisticsAccount,
     isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
     statistics: statistics,
     onCloseClick: handleCloseStatisticsBar,
@@ -133,6 +135,7 @@ PMGlobalHeader.propTypes = {
   isConnectBarOpened: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
   account: _propTypes["default"].string,
+  statisticsAccount: _propTypes["default"].string,
   balance: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   currency: _propTypes["default"].string,
   chainName: _propTypes["default"].string,
