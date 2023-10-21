@@ -27,6 +27,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     connectClassName = _ref.connectClassName,
     profileBarClassName = _ref.profileBarClassName,
     profileBarInnerClassName = _ref.profileBarInnerClassName,
+    _ref$basepath = _ref.basepath,
+    basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
     logoFill = _ref.logoFill,
     logoLabelFill = _ref.logoLabelFill,
     currencyFill = _ref.currencyFill,
@@ -90,6 +92,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     if (onDisconnectClick) onDisconnectClick();
   }, [isStatisticsBarContolled, onDisconnectClick]);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
+    basepath: basepath,
     logoFill: logoFill,
     logoLabelFill: logoLabelFill,
     active: activeNavigationItem
@@ -128,6 +131,7 @@ PMGlobalHeader.propTypes = {
   connectClassName: _propTypes["default"].string,
   profileBarClassName: _propTypes["default"].string,
   profileBarInnerClassName: _propTypes["default"].string,
+  basepath: _propTypes["default"].string,
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string,
   currencyFill: _propTypes["default"].string,

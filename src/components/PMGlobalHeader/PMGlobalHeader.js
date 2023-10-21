@@ -13,6 +13,7 @@ const PMGlobalHeader = ({
   connectClassName,
   profileBarClassName,
   profileBarInnerClassName,
+  basepath = "/",
   logoFill,
   logoLabelFill,
   currencyFill,
@@ -77,7 +78,12 @@ const PMGlobalHeader = ({
 
   return (
     <>
-      <Navbar logoFill={logoFill} logoLabelFill={logoLabelFill} active={activeNavigationItem} />
+      <Navbar
+        basepath={basepath}
+        logoFill={logoFill}
+        logoLabelFill={logoLabelFill}
+        active={activeNavigationItem}
+      />
       <Header className={headerClassName}>
         {children}
         {isConnected ? (
@@ -123,6 +129,7 @@ PMGlobalHeader.propTypes = {
   connectClassName: PropTypes.string,
   profileBarClassName: PropTypes.string,
   profileBarInnerClassName: PropTypes.string,
+  basepath: PropTypes.string,
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
   currencyFill: PropTypes.string,
