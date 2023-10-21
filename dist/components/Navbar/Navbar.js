@@ -47,7 +47,8 @@ var menuItems = [{
 }];
 var localStorageSelector = 'pm-global-header-menu-expanded';
 var NavBar = function NavBar(_ref) {
-  var logoFill = _ref.logoFill,
+  var basepath = _ref.basepath,
+    logoFill = _ref.logoFill,
     logoLabelFill = _ref.logoLabelFill,
     active = _ref.active;
   var _useState = (0, _react.useState)(localStorage.getItem(localStorageSelector) === 'true'),
@@ -76,7 +77,7 @@ var NavBar = function NavBar(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _NavbarModule["default"].navbar
   }, /*#__PURE__*/_react["default"].createElement("a", {
-    href: "/",
+    href: basepath,
     className: _NavbarModule["default"].logo,
     tabIndex: -1
   }, /*#__PURE__*/_react["default"].createElement(_Logo["default"], {
@@ -105,6 +106,7 @@ var NavBar = function NavBar(_ref) {
   }))));
 };
 NavBar.propTypes = {
+  basepath: _propTypes["default"].string,
   active: _propTypes["default"].string,
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string

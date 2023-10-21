@@ -20,7 +20,7 @@ const menuItems = [
 
 const localStorageSelector = 'pm-global-header-menu-expanded'
 
-const NavBar = ({ logoFill, logoLabelFill, active }) => {
+const NavBar = ({ basepath, logoFill, logoLabelFill, active }) => {
 
   const [expanded, setExpanded] = useState(localStorage.getItem(localStorageSelector) === 'true')
 
@@ -44,7 +44,7 @@ const NavBar = ({ logoFill, logoLabelFill, active }) => {
   return (
     <div className={cn(css.container, { [css.expanded]: mount && opening })}>
       <div className={css.navbar}>
-        <a href="/" className={css.logo} tabIndex={-1}>
+        <a href={basepath} className={css.logo} tabIndex={-1}>
           <LogoIcon fill={logoFill} />
           <LogoLabel fill={logoLabelFill} />
         </a>
@@ -68,6 +68,7 @@ const NavBar = ({ logoFill, logoLabelFill, active }) => {
 }
 
 NavBar.propTypes = {
+  basepath: PropTypes.string,
   active: PropTypes.string,
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
