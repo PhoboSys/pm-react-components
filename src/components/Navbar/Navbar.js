@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import cn from 'clsx'
 import PropTypes from 'prop-types'
 
+import config from '../../config'
 import { useTransition } from '../../hooks/useTransition'
 import LogoIcon from '../SVG/Logo'
 import TradeIcon from '../SVG/Trade'
@@ -12,9 +13,9 @@ import LogoLabel from '../SVG/LogoLabel'
 import css from './Navbar.module.scss'
 
 const menuItems = [
-  { name: 'trade', icon: <TradeIcon />, label: 'Trading' },
-  { name: 'staking', icon: <StakingIcon />, label: 'Staking' },
-  { name: 'mentoring', icon: <MentoringIcon />, label: 'Mentoring' },
+  { name: 'trade', icon: <TradeIcon />, label: 'Trading', path: config.pm_base_path },
+  { name: 'staking', icon: <StakingIcon />, label: 'Staking', path: config.st_base_path },
+  { name: 'mentoring', icon: <MentoringIcon />, label: 'Mentoring', path: config.mt_base_path },
 ]
 
 const localStorageSelector = 'pm-global-header-menu-expanded'
@@ -35,6 +36,7 @@ const NavBar = ({ logoFill, logoLabelFill, active }) => {
 
   const handleMenuItemClick = useCallback((e) => {
     if (e.currentTarget.hasAttribute('data-active')) {
+      e.preventDefault()
       toggleNavbar()
     }
   }, [toggleNavbar])
@@ -46,19 +48,20 @@ const NavBar = ({ logoFill, logoLabelFill, active }) => {
           <LogoIcon fill={logoFill} />
           <LogoLabel fill={logoLabelFill} />
         </a>
-        <ul className={css.menu}>
-          {menuItems.map(({ name, label, icon }) => (
-            <li
+        <div className={css.menu}>
+          {menuItems.map(({ name, label, icon, path }) => (
+            <a
               key={name}
+              href={path}
               className={css.menuItem}
               onClick={handleMenuItemClick}
               {...(active === name ? {'data-active': ''} : {})}
             >
               <span className={css.icon}>{icon}</span>
               <span className={css.label}>{label}</span>
-            </li>
+            </a>
           ))}
-        </ul>
+        </div>
       </div>
     </div>
   )

@@ -8,6 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _config = _interopRequireDefault(require("../../config"));
 var _useTransition3 = require("../../hooks/useTransition");
 var _Logo = _interopRequireDefault(require("../SVG/Logo"));
 var _Trade = _interopRequireDefault(require("../SVG/Trade"));
@@ -31,15 +32,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var menuItems = [{
   name: 'trade',
   icon: /*#__PURE__*/_react["default"].createElement(_Trade["default"], null),
-  label: 'Trading'
+  label: 'Trading',
+  path: _config["default"].pm_base_path
 }, {
   name: 'staking',
   icon: /*#__PURE__*/_react["default"].createElement(_Staking["default"], null),
-  label: 'Staking'
+  label: 'Staking',
+  path: _config["default"].st_base_path
 }, {
   name: 'mentoring',
   icon: /*#__PURE__*/_react["default"].createElement(_Mentoring["default"], null),
-  label: 'Mentoring'
+  label: 'Mentoring',
+  path: _config["default"].mt_base_path
 }];
 var localStorageSelector = 'pm-global-header-menu-expanded';
 var NavBar = function NavBar(_ref) {
@@ -63,6 +67,7 @@ var NavBar = function NavBar(_ref) {
   }, []);
   var handleMenuItemClick = (0, _react.useCallback)(function (e) {
     if (e.currentTarget.hasAttribute('data-active')) {
+      e.preventDefault();
       toggleNavbar();
     }
   }, [toggleNavbar]);
@@ -78,14 +83,16 @@ var NavBar = function NavBar(_ref) {
     fill: logoFill
   }), /*#__PURE__*/_react["default"].createElement(_LogoLabel["default"], {
     fill: logoLabelFill
-  })), /*#__PURE__*/_react["default"].createElement("ul", {
+  })), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NavbarModule["default"].menu
   }, menuItems.map(function (_ref2) {
     var name = _ref2.name,
       label = _ref2.label,
-      icon = _ref2.icon;
-    return /*#__PURE__*/_react["default"].createElement("li", _extends({
+      icon = _ref2.icon,
+      path = _ref2.path;
+    return /*#__PURE__*/_react["default"].createElement("a", _extends({
       key: name,
+      href: path,
       className: _NavbarModule["default"].menuItem,
       onClick: handleMenuItemClick
     }, active === name ? {
