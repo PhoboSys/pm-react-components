@@ -9,7 +9,9 @@
 .title {
   padding: 29px 24px;
   background: var(--statistics-bar-stats-title-bg);
+  font-family: 'Gilroy', sans-serif;
   font-size: 20px;
+  font-weight: 600;
   text-transform: capitalize;
 }
 
@@ -18,6 +20,7 @@
   grid-column-end: calc(var(--columsSize) + 1);
   padding: 15px 0;
   color: var(--statistics-bar-stats-table-secondary-color);
+  font-family: 'Proxima Nova', sans-serif;
   text-align: center;
   font-size: 14px;
 }
@@ -66,7 +69,7 @@
   height: 46px;
   line-height: 46px;
   padding: 0;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--statistics-bar-stats-table-secondary-color);
   text-transform: capitalize;
