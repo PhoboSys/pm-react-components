@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","names":["_ProfileBar","_interopRequireDefault","require","obj","__esModule"],"sources":["../../../src/components/ProfileBar/index.js"],"sourcesContent":["export { default } from './ProfileBar'"],"mappings":";;;;;;;;;;;AAAA,IAAAA,WAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAsC,SAAAD,uBAAAE,GAAA,WAAAA,GAAA,IAAAA,GAAA,CAAAC,UAAA,GAAAD,GAAA,gBAAAA,GAAA"}

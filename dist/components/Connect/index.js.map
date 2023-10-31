@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","names":["_Connect","_interopRequireDefault","require","obj","__esModule"],"sources":["../../../src/components/Connect/index.js"],"sourcesContent":["export { default } from './Connect'"],"mappings":";;;;;;;;;;;AAAA,IAAAA,QAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAmC,SAAAD,uBAAAE,GAAA,WAAAA,GAAA,IAAAA,GAAA,CAAAC,UAAA,GAAAD,GAAA,gBAAAA,GAAA"}

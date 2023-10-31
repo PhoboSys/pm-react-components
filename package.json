@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "description": "Application's global header with header, navigation bar and connect bar",
   "private": true,
-  "main": "dist/index.js",
+  "main": "app/index.js",
   "scripts": {
-    "start": "rm -rf dist && NODE_ENV=production babel --watch src --out-dir dist --copy-files",
-    "build": "rm -rf dist && NODE_ENV=production babel src --out-dir dist --copy-files",
+    "start": "rm -rf app && NODE_ENV=production babel --watch src --out-dir app --copy-files",
+    "build": "rm -rf app && NODE_ENV=production babel src --out-dir app --copy-files",
     "autolink:pm": "npm link && cd ../pm-webtrader && npm link pm-global-header",
     "autolink:st": "npm link && cd ../pm-webstaking && npm link pm-global-header",
     "autolink:mt": "npm link && cd ../pm-webmentoring && npm link pm-global-header",
@@ -15,7 +15,7 @@
   "author": "Phobosys",
   "license": "UNLICENSED",
   "files": [
-    "dist"
+    "app"
   ],
   "peerDependencies": {
     "react": ">=17.0.2",
