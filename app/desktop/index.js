@@ -33,16 +33,16 @@ Object.defineProperty(exports, "Navbar", {
     return _Navbar["default"];
   }
 });
+Object.defineProperty(exports, "PMGlobalHeader", {
+  enumerable: true,
+  get: function get() {
+    return _PMGlobalHeader["default"];
+  }
+});
 Object.defineProperty(exports, "ProfileBar", {
   enumerable: true,
   get: function get() {
     return _ProfileBar["default"];
-  }
-});
-Object.defineProperty(exports, "default", {
-  enumerable: true,
-  get: function get() {
-    return _PMGlobalHeader["default"];
   }
 });
 var _PMGlobalHeader = _interopRequireDefault(require("./components/PMGlobalHeader"));

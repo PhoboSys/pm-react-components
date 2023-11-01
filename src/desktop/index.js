@@ -1,5 +1,4 @@
-export { default } from './components/PMGlobalHeader'
-
+export { default as PMGlobalHeader } from './components/PMGlobalHeader'
 export { default as Connect } from './components/Connect'
 export { default as ConnectBar } from './components/ConnectBar'
 export { default as Connector } from './components/Connector'
