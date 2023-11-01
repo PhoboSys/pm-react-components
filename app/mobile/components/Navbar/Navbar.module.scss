@@ -1,0 +1,20 @@
+.navIcon {
+  width: 40px;
+  height: 40px;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > span {
+    display: inline-block;
+    background-color: #D2C1E5;
+    height: 2px;
+    width: 18px;
+    border-radius: 1px;
+
+    ~ span {
+      margin-top: 3px;
+    }
+  }
+}

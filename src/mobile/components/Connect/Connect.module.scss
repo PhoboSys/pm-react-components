@@ -1,0 +1,14 @@
+.connectButton {
+  display: block;
+  text-align: center;
+  width: 98px;
+  height: 45px;
+  border-radius: 100px;
+  line-height: 45px;
+  color: var(--connect-button-color);
+  background: #5D2E8C;
+  font-size: 16px;
+  font-weight: 600;
+  user-select: none;
+  cursor: pointer;
+}
