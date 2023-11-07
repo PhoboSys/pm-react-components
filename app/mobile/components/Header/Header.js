@@ -8,10 +8,8 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
-var _Connect = _interopRequireDefault(require("../Connect"));
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
 var _Navbar = _interopRequireDefault(require("../Navbar"));
-var _Logo = _interopRequireDefault(require("../Logo"));
 var _HeaderModule = _interopRequireDefault(require("./Header.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -20,10 +18,8 @@ var Header = function Header(_ref) {
   var className = _ref.className,
     isConnected = _ref.isConnected,
     basepath = _ref.basepath,
-    logoFill = _ref.logoFill,
     account = _ref.account,
     onProfileClick = _ref.onProfileClick,
-    onConnectClick = _ref.onConnectClick,
     children = _ref.children;
   var handleAccountIconClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
@@ -33,20 +29,22 @@ var Header = function Header(_ref) {
     className: (0, _clsx["default"])(_HeaderModule["default"].header, className)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _HeaderModule["default"].left
-  }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], null), /*#__PURE__*/_react["default"].createElement(_Logo["default"], {
-    basepath: basepath,
-    logoFill: logoFill
-  })), children, /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
+    basepath: basepath
+  })), children, isConnected && /*#__PURE__*/_react["default"].createElement("div", {
     className: _HeaderModule["default"].right
-  }, isConnected ? /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
     account: account,
     onClick: handleAccountIconClick
-  }) : /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
-    onClick: onConnectClick
   })));
 };
 Header.propTypes = {
   className: _propTypes["default"].string,
+  isConnected: _propTypes["default"].bool,
+  basepath: _propTypes["default"].string,
+  account: _propTypes["default"].string,
+  onProfileClick: _propTypes["default"].func,
+  onConnectClick: _propTypes["default"].func,
   children: _propTypes["default"].node
 };
 var _default = Header;
