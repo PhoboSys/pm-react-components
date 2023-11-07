@@ -20,7 +20,10 @@ var Logo = function Logo(_ref) {
     fill: logoFill
   }));
 };
-Logo.propTypes = {};
+Logo.propTypes = {
+  basepath: _propTypes["default"].string,
+  logoFill: _propTypes["default"].string
+};
 var _default = Logo;
 exports["default"] = _default;
 //# sourceMappingURL=Logo.js.map

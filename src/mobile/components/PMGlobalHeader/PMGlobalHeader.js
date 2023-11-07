@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import Header from '../Header'
+import Connect from '../Connect'
 
 const PMGlobalHeader = ({
   headerClassName,
@@ -49,12 +50,22 @@ const PMGlobalHeader = ({
       >
         {children}
       </Header>
+      {!isConnected && <Connect onClick={onConnectClick} />}
     </>
   )
 }
 
 PMGlobalHeader.propTypes = {
+  headerClassName: PropTypes.string,
+  basepath: PropTypes.string,
+  account: PropTypes.string,
+  activeNavigationItem: PropTypes.string,
   isConnected: PropTypes.bool,
+  isConnectBarOpened: PropTypes.bool,
+  isStatisticsBarOpened: PropTypes.bool,
+  onProfileClick: PropTypes.func,
+  onConnectClick: PropTypes.func,
+  children: PropTypes.node,
 }
 
-export default PMGlobalHeader
+export default React.memo(PMGlobalHeader)

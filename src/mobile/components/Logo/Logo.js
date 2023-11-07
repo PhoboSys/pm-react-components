@@ -13,6 +13,9 @@ const Logo = ({ basepath, logoFill }) => {
   )
 }
 
-Logo.propTypes = {}
+Logo.propTypes = {
+  basepath: PropTypes.string,
+  logoFill: PropTypes.string,
+}
 
 export default Logo
