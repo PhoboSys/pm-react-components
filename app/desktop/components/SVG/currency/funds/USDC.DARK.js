@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var USDC = function USDC(_ref) {
   var _ref$fill = _ref.fill,
-    fill = _ref$fill === void 0 ? '#000000' : _ref$fill,
+    fill = _ref$fill === void 0 ? '#ffffff' : _ref$fill,
     _ref$size = _ref.size,
     size = _ref$size === void 0 ? 1 : _ref$size;
   var width = size * 8;

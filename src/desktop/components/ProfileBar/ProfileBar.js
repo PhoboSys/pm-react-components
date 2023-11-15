@@ -8,6 +8,7 @@ import { isPositive, isNegative, sub } from '@lib/calc-utils'
 import BalanceCurrency from '../common/Balance'
 import Spinner from '../common/Spinner'
 import AccountIcon from '../AccountIcon'
+import { useGHProvider } from '../PMGlobalHeaderProvider'
 
 import css from './ProfileBar.module.scss'
 
@@ -34,7 +35,6 @@ const useChangeERC20 = (number, currency) => {
 const ProfileBar = ({
   className,
   innerClassName,
-  currencyFill,
   currency,
   balance,
   account,
@@ -42,6 +42,8 @@ const ProfileBar = ({
   onClick,
   onIconClick,
 }) => {
+  const { currencyFill } = useGHProvider()
+
   const [difference, changeid] = useChangeERC20(balance, currency)
 
   const handleClick = useCallback(() => {
@@ -96,7 +98,6 @@ const ProfileBar = ({
 ProfileBar.propTypes = {
   className: PropTypes.string,
   innerClassName: PropTypes.string,
-  currencyFill: PropTypes.string,
   currency: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.string,

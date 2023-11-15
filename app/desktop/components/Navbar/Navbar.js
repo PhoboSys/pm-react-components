@@ -80,9 +80,11 @@ var NavBar = function NavBar(_ref) {
     href: basepath,
     className: _NavbarModule["default"].logo,
     tabIndex: -1
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    className: _NavbarModule["default"].logoIcon
   }, /*#__PURE__*/_react["default"].createElement(_Logo["default"], {
     fill: logoFill
-  }), /*#__PURE__*/_react["default"].createElement(_LogoLabel["default"], {
+  })), /*#__PURE__*/_react["default"].createElement(_LogoLabel["default"], {
     fill: logoLabelFill
   })), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NavbarModule["default"].menu

@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _PMGlobalHeaderProvider = _interopRequireDefault(require("../PMGlobalHeaderProvider"));
 var _Navbar = _interopRequireDefault(require("../Navbar"));
 var _Header = _interopRequireDefault(require("../Header"));
 var _ProfileBar = _interopRequireDefault(require("../ProfileBar"));
@@ -91,7 +92,9 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     if (!isStatisticsBarContolled) setStatisticsBarOpened(false);
     if (onDisconnectClick) onDisconnectClick();
   }, [isStatisticsBarContolled, onDisconnectClick]);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
+  return /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
+    currencyFill: currencyFill
+  }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
     basepath: basepath,
     logoFill: logoFill,
     logoLabelFill: logoLabelFill,
@@ -101,7 +104,6 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, children, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
     className: profileBarClassName,
     innerClassName: profileBarInnerClassName,
-    currencyFill: currencyFill,
     balance: balance,
     currency: currency,
     account: account,

@@ -1,6 +1,6 @@
 import React from 'react'
 
-const USDC = ({ fill = '#000000', size = 1 }) => {
+const USDC = ({ fill = '#ffffff', size = 1 }) => {
   const width = size * 8
   const height = size * 16
   return (

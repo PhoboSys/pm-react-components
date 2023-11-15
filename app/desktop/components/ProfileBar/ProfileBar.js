@@ -13,6 +13,7 @@ var _calcUtils = require("@lib/calc-utils");
 var _Balance = _interopRequireDefault(require("../common/Balance"));
 var _Spinner = _interopRequireDefault(require("../common/Spinner"));
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
+var _PMGlobalHeaderProvider = require("../PMGlobalHeaderProvider");
 var _ProfileBarModule = _interopRequireDefault(require("./ProfileBar.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -54,13 +55,14 @@ var ProfileBar = function ProfileBar(_ref) {
   var _cn;
   var className = _ref.className,
     innerClassName = _ref.innerClassName,
-    currencyFill = _ref.currencyFill,
     currency = _ref.currency,
     balance = _ref.balance,
     account = _ref.account,
     chainName = _ref.chainName,
     onClick = _ref.onClick,
     onIconClick = _ref.onIconClick;
+  var _useGHProvider = (0, _PMGlobalHeaderProvider.useGHProvider)(),
+    currencyFill = _useGHProvider.currencyFill;
   var _useChangeERC = useChangeERC20(balance, currency),
     _useChangeERC2 = _slicedToArray(_useChangeERC, 2),
     difference = _useChangeERC2[0],
@@ -108,7 +110,6 @@ var ProfileBar = function ProfileBar(_ref) {
 ProfileBar.propTypes = {
   className: _propTypes["default"].string,
   innerClassName: _propTypes["default"].string,
-  currencyFill: _propTypes["default"].string,
   currency: _propTypes["default"].string,
   balance: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   account: _propTypes["default"].string,

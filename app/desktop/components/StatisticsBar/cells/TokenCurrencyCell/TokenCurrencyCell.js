@@ -9,6 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _Balance = _interopRequireDefault(require("../../../common/Balance"));
 var _FormattedCurrencyCell = _interopRequireDefault(require("../FormattedCurrencyCell"));
+var _PMGlobalHeaderProvider = require("../../../PMGlobalHeaderProvider");
 var _TokenCurrencyCellModule = _interopRequireDefault(require("./TokenCurrencyCell.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -25,9 +26,12 @@ var TokenCurrencyCell = function TokenCurrencyCell(_ref) {
     iconSize = _ref.iconSize,
     _ref$placement = _ref.placement,
     placement = _ref$placement === void 0 ? 'left' : _ref$placement;
+  var _useGHProvider = (0, _PMGlobalHeaderProvider.useGHProvider)(),
+    currencyFill = _useGHProvider.currencyFill;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].container, _defineProperty({}, _TokenCurrencyCellModule["default"].reverse, placement === 'right'), containerClassName)
   }, /*#__PURE__*/_react["default"].createElement(_Balance["default"], {
+    fill: currencyFill,
     className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].icon, (_cn2 = {}, _defineProperty(_cn2, _TokenCurrencyCellModule["default"].left, placement === 'left'), _defineProperty(_cn2, _TokenCurrencyCellModule["default"].right, placement === 'right'), _cn2), iconClassName),
     currency: currency,
     size: iconSize
