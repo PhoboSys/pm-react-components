@@ -45,7 +45,9 @@ const NavBar = ({ basepath, logoFill, logoLabelFill, active }) => {
     <div className={cn(css.container, { [css.expanded]: mount && opening })}>
       <div className={css.navbar}>
         <a href={basepath} className={css.logo} tabIndex={-1}>
-          <LogoIcon fill={logoFill} />
+          <span className={css.logoIcon}>
+            <LogoIcon fill={logoFill} />
+          </span>
           <LogoLabel fill={logoLabelFill} />
         </a>
         <div className={css.menu}>

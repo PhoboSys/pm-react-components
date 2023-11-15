@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
+import PMGlobalHeaderProvider from '../PMGlobalHeaderProvider'
 import Navbar from '../Navbar'
 import Header from '../Header'
 import ProfileBar from '../ProfileBar'
@@ -77,7 +78,7 @@ const PMGlobalHeader = ({
   }, [isStatisticsBarContolled, onDisconnectClick])
 
   return (
-    <>
+    <PMGlobalHeaderProvider currencyFill={currencyFill}>
       <Navbar
         basepath={basepath}
         logoFill={logoFill}
@@ -90,7 +91,6 @@ const PMGlobalHeader = ({
           <ProfileBar
             className={profileBarClassName}
             innerClassName={profileBarInnerClassName}
-            currencyFill={currencyFill}
             balance={balance}
             currency={currency}
             account={account}
@@ -120,7 +120,7 @@ const PMGlobalHeader = ({
         onCloseClick={handleCloseStatisticsBar}
         onDisconnectClick={handleDisconnectClick}
       />}
-    </>
+    </PMGlobalHeaderProvider>
   )
 }
 

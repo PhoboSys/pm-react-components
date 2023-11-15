@@ -28,14 +28,19 @@
 .logo {
   display: flex;
   height: var(--navbar-logo-height);
-  padding: 0 calc((var(--navbar-width) - 48px) / 2);
-  column-gap: calc((var(--navbar-width) - 48px) / 2);
   align-items: center;
   user-select: none;
 
   svg {
     flex-shrink: 0;
   }
+}
+
+.logoIcon {
+  width: var(--navbar-width);
+  display: flex;
+  justify-content: center;
+  flex-shrink: 0;
 }
 
 .menu {
