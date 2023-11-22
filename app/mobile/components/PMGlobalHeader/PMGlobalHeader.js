@@ -7,6 +7,8 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _PMGlobalHeaderProvider = _interopRequireDefault(require("../PMGlobalHeaderProvider"));
+var _StatisticsBar = _interopRequireDefault(require("../StatisticsBar"));
 var _Header = _interopRequireDefault(require("../Header"));
 var _Connect = _interopRequireDefault(require("../Connect"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -22,30 +24,23 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   var headerClassName = _ref.headerClassName,
     _ref$basepath = _ref.basepath,
     basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
+    currencyFill = _ref.currencyFill,
     account = _ref.account,
+    statisticsAccount = _ref.statisticsAccount,
+    statistics = _ref.statistics,
     activeNavigationItem = _ref.activeNavigationItem,
     isConnected = _ref.isConnected,
-    isConnectBarOpenedControlled = _ref.isConnectBarOpened,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
     onProfileClick = _ref.onProfileClick,
     onConnectClick = _ref.onConnectClick,
+    onDisconnectClick = _ref.onDisconnectClick,
+    onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
     children = _ref.children;
-  var isConnectBarContolled = isConnectBarOpenedControlled !== undefined;
   var isStatisticsBarContolled = isStatisticsBarOpenedControlled !== undefined;
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
-    isConnectBarOpened = _useState2[0],
-    setConnectBarOpened = _useState2[1];
-  var _useState3 = (0, _react.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    isStatisticsBarOpened = _useState4[0],
-    setStatisticsBarOpened = _useState4[1];
-  var openConnectBar = (0, _react.useCallback)(function () {
-    return !isConnectBarContolled && setConnectBarOpened(true);
-  }, [isConnectBarContolled]);
-  var closeConnectBar = (0, _react.useCallback)(function () {
-    return !isConnectBarContolled && setConnectBarOpened(false);
-  }, [isConnectBarContolled]);
+    isStatisticsBarOpened = _useState2[0],
+    setStatisticsBarOpened = _useState2[1];
   var openStatisticBar = (0, _react.useCallback)(function () {
     return !isStatisticsBarContolled && setStatisticsBarOpened(true);
   }, [isStatisticsBarContolled]);
@@ -54,13 +49,22 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, [isStatisticsBarContolled]);
   var handleConnectClick = (0, _react.useCallback)(function () {
     onConnectClick && onConnectClick();
-    openConnectBar();
-  }, [openConnectBar, onConnectClick]);
+  }, [onConnectClick]);
   var handleProfileClick = (0, _react.useCallback)(function (address) {
     onProfileClick && onProfileClick(address);
     openStatisticBar();
   }, [openStatisticBar, onProfileClick]);
-  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
+  var handleCloseStatisticsBar = (0, _react.useCallback)(function () {
+    if (onStatisticsBarCloseClick) onStatisticsBarCloseClick();
+    closeStatisticBar();
+  }, [closeStatisticBar, onStatisticsBarCloseClick]);
+  var handleDisconnectClick = (0, _react.useCallback)(function () {
+    if (onDisconnectClick) onDisconnectClick();
+    closeStatisticBar();
+  }, [closeStatisticBar, onDisconnectClick]);
+  return /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
+    currencyFill: currencyFill
+  }, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName,
     basepath: basepath,
     activeNavigationItem: activeNavigationItem,
@@ -70,18 +74,29 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onConnectClick: handleConnectClick
   }, children), !isConnected && /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
     onClick: onConnectClick
+  }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
+    account: account,
+    statisticsAccount: statisticsAccount,
+    isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
+    statistics: statistics,
+    onCloseClick: handleCloseStatisticsBar,
+    onDisconnectClick: handleDisconnectClick
   }));
 };
 PMGlobalHeader.propTypes = {
   headerClassName: _propTypes["default"].string,
   basepath: _propTypes["default"].string,
+  currencyFill: _propTypes["default"].string,
   account: _propTypes["default"].string,
+  statisticsAccount: _propTypes["default"].string,
   activeNavigationItem: _propTypes["default"].string,
+  statistics: _propTypes["default"].object,
   isConnected: _propTypes["default"].bool,
-  isConnectBarOpened: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
   onProfileClick: _propTypes["default"].func,
   onConnectClick: _propTypes["default"].func,
+  onDisconnectClick: _propTypes["default"].func,
+  onStatisticsBarCloseClick: _propTypes["default"].func,
   children: _propTypes["default"].node
 };
 var _default = /*#__PURE__*/_react["default"].memo(PMGlobalHeader);

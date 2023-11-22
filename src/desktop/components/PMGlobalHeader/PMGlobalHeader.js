@@ -112,14 +112,14 @@ const PMGlobalHeader = ({
         onCloseClick={handleConnectBarCloseClick}
         onConnectorClick={handleConnectorClick}
       />
-      {<StatisticsBar
+      <StatisticsBar
         account={account}
         statisticsAccount={statisticsAccount}
         isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
         statistics={statistics}
         onCloseClick={handleCloseStatisticsBar}
         onDisconnectClick={handleDisconnectClick}
-      />}
+      />
     </PMGlobalHeaderProvider>
   )
 }
