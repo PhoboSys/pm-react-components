@@ -1,0 +1,147 @@
+.overflow {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  left: 100%;
+  z-index: 9999;
+  width: 100%;
+  transition: transform .1s ease-out;
+  transform: translateX(0);
+
+  &.opened {
+    transform: translateX(-100%);
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  padding: 16px;
+  margin-top: var(--header-height);
+  color: #ffffff;
+  font-family: 'Proxima Nova', sans-serif;
+  background-color: var(--statistics-bar-background-color);
+  box-shadow: var(--statistics-bar-box-shadow);
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.action {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 48px;
+  border: 1px solid var(--statistics-bar-close-icon-border-color);
+  border-radius: 12px;
+  background-color: var(--statistics-bar-close-icon-background-color);
+  transition: all .7s linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--statistics-bar-close-icon-background-color-hover);
+    border-color: var(--statistics-bar-close-icon-border-color-hover);
+  }
+
+  &:active {
+    background-color: var(--statistics-bar-close-icon-background-color-active);
+    border-color: var(--statistics-bar-close-icon-border-color-active);
+  }
+}
+
+.disconnect {
+  svg {
+    display: none;
+    &~svg {
+      display: unset;
+    }
+  }
+  &:hover {
+    svg {
+      display: unset;
+      &~svg {
+        display: none;
+      }
+    }
+  }
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .icon {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+  }
+}
+
+.address {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.copyIcon {
+  margin-left: 15px;
+
+  &:hover {
+    svg path {
+      fill: var(--pm-gh-copy-icon-color-hover);
+    }
+  }
+
+  svg path {
+    transition: fill .1s linear;
+    fill: var(--pm-gh-copy-icon-color);
+  }
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  min-height: 0;
+
+  .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+    padding: 32px 0;
+  
+    > div {
+      padding: 9.5px 20px;
+      background-color: var(--statistics-bar-tab-bg-color);
+      border-radius: 100px;
+      border: 2px solid transparent;
+      font-size: 15px;
+      color: #ffffff;
+      cursor: pointer;
+  
+      &.activeTab {
+        border-color: #ffffff;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+.hidden {
+  pointer-events: none;
+  visibility: hidden;
+}
+
+
