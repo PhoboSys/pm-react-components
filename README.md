@@ -2,14 +2,16 @@
 
 ## SCSS variables:
 
-#### Sizeing
+### Sizeing
 
 - --navbar-width
 - --navbar-logo-height
 - --header-left
 - --header-height
 
-#### Colors
+### Colors
+
+#### Desktop:
 
 - --pm-gh-copy-icon-color
 - --pm-gh-copy-icon-color-hover
@@ -65,6 +67,32 @@
 - --statistics-bar-close-icon-border-color-hover
 - --statistics-bar-close-icon-background-color-active
 - --statistics-bar-close-icon-border-color-active
+- --statistics-bar-stats-border-color
+- --statistics-bar-stats-title-bg
+- --statistics-bar-tab-bg-color
+- --statistics-bar-stats-table-bg
+- --statistics-bar-stats-table-secondary-color
+- --statistics-bar-stats-table-tr-border-color
+
+#### Mobile:
+
+- --pm-gh-spinner-color
+- --pm-gh-copy-icon-color
+- --pm-gh-copy-icon-color-hover
+- --header-bg
+- --navbar-icon-color
+- --connect-button-bg-color
+- --connect-bar-connector-background-color
+- --connect-bar-connector-background-color-hover
+- --connect-bar-connector-background-color-active
+- --profilebar-cash-currency-bg
+- --statistics-bar-background-color
+- --statistics-bar-close-icon-border-color
+- --statistics-bar-close-icon-border-color-hover
+- --statistics-bar-close-icon-border-color-active
+- --statistics-bar-close-icon-background
+- --statistics-bar-close-icon-background-color-hover
+- --statistics-bar-close-icon-background-color-active
 - --statistics-bar-stats-border-color
 - --statistics-bar-stats-title-bg
 - --statistics-bar-tab-bg-color
