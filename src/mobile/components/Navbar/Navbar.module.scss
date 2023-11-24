@@ -8,7 +8,7 @@
 
   > span {
     display: inline-block;
-    background-color: #D2C1E5;
+    background-color: var(--navbar-icon-color);
     height: 2px;
     width: 18px;
     border-radius: 1px;
