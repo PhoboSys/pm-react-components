@@ -3,13 +3,15 @@ import PropTypes from 'prop-types'
 
 import PMGlobalHeaderProviderContext from './PMGlobalHeaderProviderContext';
 
-const PMGlobalHeaderProvider = ({ currencyFill, children }) => {
+const PMGlobalHeaderProvider = ({ currencyFill, children, openAuthModal, closeAuthModal }) => {
 
   const value = useMemo(
     () => ({
       currencyFill,
+      openAuthModal,
+      closeAuthModal,
     }),
-    [currencyFill]
+    [currencyFill, openAuthModal, closeAuthModal]
   );
 
   return (
@@ -21,6 +23,8 @@ const PMGlobalHeaderProvider = ({ currencyFill, children }) => {
 
 PMGlobalHeaderProvider.propTypes = {
   currencyFill: PropTypes.string,
+  openAuthModal: PropTypes.func,
+  closeAuthModal: PropTypes.func,
 }
 
 export default PMGlobalHeaderProvider

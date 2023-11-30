@@ -16,6 +16,7 @@
 - --pm-gh-copy-icon-color
 - --pm-gh-copy-icon-color-hover
 - --pm-gh-spinner-color
+- --pm-gh-modal-overlay-bg
 - --header-bg
 - --navbar-bg
 - --navbar-border-color
@@ -79,6 +80,7 @@
 - --pm-gh-spinner-color
 - --pm-gh-copy-icon-color
 - --pm-gh-copy-icon-color-hover
+- --pm-gh-modal-overlay-bg
 - --header-bg
 - --navbar-icon-color
 - --connect-button-bg-color

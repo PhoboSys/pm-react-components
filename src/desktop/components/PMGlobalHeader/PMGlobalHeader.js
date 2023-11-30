@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
+import config from '../../../config'
 import PMGlobalHeaderProvider from '../PMGlobalHeaderProvider'
 import Navbar from '../Navbar'
 import Header from '../Header'
@@ -8,6 +9,8 @@ import ProfileBar from '../ProfileBar'
 import ConnectBar from '../ConnectBar'
 import StatisticsBar from '../StatisticsBar'
 import Connect from '../Connect'
+import AuthModal from '../AuthModal'
+import { useModal } from '../modals';
 
 const PMGlobalHeader = ({
   headerClassName,
@@ -18,6 +21,7 @@ const PMGlobalHeader = ({
   logoFill,
   logoLabelFill,
   currencyFill,
+  mustUserLogin,
   isConnected,
   isConnectBarOpened: isConnectBarOpenedControlled,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
@@ -36,6 +40,7 @@ const PMGlobalHeader = ({
   onProfileIconClick,
   onStatisticsBarCloseClick,
   onConnectBarCloseClick,
+  content,
   children,
 }) => {
   const isConnectBarContolled = isConnectBarOpenedControlled !== undefined
@@ -77,50 +82,69 @@ const PMGlobalHeader = ({
     if (onDisconnectClick) onDisconnectClick()
   }, [isStatisticsBarContolled, onDisconnectClick])
 
+  const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
+    Content: AuthModal,
+    hideClose: true,
+    shouldCloseOnOverlayClick: false,
+    openOnMount: mustUserLogin,
+    onConnectorClick,
+    connectors,
+    isConnected,
+  })
+
   return (
-    <PMGlobalHeaderProvider currencyFill={currencyFill}>
-      <Navbar
-        basepath={basepath}
-        logoFill={logoFill}
-        logoLabelFill={logoLabelFill}
-        active={activeNavigationItem}
-      />
-      <Header className={headerClassName}>
+    <>
+      <PMGlobalHeaderProvider
+        currencyFill={currencyFill}
+        openAuthModal={openAuthModal}
+        closeAuthModal={closeAuthModal}
+      >
+        <Navbar
+          basepath={basepath}
+          logoFill={logoFill}
+          logoLabelFill={logoLabelFill}
+          active={activeNavigationItem}
+        />
+        <Header className={headerClassName}>
+          {content}
+          {isConnected ? (
+            <ProfileBar
+              className={profileBarClassName}
+              innerClassName={profileBarInnerClassName}
+              balance={balance}
+              currency={currency}
+              account={account}
+              chainName={chainName}
+              onDisconnectClick={onDisconnectClick}
+              onClick={onProfileClick}
+              onIconClick={handleProfileIconClick}
+            />
+          ) : (
+            <Connect
+              className={connectClassName}
+              onClick={handleConnectClick}
+            />
+          )}
+        </Header>
+        <ConnectBar
+          isOpened={isConnectBarContolled ? isConnectBarOpenedControlled : isConnectBarOpened}
+          connectors={connectors}
+          onCloseClick={handleConnectBarCloseClick}
+          onConnectorClick={handleConnectorClick}
+        />
+        <StatisticsBar
+          account={account}
+          statisticsAccount={statisticsAccount}
+          isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
+          statistics={statistics}
+          onCloseClick={handleCloseStatisticsBar}
+          onDisconnectClick={handleDisconnectClick}
+        />
         {children}
-        {isConnected ? (
-          <ProfileBar
-            className={profileBarClassName}
-            innerClassName={profileBarInnerClassName}
-            balance={balance}
-            currency={currency}
-            account={account}
-            chainName={chainName}
-            onDisconnectClick={onDisconnectClick}
-            onClick={onProfileClick}
-            onIconClick={handleProfileIconClick}
-          />
-        ) : (
-          <Connect
-            className={connectClassName}
-            onClick={handleConnectClick}
-          />
-        )}
-      </Header>
-      <ConnectBar
-        isOpened={isConnectBarContolled ? isConnectBarOpenedControlled : isConnectBarOpened}
-        connectors={connectors}
-        onCloseClick={handleConnectBarCloseClick}
-        onConnectorClick={handleConnectorClick}
-      />
-      <StatisticsBar
-        account={account}
-        statisticsAccount={statisticsAccount}
-        isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
-        statistics={statistics}
-        onCloseClick={handleCloseStatisticsBar}
-        onDisconnectClick={handleDisconnectClick}
-      />
-    </PMGlobalHeaderProvider>
+        {modal}
+      </PMGlobalHeaderProvider>
+      <div id={config.modal_id} />
+    </>
   )
 }
 
@@ -133,6 +157,7 @@ PMGlobalHeader.propTypes = {
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
   currencyFill: PropTypes.string,
+  mustUserLogin: PropTypes.bool,
   isConnected: PropTypes.bool,
   isConnectBarOpened: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
@@ -151,6 +176,7 @@ PMGlobalHeader.propTypes = {
   onProfileIconClick: PropTypes.func,
   onConnectBarCloseClick: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,
+  content: PropTypes.node,
   children: PropTypes.node,
 }
 

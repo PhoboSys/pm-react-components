@@ -7,10 +7,13 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _config = _interopRequireDefault(require("../../../config"));
 var _PMGlobalHeaderProvider = _interopRequireDefault(require("../PMGlobalHeaderProvider"));
 var _StatisticsBar = _interopRequireDefault(require("../StatisticsBar"));
 var _Header = _interopRequireDefault(require("../Header"));
 var _Connect = _interopRequireDefault(require("../Connect"));
+var _AuthModal = _interopRequireDefault(require("../AuthModal"));
+var _modals = require("../modals");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -25,17 +28,33 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     _ref$basepath = _ref.basepath,
     basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
     currencyFill = _ref.currencyFill,
+    mustUserLogin = _ref.mustUserLogin,
     account = _ref.account,
     statisticsAccount = _ref.statisticsAccount,
     statistics = _ref.statistics,
+    connectors = _ref.connectors,
     activeNavigationItem = _ref.activeNavigationItem,
     isConnected = _ref.isConnected,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
     onProfileClick = _ref.onProfileClick,
     onConnectClick = _ref.onConnectClick,
+    onConnectorClick = _ref.onConnectorClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
+    content = _ref.content,
     children = _ref.children;
+  var _useModal = (0, _modals.useModal)({
+      Content: _AuthModal["default"],
+      hideClose: true,
+      shouldCloseOnOverlayClick: false,
+      openOnMount: mustUserLogin,
+      onConnectorClick: onConnectorClick,
+      connectors: connectors,
+      isConnected: isConnected
+    }),
+    modal = _useModal.modal,
+    openAuthModal = _useModal.open,
+    closeAuthModal = _useModal.close;
   var isStatisticsBarContolled = isStatisticsBarOpenedControlled !== undefined;
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
@@ -49,7 +68,11 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, [isStatisticsBarContolled]);
   var handleConnectClick = (0, _react.useCallback)(function () {
     onConnectClick && onConnectClick();
-  }, [onConnectClick]);
+    openAuthModal({
+      hideClose: false,
+      shouldCloseOnOverlayClick: true
+    });
+  }, [onConnectClick, openAuthModal]);
   var handleProfileClick = (0, _react.useCallback)(function (address) {
     onProfileClick && onProfileClick(address);
     openStatisticBar();
@@ -62,18 +85,19 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     if (onDisconnectClick) onDisconnectClick();
     closeStatisticBar();
   }, [closeStatisticBar, onDisconnectClick]);
-  return /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
-    currencyFill: currencyFill
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
+    currencyFill: currencyFill,
+    openAuthModal: openAuthModal,
+    closeAuthModal: closeAuthModal
   }, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName,
     basepath: basepath,
     activeNavigationItem: activeNavigationItem,
     isConnected: isConnected,
     account: account,
-    onProfileClick: handleProfileClick,
-    onConnectClick: handleConnectClick
-  }, children), !isConnected && /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
-    onClick: onConnectClick
+    onProfileClick: handleProfileClick
+  }, content), !isConnected && /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
+    onClick: handleConnectClick
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
     account: account,
     statisticsAccount: statisticsAccount,
@@ -81,22 +105,28 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     statistics: statistics,
     onCloseClick: handleCloseStatisticsBar,
     onDisconnectClick: handleDisconnectClick
+  }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
+    id: _config["default"].modal_id
   }));
 };
 PMGlobalHeader.propTypes = {
   headerClassName: _propTypes["default"].string,
   basepath: _propTypes["default"].string,
   currencyFill: _propTypes["default"].string,
+  mustUserLogin: _propTypes["default"].bool,
   account: _propTypes["default"].string,
   statisticsAccount: _propTypes["default"].string,
+  connectors: _propTypes["default"].array,
   activeNavigationItem: _propTypes["default"].string,
   statistics: _propTypes["default"].object,
   isConnected: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
+  onConnectorClick: _propTypes["default"].func,
   onProfileClick: _propTypes["default"].func,
   onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,
+  content: _propTypes["default"].node,
   children: _propTypes["default"].node
 };
 var _default = /*#__PURE__*/_react["default"].memo(PMGlobalHeader);
