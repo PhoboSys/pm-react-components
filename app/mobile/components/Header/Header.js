@@ -44,7 +44,6 @@ Header.propTypes = {
   basepath: _propTypes["default"].string,
   account: _propTypes["default"].string,
   onProfileClick: _propTypes["default"].func,
-  onConnectClick: _propTypes["default"].func,
   children: _propTypes["default"].node
 };
 var _default = Header;

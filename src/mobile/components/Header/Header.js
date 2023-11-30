@@ -46,7 +46,6 @@ Header.propTypes = {
   basepath: PropTypes.string,
   account: PropTypes.string,
   onProfileClick: PropTypes.func,
-  onConnectClick: PropTypes.func,
   children: PropTypes.node,
 }
 

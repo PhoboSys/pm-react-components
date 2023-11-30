@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _config = _interopRequireDefault(require("../../../config"));
 var _PMGlobalHeaderProvider = _interopRequireDefault(require("../PMGlobalHeaderProvider"));
 var _Navbar = _interopRequireDefault(require("../Navbar"));
 var _Header = _interopRequireDefault(require("../Header"));
@@ -14,6 +15,8 @@ var _ProfileBar = _interopRequireDefault(require("../ProfileBar"));
 var _ConnectBar = _interopRequireDefault(require("../ConnectBar"));
 var _StatisticsBar = _interopRequireDefault(require("../StatisticsBar"));
 var _Connect = _interopRequireDefault(require("../Connect"));
+var _AuthModal = _interopRequireDefault(require("../AuthModal"));
+var _modals = require("../modals");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -33,6 +36,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     logoFill = _ref.logoFill,
     logoLabelFill = _ref.logoLabelFill,
     currencyFill = _ref.currencyFill,
+    mustUserLogin = _ref.mustUserLogin,
     isConnected = _ref.isConnected,
     isConnectBarOpenedControlled = _ref.isConnectBarOpened,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
@@ -51,6 +55,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onProfileIconClick = _ref.onProfileIconClick,
     onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
     onConnectBarCloseClick = _ref.onConnectBarCloseClick,
+    content = _ref.content,
     children = _ref.children;
   var isConnectBarContolled = isConnectBarOpenedControlled !== undefined;
   var isStatisticsBarContolled = isStatisticsBarOpenedControlled !== undefined;
@@ -92,8 +97,22 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     if (!isStatisticsBarContolled) setStatisticsBarOpened(false);
     if (onDisconnectClick) onDisconnectClick();
   }, [isStatisticsBarContolled, onDisconnectClick]);
-  return /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
-    currencyFill: currencyFill
+  var _useModal = (0, _modals.useModal)({
+      Content: _AuthModal["default"],
+      hideClose: true,
+      shouldCloseOnOverlayClick: false,
+      openOnMount: mustUserLogin,
+      onConnectorClick: onConnectorClick,
+      connectors: connectors,
+      isConnected: isConnected
+    }),
+    modal = _useModal.modal,
+    openAuthModal = _useModal.open,
+    closeAuthModal = _useModal.close;
+  return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
+    currencyFill: currencyFill,
+    openAuthModal: openAuthModal,
+    closeAuthModal: closeAuthModal
   }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
     basepath: basepath,
     logoFill: logoFill,
@@ -101,7 +120,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     active: activeNavigationItem
   }), /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName
-  }, children, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
+  }, content, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
     className: profileBarClassName,
     innerClassName: profileBarInnerClassName,
     balance: balance,
@@ -126,6 +145,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     statistics: statistics,
     onCloseClick: handleCloseStatisticsBar,
     onDisconnectClick: handleDisconnectClick
+  }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
+    id: _config["default"].modal_id
   }));
 };
 PMGlobalHeader.propTypes = {
@@ -137,6 +158,7 @@ PMGlobalHeader.propTypes = {
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string,
   currencyFill: _propTypes["default"].string,
+  mustUserLogin: _propTypes["default"].bool,
   isConnected: _propTypes["default"].bool,
   isConnectBarOpened: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
@@ -155,6 +177,7 @@ PMGlobalHeader.propTypes = {
   onProfileIconClick: _propTypes["default"].func,
   onConnectBarCloseClick: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,
+  content: _propTypes["default"].node,
   children: _propTypes["default"].node
 };
 var _default = /*#__PURE__*/_react["default"].memo(PMGlobalHeader);
