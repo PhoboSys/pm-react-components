@@ -40,6 +40,7 @@ const PMGlobalHeader = ({
   onProfileIconClick,
   onStatisticsBarCloseClick,
   onConnectBarCloseClick,
+  onCurrencyChanged,
   content,
   children,
 }) => {
@@ -118,6 +119,7 @@ const PMGlobalHeader = ({
               onDisconnectClick={onDisconnectClick}
               onClick={onProfileClick}
               onIconClick={handleProfileIconClick}
+              onCurrencyChanged={onCurrencyChanged}
             />
           ) : (
             <Connect

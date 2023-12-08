@@ -92,6 +92,5 @@ var MetaMask = function MetaMask() {
     strokeLinejoin: "round"
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(MetaMask);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(MetaMask);
 //# sourceMappingURL=MetaMask.js.map

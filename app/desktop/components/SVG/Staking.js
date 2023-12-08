@@ -18,6 +18,5 @@ var Staking = function Staking() {
     fill: "#D0D7FF"
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(Staking);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Staking);
 //# sourceMappingURL=Staking.js.map
