@@ -24,6 +24,5 @@ var PARI = function PARI(_ref) {
     fill: fill
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(PARI);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(PARI);
 //# sourceMappingURL=PARI.DARK.js.map
