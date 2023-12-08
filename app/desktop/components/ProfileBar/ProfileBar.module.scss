@@ -38,7 +38,9 @@
       padding: 0 15px 0 10px;
       background: var(--profilebar-cash-bg);
       border-radius: 77px;
-      transition: background-color .3s linear;
+      transition: background-color .1s linear;
+      position: relative;
+      cursor: pointer;
 
       &:hover {
         background: var(--profilebar-cash-bg-hover);
@@ -48,9 +50,81 @@
         background: var(--profilebar-cash-bg-active);
       }
 
+      .popover {
+        position: fixed;
+        transform: translate(-12px, 85px);
+        color: var(--profilebar-currency-popover-color);
+        background-color: var(--profilebar-currency-popover-bg);
+        padding: 4px;
+        border-radius: 20px;
+
+        .option {
+          align-items: center;
+          border-radius: 20px;
+          cursor: pointer;
+          display: flex;
+          height: 56px;
+          margin-bottom: 2px;
+          padding: 8px 16px 8px 8px;
+          transition: background-color .1s ease-in-out;
+          background-color: var(--profilebar-currency-popover-option-bg);
+          user-select: none;
+
+          &.active {
+            cursor: default;
+            background-color: var(--profilebar-currency-popover-option-bg-active);
+
+            &:hover {
+              background-color: var(--profilebar-currency-popover-option-bg-active);
+            }
+            &:active {
+              background-color: var(--profilebar-currency-popover-option-bg-active);
+            }
+          }
+
+          & > * {
+            pointer-events: none;
+          }
+
+          &:hover {
+            background-color: var(--profilebar-currency-popover-option-bg-hover);
+          }
+
+          &:active {
+            background-color: var(--profilebar-currency-popover-option-bg-active);
+          }
+
+          .optionIcon {
+
+            .optionBalance {
+                width: 40px;
+                height: 40px;
+                background-color: var(--profilebar-cash-currency-bg);
+
+                svg {
+                    width: 20px;
+                    height: 20px;
+                }
+            }
+          }
+
+          .optionLabel {
+              margin-left: 17px;
+              font-size: 16px;
+              font-weight: 400;
+          }
+
+          .optionCurrency {
+              margin-left: 5px;
+              color: var(--profilebar-currency-popover-option-currency-color);
+              font-size: 15px;
+              font-weight: 400;
+          }
+        }
+      }
+
       .value {
         margin-left: 10px;
-        font-family: 'Roboto', sans-serif;
         font-weight: 500;
         font-size: 16px;
         line-height: 19px;

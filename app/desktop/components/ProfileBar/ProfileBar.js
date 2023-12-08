@@ -8,6 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _constants = require("@constants");
 var _htmlUtils = require("@lib/html-utils");
 var _calcUtils = require("@lib/calc-utils");
 var _Balance = _interopRequireDefault(require("../common/Balance"));
@@ -27,6 +28,13 @@ function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o =
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+var options = [{
+  label: 'USD Coin',
+  currency: 'USDC'
+}, {
+  label: 'Oracly',
+  currency: 'PARI'
+}];
 var useChangeERC20 = function useChangeERC20(number, currency) {
   var prevNumberRef = (0, _react.useRef)(number);
   var prevCurrencyRef = (0, _react.useRef)(currency);
@@ -59,6 +67,7 @@ var ProfileBar = function ProfileBar(_ref) {
     account = _ref.account,
     chainName = _ref.chainName,
     onClick = _ref.onClick,
+    onCurrencyChanged = _ref.onCurrencyChanged,
     onIconClick = _ref.onIconClick;
   var _useGHProvider = (0, _PMGlobalHeaderProvider.useGHProvider)(),
     currencyFill = _useGHProvider.currencyFill;
@@ -73,8 +82,34 @@ var ProfileBar = function ProfileBar(_ref) {
     e.stopPropagation();
     if (onIconClick) onIconClick(account.toLowerCase());
   }, [onIconClick, account]);
+  var _useState3 = (0, _react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    popoverPop = _useState4[0],
+    setPopoverPop = _useState4[1];
   var handleBalanceClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
+    setPopoverPop(!popoverPop);
+  }, [popoverPop]);
+  var handleCurrencyChanged = (0, _react.useCallback)(function (e) {
+    var _e$target;
+    e.stopPropagation();
+    var newcurrency = e === null || e === void 0 || (_e$target = e.target) === null || _e$target === void 0 || (_e$target = _e$target.dataset) === null || _e$target === void 0 ? void 0 : _e$target.currency;
+    if (newcurrency !== currency && onCurrencyChanged) {
+      setPopoverPop(false);
+      onCurrencyChanged(newcurrency);
+    }
+  }, [currency, onCurrencyChanged]);
+  var popover = (0, _react.useRef)(null);
+  (0, _react.useEffect)(function () {
+    var handler = function handler(e) {
+      if (popover.current && !popover.current.contains(e.target)) {
+        setPopoverPop(false);
+      }
+    };
+    window.addEventListener('click', handler);
+    return function () {
+      window.removeEventListener('click', handler);
+    };
   }, []);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_ProfileBarModule["default"].profilebar, className),
@@ -94,7 +129,27 @@ var ProfileBar = function ProfileBar(_ref) {
     className: _ProfileBarModule["default"].spinner
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _ProfileBarModule["default"].difference
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference))), /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference)), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
+    ref: popover,
+    className: _ProfileBarModule["default"].popover
+  }, options.map(function (option, idx) {
+    return /*#__PURE__*/_react["default"].createElement("div", {
+      key: idx,
+      className: (0, _clsx["default"])(_ProfileBarModule["default"].option, _defineProperty({}, _ProfileBarModule["default"].active, option.currency === currency)),
+      "data-currency": option.currency,
+      onClick: handleCurrencyChanged
+    }, /*#__PURE__*/_react["default"].createElement("span", {
+      className: _ProfileBarModule["default"].optionIcon
+    }, /*#__PURE__*/_react["default"].createElement(_Balance["default"], {
+      fill: currencyFill,
+      currency: option.currency,
+      className: _ProfileBarModule["default"].optionBalance
+    })), /*#__PURE__*/_react["default"].createElement("span", {
+      className: _ProfileBarModule["default"].optionLabel
+    }, option.label), /*#__PURE__*/_react["default"].createElement("span", {
+      className: _ProfileBarModule["default"].optionCurrency
+    }, "(".concat(option.currency, ")")));
+  }))), /*#__PURE__*/_react["default"].createElement("div", {
     className: _ProfileBarModule["default"].account
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _ProfileBarModule["default"].wallet
@@ -114,7 +169,8 @@ ProfileBar.propTypes = {
   account: _propTypes["default"].string,
   chainName: _propTypes["default"].string,
   onClick: _propTypes["default"].func,
-  onIconClick: _propTypes["default"].func
+  onIconClick: _propTypes["default"].func,
+  onCurrencyChanged: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(ProfileBar);
 //# sourceMappingURL=ProfileBar.js.map

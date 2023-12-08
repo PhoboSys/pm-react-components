@@ -55,6 +55,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onProfileIconClick = _ref.onProfileIconClick,
     onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
     onConnectBarCloseClick = _ref.onConnectBarCloseClick,
+    onCurrencyChanged = _ref.onCurrencyChanged,
     content = _ref.content,
     children = _ref.children;
   var isConnectBarContolled = isConnectBarOpenedControlled !== undefined;
@@ -129,7 +130,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     chainName: chainName,
     onDisconnectClick: onDisconnectClick,
     onClick: onProfileClick,
-    onIconClick: handleProfileIconClick
+    onIconClick: handleProfileIconClick,
+    onCurrencyChanged: onCurrencyChanged
   }) : /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
     className: connectClassName,
     onClick: handleConnectClick
