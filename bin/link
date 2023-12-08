@@ -1,0 +1,4 @@
+#!/bin/sh -e
+
+cd /pm-global-header && npm link
+cd /build && npm link pm-global-header
