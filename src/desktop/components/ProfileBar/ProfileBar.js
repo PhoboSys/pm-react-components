@@ -20,22 +20,31 @@ const options = [
   { label: 'Oracly', currency: 'PARI' },
 ]
 
-const useChangeERC20 = (number, currency) => {
+const useChangeERC20 = (account, number, currency) => {
   const prevNumberRef = useRef(number)
   const prevCurrencyRef = useRef(currency)
+  const prevAccountRef = useRef(account)
+
   const [state, setState] = useState({ diff: 0, changeid: 0 })
 
   useEffect(() => {
     const prevNumber = prevNumberRef.current
     const prevCurrency = prevCurrencyRef.current
+    const prevAccount = prevAccountRef.current
 
-    if (prevNumber !== number && prevCurrency === currency){
+    if (
+        prevNumber !== number &&
+        prevCurrency === currency &&
+        prevAccount === account
+    ){
       setState({ diff: sub(number, prevNumber), changeid: state.changeid+1 })
     }
 
     prevNumberRef.current = number
     prevCurrencyRef.current = currency
-  }, [number, currency])
+    prevAccountRef.current = account
+
+  }, [number, currency, account])
 
   return [state.diff, state.changeid]
 }
@@ -53,7 +62,7 @@ const ProfileBar = ({
 }) => {
   const { currencyFill } = useGHProvider()
 
-  const [difference, changeid] = useChangeERC20(balance, currency)
+  const [difference, changeid] = useChangeERC20(account, balance, currency)
 
   const handleClick = useCallback(() => {
     if (onClick) onClick(account.toLowerCase())
@@ -95,6 +104,7 @@ const ProfileBar = ({
   return (
     <div className={cn(css.profilebar, className)} onClick={handleClick}>
       <div className={cn(css.inner, innerClassName)}>
+
         <div
           key={changeid}
           className={cn(css.cash, {
@@ -103,6 +113,7 @@ const ProfileBar = ({
           })}
           onClick={handleBalanceClick}
         >
+
           <BalanceCurrency fill={currencyFill} currency={currency} />
           {balance && balance !== 0 ? (
             <span className={css.value}>{htmlCurrency(balance)}</span>
