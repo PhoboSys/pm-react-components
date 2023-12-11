@@ -6,14 +6,13 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _lodash = require("lodash");
+var _propTypes = _interopRequireDefault(require("prop-types"));
 var _FeatureToggleButton = _interopRequireDefault(require("./FeatureToggleButton"));
-var _useFeatureToggles2 = _interopRequireDefault(require("../../../features/useFeatureToggles"));
 var _FeatureTogglesModalModule = _interopRequireDefault(require("./FeatureTogglesModal.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-var FeatureTogglesModal = function FeatureTogglesModal() {
-  var _useFeatureToggles = (0, _useFeatureToggles2["default"])(),
-    _useFeatureToggles$to = _useFeatureToggles.toggles,
-    toggles = _useFeatureToggles$to === void 0 ? [] : _useFeatureToggles$to;
+var FeatureTogglesModal = function FeatureTogglesModal(_ref) {
+  var toggles = _ref.toggles;
+  console.log(toggles);
   return /*#__PURE__*/_react["default"].createElement("ul", {
     className: _FeatureTogglesModalModule["default"].container
   }, (0, _lodash.map)(toggles, function (toggle, name) {
@@ -27,6 +26,9 @@ var FeatureTogglesModal = function FeatureTogglesModal() {
       className: _FeatureTogglesModalModule["default"].toggleButton
     }));
   }));
+};
+FeatureTogglesModal.propTypes = {
+  toggles: _propTypes["default"].array
 };
 var _default = /*#__PURE__*/_react["default"].memo(FeatureTogglesModal);
 exports["default"] = _default;

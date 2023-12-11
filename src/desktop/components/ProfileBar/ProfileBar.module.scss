@@ -52,11 +52,18 @@
 
       .popover {
         position: fixed;
-        transform: translate(-12px, 85px);
+        transform: translate(-12px, 118px);
         color: var(--profilebar-currency-popover-color);
         background-color: var(--profilebar-currency-popover-bg);
         padding: 4px;
         border-radius: 20px;
+
+        .popoverTitle {
+          font-size: 20px;
+          font-weight: 700;
+          margin: 18px;
+          margin-right: 0;
+        }
 
         .option {
           align-items: center;
@@ -97,14 +104,18 @@
           .optionIcon {
 
             .optionBalance {
-                width: 40px;
-                height: 40px;
-                background-color: var(--profilebar-cash-currency-bg);
+              width: 40px;
+              height: 40px;
+              background-color: var(--profilebar-currency-popover-option-icon-bg);
 
-                svg {
-                    width: 20px;
-                    height: 20px;
+              svg {
+                width: 20px;
+                height: 20px;
+
+                path {
+                  fill: var(--profilebar-currency-popover-option-icon-color);
                 }
+              }
             }
           }
 
@@ -271,4 +282,13 @@
 
 .spinner {
   margin: 0 auto;
+}
+
+.dropdownIcon {
+  display: flex;
+  margin-left: 17px;
+
+  svg path {
+    fill: var(--profilebar-cash-dropdown-icon-color);
+  }
 }

@@ -8,13 +8,13 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _constants = require("@constants");
 var _htmlUtils = require("@lib/html-utils");
 var _calcUtils = require("@lib/calc-utils");
 var _Balance = _interopRequireDefault(require("../common/Balance"));
 var _Spinner = _interopRequireDefault(require("../common/Spinner"));
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
 var _PMGlobalHeaderProvider = require("../PMGlobalHeaderProvider");
+var _DropdownIcon = _interopRequireDefault(require("../SVG/DropdownIcon"));
 var _ProfileBarModule = _interopRequireDefault(require("./ProfileBar.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
@@ -132,11 +132,15 @@ var ProfileBar = function ProfileBar(_ref) {
   }, (0, _htmlUtils.htmlCurrency)(balance)) : /*#__PURE__*/_react["default"].createElement(_Spinner["default"], {
     className: _ProfileBarModule["default"].spinner
   }), /*#__PURE__*/_react["default"].createElement("span", {
+    className: _ProfileBarModule["default"].dropdownIcon
+  }, /*#__PURE__*/_react["default"].createElement(_DropdownIcon["default"], null)), /*#__PURE__*/_react["default"].createElement("span", {
     className: _ProfileBarModule["default"].difference
   }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference)), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
     ref: popover,
     className: _ProfileBarModule["default"].popover
-  }, options.map(function (option, idx) {
+  }, /*#__PURE__*/_react["default"].createElement("div", {
+    className: _ProfileBarModule["default"].popoverTitle
+  }, "Game currency"), options.map(function (option, idx) {
     return /*#__PURE__*/_react["default"].createElement("div", {
       key: idx,
       className: (0, _clsx["default"])(_ProfileBarModule["default"].option, _defineProperty({}, _ProfileBarModule["default"].active, option.currency === currency)),
