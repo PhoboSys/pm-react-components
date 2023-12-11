@@ -1,9 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { Fragment, useCallback, useEffect, useRef, useState } from 'react'
 
 import cn from 'clsx'
 import PropTypes from 'prop-types'
-
-import { PARI_ADDRESS, USDC_ADDRESS } from '@constants'
 
 import { htmlAddress, htmlCurrency } from '@lib/html-utils'
 import { isPositive, isNegative, sub } from '@lib/calc-utils'
@@ -12,6 +10,7 @@ import BalanceCurrency from '../common/Balance'
 import Spinner from '../common/Spinner'
 import AccountIcon from '../AccountIcon'
 import { useGHProvider } from '../PMGlobalHeaderProvider'
+import DropdownIcon from '../SVG/DropdownIcon'
 
 import css from './ProfileBar.module.scss'
 
@@ -120,12 +119,14 @@ const ProfileBar = ({
           ) : (
             <Spinner className={css.spinner} />
           )}
+          <span className={css.dropdownIcon}><DropdownIcon /></span>
           <span className={css.difference}>
             <span>+</span>
             {htmlCurrency(difference)}
           </span>
           {popoverPop &&
           <div ref={popover} className={css.popover}>
+            <div className={css.popoverTitle}>Game currency</div>
             {options.map((option, idx) => (
 
               <div

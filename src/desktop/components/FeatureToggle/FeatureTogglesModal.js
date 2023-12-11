@@ -1,14 +1,13 @@
 import React from 'react'
 import { map } from 'lodash'
+import PropTypes from 'prop-types'
 
 import FeatureToggleButton from './FeatureToggleButton'
-import useFeatureToggles from '../../../features/useFeatureToggles'
 
 import css from './FeatureTogglesModal.module.scss'
 
-const FeatureTogglesModal = () => {
-  const { toggles = [] } = useFeatureToggles()
-
+const FeatureTogglesModal = ({ toggles }) => {
+  console.log(toggles)
   return (
     <ul className={css.container}>
       {map(toggles, (toggle, name) => {
@@ -26,6 +25,10 @@ const FeatureTogglesModal = () => {
       })}
     </ul>
   )
+}
+
+FeatureTogglesModal.propTypes = {
+  toggles: PropTypes.array,
 }
 
 export default React.memo(FeatureTogglesModal)
