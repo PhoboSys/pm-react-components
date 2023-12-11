@@ -11,5 +11,6 @@ var config = {
   react_mount_element_id: process.env.REACT_MOUNT_ELEMENT_ID,
   modal_id: 'gh-app-modal'
 };
-var _default = exports["default"] = config;
+var _default = config;
+exports["default"] = _default;
 //# sourceMappingURL=index.js.map

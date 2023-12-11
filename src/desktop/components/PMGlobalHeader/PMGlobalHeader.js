@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import config from '../../../config'
+import { FeatureTogglesProvider }from '../FeatureToggle'
 import PMGlobalHeaderProvider from '../PMGlobalHeaderProvider'
 import Navbar from '../Navbar'
 import Header from '../Header'
@@ -33,6 +34,7 @@ const PMGlobalHeader = ({
   connectors,
   activeNavigationItem,
   statistics,
+  featureToggles,
   onConnectClick,
   onDisconnectClick,
   onConnectorClick,
@@ -94,7 +96,7 @@ const PMGlobalHeader = ({
   })
 
   return (
-    <>
+    <FeatureTogglesProvider toggles={featureToggles}>
       <PMGlobalHeaderProvider
         currencyFill={currencyFill}
         openAuthModal={openAuthModal}
@@ -146,7 +148,7 @@ const PMGlobalHeader = ({
         {modal}
       </PMGlobalHeaderProvider>
       <div id={config.modal_id} />
-    </>
+    </FeatureTogglesProvider>
   )
 }
 
@@ -171,6 +173,7 @@ PMGlobalHeader.propTypes = {
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
   statistics: PropTypes.object,
+  featureToggles: PropTypes.object,
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onConnectorClick: PropTypes.func,

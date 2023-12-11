@@ -10,6 +10,7 @@ var _clsx = _interopRequireDefault(require("clsx"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _config = _interopRequireDefault(require("../../../config"));
 var _useTransition3 = require("../../../hooks/useTransition");
+var _FeatureToggle = require("../FeatureToggle");
 var _Logo = _interopRequireDefault(require("../SVG/Logo"));
 var _Trade = _interopRequireDefault(require("../SVG/Trade"));
 var _Staking = _interopRequireDefault(require("../SVG/Staking"));
@@ -17,8 +18,8 @@ var _Mentoring = _interopRequireDefault(require("../SVG/Mentoring"));
 var _LogoLabel = _interopRequireDefault(require("../SVG/LogoLabel"));
 var _NavbarModule = _interopRequireDefault(require("./Navbar.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
@@ -105,7 +106,7 @@ var NavBar = function NavBar(_ref) {
     }, icon), /*#__PURE__*/_react["default"].createElement("span", {
       className: _NavbarModule["default"].label
     }, label));
-  }))));
+  }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, null))));
 };
 NavBar.propTypes = {
   basepath: _propTypes["default"].string,
@@ -113,5 +114,6 @@ NavBar.propTypes = {
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(NavBar);
+var _default = /*#__PURE__*/_react["default"].memo(NavBar);
+exports["default"] = _default;
 //# sourceMappingURL=Navbar.js.map
