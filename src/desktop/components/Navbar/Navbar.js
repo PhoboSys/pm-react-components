@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 
 import config from '../../../config'
 import { useTransition } from '../../../hooks/useTransition'
+import { FeatureToggle } from '../FeatureToggle';
 import LogoIcon from '../SVG/Logo'
 import TradeIcon from '../SVG/Trade'
 import StakingIcon from '../SVG/Staking'
@@ -63,6 +64,7 @@ const NavBar = ({ basepath, logoFill, logoLabelFill, active }) => {
               <span className={css.label}>{label}</span>
             </a>
           ))}
+          <FeatureToggle />
         </div>
       </div>
     </div>

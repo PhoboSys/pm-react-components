@@ -161,7 +161,7 @@
       transition: border-color .1s linear;
 
       &:hover {
-        border-color: #FF9473;
+        border-color: rgba(0,0,0, .2)
       }
     }
   }

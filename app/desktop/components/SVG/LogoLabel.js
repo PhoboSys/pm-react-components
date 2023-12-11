@@ -25,5 +25,6 @@ var LogoLabel = function LogoLabel(_ref) {
 LogoLabel.propTypes = {
   fill: _propTypes["default"].string
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(LogoLabel);
+var _default = /*#__PURE__*/_react["default"].memo(LogoLabel);
+exports["default"] = _default;
 //# sourceMappingURL=LogoLabel.js.map
