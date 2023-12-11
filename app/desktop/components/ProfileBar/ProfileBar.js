@@ -35,9 +35,10 @@ var options = [{
   label: 'Oracly',
   currency: 'PARI'
 }];
-var useChangeERC20 = function useChangeERC20(number, currency) {
+var useChangeERC20 = function useChangeERC20(account, number, currency) {
   var prevNumberRef = (0, _react.useRef)(number);
   var prevCurrencyRef = (0, _react.useRef)(currency);
+  var prevAccountRef = (0, _react.useRef)(account);
   var _useState = (0, _react.useState)({
       diff: 0,
       changeid: 0
@@ -48,7 +49,8 @@ var useChangeERC20 = function useChangeERC20(number, currency) {
   (0, _react.useEffect)(function () {
     var prevNumber = prevNumberRef.current;
     var prevCurrency = prevCurrencyRef.current;
-    if (prevNumber !== number && prevCurrency === currency) {
+    var prevAccount = prevAccountRef.current;
+    if (prevNumber !== number && prevCurrency === currency && prevAccount === account) {
       setState({
         diff: (0, _calcUtils.sub)(number, prevNumber),
         changeid: state.changeid + 1
@@ -56,7 +58,8 @@ var useChangeERC20 = function useChangeERC20(number, currency) {
     }
     prevNumberRef.current = number;
     prevCurrencyRef.current = currency;
-  }, [number, currency]);
+    prevAccountRef.current = account;
+  }, [number, currency, account]);
   return [state.diff, state.changeid];
 };
 var ProfileBar = function ProfileBar(_ref) {
@@ -72,7 +75,7 @@ var ProfileBar = function ProfileBar(_ref) {
     onIconClick = _ref.onIconClick;
   var _useGHProvider = (0, _PMGlobalHeaderProvider.useGHProvider)(),
     currencyFill = _useGHProvider.currencyFill;
-  var _useChangeERC = useChangeERC20(balance, currency),
+  var _useChangeERC = useChangeERC20(account, balance, currency),
     _useChangeERC2 = _slicedToArray(_useChangeERC, 2),
     difference = _useChangeERC2[0],
     changeid = _useChangeERC2[1];
