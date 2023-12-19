@@ -7,7 +7,6 @@ import FeatureToggleButton from './FeatureToggleButton'
 import css from './FeatureTogglesModal.module.scss'
 
 const FeatureTogglesModal = ({ toggles }) => {
-  console.log(toggles)
   return (
     <ul className={css.container}>
       {map(toggles, (toggle, name) => {
