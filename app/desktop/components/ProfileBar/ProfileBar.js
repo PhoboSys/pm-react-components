@@ -138,9 +138,7 @@ var ProfileBar = function ProfileBar(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference)), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
     ref: popover,
     className: _ProfileBarModule["default"].popover
-  }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: _ProfileBarModule["default"].popoverTitle
-  }, "Game currency"), options.map(function (option, idx) {
+  }, options.map(function (option, idx) {
     return /*#__PURE__*/_react["default"].createElement("div", {
       key: idx,
       className: (0, _clsx["default"])(_ProfileBarModule["default"].option, _defineProperty({}, _ProfileBarModule["default"].active, option.currency === currency)),

@@ -126,7 +126,6 @@ const ProfileBar = ({
           </span>
           {popoverPop &&
           <div ref={popover} className={css.popover}>
-            <div className={css.popoverTitle}>Game currency</div>
             {options.map((option, idx) => (
 
               <div

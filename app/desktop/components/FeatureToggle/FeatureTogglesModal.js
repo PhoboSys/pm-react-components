@@ -12,7 +12,6 @@ var _FeatureTogglesModalModule = _interopRequireDefault(require("./FeatureToggle
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var FeatureTogglesModal = function FeatureTogglesModal(_ref) {
   var toggles = _ref.toggles;
-  console.log(toggles);
   return /*#__PURE__*/_react["default"].createElement("ul", {
     className: _FeatureTogglesModalModule["default"].container
   }, (0, _lodash.map)(toggles, function (toggle, name) {

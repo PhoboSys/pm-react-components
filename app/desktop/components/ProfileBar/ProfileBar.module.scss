@@ -52,18 +52,11 @@
 
       .popover {
         position: fixed;
-        transform: translate(-12px, 118px);
+        transform: translate(-12px, 85px);
         color: var(--profilebar-currency-popover-color);
         background-color: var(--profilebar-currency-popover-bg);
         padding: 4px;
         border-radius: 20px;
-
-        .popoverTitle {
-          font-size: 20px;
-          font-weight: 700;
-          margin: 18px;
-          margin-right: 0;
-        }
 
         .option {
           align-items: center;
