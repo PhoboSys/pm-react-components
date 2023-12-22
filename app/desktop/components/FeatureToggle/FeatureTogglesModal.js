@@ -27,7 +27,7 @@ var FeatureTogglesModal = function FeatureTogglesModal(_ref) {
   }));
 };
 FeatureTogglesModal.propTypes = {
-  toggles: _propTypes["default"].array
+  toggles: _propTypes["default"].object
 };
 var _default = /*#__PURE__*/_react["default"].memo(FeatureTogglesModal);
 exports["default"] = _default;

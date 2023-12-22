@@ -17,7 +17,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var FeatureToggle = function FeatureToggle() {
   var _useFeatureToggles = (0, _useFeatureToggles2["default"])(),
     _useFeatureToggles$to = _useFeatureToggles.toggles,
-    toggles = _useFeatureToggles$to === void 0 ? [] : _useFeatureToggles$to;
+    toggles = _useFeatureToggles$to === void 0 ? {} : _useFeatureToggles$to;
   var _useModal = (0, _modals.useModal)({
       Content: _FeatureTogglesModal["default"],
       toggles: toggles

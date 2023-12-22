@@ -27,7 +27,7 @@ const FeatureTogglesModal = ({ toggles }) => {
 }
 
 FeatureTogglesModal.propTypes = {
-  toggles: PropTypes.array,
+  toggles: PropTypes.object,
 }
 
 export default React.memo(FeatureTogglesModal)

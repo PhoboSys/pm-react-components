@@ -12,7 +12,7 @@ import { withDevelopmentOnly } from '../../../hocs';
 import css from './FeatureToggle.module.scss'
 
 const FeatureToggle = () => {
-  const { toggles = [] } = useFeatureToggles()
+  const { toggles = {} } = useFeatureToggles()
   const { modal, open } = useModal({ Content: FeatureTogglesModal, toggles })
 
   if (isEmpty(toggles)) return null
