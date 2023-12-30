@@ -64,6 +64,5 @@ ConnectBar.propTypes = {
   onCloseClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func
 };
-var _default = /*#__PURE__*/_react["default"].memo(ConnectBar);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(ConnectBar);
 //# sourceMappingURL=ConnectBar.js.map

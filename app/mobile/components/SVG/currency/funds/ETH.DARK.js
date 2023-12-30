@@ -26,6 +26,5 @@ var ETH = function ETH(_ref) {
     fill: fill
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(ETH);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(ETH);
 //# sourceMappingURL=ETH.DARK.js.map

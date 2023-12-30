@@ -12,6 +12,5 @@ var Navbar = function Navbar() {
     className: _NavbarModule["default"].navIcon
   }, /*#__PURE__*/_react["default"].createElement("span", null), /*#__PURE__*/_react["default"].createElement("span", null), /*#__PURE__*/_react["default"].createElement("span", null)));
 };
-var _default = Navbar;
-exports["default"] = _default;
+var _default = exports["default"] = Navbar;
 //# sourceMappingURL=Navbar.js.map

@@ -59,6 +59,5 @@ FormattedCurrencyCell.propTypes = {
   currency: _propTypes["default"].string,
   token: _propTypes["default"].bool
 };
-var _default = FormattedCurrencyCell;
-exports["default"] = _default;
+var _default = exports["default"] = FormattedCurrencyCell;
 //# sourceMappingURL=FormattedCurrencyCell.js.map
