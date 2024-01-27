@@ -7,6 +7,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
+var _config = _interopRequireDefault(require("@config"));
 var _hashUtils = require("@lib/hash-utils");
 var _AccountIconModule = _interopRequireDefault(require("./AccountIcon.module.scss"));
 var _excluded = ["className", "account"];
@@ -22,9 +23,10 @@ var AccountIcon = function AccountIcon(_ref) {
   return /*#__PURE__*/_react["default"].createElement("a", _extends({
     className: (0, _clsx["default"])(_AccountIconModule["default"].container, className),
     style: {
-      background: (0, _hashUtils.colorHash)(account)
+      backgroundImage: "url(".concat(_config["default"].avatars_path + (0, _hashUtils.numericHash)(account) % _config["default"].avatars_amount, ".png)"),
+      backgroundSize: 'cover'
     }
-  }, props), account.slice(2, 3).toUpperCase());
+  }, props));
 };
 AccountIcon.propTypes = {
   className: _propTypes["default"].string,

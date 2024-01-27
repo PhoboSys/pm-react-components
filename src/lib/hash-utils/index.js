@@ -1,6 +1,6 @@
 import { BETTOR_ICON_COLORS } from '@constants/avatarsColors'
 
-function numericHash(s) {
+export function numericHash(s) {
   let h = 0
   if (!s || !s.length) return h
 
