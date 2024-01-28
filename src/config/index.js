@@ -4,8 +4,8 @@ const config = {
   mt_base_path: process.env.MT_BASE_PATH || '/',
   react_mount_element_id: process.env.REACT_MOUNT_ELEMENT_ID,
   modal_id: 'gh-app-modal',
-  avatars_path: 'https://staging.oracly.io/ava/tmp/',
-  avatars_amount: 400,
+  avatars_path: 'https://staging.oracly.io/ava/output/',
+  avatars_amount: 636,
 }
 
 export default config
