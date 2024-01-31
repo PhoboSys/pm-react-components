@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.colorHash = colorHash;
 exports.numericHash = numericHash;
-var _avatarsColors = require("@constants/avatarsColors");
+var _avatarsColors = require("../../constants/avatarsColors");
 function numericHash(s) {
   var h = 0;
   if (!s || !s.length) return h;

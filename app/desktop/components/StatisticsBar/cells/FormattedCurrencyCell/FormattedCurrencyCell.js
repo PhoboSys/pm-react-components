@@ -5,8 +5,8 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _calcUtils = require("@lib/calc-utils");
-var _htmlUtils = require("@lib/html-utils");
+var _calcUtils = require("../../../../../lib/calc-utils");
+var _htmlUtils = require("../../../../../lib/html-utils");
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var formatSymboled = function formatSymboled(amount, currency) {
   var formater = new Intl.NumberFormat(Intl.Locale, {
@@ -59,5 +59,6 @@ FormattedCurrencyCell.propTypes = {
   currency: _propTypes["default"].string,
   token: _propTypes["default"].bool
 };
-var _default = exports["default"] = FormattedCurrencyCell;
+var _default = FormattedCurrencyCell;
+exports["default"] = _default;
 //# sourceMappingURL=FormattedCurrencyCell.js.map
