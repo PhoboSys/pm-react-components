@@ -13,5 +13,6 @@ var withDevelopmentOnly = function withDevelopmentOnly(Cmp) {
     return /*#__PURE__*/_react["default"].createElement(Cmp, props);
   };
 };
-var _default = exports["default"] = withDevelopmentOnly;
+var _default = withDevelopmentOnly;
+exports["default"] = _default;
 //# sourceMappingURL=withDevelopmentOnly.js.map

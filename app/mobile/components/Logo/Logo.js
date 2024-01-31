@@ -24,5 +24,6 @@ Logo.propTypes = {
   basepath: _propTypes["default"].string,
   logoFill: _propTypes["default"].string
 };
-var _default = exports["default"] = Logo;
+var _default = Logo;
+exports["default"] = _default;
 //# sourceMappingURL=Logo.js.map

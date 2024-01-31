@@ -24,5 +24,6 @@ var Logo = function Logo(_ref) {
 Logo.propTypes = {
   fill: _propTypes["default"].string
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Logo);
+var _default = /*#__PURE__*/_react["default"].memo(Logo);
+exports["default"] = _default;
 //# sourceMappingURL=Logo.js.map

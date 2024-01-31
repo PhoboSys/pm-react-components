@@ -19,5 +19,6 @@ var Button = function Button(props) {
     href: props.href
   }, props.children);
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Button);
+var _default = /*#__PURE__*/_react["default"].memo(Button);
+exports["default"] = _default;
 //# sourceMappingURL=Button.js.map

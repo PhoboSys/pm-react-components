@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _htmlUtils = require("@lib/html-utils");
+var _htmlUtils = require("../../../../../lib/html-utils");
 var _WinCellModule = _interopRequireDefault(require("./WinCell.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var WinCell = function WinCell(_ref) {
@@ -24,5 +24,6 @@ WinCell.propTypes = {
   count: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   percent: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])
 };
-var _default = exports["default"] = WinCell;
+var _default = WinCell;
+exports["default"] = _default;
 //# sourceMappingURL=WinCell.js.map

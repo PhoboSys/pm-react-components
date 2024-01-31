@@ -8,7 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
-var _htmlUtils = require("@lib/html-utils");
+var _htmlUtils = require("../../../lib/html-utils");
 var _ArrowForward = _interopRequireDefault(require("../SVG/ArrowForward"));
 var _Disconnect = _interopRequireDefault(require("../SVG/Disconnect"));
 var _Connect = _interopRequireDefault(require("../SVG/Connect"));
@@ -91,5 +91,6 @@ StatisticsBar.propTypes = {
   onCloseClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(StatisticsBar);
+var _default = /*#__PURE__*/_react["default"].memo(StatisticsBar);
+exports["default"] = _default;
 //# sourceMappingURL=StatisticsBar.js.map

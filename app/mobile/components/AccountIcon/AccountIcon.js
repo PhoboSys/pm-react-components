@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
-var _hashUtils = require("@lib/hash-utils");
+var _hashUtils = require("../../../lib/hash-utils");
 var _AccountIconModule = _interopRequireDefault(require("./AccountIcon.module.scss"));
 var _excluded = ["className", "account"];
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
@@ -30,5 +30,6 @@ AccountIcon.propTypes = {
   className: _propTypes["default"].string,
   account: _propTypes["default"].string
 };
-var _default = exports["default"] = AccountIcon;
+var _default = AccountIcon;
+exports["default"] = _default;
 //# sourceMappingURL=AccountIcon.js.map

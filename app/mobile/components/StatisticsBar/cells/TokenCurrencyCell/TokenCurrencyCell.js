@@ -17,6 +17,7 @@ function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key i
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 var TokenCurrencyCell = function TokenCurrencyCell(_ref) {
+  var _cn2;
   var containerClassName = _ref.containerClassName,
     amountClassName = _ref.amountClassName,
     iconClassName = _ref.iconClassName,
@@ -31,7 +32,7 @@ var TokenCurrencyCell = function TokenCurrencyCell(_ref) {
     className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].container, _defineProperty({}, _TokenCurrencyCellModule["default"].reverse, placement === 'right'), containerClassName)
   }, /*#__PURE__*/_react["default"].createElement(_Balance["default"], {
     fill: currencyFill,
-    className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].icon, _defineProperty(_defineProperty({}, _TokenCurrencyCellModule["default"].left, placement === 'left'), _TokenCurrencyCellModule["default"].right, placement === 'right'), iconClassName),
+    className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].icon, (_cn2 = {}, _defineProperty(_cn2, _TokenCurrencyCellModule["default"].left, placement === 'left'), _defineProperty(_cn2, _TokenCurrencyCellModule["default"].right, placement === 'right'), _cn2), iconClassName),
     currency: currency,
     size: iconSize
   }), /*#__PURE__*/_react["default"].createElement("span", {
@@ -50,5 +51,6 @@ TokenCurrencyCell.propTypes = {
   iconSize: _propTypes["default"].number,
   placement: _propTypes["default"].string
 };
-var _default = exports["default"] = TokenCurrencyCell;
+var _default = TokenCurrencyCell;
+exports["default"] = _default;
 //# sourceMappingURL=TokenCurrencyCell.js.map
