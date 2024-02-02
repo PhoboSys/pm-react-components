@@ -40,6 +40,5 @@ var WalletConnect = function WalletConnect() {
     stopColor: "#316EF9"
   }))));
 };
-var _default = /*#__PURE__*/_react["default"].memo(WalletConnect);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(WalletConnect);
 //# sourceMappingURL=WalletConnect.js.map

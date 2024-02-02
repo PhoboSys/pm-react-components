@@ -1,13 +1,14 @@
 import React from 'react'
-import moment from 'moment'
 import PropTypes from 'prop-types'
+
+import { timeSinceUnixTS } from '@lib/date-utils'
 
 import css from './DateCell.module.scss'
 
 const DateCell = ({ date }) => {
   return (
     <span className={css.container}>
-      {moment.unix(date).fromNow()}
+      {timeSinceUnixTS(date)}
     </span>
   )
 }

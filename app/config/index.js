@@ -13,6 +13,5 @@ var config = {
   avatars_path: 'https://staging.oracly.io/ava/output/',
   avatars_amount: 636
 };
-var _default = config;
-exports["default"] = _default;
+var _default = exports["default"] = config;
 //# sourceMappingURL=index.js.map

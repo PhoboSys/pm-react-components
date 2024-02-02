@@ -11,6 +11,5 @@ var useGHProvider = function useGHProvider() {
   var data = (0, _react.useContext)(_PMGlobalHeaderProviderContext["default"]);
   return data;
 };
-var _default = useGHProvider;
-exports["default"] = _default;
+var _default = exports["default"] = useGHProvider;
 //# sourceMappingURL=useGHProvider.js.map
