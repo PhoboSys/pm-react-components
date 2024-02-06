@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
-import { htmlAddress } from '@lib/html-utils'
+import { htmlAddress } from '../../../lib/html-utils'
+import { useTransition } from '../../../hooks/useTransition'
 
 import ArrowForward from '../SVG/ArrowForward'
 import Disconnect from '../SVG/Disconnect'
@@ -10,24 +11,47 @@ import Connect from '../SVG/Connect'
 import Copy from '../common/Copy'
 import { Tabs, Tab, TabBody } from '../common/Tabs'
 import AccountIcon from '../AccountIcon'
-import { useTransition } from '../../../hooks/useTransition'
 import PredictorTabContent from './PredictorTabContent'
 import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
+import Edit from '../SVG/Edit'
 
 import css from './StatisticsBar.module.scss'
 
 const StatisticsBar = ({
   isOpened,
   account,
+  nickname,
   statisticsAccount,
   statistics,
+  isConnected,
   onCloseClick,
   onDisconnectClick,
+  onNicknameChanged,
 }) => {
-  const accountAddress = statisticsAccount || account
+  nickname = nickname || '';
+
+  const address = statisticsAccount || account
   const timeout = 100 //ms
-  const [mount, opening] = useTransition(isOpened && !!accountAddress, timeout)
+  const [mount, opening] = useTransition(isOpened && !!address, timeout)
+
+  const [inputValue, setInputValue] = useState(nickname)
+  const [editingNickname, setEditNickname] = useState(false)
+
+  const handleNicknameSave = useCallback(() => {
+    if (!inputValue) return
+    if (!onNicknameChanged) return
+
+    setEditNickname(false)
+    onNicknameChanged({ address, nickname: inputValue })
+
+  }, [onNicknameChanged, inputValue, nickname, address])
+
+  useEffect(() => { if (inputValue !== nickname) setInputValue(nickname) }, [nickname])
+
+  const changingNickname = useCallback((e) => { setInputValue(e.target.value) }, [setInputValue])
+  const isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount)
+  const isInputVisible = editingNickname || !nickname
 
   if (!mount) return null
 
@@ -40,9 +64,7 @@ const StatisticsBar = ({
           className={cn(
             css.action,
             css.disconnect,
-            {
-              [css.hidden]: (!!statisticsAccount && (account !== statisticsAccount)),
-            }
+            { [css.hidden]: !isSelfView }
           )}
           onClick={onDisconnectClick}
         >
@@ -50,13 +72,54 @@ const StatisticsBar = ({
           <Connect/>
         </a>
         <div className={css.account}>
-          <AccountIcon className={css.icon} account={accountAddress} />
+          <AccountIcon className={css.icon} account={address} />
+          {!isSelfView &&
+            <div className={css.nickname}>
+              <Copy
+                text={nickname}
+                className={css.text}
+                iconClassName={css.copyIcon}
+              >
+                {nickname}
+              </Copy>
+            </div>
+          }
+          {isSelfView && !isInputVisible &&
+            <div className={css.nickname}>
+              {nickname}
+              <a
+                className={css.edit}
+                onClick={setEditNickname}
+              >
+                <Edit className={css.editicon} />
+              </a>
+            </div>
+          }
+          {isSelfView && isInputVisible &&
+            <div className={cn(css.nickname, css.editing)}>
+              <input autoFocus
+                className={css.input}
+                value={inputValue}
+                onChange={changingNickname}
+                placeholder={'Nickname'}
+                maxLength="35"
+              />
+              {!!inputValue &&
+                <a
+                  className={css.save}
+                  onClick={handleNicknameSave}
+                >
+                  Save
+                </a>
+              }
+            </div>
+          }
           <Copy
-            text={accountAddress}
+            text={address}
             className={css.address}
             iconClassName={css.copyIcon}
           >
-            {htmlAddress(accountAddress)}
+            {htmlAddress(address)}
           </Copy>
         </div>
         <a
@@ -70,7 +133,7 @@ const StatisticsBar = ({
 
       <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
         <div className={css.head}>
-          <Tab>Predictor</Tab>
+          <Tab>Oracler</Tab>
           <Tab>Mentor</Tab>
           <Tab>Staker</Tab>
         </div>
@@ -94,7 +157,7 @@ const StatisticsBar = ({
           />
         </TabBody>
       </Tabs>
-    
+
     </div>
   )
 }
@@ -105,8 +168,10 @@ StatisticsBar.propTypes = {
   statisticsAccount: PropTypes.string,
   connectors: PropTypes.array,
   statistics: PropTypes.object,
+  isConnected: PropTypes.bool,
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
+  onNicknameChanged: PropTypes.func,
 }
 
 export default React.memo(StatisticsBar)

@@ -42,6 +42,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isConnectBarOpenedControlled = _ref.isConnectBarOpened,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
     account = _ref.account,
+    nickname = _ref.nickname,
     statisticsAccount = _ref.statisticsAccount,
     balance = _ref.balance,
     currency = _ref.currency,
@@ -52,6 +53,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     featureToggles = _ref.featureToggles,
     onConnectClick = _ref.onConnectClick,
     onDisconnectClick = _ref.onDisconnectClick,
+    onNicknameChanged = _ref.onNicknameChanged,
     onConnectorClick = _ref.onConnectorClick,
     onProfileClick = _ref.onProfileClick,
     onProfileIconClick = _ref.onProfileIconClick,
@@ -100,6 +102,9 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     if (!isStatisticsBarContolled) setStatisticsBarOpened(false);
     if (onDisconnectClick) onDisconnectClick();
   }, [isStatisticsBarContolled, onDisconnectClick]);
+  var handleNicknameChange = (0, _react.useCallback)(function (e) {
+    if (onNicknameChanged) onNicknameChanged(e);
+  }, [onNicknameChanged]);
   var _useModal = (0, _modals.useModal)({
       Content: _AuthModal["default"],
       hideClose: true,
@@ -131,6 +136,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     balance: balance,
     currency: currency,
     account: account,
+    nickname: nickname,
     chainName: chainName,
     onDisconnectClick: onDisconnectClick,
     onClick: onProfileClick,
@@ -146,11 +152,14 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onConnectorClick: handleConnectorClick
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
     account: account,
+    nickname: nickname,
     statisticsAccount: statisticsAccount,
     isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
     statistics: statistics,
+    isConnected: isConnected,
     onCloseClick: handleCloseStatisticsBar,
-    onDisconnectClick: handleDisconnectClick
+    onDisconnectClick: handleDisconnectClick,
+    onNicknameChanged: handleNicknameChange
   }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
     id: _config["default"].modal_id
   }));
@@ -169,6 +178,7 @@ PMGlobalHeader.propTypes = {
   isConnectBarOpened: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
   account: _propTypes["default"].string,
+  nickname: _propTypes["default"].string,
   statisticsAccount: _propTypes["default"].string,
   balance: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   currency: _propTypes["default"].string,
@@ -183,6 +193,7 @@ PMGlobalHeader.propTypes = {
   onProfileClick: _propTypes["default"].func,
   onProfileIconClick: _propTypes["default"].func,
   onConnectBarCloseClick: _propTypes["default"].func,
+  onNicknameChanged: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,
   content: _propTypes["default"].node,
   children: _propTypes["default"].node
