@@ -86,7 +86,15 @@
   font-weight: 400;
   font-size: 24px;
   margin: 20px 0 16px 0;
-  white-space: nowrap;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .text {
+    max-width: 350px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
 
   &.editing {
     display: flex;
@@ -121,7 +129,7 @@
 .edit {
   width: 0;
   display: inline-block;
-  transform: translate(5px, 5px);
+  transform: translate(8px,2px);
   cursor: pointer;
   user-select: none;
 

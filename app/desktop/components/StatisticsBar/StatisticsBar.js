@@ -8,6 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
+var _lodash = require("lodash");
 var _htmlUtils = require("../../../lib/html-utils");
 var _useTransition3 = require("../../../hooks/useTransition");
 var _ArrowForward = _interopRequireDefault(require("../SVG/ArrowForward"));
@@ -73,7 +74,7 @@ var StatisticsBar = function StatisticsBar(_ref) {
     setEditNickname(false);
     onNicknameChanged({
       address: address,
-      nickname: inputValue
+      nickname: (0, _lodash.trim)(inputValue).substring(0, 35)
     });
   }, [onNicknameChanged, inputValue, address]);
   (0, _react.useEffect)(function () {
@@ -100,7 +101,10 @@ var StatisticsBar = function StatisticsBar(_ref) {
     className: _StatisticsBarModule["default"].nickname
   }, username), isSelfView && !isInputVisible && /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].nickname
-  }, username, /*#__PURE__*/_react["default"].createElement("a", {
+  }, /*#__PURE__*/_react["default"].createElement("span", {
+    className: _StatisticsBarModule["default"].text,
+    title: username
+  }, username), /*#__PURE__*/_react["default"].createElement("a", {
     className: _StatisticsBarModule["default"].edit,
     onClick: setEditNickname
   }, /*#__PURE__*/_react["default"].createElement(_Edit["default"], {

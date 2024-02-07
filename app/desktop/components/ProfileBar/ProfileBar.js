@@ -158,7 +158,8 @@ var ProfileBar = function ProfileBar(_ref) {
   }))), /*#__PURE__*/_react["default"].createElement("div", {
     className: _ProfileBarModule["default"].account
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: _ProfileBarModule["default"].wallet
+    className: _ProfileBarModule["default"].wallet,
+    title: nickname
   }, nickname || (0, _htmlUtils.htmlAddress)(account)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _ProfileBarModule["default"].name
   }, chainName)), /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
