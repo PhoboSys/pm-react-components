@@ -39,19 +39,15 @@ var StatisticsBar = function StatisticsBar(_ref) {
     account = _ref.account,
     nickname = _ref.nickname,
     statisticsAccount = _ref.statisticsAccount,
+    statisticsNickname = _ref.statisticsNickname,
     statistics = _ref.statistics,
     isConnected = _ref.isConnected,
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onNicknameChanged = _ref.onNicknameChanged;
-  nickname = nickname || '';
-  var address = statisticsAccount || account;
-  var timeout = 100; //ms
-  var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
-    _useTransition2 = _slicedToArray(_useTransition, 2),
-    mount = _useTransition2[0],
-    opening = _useTransition2[1];
-  var _useState = (0, _react.useState)(nickname),
+  var address = account;
+  var username = nickname;
+  var _useState = (0, _react.useState)(username),
     _useState2 = _slicedToArray(_useState, 2),
     inputValue = _useState2[0],
     setInputValue = _useState2[1];
@@ -59,6 +55,18 @@ var StatisticsBar = function StatisticsBar(_ref) {
     _useState4 = _slicedToArray(_useState3, 2),
     editingNickname = _useState4[0],
     setEditNickname = _useState4[1];
+  var isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount);
+  var isInputVisible = editingNickname || !username;
+  if (!isSelfView) {
+    address = statisticsAccount;
+    username = statisticsNickname;
+  }
+  username = username || '';
+  var timeout = 100; //ms
+  var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
+    _useTransition2 = _slicedToArray(_useTransition, 2),
+    mount = _useTransition2[0],
+    opening = _useTransition2[1];
   var handleNicknameSave = (0, _react.useCallback)(function () {
     if (!inputValue) return;
     if (!onNicknameChanged) return;
@@ -67,15 +75,13 @@ var StatisticsBar = function StatisticsBar(_ref) {
       address: address,
       nickname: inputValue
     });
-  }, [onNicknameChanged, inputValue, nickname, address]);
+  }, [onNicknameChanged, inputValue, address]);
   (0, _react.useEffect)(function () {
-    if (inputValue !== nickname) setInputValue(nickname);
-  }, [nickname]);
+    if (inputValue !== username) setInputValue(username);
+  }, [username]);
   var changingNickname = (0, _react.useCallback)(function (e) {
     setInputValue(e.target.value);
   }, [setInputValue]);
-  var isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount);
-  var isInputVisible = editingNickname || !nickname;
   if (!mount) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_StatisticsBarModule["default"].container, _defineProperty({}, _StatisticsBarModule["default"].opened, opening))
@@ -92,13 +98,9 @@ var StatisticsBar = function StatisticsBar(_ref) {
     account: address
   }), !isSelfView && /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].nickname
-  }, /*#__PURE__*/_react["default"].createElement(_Copy["default"], {
-    text: nickname,
-    className: _StatisticsBarModule["default"].text,
-    iconClassName: _StatisticsBarModule["default"].copyIcon
-  }, nickname)), isSelfView && !isInputVisible && /*#__PURE__*/_react["default"].createElement("div", {
+  }, username), isSelfView && !isInputVisible && /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].nickname
-  }, nickname, /*#__PURE__*/_react["default"].createElement("a", {
+  }, username, /*#__PURE__*/_react["default"].createElement("a", {
     className: _StatisticsBarModule["default"].edit,
     onClick: setEditNickname
   }, /*#__PURE__*/_react["default"].createElement(_Edit["default"], {

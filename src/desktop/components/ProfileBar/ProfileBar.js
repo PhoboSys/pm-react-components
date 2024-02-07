@@ -54,6 +54,7 @@ const ProfileBar = ({
   currency,
   balance,
   account,
+  nickname,
   chainName,
   onClick,
   onCurrencyChanged,
@@ -146,7 +147,7 @@ const ProfileBar = ({
           }
         </div>
         <div className={css.account}>
-          <div className={css.wallet}>{htmlAddress(account)}</div>
+          <div className={css.wallet}>{nickname || htmlAddress(account)}</div>
           <div className={css.name}>{chainName}</div>
         </div>
         <AccountIcon
@@ -165,6 +166,7 @@ ProfileBar.propTypes = {
   currency: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.string,
+  nickname: PropTypes.string,
   chainName: PropTypes.string,
   onClick: PropTypes.func,
   onIconClick: PropTypes.func,

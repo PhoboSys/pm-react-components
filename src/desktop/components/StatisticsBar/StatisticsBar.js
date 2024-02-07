@@ -23,20 +23,29 @@ const StatisticsBar = ({
   account,
   nickname,
   statisticsAccount,
+  statisticsNickname,
   statistics,
   isConnected,
   onCloseClick,
   onDisconnectClick,
   onNicknameChanged,
 }) => {
-  nickname = nickname || '';
+  let address = account
+  let username = nickname
 
-  const address = statisticsAccount || account
+  const [inputValue, setInputValue] = useState(username)
+  const [editingNickname, setEditNickname] = useState(false)
+
+  const isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount)
+  const isInputVisible = editingNickname || !username
+  if (!isSelfView) {
+    address = statisticsAccount
+    username = statisticsNickname
+  }
+  username = username || ''
+
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
-
-  const [inputValue, setInputValue] = useState(nickname)
-  const [editingNickname, setEditNickname] = useState(false)
 
   const handleNicknameSave = useCallback(() => {
     if (!inputValue) return
@@ -45,13 +54,13 @@ const StatisticsBar = ({
     setEditNickname(false)
     onNicknameChanged({ address, nickname: inputValue })
 
-  }, [onNicknameChanged, inputValue, nickname, address])
+  }, [onNicknameChanged, inputValue, address])
 
-  useEffect(() => { if (inputValue !== nickname) setInputValue(nickname) }, [nickname])
+  useEffect(() => {
+      if (inputValue !== username) setInputValue(username)
+  }, [username])
 
   const changingNickname = useCallback((e) => { setInputValue(e.target.value) }, [setInputValue])
-  const isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount)
-  const isInputVisible = editingNickname || !nickname
 
   if (!mount) return null
 
@@ -75,18 +84,12 @@ const StatisticsBar = ({
           <AccountIcon className={css.icon} account={address} />
           {!isSelfView &&
             <div className={css.nickname}>
-              <Copy
-                text={nickname}
-                className={css.text}
-                iconClassName={css.copyIcon}
-              >
-                {nickname}
-              </Copy>
+              {username}
             </div>
           }
           {isSelfView && !isInputVisible &&
             <div className={css.nickname}>
-              {nickname}
+              {username}
               <a
                 className={css.edit}
                 onClick={setEditNickname}

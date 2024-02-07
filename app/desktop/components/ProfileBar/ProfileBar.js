@@ -68,6 +68,7 @@ var ProfileBar = function ProfileBar(_ref) {
     currency = _ref.currency,
     balance = _ref.balance,
     account = _ref.account,
+    nickname = _ref.nickname,
     chainName = _ref.chainName,
     onClick = _ref.onClick,
     onCurrencyChanged = _ref.onCurrencyChanged,
@@ -158,7 +159,7 @@ var ProfileBar = function ProfileBar(_ref) {
     className: _ProfileBarModule["default"].account
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _ProfileBarModule["default"].wallet
-  }, (0, _htmlUtils.htmlAddress)(account)), /*#__PURE__*/_react["default"].createElement("div", {
+  }, nickname || (0, _htmlUtils.htmlAddress)(account)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _ProfileBarModule["default"].name
   }, chainName)), /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
     className: _ProfileBarModule["default"].action,
@@ -172,6 +173,7 @@ ProfileBar.propTypes = {
   currency: _propTypes["default"].string,
   balance: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   account: _propTypes["default"].string,
+  nickname: _propTypes["default"].string,
   chainName: _propTypes["default"].string,
   onClick: _propTypes["default"].func,
   onIconClick: _propTypes["default"].func,

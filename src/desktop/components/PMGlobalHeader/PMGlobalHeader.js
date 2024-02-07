@@ -29,6 +29,7 @@ const PMGlobalHeader = ({
   account,
   nickname,
   statisticsAccount,
+  statisticsNickname,
   balance,
   currency,
   chainName,
@@ -147,6 +148,7 @@ const PMGlobalHeader = ({
           account={account}
           nickname={nickname}
           statisticsAccount={statisticsAccount}
+          statisticsNickname={statisticsNickname}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
           statistics={statistics}
           isConnected={isConnected}
@@ -178,6 +180,7 @@ PMGlobalHeader.propTypes = {
   account: PropTypes.string,
   nickname: PropTypes.string,
   statisticsAccount: PropTypes.string,
+  statisticsNickname: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currency: PropTypes.string,
   chainName: PropTypes.string,
