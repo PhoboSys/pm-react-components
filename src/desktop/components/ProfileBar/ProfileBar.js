@@ -147,7 +147,7 @@ const ProfileBar = ({
           }
         </div>
         <div className={css.account}>
-          <div className={css.wallet}>{nickname || htmlAddress(account)}</div>
+          <div className={css.wallet} title={nickname}>{nickname || htmlAddress(account)}</div>
           <div className={css.name}>{chainName}</div>
         </div>
         <AccountIcon

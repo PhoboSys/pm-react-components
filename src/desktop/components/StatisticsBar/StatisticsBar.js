@@ -2,6 +2,8 @@ import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
+import { trim } from 'lodash'
+
 import { htmlAddress } from '../../../lib/html-utils'
 import { useTransition } from '../../../hooks/useTransition'
 
@@ -52,7 +54,7 @@ const StatisticsBar = ({
     if (!onNicknameChanged) return
 
     setEditNickname(false)
-    onNicknameChanged({ address, nickname: inputValue })
+    onNicknameChanged({ address, nickname: trim(inputValue).substring(0, 35) })
 
   }, [onNicknameChanged, inputValue, address])
 
@@ -89,7 +91,7 @@ const StatisticsBar = ({
           }
           {isSelfView && !isInputVisible &&
             <div className={css.nickname}>
-              {username}
+              <span className={css.text} title={username}>{username}</span>
               <a
                 className={css.edit}
                 onClick={setEditNickname}
