@@ -27,7 +27,9 @@ const PMGlobalHeader = ({
   isConnectBarOpened: isConnectBarOpenedControlled,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
   account,
+  nickname,
   statisticsAccount,
+  statisticsNickname,
   balance,
   currency,
   chainName,
@@ -37,6 +39,7 @@ const PMGlobalHeader = ({
   featureToggles,
   onConnectClick,
   onDisconnectClick,
+  onNicknameChanged,
   onConnectorClick,
   onProfileClick,
   onProfileIconClick,
@@ -51,7 +54,7 @@ const PMGlobalHeader = ({
 
   const [isConnectBarOpened, setConnectBarOpened] = useState(false)
   const [isStatisticsBarOpened, setStatisticsBarOpened] = useState(false)
-  
+
   const openConnectBar = useCallback(() => setConnectBarOpened(true), [])
   const closeConnectBar = useCallback(() => setConnectBarOpened(false), [])
 
@@ -85,6 +88,10 @@ const PMGlobalHeader = ({
     if (onDisconnectClick) onDisconnectClick()
   }, [isStatisticsBarContolled, onDisconnectClick])
 
+  const handleNicknameChange = useCallback((e) => {
+    if (onNicknameChanged) onNicknameChanged(e)
+  }, [onNicknameChanged])
+
   const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
     Content: AuthModal,
     hideClose: true,
@@ -117,6 +124,7 @@ const PMGlobalHeader = ({
               balance={balance}
               currency={currency}
               account={account}
+              nickname={nickname}
               chainName={chainName}
               onDisconnectClick={onDisconnectClick}
               onClick={onProfileClick}
@@ -138,11 +146,15 @@ const PMGlobalHeader = ({
         />
         <StatisticsBar
           account={account}
+          nickname={nickname}
           statisticsAccount={statisticsAccount}
+          statisticsNickname={statisticsNickname}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
           statistics={statistics}
+          isConnected={isConnected}
           onCloseClick={handleCloseStatisticsBar}
           onDisconnectClick={handleDisconnectClick}
+          onNicknameChanged={handleNicknameChange}
         />
         {children}
         {modal}
@@ -166,7 +178,9 @@ PMGlobalHeader.propTypes = {
   isConnectBarOpened: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
   account: PropTypes.string,
+  nickname: PropTypes.string,
   statisticsAccount: PropTypes.string,
+  statisticsNickname: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currency: PropTypes.string,
   chainName: PropTypes.string,
@@ -180,6 +194,7 @@ PMGlobalHeader.propTypes = {
   onProfileClick: PropTypes.func,
   onProfileIconClick: PropTypes.func,
   onConnectBarCloseClick: PropTypes.func,
+  onNicknameChanged: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
