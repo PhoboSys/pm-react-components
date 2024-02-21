@@ -20,5 +20,6 @@ var Edit = function Edit(_ref) {
     fill: "#6381E7"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Edit);
+var _default = /*#__PURE__*/_react["default"].memo(Edit);
+exports["default"] = _default;
 //# sourceMappingURL=Edit.js.map

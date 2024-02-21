@@ -18,5 +18,6 @@ var ArrowForward = function ArrowForward() {
     fill: "white"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(ArrowForward);
+var _default = /*#__PURE__*/_react["default"].memo(ArrowForward);
+exports["default"] = _default;
 //# sourceMappingURL=ArrowForward.js.map

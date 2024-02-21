@@ -15,8 +15,30 @@
 
 - --pm-gh-copy-icon-color
 - --pm-gh-copy-icon-color-hover
+- --pm-gh-copy-icon-color-active
 - --pm-gh-spinner-color
 - --pm-gh-modal-overlay-bg
+- --pm-gh-nickname-input-color
+- --pm-gh-nickname-input-placeholder-color
+- --pm-gh-nickname-input-placeholder-focus-color
+- --pm-gh-nickname-input-border-color
+- --pm-gh-nickname-input-border-focus-color
+- --pm-gh-nickname-editicon-bg
+- --pm-gh-nickname-editicon-bg-hover
+- --pm-gh-nickname-editicon-bg-active
+- --pm-gh-nickname-editicon-fill
+- --pm-gh-nickname-editicon-fill-hover
+- --pm-gh-nickname-editicon-fill-active
+- --pm-gh-nickname-save-bg
+- --pm-gh-nickname-save-bg-hover
+- --pm-gh-nickname-save-bg-active
+- --pm-gh-nickname-hint-bg
+- --pm-gh-nickname-hint-close-bg
+- --pm-gh-nickname-hint-close-bg-hover
+- --pm-gh-nickname-hint-close-bg-active
+- --pm-gh-scroll-thumb
+- --pm-gh-scroll-track
+- --pm-gh-statistics-header-stickyheader-gradient
 - --header-bg
 - --navbar-bg
 - --navbar-border-color
@@ -77,12 +99,15 @@
 - --statistics-bar-close-icon-border-color-hover
 - --statistics-bar-close-icon-background-color-active
 - --statistics-bar-close-icon-border-color-active
-- --statistics-bar-stats-border-color
 - --statistics-bar-stats-title-bg
 - --statistics-bar-tab-bg-color
+- --statistics-bar-tab-selected-bg-color
+- --statistics-bar-tab-border-color
 - --statistics-bar-stats-table-bg
 - --statistics-bar-stats-table-secondary-color
+- --statistics-bar-stats-table-header-color
 - --statistics-bar-stats-table-tr-border-color
+- --statistics-bar-stats-table-th-border-color
 
 #### Mobile:
 

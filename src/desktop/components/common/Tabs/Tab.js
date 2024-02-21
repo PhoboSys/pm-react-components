@@ -8,10 +8,12 @@ import css from './Tabs.module.scss'
 
 const Tab = ({ children }) => {
   const [tabIndex, setTabIndex] = useState(null)
-  const { activeTabClassName, tab, setTab, registerHead } = useContext(TabContext);
+  const { activeTabClassName, tab, setTab, renderTab, registerHead } = useContext(TabContext);
   useEffect(() => setTabIndex(registerHead()), [])
 
   const handleTabClick = useCallback(() => setTab(tabIndex), [tabIndex])
+
+  if (!renderTab) return null
 
   return (
     <div

@@ -18,5 +18,6 @@ var DateCell = function DateCell(_ref) {
 DateCell.propTypes = {
   date: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(DateCell);
+var _default = /*#__PURE__*/_react["default"].memo(DateCell);
+exports["default"] = _default;
 //# sourceMappingURL=DateCell.js.map

@@ -14,8 +14,8 @@ var _actions = require("@actions");
 var _htmlUtils = require("../../../../../lib/html-utils");
 var _nicknameModule = _interopRequireDefault(require("./nickname.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 var Nickname = function Nickname(_ref) {
   var address = _ref.address,
     nickname = _ref.nickname,
@@ -32,7 +32,7 @@ var Nickname = function Nickname(_ref) {
     className: (0, _clsx["default"])(className, _nicknameModule["default"].nickname)
   }, nickname || (0, _htmlUtils.htmlAddress)(address));
 };
-var _default = exports["default"] = (0, _state.connect)(function (state, props) {
+var _default = (0, _state.connect)(function (state, props) {
   return {
     nickname: (0, _getters.getAccountNickname)(state, props.address)
   };
@@ -41,4 +41,5 @@ var _default = exports["default"] = (0, _state.connect)(function (state, props) 
     query = _ref2.query;
   return [command(_actions.SET_SHOW_STATISTICS_BAR), query(_actions.RESOVLE_ADDRESS_TO_NICKNAME)];
 })( /*#__PURE__*/_react["default"].memo(Nickname));
+exports["default"] = _default;
 //# sourceMappingURL=index.js.map

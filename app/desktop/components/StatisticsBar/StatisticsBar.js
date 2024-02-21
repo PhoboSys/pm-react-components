@@ -13,21 +13,20 @@ var _htmlUtils = require("../../../lib/html-utils");
 var _useTransition3 = require("../../../hooks/useTransition");
 var _ArrowForward = _interopRequireDefault(require("../SVG/ArrowForward"));
 var _Disconnect = _interopRequireDefault(require("../SVG/Disconnect"));
-var _Connect = _interopRequireDefault(require("../SVG/Connect"));
 var _Copy = _interopRequireDefault(require("../common/Copy"));
 var _Tabs = require("../common/Tabs");
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
 var _PredictorTabContent = _interopRequireDefault(require("./PredictorTabContent"));
 var _MentorTabContent = _interopRequireDefault(require("./MentorTabContent"));
 var _StakerTabContent = _interopRequireDefault(require("./StakerTabContent"));
-var _Edit = _interopRequireDefault(require("../SVG/Edit"));
+var _Nickname = _interopRequireDefault(require("./Nickname"));
 var _StatisticsBarModule = _interopRequireDefault(require("./StatisticsBar.module.scss"));
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
+function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
+function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -46,104 +45,80 @@ var StatisticsBar = function StatisticsBar(_ref) {
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onNicknameChanged = _ref.onNicknameChanged;
-  var address = account;
-  var username = nickname;
-  var _useState = (0, _react.useState)(username),
-    _useState2 = _slicedToArray(_useState, 2),
-    inputValue = _useState2[0],
-    setInputValue = _useState2[1];
-  var _useState3 = (0, _react.useState)(false),
-    _useState4 = _slicedToArray(_useState3, 2),
-    editingNickname = _useState4[0],
-    setEditNickname = _useState4[1];
   var isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount);
-  var isInputVisible = editingNickname || !username;
-  if (!isSelfView) {
-    address = statisticsAccount;
-    username = statisticsNickname;
-  }
-  username = username || '';
+  var address = isSelfView ? account : statisticsAccount;
+  var username = (isSelfView ? nickname : statisticsNickname) || '';
   var timeout = 100; //ms
   var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
     _useTransition2 = _slicedToArray(_useTransition, 2),
     mount = _useTransition2[0],
     opening = _useTransition2[1];
-  var handleNicknameSave = (0, _react.useCallback)(function () {
-    if (!inputValue) return;
-    if (!onNicknameChanged) return;
-    setEditNickname(false);
-    onNicknameChanged({
-      address: address,
-      nickname: (0, _lodash.trim)(inputValue).substring(0, 35)
-    });
-  }, [onNicknameChanged, inputValue, address]);
-  (0, _react.useEffect)(function () {
-    if (inputValue !== username) setInputValue(username);
-  }, [username]);
-  var changingNickname = (0, _react.useCallback)(function (e) {
-    setInputValue(e.target.value);
-  }, [setInputValue]);
+  var _useState = (0, _react.useState)(false),
+    _useState2 = _slicedToArray(_useState, 2),
+    sticky = _useState2[0],
+    setSticky = _useState2[1];
+  var handleScroll = (0, _react.useCallback)((0, _lodash.throttle)(function (e) {
+    e.target.scrollTop > 0 ? setSticky(true) : setSticky(false);
+  }, 100), []);
   if (!mount) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])(_StatisticsBarModule["default"].container, _defineProperty({}, _StatisticsBarModule["default"].opened, opening))
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].container, _defineProperty({}, _StatisticsBarModule["default"].opened, opening)),
+    onScroll: handleScroll
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: _StatisticsBarModule["default"].top
-  }, /*#__PURE__*/_react["default"].createElement("a", {
-    title: 'Disconnect',
-    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].disconnect, _defineProperty({}, _StatisticsBarModule["default"].hidden, !isSelfView)),
-    onClick: onDisconnectClick
-  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), /*#__PURE__*/_react["default"].createElement(_Connect["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
-    className: _StatisticsBarModule["default"].account
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].stickyHeader, _defineProperty({}, _StatisticsBarModule["default"].hidden, !sticky))
   }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
     className: _StatisticsBarModule["default"].icon,
     account: address
-  }), !isSelfView && /*#__PURE__*/_react["default"].createElement("div", {
-    className: _StatisticsBarModule["default"].nickname
-  }, username), isSelfView && !isInputVisible && /*#__PURE__*/_react["default"].createElement("div", {
-    className: _StatisticsBarModule["default"].nickname
-  }, /*#__PURE__*/_react["default"].createElement("span", {
-    className: _StatisticsBarModule["default"].text,
-    title: username
-  }, username), /*#__PURE__*/_react["default"].createElement("a", {
-    className: _StatisticsBarModule["default"].edit,
-    onClick: setEditNickname
-  }, /*#__PURE__*/_react["default"].createElement(_Edit["default"], {
-    className: _StatisticsBarModule["default"].editicon
-  }))), isSelfView && isInputVisible && /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])(_StatisticsBarModule["default"].nickname, _StatisticsBarModule["default"].editing)
-  }, /*#__PURE__*/_react["default"].createElement("input", {
-    autoFocus: true,
-    className: _StatisticsBarModule["default"].input,
-    value: inputValue,
-    onChange: changingNickname,
-    placeholder: 'Nickname',
-    maxLength: "35"
-  }), !!inputValue && /*#__PURE__*/_react["default"].createElement("a", {
-    className: _StatisticsBarModule["default"].save,
-    onClick: handleNicknameSave
-  }, "Save")), /*#__PURE__*/_react["default"].createElement(_Copy["default"], {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _StatisticsBarModule["default"].account
+  }, username && /*#__PURE__*/_react["default"].createElement(_Nickname["default"], {
+    username: username,
+    collapsed: true
+  }), /*#__PURE__*/_react["default"].createElement(_Copy["default"], {
     text: address,
     className: _StatisticsBarModule["default"].address,
     iconClassName: _StatisticsBarModule["default"].copyIcon
   }, (0, _htmlUtils.htmlAddress)(address))), /*#__PURE__*/_react["default"].createElement("a", {
     title: 'Close bar',
-    className: _StatisticsBarModule["default"].action,
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].close),
+    onClick: onCloseClick
+  }, /*#__PURE__*/_react["default"].createElement(_ArrowForward["default"], null))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].header, _defineProperty({}, _StatisticsBarModule["default"].hidden, sticky))
+  }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
+    className: _StatisticsBarModule["default"].icon,
+    account: address
+  }), /*#__PURE__*/_react["default"].createElement(_Nickname["default"], {
+    address: address,
+    username: username,
+    editable: isSelfView,
+    onNicknameChanged: onNicknameChanged
+  }), /*#__PURE__*/_react["default"].createElement(_Copy["default"], {
+    text: address,
+    className: _StatisticsBarModule["default"].address,
+    iconClassName: _StatisticsBarModule["default"].copyIcon
+  }, (0, _htmlUtils.htmlAddress)(address)), /*#__PURE__*/_react["default"].createElement("a", {
+    title: 'Close bar',
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].close),
     onClick: onCloseClick
   }, /*#__PURE__*/_react["default"].createElement(_ArrowForward["default"], null))), /*#__PURE__*/_react["default"].createElement(_Tabs.Tabs, {
     className: _StatisticsBarModule["default"].tabs,
     activeTabClassName: _StatisticsBarModule["default"].activeTab
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].head
-  }, /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Oracler"), /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
+  }, (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Oracler"), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$predictor = statistics.predictor) === null || _statistics$predictor === void 0 ? void 0 : _statistics$predictor.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$predictor2 = statistics.predictor) === null || _statistics$predictor2 === void 0 ? void 0 : _statistics$predictor2.tokenStats
-  })), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_MentorTabContent["default"], {
+  })), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_MentorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$mentor = statistics.mentor) === null || _statistics$mentor === void 0 ? void 0 : _statistics$mentor.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$mentor2 = statistics.mentor) === null || _statistics$mentor2 === void 0 ? void 0 : _statistics$mentor2.tokenStats
-  })), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
+  })), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$staker = statistics.staker) === null || _statistics$staker === void 0 ? void 0 : _statistics$staker.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats
-  }))));
+  }))), isSelfView && /*#__PURE__*/_react["default"].createElement("a", {
+    title: 'Disconnect',
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].disconnect),
+    onClick: onDisconnectClick
+  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), "Untie wallet"));
 };
 StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,
@@ -156,5 +131,6 @@ StatisticsBar.propTypes = {
   onConnectorClick: _propTypes["default"].func,
   onNicknameChanged: _propTypes["default"].func
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(StatisticsBar);
+var _default = /*#__PURE__*/_react["default"].memo(StatisticsBar);
+exports["default"] = _default;
 //# sourceMappingURL=StatisticsBar.js.map
