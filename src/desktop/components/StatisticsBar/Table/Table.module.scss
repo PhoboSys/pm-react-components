@@ -1,6 +1,5 @@
 .container {
   overflow: hidden;
-  border: 1px solid var(--statistics-bar-stats-border-color);
   border-radius: 20px;
   color: #ffffff;
   background: var(--statistics-bar-stats-table-bg);
@@ -71,17 +70,24 @@
   padding: 0;
   font-size: 13px;
   font-weight: 500;
-  color: var(--statistics-bar-stats-table-secondary-color);
+  color: var(--statistics-bar-stats-table-header-color);
   text-transform: capitalize;
   text-align: left;
   z-index: 1;
 }
 
-.line {
+.line, .headline {
   grid-column-start: 1;
   grid-column-end: calc(var(--columsSize) + 1);
   height: 1px;
   width: 100%;
-  background: var(--statistics-bar-stats-table-tr-border-color);
   z-index: 1;
+}
+
+.line {
+  background: var(--statistics-bar-stats-table-tr-border-color);
+}
+
+.headline {
+  background: var(--statistics-bar-stats-table-th-border-color);
 }

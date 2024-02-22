@@ -40,7 +40,7 @@ const Table = ({
         {shouldRenderTHead && (
           <>
             <div className={css.headbg} />
-            <div className={css.line} />
+            <div className={css.headline} />
             {renderColumns()}
           </>
         )}

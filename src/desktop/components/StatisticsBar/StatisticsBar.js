@@ -1,22 +1,20 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
-
-import { trim } from 'lodash'
+import { throttle } from 'lodash'
 
 import { htmlAddress } from '../../../lib/html-utils'
 import { useTransition } from '../../../hooks/useTransition'
 
 import ArrowForward from '../SVG/ArrowForward'
 import Disconnect from '../SVG/Disconnect'
-import Connect from '../SVG/Connect'
 import Copy from '../common/Copy'
 import { Tabs, Tab, TabBody } from '../common/Tabs'
 import AccountIcon from '../AccountIcon'
 import PredictorTabContent from './PredictorTabContent'
 import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
-import Edit from '../SVG/Edit'
+import Nickname from './Nickname'
 
 import css from './StatisticsBar.module.scss'
 
@@ -32,93 +30,33 @@ const StatisticsBar = ({
   onDisconnectClick,
   onNicknameChanged,
 }) => {
-  let address = account
-  let username = nickname
-
-  const [inputValue, setInputValue] = useState(username)
-  const [editingNickname, setEditNickname] = useState(false)
-
   const isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount)
-  const isInputVisible = editingNickname || !username
-  if (!isSelfView) {
-    address = statisticsAccount
-    username = statisticsNickname
-  }
-  username = username || ''
+  const address = isSelfView ? account : statisticsAccount
+  const username = (isSelfView ? nickname : statisticsNickname) || ''
 
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
 
-  const handleNicknameSave = useCallback(() => {
-    if (!inputValue) return
-    if (!onNicknameChanged) return
+  const [sticky, setSticky] = useState(false)
 
-    setEditNickname(false)
-    onNicknameChanged({ address, nickname: trim(inputValue).substring(0, 35) })
-
-  }, [onNicknameChanged, inputValue, address])
-
-  useEffect(() => {
-      if (inputValue !== username) setInputValue(username)
-  }, [username])
-
-  const changingNickname = useCallback((e) => { setInputValue(e.target.value) }, [setInputValue])
+  const handleScroll = useCallback(throttle((e) => {
+    e.target.scrollTop > 0 ? setSticky(true) : setSticky(false)
+  }, 100), [])
 
   if (!mount) return null
 
   return (
-    <div className={cn(css.container, { [css.opened]: opening } )}>
+    <div
+      className={cn(css.container, { [css.opened]: opening } )}
+      onScroll={handleScroll}
+    >
 
-      <div className={css.top}>
-        <a
-          title={'Disconnect'}
-          className={cn(
-            css.action,
-            css.disconnect,
-            { [css.hidden]: !isSelfView }
-          )}
-          onClick={onDisconnectClick}
-        >
-          <Disconnect/>
-          <Connect/>
-        </a>
+      <div className={cn(css.stickyHeader, {[css.hidden]: !sticky})}>
+        <AccountIcon className={css.icon} account={address} />
+
         <div className={css.account}>
-          <AccountIcon className={css.icon} account={address} />
-          {!isSelfView &&
-            <div className={css.nickname}>
-              {username}
-            </div>
-          }
-          {isSelfView && !isInputVisible &&
-            <div className={css.nickname}>
-              <span className={css.text} title={username}>{username}</span>
-              <a
-                className={css.edit}
-                onClick={setEditNickname}
-              >
-                <Edit className={css.editicon} />
-              </a>
-            </div>
-          }
-          {isSelfView && isInputVisible &&
-            <div className={cn(css.nickname, css.editing)}>
-              <input autoFocus
-                className={css.input}
-                value={inputValue}
-                onChange={changingNickname}
-                placeholder={'Nickname'}
-                maxLength="35"
-              />
-              {!!inputValue &&
-                <a
-                  className={css.save}
-                  onClick={handleNicknameSave}
-                >
-                  Save
-                </a>
-              }
-            </div>
-          }
+          {username && <Nickname username={username} collapsed />}
+
           <Copy
             text={address}
             className={css.address}
@@ -127,9 +65,37 @@ const StatisticsBar = ({
             {htmlAddress(address)}
           </Copy>
         </div>
+
         <a
           title={'Close bar'}
-          className={css.action}
+          className={cn(css.action, css.close)}
+          onClick={onCloseClick}
+        >
+          <ArrowForward />
+        </a>
+      </div>
+
+      <div className={cn(css.header, {[css.hidden]: sticky})}>
+        <AccountIcon className={css.icon} account={address} />
+
+        <Nickname
+          address={address}
+          username={username}
+          editable={isSelfView}
+          onNicknameChanged={onNicknameChanged}
+        />
+
+        <Copy
+          text={address}
+          className={css.address}
+          iconClassName={css.copyIcon}
+        >
+          {htmlAddress(address)}
+        </Copy>
+
+        <a
+          title={'Close bar'}
+          className={cn(css.action, css.close)}
           onClick={onCloseClick}
         >
           <ArrowForward />
@@ -138,30 +104,47 @@ const StatisticsBar = ({
 
       <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
         <div className={css.head}>
-          <Tab>Oracler</Tab>
-          <Tab>Mentor</Tab>
-          <Tab>Staker</Tab>
+          {statistics?.predictor && <Tab>Oracler</Tab>}
+          {statistics?.mentor && <Tab>Mentor</Tab>}
+          {statistics?.staker && <Tab>Staker</Tab>}
         </div>
 
-        <TabBody>
-          <PredictorTabContent
-            stats={statistics?.predictor?.stats}
-            tokenStats={statistics?.predictor?.tokenStats}
-          />
-        </TabBody>
-        <TabBody>
-          <MentorTabContent
-            stats={statistics?.mentor?.stats}
-            tokenStats={statistics?.mentor?.tokenStats}
-          />
-        </TabBody>
-        <TabBody>
-          <StakerTabContent
-            stats={statistics?.staker?.stats}
-            tokenStats={statistics?.staker?.tokenStats}
-          />
-        </TabBody>
+        {statistics?.predictor && (
+          <TabBody>
+            <PredictorTabContent
+              stats={statistics?.predictor?.stats}
+              tokenStats={statistics?.predictor?.tokenStats}
+            />
+          </TabBody>
+        )}
+        {statistics?.mentor && (
+          <TabBody>
+            <MentorTabContent
+              stats={statistics?.mentor?.stats}
+              tokenStats={statistics?.mentor?.tokenStats}
+            />
+          </TabBody>
+        )}
+        {statistics?.staker && (
+          <TabBody>
+            <StakerTabContent
+              stats={statistics?.staker?.stats}
+              tokenStats={statistics?.staker?.tokenStats}
+            />
+          </TabBody>
+        )}
       </Tabs>
+
+      {isSelfView && (
+        <a
+          title={'Disconnect'}
+          className={cn(css.action, css.disconnect)}
+          onClick={onDisconnectClick}
+        >
+          <Disconnect />
+          Untie wallet
+        </a>
+      )}
 
     </div>
   )

@@ -18,5 +18,6 @@ var Mentoring = function Mentoring() {
     fill: "#D0D7FF"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Mentoring);
+var _default = /*#__PURE__*/_react["default"].memo(Mentoring);
+exports["default"] = _default;
 //# sourceMappingURL=Mentoring.js.map

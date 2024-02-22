@@ -14,6 +14,7 @@ const Tabs = ({
   const isTabControlled = controlledTab !== undefined
 
   const [tab, setTab] = useState(initialTab)
+  const [renderTab, setRenderTab] = useState(false)
   const tabsRef = useRef([])
 
   const handleSetTab = useCallback((tab) => {
@@ -23,6 +24,7 @@ const Tabs = ({
 
   const registerHead = useCallback(() => {
     const tabIndex = tabsRef.current.push(1) - 1
+    setRenderTab(tabsRef.current.length > 1)
     return tabIndex
   }, [])
 
@@ -36,11 +38,12 @@ const Tabs = ({
     return {
       activeTabClassName,
       tab: isTabControlled ? controlledTab : tab,
+      renderTab,
       setTab: handleSetTab,
       registerHead,
       registerBody,
     }
-  }, [isTabControlled, tab, controlledTab])
+  }, [isTabControlled, tab, controlledTab, renderTab])
 
   return (
     <TabContext.Provider value={value}>
