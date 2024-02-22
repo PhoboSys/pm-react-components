@@ -11,6 +11,5 @@ var useFeatureToggles = function useFeatureToggles() {
   var data = (0, _react.useContext)(_FeatureTogglesProviderContext["default"]);
   return data;
 };
-var _default = useFeatureToggles;
-exports["default"] = _default;
+var _default = exports["default"] = useFeatureToggles;
 //# sourceMappingURL=useFeatureToggles.js.map

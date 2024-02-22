@@ -7,7 +7,7 @@ import CoinbaseWallet from '../SVG/CoinbaseWallet'
 
 import css from './Connector.module.scss'
 
-const connectorsUIData = {
+const supportedConnectors = {
   injected: {
     name: 'MetaMask',
     icon: <MetaMask/>,
@@ -23,16 +23,16 @@ const connectorsUIData = {
 }
 
 const Connector = ({ id, onClick }) => {
-  const { icon, name } = connectorsUIData[id]
-
   const handleClick = useCallback(() => {
     if (onClick) onClick(id)
   }, [id, onClick])
 
+  const connector = supportedConnectors[id]
+  if (!connector) return null
   return (
     <li className={css.container} onClick={handleClick}>
-      <span className={css.icon}>{icon}</span>
-      <span className={css.name}>{name}</span>
+      <span className={css.icon}>{connector.icon}</span>
+      <span className={css.name}>{connector.name}</span>
     </li>
   )
 }
