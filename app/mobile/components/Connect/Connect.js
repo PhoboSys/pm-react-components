@@ -19,5 +19,6 @@ var Connect = function Connect(_ref) {
 Connect.propTypes = {
   onClick: _propTypes["default"].func
 };
-var _default = exports["default"] = Connect;
+var _default = Connect;
+exports["default"] = _default;
 //# sourceMappingURL=Connect.js.map

@@ -30,5 +30,6 @@ var CoinbaseWallet = function CoinbaseWallet() {
     fill: "white"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(CoinbaseWallet);
+var _default = /*#__PURE__*/_react["default"].memo(CoinbaseWallet);
+exports["default"] = _default;
 //# sourceMappingURL=CoinbaseWallet.js.map
