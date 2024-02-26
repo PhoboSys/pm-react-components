@@ -22,6 +22,5 @@ var CloseIcon = function CloseIcon(_ref) {
     fill: "white"
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(CloseIcon);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(CloseIcon);
 //# sourceMappingURL=CloseIcon.js.map

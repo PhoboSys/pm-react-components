@@ -18,6 +18,5 @@ var Spinner = function Spinner(_ref) {
 Spinner.propTypes = {
   className: _propTypes["default"].string
 };
-var _default = Spinner;
-exports["default"] = _default;
+var _default = exports["default"] = Spinner;
 //# sourceMappingURL=Spinner.js.map

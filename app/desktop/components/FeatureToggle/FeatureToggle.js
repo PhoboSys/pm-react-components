@@ -30,6 +30,5 @@ var FeatureToggle = function FeatureToggle() {
     onClick: open
   }, /*#__PURE__*/_react["default"].createElement(_Toggles["default"], null)), modal);
 };
-var _default = (0, _hocs.withDevelopmentOnly)( /*#__PURE__*/_react["default"].memo(FeatureToggle));
-exports["default"] = _default;
+var _default = exports["default"] = (0, _hocs.withDevelopmentOnly)( /*#__PURE__*/_react["default"].memo(FeatureToggle));
 //# sourceMappingURL=FeatureToggle.js.map

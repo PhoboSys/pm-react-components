@@ -149,8 +149,9 @@
         font-size: 16px;
         line-height: 19px;
         color: var(--profilebar-wallet-address-color);
-        max-width: 100px;
+        max-width: 300px;
         text-wrap: nowrap;
+        white-space: nowrap;
         overflow: hidden;
       }
 
