@@ -9,7 +9,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var modalsByType = {
   primary: _PrimaryModal["default"]
 };
-var getModalByType = exports.getModalByType = function getModalByType(type) {
+var getModalByType = function getModalByType(type) {
   return modalsByType[type];
 };
+exports.getModalByType = getModalByType;
 //# sourceMappingURL=modals.utils.js.map

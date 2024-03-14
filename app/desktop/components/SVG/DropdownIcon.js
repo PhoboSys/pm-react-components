@@ -24,5 +24,6 @@ var DropdownIcon = function DropdownIcon(_ref) {
 DropdownIcon.propTypes = {
   fill: _propTypes["default"].string
 };
-var _default = exports["default"] = DropdownIcon;
+var _default = DropdownIcon;
+exports["default"] = _default;
 //# sourceMappingURL=DropdownIcon.js.map
