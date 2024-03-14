@@ -24,5 +24,6 @@ var USDT = function USDT(_ref) {
     fill: fill
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(USDT);
+var _default = /*#__PURE__*/_react["default"].memo(USDT);
+exports["default"] = _default;
 //# sourceMappingURL=USDT.DARK.js.map

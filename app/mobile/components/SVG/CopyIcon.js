@@ -19,5 +19,6 @@ var CopyIcon = function CopyIcon() {
   }));
 };
 CopyIcon.propTypes = {};
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(CopyIcon);
+var _default = /*#__PURE__*/_react["default"].memo(CopyIcon);
+exports["default"] = _default;
 //# sourceMappingURL=CopyIcon.js.map

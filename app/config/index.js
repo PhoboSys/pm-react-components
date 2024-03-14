@@ -10,8 +10,9 @@ var config = {
   mt_base_path: process.env.MT_BASE_PATH || '/',
   react_mount_element_id: process.env.REACT_MOUNT_ELEMENT_ID,
   modal_id: 'gh-app-modal',
-  avatars_path: 'https://staging.oracly.io/ava/output/',
+  avatars_path: 'https://app.staging.oracly.io/ava/output/',
   avatars_amount: 636
 };
-var _default = exports["default"] = config;
+var _default = config;
+exports["default"] = _default;
 //# sourceMappingURL=index.js.map
