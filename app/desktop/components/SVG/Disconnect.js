@@ -21,6 +21,5 @@ var Disconnect = function Disconnect() {
     fill: "#A3AFF2"
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(Disconnect);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Disconnect);
 //# sourceMappingURL=Disconnect.js.map

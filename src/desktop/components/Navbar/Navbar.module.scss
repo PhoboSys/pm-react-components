@@ -55,7 +55,8 @@
 }
 
 .menuItem {
-  display: flex;
+  display: none;
+  // display: flex;
   align-items: center;
   border-radius: 20px;
   transition: background-color .3s linear;

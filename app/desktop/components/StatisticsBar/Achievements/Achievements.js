@@ -39,6 +39,5 @@ var Achievements = function Achievements(_ref) {
 Achievements.propTypes = {
   achievements: _propTypes["default"].array
 };
-var _default = Achievements;
-exports["default"] = _default;
+var _default = exports["default"] = Achievements;
 //# sourceMappingURL=Achievements.js.map
