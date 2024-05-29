@@ -8,7 +8,10 @@
 }
 
 .connectButton {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 10px;
   text-align: center;
   width: 125px;
   height: 45px;
@@ -22,11 +25,26 @@
   font-weight: 600;
   cursor: pointer;
 
+  &.connection {
+    > span {
+      margin-left: 10px;
+    }
+  }
+
   &:hover {
     background: var(--connect-button-background-color-hover);
   }
 
   &:active {
     background: var(--connect-button-background-color-active);
+  }
+
+  @keyframes loading {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
 }

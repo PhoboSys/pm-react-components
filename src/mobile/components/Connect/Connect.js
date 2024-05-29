@@ -1,22 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Spinner from '../common/Spinner'
+
 import css from './Connect.module.scss'
 
-const Connect = ({ onClick }) => {
+const Connect = ({ isConnecting, onClick }) => {
   return (
     <a
       title='Connect Wallet'
       className={css.connectButton}
       onClick={onClick}
     >
-      Connect
+      {isConnecting ? <Spinner className={css.spinner} /> : <span>Connect</span>}
     </a>
   )
 }
 
 Connect.propTypes = {
-  onClick: PropTypes.func
+  isConnecting: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default Connect

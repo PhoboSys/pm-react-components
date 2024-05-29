@@ -20,5 +20,6 @@ Header.propTypes = {
   className: _propTypes["default"].string,
   children: _propTypes["default"].node
 };
-var _default = exports["default"] = Header;
+var _default = Header;
+exports["default"] = _default;
 //# sourceMappingURL=Header.js.map

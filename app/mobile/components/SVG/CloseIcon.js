@@ -20,5 +20,6 @@ var CloseIcon = function CloseIcon() {
     fill: "white"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(CloseIcon);
+var _default = /*#__PURE__*/_react["default"].memo(CloseIcon);
+exports["default"] = _default;
 //# sourceMappingURL=CloseIcon.js.map
