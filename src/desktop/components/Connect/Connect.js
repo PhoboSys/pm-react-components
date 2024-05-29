@@ -2,17 +2,20 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
+import Spinner from '../common/Spinner'
+
 import css from './Connect.module.scss'
 
-const Connect = ({ className, onClick }) => {
+const Connect = ({ className, isConnecting, onClick }) => {
   return (
     <div className={cn(css.connect, className)}>
       <a
         title='Connect Wallet'
-        className={css.connectButton}
+        className={cn(css.connectButton, { [css.connection]: isConnecting })}
         onClick={onClick}
       >
-        Connect
+        <span>Connect</span>
+        {isConnecting && <Spinner />}
       </a>
    </div>
   )
@@ -20,7 +23,8 @@ const Connect = ({ className, onClick }) => {
 
 Connect.propTypes = {
   className: PropTypes.string,
-  onClick: PropTypes.func
+  isConnecting: PropTypes.bool,
+  onClick: PropTypes.func,
 }
 
 export default Connect

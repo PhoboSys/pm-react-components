@@ -33,5 +33,6 @@ CurrencyCell.propTypes = {
   convertedAmount: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   convertedCurrency: _propTypes["default"].string
 };
-var _default = exports["default"] = CurrencyCell;
+var _default = CurrencyCell;
+exports["default"] = _default;
 //# sourceMappingURL=CurrencyCell.js.map

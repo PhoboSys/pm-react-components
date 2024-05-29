@@ -19,6 +19,7 @@ const PMGlobalHeader = ({
   statistics,
   connectors,
   activeNavigationItem,
+  isConnecting,
   isConnected,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
   onProfileClick,
@@ -83,7 +84,7 @@ const PMGlobalHeader = ({
         >
           {content}
         </Header>
-        {!isConnected && <Connect onClick={handleConnectClick} />}
+        {!isConnected && <Connect isConnecting={isConnecting} onClick={handleConnectClick} />}
         <StatisticsBar
           account={account}
           statisticsAccount={statisticsAccount}
@@ -110,6 +111,7 @@ PMGlobalHeader.propTypes = {
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
   statistics: PropTypes.object,
+  isConnecting: PropTypes.bool,
   isConnected: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
   onConnectorClick: PropTypes.func,

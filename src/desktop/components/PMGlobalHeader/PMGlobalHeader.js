@@ -23,6 +23,7 @@ const PMGlobalHeader = ({
   logoLabelFill,
   currencyFill,
   mustUserLogin,
+  isConnecting,
   isConnected,
   isConnectBarOpened: isConnectBarOpenedControlled,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
@@ -134,6 +135,7 @@ const PMGlobalHeader = ({
           ) : (
             <Connect
               className={connectClassName}
+              isConnecting={isConnecting}
               onClick={handleConnectClick}
             />
           )}
@@ -174,6 +176,7 @@ PMGlobalHeader.propTypes = {
   logoLabelFill: PropTypes.string,
   currencyFill: PropTypes.string,
   mustUserLogin: PropTypes.bool,
+  isConnecting: PropTypes.bool,
   isConnected: PropTypes.bool,
   isConnectBarOpened: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,

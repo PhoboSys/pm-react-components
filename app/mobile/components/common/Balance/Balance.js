@@ -29,5 +29,6 @@ Balance.propTypes = {
   fill: _propTypes["default"].string,
   size: _propTypes["default"].number
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Balance);
+var _default = /*#__PURE__*/_react["default"].memo(Balance);
+exports["default"] = _default;
 //# sourceMappingURL=Balance.js.map

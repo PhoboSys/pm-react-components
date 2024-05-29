@@ -1,6 +1,6 @@
 .connectButton {
   position: fixed;
-  z-index: 9999;
+  z-index: 88;
   right: 26px;
   bottom: 19px;
   display: flex;
@@ -17,4 +17,10 @@
   user-select: none;
   cursor: pointer;
   box-shadow: 0 0 10px 0 rgba(0,0,0,.3);
+}
+
+.spinner {
+  width: 24px;
+  height: 24px;
+  border-width: 4px;
 }
