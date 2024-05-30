@@ -39,6 +39,10 @@
 - --pm-gh-scroll-thumb
 - --pm-gh-scroll-track
 - --pm-gh-statistics-header-stickyheader-gradient
+- --pm-gh-notification-item-shadow
+- --pm-gh-notification-item-bg
+- --pm-gh-notification-item-icon-bg
+- --pm-gh-notification-item-action-bg
 - --header-bg
 - --navbar-bg
 - --navbar-border-color
