@@ -91,7 +91,7 @@
     content: '';
     display: block;
     position: absolute;
-    top: calc(100%-1px);
+    top: calc(100% - 1px);
     left: 0;
     right: 0;
     height: 32px;
@@ -141,7 +141,7 @@
 
 .disconnect {
   position: relative;
-  width: calc(100%-6px);
+  width: calc(100% - 6px);
   height: 56px;
   border-radius: 16px;
   margin: 32px 3px 0 3px;
