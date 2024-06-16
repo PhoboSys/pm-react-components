@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
-import { colorHash } from '@lib/hash-utils'
+import config from '@config'
+import { numericHash } from '@lib/hash-utils'
 
 import css from './AccountIcon.module.scss';
 
@@ -10,11 +11,12 @@ const AccountIcon = ({ className, account = '', ...props }) => {
   return (
     <a
       className={cn(css.container, className)}
-      style={{ background: colorHash(account) }}
+      style={{
+        backgroundImage: `url(${config.avatars_path + numericHash(account) % config.avatars_amount}.png)`,
+        backgroundSize: 'cover'
+      }}
       {...props}
-    >
-      {account.slice(2, 3).toUpperCase()}
-    </a>
+    />
   )
 }
 
