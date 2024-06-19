@@ -39,6 +39,8 @@ const PMGlobalHeader = ({
   onDisconnectClick,
   onStatisticsBarCloseClick,
   onCurrencyChanged,
+  onChatClick,
+  onParisClick,
   content,
   children,
 }) => {
@@ -126,6 +128,8 @@ const PMGlobalHeader = ({
               onClick={onProfileClick}
               onIconClick={handleProfileIconClick}
               onCurrencyChanged={onCurrencyChanged}
+              onChatClick={onChatClick}
+              onParisClick={onParisClick}
             />
           ) : (
             <Connect
@@ -177,6 +181,8 @@ PMGlobalHeader.propTypes = {
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,
+  onChatClick: PropTypes.func,
+  onParisClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
 };

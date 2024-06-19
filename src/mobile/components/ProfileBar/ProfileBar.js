@@ -60,6 +60,8 @@ const ProfileBar = ({
   onClick,
   onCurrencyChanged,
   onIconClick,
+  onChatClick,
+  onParisClick
 }) => {
   const { currencyFill } = useGHProvider()
 
@@ -104,7 +106,7 @@ const ProfileBar = ({
 
   return (
     <div className={cn(css.profilebar, className)}>
-      <Button>
+      <Button onClick={onParisClick}>
         <DoubleArrowsIcon />
       </Button>
       <div className={cn(css.inner, innerClassName)} onClick={handleClick}>
@@ -155,7 +157,7 @@ const ProfileBar = ({
           onClick={handleIconClick}
         />
       </div>
-      <Button>
+      <Button onClick={onChatClick}>
         <ChatIcon />
       </Button>
     </div>
@@ -173,6 +175,8 @@ ProfileBar.propTypes = {
   onClick: PropTypes.func,
   onIconClick: PropTypes.func,
   onCurrencyChanged: PropTypes.func,
+  onChatClick: PropTypes.func,
+  onParisClick: PropTypes.func,
 }
 
 export default React.memo(ProfileBar)

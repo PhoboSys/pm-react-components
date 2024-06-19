@@ -7,15 +7,9 @@
   top: 0;
   right: 0;
   left: 0;
-  height: var(--header-height);
+  height: calc(var(--header-height) + var(--header-top));
   padding: 0 16px 0 8px;
   z-index: 2;
-}
-
-@media (min-width: 336px) {
-  .header {
-    column-gap: 8px;
-  }
 }
 
 .left {

@@ -1,0 +1,42 @@
+.label {
+  position: relative;
+  display: inline-block;
+  width: 46px;
+  height: 23px;
+}
+
+.input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked + span:before {
+    transform: translateX(20px);
+    box-shadow: #5bff00 0px 0px 5px 1px
+  }
+}
+
+.span {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #dddddd;
+  transition: 0.3s;
+  border-radius: 23px;
+
+  &:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2.6px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: 0.3s;
+    box-shadow: #ff4e4e 0px 0px 5px 1px
+  }
+}

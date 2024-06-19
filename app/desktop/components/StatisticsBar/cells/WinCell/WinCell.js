@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _htmlUtils = require("../../../../../lib/html-utils");
 var _WinCellModule = _interopRequireDefault(require("./WinCell.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var WinCell = function WinCell(_ref) {
   var count = _ref.count,
     percent = _ref.percent;
@@ -24,6 +24,5 @@ WinCell.propTypes = {
   count: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   percent: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])
 };
-var _default = WinCell;
-exports["default"] = _default;
+var _default = exports["default"] = WinCell;
 //# sourceMappingURL=WinCell.js.map
