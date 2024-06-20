@@ -57,6 +57,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onChatClick = _ref.onChatClick,
     onParisClick = _ref.onParisClick,
     content = _ref.content,
+    payoutButton = _ref.payoutButton,
     children = _ref.children;
   var _useModal = (0, _modals.useModal)({
       Content: _AuthModal["default"],
@@ -120,6 +121,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
     className: profileBarClassName,
     innerClassName: profileBarInnerClassName,
+    payoutButton: payoutButton,
     balance: balance,
     currency: currency,
     account: account,

@@ -55,6 +55,7 @@ const ProfileBar = ({
   className,
   innerClassName,
   currency,
+  payoutButton,
   balance,
   account,
   onClick,
@@ -110,7 +111,7 @@ const ProfileBar = ({
         <DoubleArrowsIcon />
       </Button>
       <div className={cn(css.inner, innerClassName)} onClick={handleClick}>
-
+        {payoutButton}
         <div
           key={changeid}
           className={cn(css.cash, {

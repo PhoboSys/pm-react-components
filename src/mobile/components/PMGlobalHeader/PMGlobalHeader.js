@@ -42,6 +42,7 @@ const PMGlobalHeader = ({
   onChatClick,
   onParisClick,
   content,
+  payoutButton,
   children,
 }) => {
   const {
@@ -119,6 +120,7 @@ const PMGlobalHeader = ({
             <ProfileBar
               className={profileBarClassName}
               innerClassName={profileBarInnerClassName}
+              payoutButton={payoutButton}
               balance={balance}
               currency={currency}
               account={account}

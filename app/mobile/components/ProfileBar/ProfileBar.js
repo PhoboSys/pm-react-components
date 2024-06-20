@@ -69,6 +69,7 @@ var ProfileBar = function ProfileBar(_ref) {
   var className = _ref.className,
     innerClassName = _ref.innerClassName,
     currency = _ref.currency,
+    payoutButton = _ref.payoutButton,
     balance = _ref.balance,
     account = _ref.account,
     onClick = _ref.onClick,
@@ -125,7 +126,7 @@ var ProfileBar = function ProfileBar(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_DoubleArrows["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_ProfileBarModule["default"].inner, innerClassName),
     onClick: handleClick
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, payoutButton, /*#__PURE__*/_react["default"].createElement("div", {
     key: changeid,
     className: (0, _clsx["default"])(_ProfileBarModule["default"].cash, _defineProperty(_defineProperty({}, _ProfileBarModule["default"].increase, difference && (0, _calcUtils.isPositive)(difference)), _ProfileBarModule["default"].decrease, difference && (0, _calcUtils.isNegative)(difference))),
     onClick: handleBalanceClick
