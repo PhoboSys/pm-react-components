@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var PARI = function PARI(_ref) {
   var _ref$fill = _ref.fill,
     fill = _ref$fill === void 0 ? '#ffffff' : _ref$fill,
@@ -24,5 +24,6 @@ var PARI = function PARI(_ref) {
     fill: fill
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(PARI);
+var _default = /*#__PURE__*/_react["default"].memo(PARI);
+exports["default"] = _default;
 //# sourceMappingURL=PARI.DARK.js.map

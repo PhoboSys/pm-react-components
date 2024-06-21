@@ -17,5 +17,5 @@ Object.defineProperty(exports, "Widget", {
 });
 var _NotificationsWidget = _interopRequireDefault(require("./NotificationsWidget"));
 var _NotificationsItem = _interopRequireDefault(require("./NotificationsItem"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 //# sourceMappingURL=index.js.map

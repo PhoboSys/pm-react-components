@@ -24,5 +24,5 @@ Object.defineProperty(exports, "Tabs", {
 var _Tabs = _interopRequireDefault(require("./Tabs"));
 var _Tab = _interopRequireDefault(require("./Tab"));
 var _TabBody = _interopRequireDefault(require("./TabBody"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 //# sourceMappingURL=index.js.map

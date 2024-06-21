@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var WalletConnect = function WalletConnect() {
   return /*#__PURE__*/_react["default"].createElement("svg", {
     width: "40",
@@ -40,5 +40,6 @@ var WalletConnect = function WalletConnect() {
     stopColor: "#316EF9"
   }))));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(WalletConnect);
+var _default = /*#__PURE__*/_react["default"].memo(WalletConnect);
+exports["default"] = _default;
 //# sourceMappingURL=WalletConnect.js.map

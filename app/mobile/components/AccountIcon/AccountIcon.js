@@ -7,14 +7,13 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
-var _config = _interopRequireDefault(require("../../../config"));
 var _hashUtils = require("../../../lib/hash-utils");
 var _AccountIconModule = _interopRequireDefault(require("./AccountIcon.module.scss"));
 var _excluded = ["className", "account"];
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
-function _extends() { return _extends = Object.assign ? Object.assign.bind() : function (n) { for (var e = 1; e < arguments.length; e++) { var t = arguments[e]; for (var r in t) ({}).hasOwnProperty.call(t, r) && (n[r] = t[r]); } return n; }, _extends.apply(null, arguments); }
-function _objectWithoutProperties(e, t) { if (null == e) return {}; var o, r, i = _objectWithoutPropertiesLoose(e, t); if (Object.getOwnPropertySymbols) { var n = Object.getOwnPropertySymbols(e); for (r = 0; r < n.length; r++) o = n[r], t.indexOf(o) >= 0 || {}.propertyIsEnumerable.call(e, o) && (i[o] = e[o]); } return i; }
-function _objectWithoutPropertiesLoose(r, e) { if (null == r) return {}; var t = {}; for (var n in r) if ({}.hasOwnProperty.call(r, n)) { if (e.indexOf(n) >= 0) continue; t[n] = r[n]; } return t; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 var AccountIcon = function AccountIcon(_ref) {
   var className = _ref.className,
     _ref$account = _ref.account,
@@ -23,14 +22,14 @@ var AccountIcon = function AccountIcon(_ref) {
   return /*#__PURE__*/_react["default"].createElement("a", _extends({
     className: (0, _clsx["default"])(_AccountIconModule["default"].container, className),
     style: {
-      backgroundImage: "url(".concat(_config["default"].avatars_path + (0, _hashUtils.numericHash)(account) % _config["default"].avatars_amount, ".png)"),
-      backgroundSize: 'cover'
+      background: (0, _hashUtils.colorHash)(account)
     }
-  }, props));
+  }, props), account.slice(2, 3).toUpperCase());
 };
 AccountIcon.propTypes = {
   className: _propTypes["default"].string,
   account: _propTypes["default"].string
 };
-var _default = exports["default"] = AccountIcon;
+var _default = AccountIcon;
+exports["default"] = _default;
 //# sourceMappingURL=AccountIcon.js.map

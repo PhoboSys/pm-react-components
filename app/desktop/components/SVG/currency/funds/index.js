@@ -9,7 +9,7 @@ var _ETH = _interopRequireDefault(require("./ETH.DARK"));
 var _USDT = _interopRequireDefault(require("./USDT.DARK"));
 var _USDC = _interopRequireDefault(require("./USDC.DARK"));
 var _PARI = _interopRequireDefault(require("./PARI.DARK"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var FUNDS = {
   UNKNOWN_DARK: _UNKNOWN["default"],
   ETH_DARK: _ETH["default"],

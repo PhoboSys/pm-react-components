@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var USDT = function USDT(_ref) {
   var _ref$fill = _ref.fill,
     fill = _ref$fill === void 0 ? '#000000' : _ref$fill,
@@ -24,5 +24,6 @@ var USDT = function USDT(_ref) {
     fill: fill
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(USDT);
+var _default = /*#__PURE__*/_react["default"].memo(USDT);
+exports["default"] = _default;
 //# sourceMappingURL=USDT.DARK.js.map

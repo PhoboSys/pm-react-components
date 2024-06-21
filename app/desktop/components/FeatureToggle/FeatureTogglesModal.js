@@ -9,7 +9,7 @@ var _lodash = require("lodash");
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _FeatureToggleButton = _interopRequireDefault(require("./FeatureToggleButton"));
 var _FeatureTogglesModalModule = _interopRequireDefault(require("./FeatureTogglesModal.module.scss"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var FeatureTogglesModal = function FeatureTogglesModal(_ref) {
   var toggles = _ref.toggles;
   return /*#__PURE__*/_react["default"].createElement("ul", {
@@ -29,5 +29,6 @@ var FeatureTogglesModal = function FeatureTogglesModal(_ref) {
 FeatureTogglesModal.propTypes = {
   toggles: _propTypes["default"].object
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(FeatureTogglesModal);
+var _default = /*#__PURE__*/_react["default"].memo(FeatureTogglesModal);
+exports["default"] = _default;
 //# sourceMappingURL=FeatureTogglesModal.js.map

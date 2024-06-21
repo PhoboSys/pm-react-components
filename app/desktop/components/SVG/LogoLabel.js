@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var LogoLabel = function LogoLabel(_ref) {
   var fill = _ref.fill;
   return /*#__PURE__*/_react["default"].createElement("svg", {
@@ -25,5 +25,6 @@ var LogoLabel = function LogoLabel(_ref) {
 LogoLabel.propTypes = {
   fill: _propTypes["default"].string
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(LogoLabel);
+var _default = /*#__PURE__*/_react["default"].memo(LogoLabel);
+exports["default"] = _default;
 //# sourceMappingURL=LogoLabel.js.map

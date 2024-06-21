@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _lodash = require("lodash");
 var _NotificationsItemModule = _interopRequireDefault(require("./NotificationsItem.module.scss"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var NotificationsItem = function NotificationsItem(_ref) {
   var className = _ref.className,
     icon = _ref.icon,
@@ -35,5 +35,6 @@ NotificationsItem.propTypes = {
   action: _propTypes["default"].node,
   onClick: _propTypes["default"].func
 };
-var _default = exports["default"] = NotificationsItem;
+var _default = NotificationsItem;
+exports["default"] = _default;
 //# sourceMappingURL=NotificationsItem.js.map

@@ -13,7 +13,7 @@ var _FeatureTogglesModal = _interopRequireDefault(require("./FeatureTogglesModal
 var _useFeatureToggles2 = _interopRequireDefault(require("../../../features/useFeatureToggles"));
 var _hocs = require("../../../hocs");
 var _FeatureToggleModule = _interopRequireDefault(require("./FeatureToggle.module.scss"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var FeatureToggle = function FeatureToggle() {
   var _useFeatureToggles = (0, _useFeatureToggles2["default"])(),
     _useFeatureToggles$to = _useFeatureToggles.toggles,
@@ -30,5 +30,6 @@ var FeatureToggle = function FeatureToggle() {
     onClick: open
   }, /*#__PURE__*/_react["default"].createElement(_Toggles["default"], null)), modal);
 };
-var _default = exports["default"] = (0, _hocs.withDevelopmentOnly)( /*#__PURE__*/_react["default"].memo(FeatureToggle));
+var _default = (0, _hocs.withDevelopmentOnly)( /*#__PURE__*/_react["default"].memo(FeatureToggle));
+exports["default"] = _default;
 //# sourceMappingURL=FeatureToggle.js.map
