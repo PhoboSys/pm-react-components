@@ -7,7 +7,6 @@
   background-color: #0F1F43;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   user-select: none;
   color: inherit;
 
@@ -18,10 +17,6 @@
 
   &[href] {
     text-decoration: unset;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   svg {

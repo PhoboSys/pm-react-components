@@ -32,7 +32,6 @@
       border-radius: 77px;
       transition: background-color .1s linear;
       position: relative;
-      cursor: pointer;
 
       &:active:not(:has(.difference:active)) {
         background: var(--profilebar-cash-bg-active);
@@ -45,11 +44,11 @@
         background-color: var(--profilebar-currency-popover-bg);
         padding: 4px;
         border-radius: 20px;
+        z-index: 100;
 
         .option {
           align-items: center;
           border-radius: 20px;
-          cursor: pointer;
           display: flex;
           height: 56px;
           margin-bottom: 2px;
@@ -59,12 +58,8 @@
           user-select: none;
 
           &.active {
-            cursor: default;
             background-color: var(--profilebar-currency-popover-option-bg-active);
 
-            &:hover {
-              background-color: var(--profilebar-currency-popover-option-bg-active);
-            }
             &:active {
               background-color: var(--profilebar-currency-popover-option-bg-active);
             }
@@ -72,10 +67,6 @@
 
           & > * {
             pointer-events: none;
-          }
-
-          &:hover {
-            background-color: var(--profilebar-currency-popover-option-bg-hover);
           }
 
           &:active {
@@ -127,10 +118,6 @@
     .action {
       box-shadow: inset 0px 0px 0px 0px #ffffff00;
       transition: box-shadow .1s ease-in-out;
-
-      &:hover {
-        box-shadow: inset 0px 0px 3px 3px #ffffff50;
-      }
     }
   }
 }

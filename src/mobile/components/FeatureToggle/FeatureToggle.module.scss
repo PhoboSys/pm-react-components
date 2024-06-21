@@ -7,21 +7,12 @@
   column-gap: calc((var(--navbar-width) - 56px) / 2);
   min-width: 56px;
   height: 56px;
-  cursor: pointer;
   user-select: none;
   text-decoration: none;
   background-color: transparent;
-  
-  &:hover {
-    background: var(--navbar-icon-bg-hover);
-  }
 
   &:active {
     background: var(--navbar-icon-bg-active);
-  }
-
-  &:hover {
-    background: var(--navbar-icon-bg-hover);
   }
 }
 
