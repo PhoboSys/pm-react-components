@@ -30,6 +30,5 @@ AccountIcon.propTypes = {
   className: _propTypes["default"].string,
   account: _propTypes["default"].string
 };
-var _default = AccountIcon;
-exports["default"] = _default;
+var _default = exports["default"] = AccountIcon;
 //# sourceMappingURL=AccountIcon.js.map

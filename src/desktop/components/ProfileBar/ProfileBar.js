@@ -16,7 +16,7 @@ import css from './ProfileBar.module.scss'
 
 const options = [
   { label: 'USD Coin', currency: 'USDC' },
-  { label: 'Oracly', currency: 'PARI' },
+  { label: 'Oracly', currency: 'DEMO' },
 ]
 
 const useChangeERC20 = (account, number, currency) => {

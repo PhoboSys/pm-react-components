@@ -1,6 +1,6 @@
 import React from 'react'
 
-const PARI = ({ fill = '#ffffff', size = 1 }) => {
+const DEMO = ({ fill = '#ffffff', size = 1 }) => {
   const width = size * 16
   const height = size * 16
 
@@ -14,5 +14,5 @@ const PARI = ({ fill = '#ffffff', size = 1 }) => {
 
 }
 
-export default React.memo(PARI)
+export default React.memo(DEMO)
 

@@ -35,6 +35,5 @@ NotificationsItem.propTypes = {
   action: _propTypes["default"].node,
   onClick: _propTypes["default"].func
 };
-var _default = NotificationsItem;
-exports["default"] = _default;
+var _default = exports["default"] = NotificationsItem;
 //# sourceMappingURL=NotificationsItem.js.map

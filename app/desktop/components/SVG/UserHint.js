@@ -20,6 +20,5 @@ var UserHint = function UserHint(_ref) {
     fill: "white"
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(UserHint);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(UserHint);
 //# sourceMappingURL=UserHint.js.map

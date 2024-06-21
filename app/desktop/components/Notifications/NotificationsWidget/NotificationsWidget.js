@@ -20,6 +20,5 @@ NotificationsWidget.propTypes = {
   className: _propTypes["default"].string,
   children: _propTypes["default"].node
 };
-var _default = NotificationsWidget;
-exports["default"] = _default;
+var _default = exports["default"] = NotificationsWidget;
 //# sourceMappingURL=NotificationsWidget.js.map

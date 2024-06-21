@@ -24,6 +24,5 @@ var USDC = function USDC(_ref) {
     fill: fill
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(USDC);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(USDC);
 //# sourceMappingURL=USDC.DARK.js.map

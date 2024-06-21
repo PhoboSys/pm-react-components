@@ -25,4 +25,4 @@ var DEMO = function DEMO(_ref) {
   }));
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(DEMO);
-//# sourceMappingURL=PARI.DARK.js.map
+//# sourceMappingURL=DEMO.DARK.js.map

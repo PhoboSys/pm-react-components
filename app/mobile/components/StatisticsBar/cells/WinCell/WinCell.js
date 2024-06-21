@@ -24,6 +24,5 @@ WinCell.propTypes = {
   count: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   percent: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number])
 };
-var _default = WinCell;
-exports["default"] = _default;
+var _default = exports["default"] = WinCell;
 //# sourceMappingURL=WinCell.js.map

@@ -24,6 +24,5 @@ Connect.propTypes = {
   isConnecting: _propTypes["default"].bool,
   onClick: _propTypes["default"].func
 };
-var _default = Connect;
-exports["default"] = _default;
+var _default = exports["default"] = Connect;
 //# sourceMappingURL=Connect.js.map
