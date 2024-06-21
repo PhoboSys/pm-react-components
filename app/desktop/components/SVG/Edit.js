@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Edit = function Edit(_ref) {
   var className = _ref.className;
   return /*#__PURE__*/_react["default"].createElement("svg", {
@@ -20,5 +20,6 @@ var Edit = function Edit(_ref) {
     fill: "#6381E7"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Edit);
+var _default = /*#__PURE__*/_react["default"].memo(Edit);
+exports["default"] = _default;
 //# sourceMappingURL=Edit.js.map

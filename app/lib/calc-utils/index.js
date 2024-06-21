@@ -10,7 +10,7 @@ exports.mul = mul;
 exports.sub = sub;
 var _lodash = require("lodash");
 var _big = _interopRequireDefault(require("big.js"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 _big["default"].PE = 1e+6;
 function __inNumbers() {
   for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {

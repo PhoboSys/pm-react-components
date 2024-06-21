@@ -61,4 +61,12 @@
       height: 100;
     }
   }
+
+  &:hover {
+    transform: rotate(-90deg);
+
+    svg path {
+      fill: #fff;
+    }
+  }
 }

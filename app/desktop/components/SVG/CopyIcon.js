@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var CopyIcon = function CopyIcon() {
   return /*#__PURE__*/_react["default"].createElement("svg", {
     width: "39",
@@ -19,5 +19,6 @@ var CopyIcon = function CopyIcon() {
   }));
 };
 CopyIcon.propTypes = {};
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(CopyIcon);
+var _default = /*#__PURE__*/_react["default"].memo(CopyIcon);
+exports["default"] = _default;
 //# sourceMappingURL=CopyIcon.js.map

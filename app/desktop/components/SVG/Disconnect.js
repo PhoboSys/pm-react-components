@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Disconnect = function Disconnect() {
   return /*#__PURE__*/_react["default"].createElement("svg", {
     width: "22",
@@ -21,5 +21,6 @@ var Disconnect = function Disconnect() {
     fill: "#A3AFF2"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Disconnect);
+var _default = /*#__PURE__*/_react["default"].memo(Disconnect);
+exports["default"] = _default;
 //# sourceMappingURL=Disconnect.js.map

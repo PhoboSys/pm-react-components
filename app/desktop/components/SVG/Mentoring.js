@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var Mentoring = function Mentoring() {
   return /*#__PURE__*/_react["default"].createElement("svg", {
     width: "24",
@@ -18,5 +18,6 @@ var Mentoring = function Mentoring() {
     fill: "#D0D7FF"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Mentoring);
+var _default = /*#__PURE__*/_react["default"].memo(Mentoring);
+exports["default"] = _default;
 //# sourceMappingURL=Mentoring.js.map

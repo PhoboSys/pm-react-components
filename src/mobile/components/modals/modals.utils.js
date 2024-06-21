@@ -1,4 +1,4 @@
-import PrimaryModal from '../modals/PrimaryModal'
+import PrimaryModal from '@components/modals/PrimaryModal'
 
 const modalsByType = {
   primary: PrimaryModal,

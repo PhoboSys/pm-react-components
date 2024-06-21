@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _TokenCurrencyCell = _interopRequireDefault(require("../TokenCurrencyCell"));
 var _FormattedCurrencyCell = _interopRequireDefault(require("../FormattedCurrencyCell"));
 var _CurrencyCellModule = _interopRequireDefault(require("./CurrencyCell.module.scss"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var CurrencyCell = function CurrencyCell(_ref) {
   var amount = _ref.amount,
     currency = _ref.currency,
@@ -33,5 +33,6 @@ CurrencyCell.propTypes = {
   convertedAmount: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   convertedCurrency: _propTypes["default"].string
 };
-var _default = exports["default"] = CurrencyCell;
+var _default = CurrencyCell;
+exports["default"] = _default;
 //# sourceMappingURL=CurrencyCell.js.map

@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var ArrowForward = function ArrowForward() {
   return /*#__PURE__*/_react["default"].createElement("svg", {
     width: "24",
@@ -18,5 +18,6 @@ var ArrowForward = function ArrowForward() {
     fill: "white"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(ArrowForward);
+var _default = /*#__PURE__*/_react["default"].memo(ArrowForward);
+exports["default"] = _default;
 //# sourceMappingURL=ArrowForward.js.map

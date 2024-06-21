@@ -42,6 +42,12 @@
   border-radius: 12px;
   background-color: var(--statistics-bar-close-icon-background-color);
   transition: all .7s linear;
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--statistics-bar-close-icon-background-color-hover);
+    border-color: var(--statistics-bar-close-icon-border-color-hover);
+  }
 
   &:active {
     background-color: var(--statistics-bar-close-icon-background-color-active);
@@ -54,6 +60,14 @@
     display: none;
     &~svg {
       display: unset;
+    }
+  }
+  &:hover {
+    svg {
+      display: unset;
+      &~svg {
+        display: none;
+      }
     }
   }
 }
@@ -80,6 +94,12 @@
 
 .copyIcon {
   margin-left: 15px;
+
+  &:hover {
+    svg path {
+      fill: var(--pm-gh-copy-icon-color-hover);
+    }
+  }
 
   svg path {
     transition: fill .1s linear;
@@ -109,6 +129,7 @@
       border: 2px solid transparent;
       font-size: 15px;
       color: #ffffff;
+      cursor: pointer;
   
       &.activeTab {
         border-color: #ffffff;

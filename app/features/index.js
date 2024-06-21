@@ -17,5 +17,5 @@ Object.defineProperty(exports, "useFeatureToggles", {
 });
 var _FeatureTogglesProvider = _interopRequireDefault(require("./FeatureTogglesProvider"));
 var _useFeatureToggles = _interopRequireDefault(require("./useFeatureToggles"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 //# sourceMappingURL=index.js.map

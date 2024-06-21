@@ -17,5 +17,5 @@ Object.defineProperty(exports, "useGHProvider", {
 });
 var _PMGlobalHeaderProvider = _interopRequireDefault(require("./PMGlobalHeaderProvider"));
 var _useGHProvider = _interopRequireDefault(require("./useGHProvider"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 //# sourceMappingURL=index.js.map

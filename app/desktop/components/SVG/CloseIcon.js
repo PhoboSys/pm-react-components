@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var CloseIcon = function CloseIcon(_ref) {
   var className = _ref.className;
   return /*#__PURE__*/_react["default"].createElement("svg", {
@@ -22,5 +22,6 @@ var CloseIcon = function CloseIcon(_ref) {
     fill: "white"
   }));
 };
-var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(CloseIcon);
+var _default = /*#__PURE__*/_react["default"].memo(CloseIcon);
+exports["default"] = _default;
 //# sourceMappingURL=CloseIcon.js.map

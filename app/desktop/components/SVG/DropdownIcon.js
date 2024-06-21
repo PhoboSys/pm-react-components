@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 var DropdownIcon = function DropdownIcon(_ref) {
   var _ref$fill = _ref.fill,
     fill = _ref$fill === void 0 ? 'black' : _ref$fill;
@@ -24,5 +24,6 @@ var DropdownIcon = function DropdownIcon(_ref) {
 DropdownIcon.propTypes = {
   fill: _propTypes["default"].string
 };
-var _default = exports["default"] = DropdownIcon;
+var _default = DropdownIcon;
+exports["default"] = _default;
 //# sourceMappingURL=DropdownIcon.js.map

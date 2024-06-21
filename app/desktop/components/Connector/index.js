@@ -10,5 +10,5 @@ Object.defineProperty(exports, "default", {
   }
 });
 var _Connector = _interopRequireDefault(require("./Connector"));
-function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 //# sourceMappingURL=index.js.map
