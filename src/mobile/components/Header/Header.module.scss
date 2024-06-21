@@ -4,10 +4,10 @@
   flex-direction: column;
   align-items: center;
   position: fixed;
-  top: var(--header-top);
+  top: 0;
   right: 0;
   left: 0;
-  height: var(--header-height);
+  height: calc(var(--header-height) + var(--header-top));
   padding: 0 16px 0 8px;
   z-index: 2;
 }
