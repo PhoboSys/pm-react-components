@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var UserHint = function UserHint(_ref) {
   var className = _ref.className;
   return /*#__PURE__*/_react["default"].createElement("svg", {
@@ -20,6 +20,5 @@ var UserHint = function UserHint(_ref) {
     fill: "white"
   }));
 };
-var _default = /*#__PURE__*/_react["default"].memo(UserHint);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(UserHint);
 //# sourceMappingURL=UserHint.js.map

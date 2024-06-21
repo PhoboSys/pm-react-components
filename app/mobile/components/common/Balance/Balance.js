@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _funds = require("../../SVG/currency/funds");
 var _BalanceModule = _interopRequireDefault(require("./Balance.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var Balance = function Balance(_ref) {
   var className = _ref.className,
     currency = _ref.currency,
@@ -29,6 +29,5 @@ Balance.propTypes = {
   fill: _propTypes["default"].string,
   size: _propTypes["default"].number
 };
-var _default = /*#__PURE__*/_react["default"].memo(Balance);
-exports["default"] = _default;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Balance);
 //# sourceMappingURL=Balance.js.map

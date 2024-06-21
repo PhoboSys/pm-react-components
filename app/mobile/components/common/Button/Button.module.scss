@@ -1,12 +1,12 @@
 .button {
   display: flex;
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   flex-shrink: 0;
   border-radius: 50%;
+  background-color: #0F1F43;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   user-select: none;
   color: inherit;
 
@@ -17,10 +17,6 @@
 
   &[href] {
     text-decoration: unset;
-
-    &:hover {
-      text-decoration: underline;
-    }
   }
 
   svg {

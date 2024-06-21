@@ -1,6 +1,7 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import Modal from 'react-modal'
 
+import config from '../../../../config'
 import CloseIcon from '../../SVG/CloseIcon'
 import Button from '../../common/Button'
 
