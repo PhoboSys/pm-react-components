@@ -1,6 +1,7 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 
+import { FeatureTogglesProvider }from '../FeatureToggle'
 import config from '../../../config'
 import PMGlobalHeaderProvider from '../PMGlobalHeaderProvider'
 import StatisticsBar from '../StatisticsBar'
@@ -13,6 +14,9 @@ const PMGlobalHeader = ({
   headerClassName,
   basepath = "/",
   currencyFill,
+  hideProfile,
+  hideNavbar,
+  featureToggles,
   mustUserLogin,
   account,
   statisticsAccount,
@@ -68,36 +72,40 @@ const PMGlobalHeader = ({
   }, [closeStatisticBar, onDisconnectClick])
 
   return (
-    <>
-      <PMGlobalHeaderProvider
-        currencyFill={currencyFill}
-        openAuthModal={openAuthModal}
-        closeAuthModal={closeAuthModal}
-      >
-        <Header
-          className={headerClassName}
-          basepath={basepath}
-          activeNavigationItem={activeNavigationItem}
-          isConnected={isConnected}
-          account={account}
-          onProfileClick={handleProfileClick}
+    <FeatureTogglesProvider toggles={featureToggles}>
+      <>
+        <PMGlobalHeaderProvider
+          currencyFill={currencyFill}
+          openAuthModal={openAuthModal}
+          closeAuthModal={closeAuthModal}
         >
-          {content}
-        </Header>
-        {!isConnected && <Connect isConnecting={isConnecting} onClick={handleConnectClick} />}
-        <StatisticsBar
-          account={account}
-          statisticsAccount={statisticsAccount}
-          isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
-          statistics={statistics}
-          onCloseClick={handleCloseStatisticsBar}
-          onDisconnectClick={handleDisconnectClick}
-        />
-        {children}
-        {modal}
-      </PMGlobalHeaderProvider>
-      <div id={config.modal_id} />
-    </>
+          <Header
+            className={headerClassName}
+            basepath={basepath}
+            activeNavigationItem={activeNavigationItem}
+            isConnected={isConnected}
+            account={account}
+            hideNavbar={hideNavbar}
+            hideProfile={hideProfile}
+            onProfileClick={handleProfileClick}
+          >
+            {content}
+          </Header>
+          {!isConnected && <Connect isConnecting={isConnecting} onClick={handleConnectClick} />}
+          <StatisticsBar
+            account={account}
+            statisticsAccount={statisticsAccount}
+            isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
+            statistics={statistics}
+            onCloseClick={handleCloseStatisticsBar}
+            onDisconnectClick={handleDisconnectClick}
+          />
+          {children}
+          {modal}
+        </PMGlobalHeaderProvider>
+        <div id={config.modal_id} />
+      </>
+    </FeatureTogglesProvider>
   )
 }
 
@@ -121,6 +129,7 @@ PMGlobalHeader.propTypes = {
   onStatisticsBarCloseClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
+  featureToggles: PropTypes.object,
 }
 
 export default React.memo(PMGlobalHeader)

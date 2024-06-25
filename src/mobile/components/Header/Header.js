@@ -13,6 +13,8 @@ const Header = ({
   basepath,
   account,
   onProfileClick,
+  hideProfile,
+  hideNavbar,
   children,
 }) => {
   const handleAccountIconClick = useCallback((e) => {
@@ -22,13 +24,15 @@ const Header = ({
 
   return (
     <div className={cn(css.header, className)}>
-      <div className={css.left}>
-        <Navbar basepath={basepath} />
-      </div>
+      {!hideNavbar && (
+        <div className={css.left}>
+          <Navbar basepath={basepath} />
+        </div>
+      )}
 
       {children}
 
-      {isConnected && (
+      {isConnected && !hideProfile && (
         <div className={css.right}>
           <AccountIcon
             account={account}

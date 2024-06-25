@@ -11,15 +11,17 @@ var _clsx = _interopRequireDefault(require("clsx"));
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
 var _Navbar = _interopRequireDefault(require("../Navbar"));
 var _HeaderModule = _interopRequireDefault(require("./Header.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
-function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && Object.prototype.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
+function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 var Header = function Header(_ref) {
   var className = _ref.className,
     isConnected = _ref.isConnected,
     basepath = _ref.basepath,
     account = _ref.account,
     onProfileClick = _ref.onProfileClick,
+    hideProfile = _ref.hideProfile,
+    hideNavbar = _ref.hideNavbar,
     children = _ref.children;
   var handleAccountIconClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
@@ -27,11 +29,11 @@ var Header = function Header(_ref) {
   }, [account, onProfileClick]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_HeaderModule["default"].header, className)
-  }, /*#__PURE__*/_react["default"].createElement("div", {
+  }, !hideNavbar && /*#__PURE__*/_react["default"].createElement("div", {
     className: _HeaderModule["default"].left
   }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
     basepath: basepath
-  })), children, isConnected && /*#__PURE__*/_react["default"].createElement("div", {
+  })), children, isConnected && !hideProfile && /*#__PURE__*/_react["default"].createElement("div", {
     className: _HeaderModule["default"].right
   }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
     account: account,

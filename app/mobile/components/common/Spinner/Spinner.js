@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _SpinnerModule = _interopRequireDefault(require("./Spinner.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var Spinner = function Spinner(_ref) {
   var className = _ref.className;
   return /*#__PURE__*/_react["default"].createElement("div", {

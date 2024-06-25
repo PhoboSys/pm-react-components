@@ -10,5 +10,5 @@ Object.defineProperty(exports, "useTransition", {
   }
 });
 var _useTransition = _interopRequireDefault(require("./useTransition"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 //# sourceMappingURL=index.js.map
