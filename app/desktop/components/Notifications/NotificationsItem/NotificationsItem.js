@@ -9,7 +9,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _lodash = require("lodash");
 var _NotificationsItemModule = _interopRequireDefault(require("./NotificationsItem.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var NotificationsItem = function NotificationsItem(_ref) {
   var className = _ref.className,
     icon = _ref.icon,

@@ -38,5 +38,5 @@ var _WinCell = _interopRequireDefault(require("./WinCell"));
 var _FormattedCurrencyCell = _interopRequireDefault(require("./FormattedCurrencyCell"));
 var _TokenCurrencyCell = _interopRequireDefault(require("./TokenCurrencyCell"));
 var _CurrencyCell = _interopRequireDefault(require("./CurrencyCell"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 //# sourceMappingURL=index.js.map

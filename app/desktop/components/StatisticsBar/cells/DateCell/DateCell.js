@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _dateUtils = require("../../../../../lib/date-utils");
 var _DateCellModule = _interopRequireDefault(require("./DateCell.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var DateCell = function DateCell(_ref) {
   var date = _ref.date;
   return /*#__PURE__*/_react["default"].createElement("span", {

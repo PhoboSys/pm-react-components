@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _calcUtils = require("../../../../../lib/calc-utils");
 var _htmlUtils = require("../../../../../lib/html-utils");
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var formatSymboled = function formatSymboled(amount, currency) {
   var formater = new Intl.NumberFormat(Intl.Locale, {
     style: 'currency',

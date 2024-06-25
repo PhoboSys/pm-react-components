@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _Logo = _interopRequireDefault(require("../SVG/Logo"));
 var _LogoModule = _interopRequireDefault(require("./Logo.module.scss"));
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var Logo = function Logo(_ref) {
   var basepath = _ref.basepath,
     logoFill = _ref.logoFill;
