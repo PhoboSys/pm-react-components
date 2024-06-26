@@ -26,6 +26,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var PMGlobalHeader = function PMGlobalHeader(_ref) {
   var headerClassName = _ref.headerClassName,
+    connectClassName = _ref.connectClassName,
     _ref$basepath = _ref.basepath,
     basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
     currencyFill = _ref.currencyFill,
@@ -106,6 +107,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     hideProfile: hideProfile,
     onProfileClick: handleProfileClick
   }, content), !isConnected && /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
+    className: connectClassName,
     isConnecting: isConnecting,
     onClick: handleConnectClick
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
