@@ -12,6 +12,7 @@ import { useModal } from '../modals';
 
 const PMGlobalHeader = ({
   headerClassName,
+  connectClassName,
   basepath = "/",
   currencyFill,
   hideProfile,
@@ -91,7 +92,13 @@ const PMGlobalHeader = ({
           >
             {content}
           </Header>
-          {!isConnected && <Connect isConnecting={isConnecting} onClick={handleConnectClick} />}
+          {!isConnected && (
+            <Connect 
+              className={connectClassName}
+              isConnecting={isConnecting}
+              onClick={handleConnectClick}
+            />
+          )}
           <StatisticsBar
             account={account}
             statisticsAccount={statisticsAccount}
