@@ -33,6 +33,9 @@ var options = [{
   currency: 'USDC'
 }, {
   label: 'Oracly',
+  currency: 'ORCY'
+}, {
+  label: 'Oracly',
   currency: 'DEMO'
 }];
 var useChangeERC20 = function useChangeERC20(account, number, currency) {
