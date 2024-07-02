@@ -30,6 +30,10 @@ var Tabs = function Tabs(_ref) {
     _useState2 = _slicedToArray(_useState, 2),
     tab = _useState2[0],
     setTab = _useState2[1];
+  var _useState3 = (0, _react.useState)(false),
+    _useState4 = _slicedToArray(_useState3, 2),
+    renderTab = _useState4[0],
+    setRenderTab = _useState4[1];
   var tabsRef = (0, _react.useRef)([]);
   var handleSetTab = (0, _react.useCallback)(function (tab) {
     if (!isTabControlled) setTab(tab);
@@ -37,6 +41,7 @@ var Tabs = function Tabs(_ref) {
   }, [isTabControlled]);
   var registerHead = (0, _react.useCallback)(function () {
     var tabIndex = tabsRef.current.push(1) - 1;
+    setRenderTab(tabsRef.current.length > 1);
     return tabIndex;
   }, []);
   var registerBody = (0, _react.useCallback)(function () {
@@ -50,11 +55,12 @@ var Tabs = function Tabs(_ref) {
     return {
       activeTabClassName: activeTabClassName,
       tab: isTabControlled ? controlledTab : tab,
+      renderTab: renderTab,
       setTab: handleSetTab,
       registerHead: registerHead,
       registerBody: registerBody
     };
-  }, [isTabControlled, tab, controlledTab]);
+  }, [isTabControlled, tab, controlledTab, renderTab]);
   return /*#__PURE__*/_react["default"].createElement(TabContext.Provider, {
     value: value
   }, /*#__PURE__*/_react["default"].createElement("div", {

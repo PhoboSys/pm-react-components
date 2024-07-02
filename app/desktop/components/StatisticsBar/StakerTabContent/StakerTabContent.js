@@ -20,7 +20,8 @@ var cellRenderers = {
         amount: row.value.amount,
         currency: row.value.currency,
         convertedAmount: row.value.convertedAmount,
-        convertedCurrency: row.value.convertedCurrency
+        convertedCurrency: row.value.convertedCurrency,
+        hideConverted: !Number(row.value.convertedAmount)
       });
     }
     if (row.name === 'voting') {

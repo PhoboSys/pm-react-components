@@ -6,18 +6,26 @@ import FormattedCurrencyCell from '../FormattedCurrencyCell'
 
 import css from './CurrencyCell.module.scss'
 
-const CurrencyCell = ({ amount, currency, convertedAmount, convertedCurrency }) => {
+const CurrencyCell = ({
+  amount,
+  currency,
+  convertedAmount,
+  convertedCurrency,
+  hideConverted = false,
+}) => {
   return (
     <div className={css.container}>
       <TokenCurrencyCell amount={amount} currency={currency} />
-      <span className={css.converted}>
-        &#40;
-        <FormattedCurrencyCell
-          amount={convertedAmount}
-          currency={convertedCurrency}
-        />
-        &#41;  
-      </span>
+      {!hideConverted && (
+        <span className={css.converted}>
+          &#40;
+          <FormattedCurrencyCell
+            amount={convertedAmount}
+            currency={convertedCurrency}
+          />
+          &#41;  
+        </span>
+      )}
     </div>
   )
 }
@@ -27,6 +35,7 @@ CurrencyCell.propTypes = {
   currency: PropTypes.string,
   convertedAmount: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   convertedCurrency: PropTypes.string,
+  hideConverted: PropTypes.bool,
 }
 
 export default CurrencyCell
