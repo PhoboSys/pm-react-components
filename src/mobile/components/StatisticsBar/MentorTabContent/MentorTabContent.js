@@ -8,7 +8,7 @@ import TabContent from '../TabContent'
 const cellRenderers = {
   stats: (row) => {
     if (row.name === 'proteges') {
-      return `${row.value.account} / ${row.value.total}`
+      return `${row.value.amount}`
     }
     if (row.name === 'earned') {
       return (

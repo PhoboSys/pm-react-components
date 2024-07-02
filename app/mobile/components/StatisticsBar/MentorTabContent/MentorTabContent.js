@@ -15,7 +15,7 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 var cellRenderers = {
   stats: function stats(row) {
     if (row.name === 'proteges') {
-      return "".concat(row.value.account, " / ").concat(row.value.total);
+      return "".concat(row.value.amount);
     }
     if (row.name === 'earned') {
       return /*#__PURE__*/_react["default"].createElement(_cells.FormattedCurrencyCell, {

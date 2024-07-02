@@ -78,29 +78,35 @@ const StatisticsBar = ({
 
         <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
           <div className={css.head}>
-            <Tab>Predictor</Tab>
-            <Tab>Mentor</Tab>
-            <Tab>Staker</Tab>
+            {statistics?.predictor && <Tab>Predictor</Tab>}
+            {statistics?.mentor && <Tab>Mentor</Tab>}
+            {statistics?.staker && <Tab>Staker</Tab>}
           </div>
 
-          <TabBody>
-            <PredictorTabContent
-              stats={statistics?.predictor?.stats}
-              tokenStats={statistics?.predictor?.tokenStats}
-            />
-          </TabBody>
-          <TabBody>
-            <MentorTabContent
-              stats={statistics?.mentor?.stats}
-              tokenStats={statistics?.mentor?.tokenStats}
-            />
-          </TabBody>
-          <TabBody>
-            <StakerTabContent
-              stats={statistics?.staker?.stats}
-              tokenStats={statistics?.staker?.tokenStats}
-            />
-          </TabBody>
+          {statistics?.predictor && (
+            <TabBody>
+              <PredictorTabContent
+                stats={statistics?.predictor?.stats}
+                tokenStats={statistics?.predictor?.tokenStats}
+              />
+            </TabBody>
+          )}
+          {statistics?.mentor && (
+            <TabBody>
+              <MentorTabContent
+                stats={statistics?.mentor?.stats}
+                tokenStats={statistics?.mentor?.tokenStats}
+              />
+            </TabBody>
+          )}
+          {statistics?.staker && (
+            <TabBody>
+              <StakerTabContent
+                stats={statistics?.staker?.stats}
+                tokenStats={statistics?.staker?.tokenStats}
+              />
+            </TabBody>
+          )}
         </Tabs>
       
       </div>

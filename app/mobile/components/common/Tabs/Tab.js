@@ -32,6 +32,7 @@ var Tab = function Tab(_ref) {
     activeTabClassName = _useContext.activeTabClassName,
     tab = _useContext.tab,
     setTab = _useContext.setTab,
+    renderTab = _useContext.renderTab,
     registerHead = _useContext.registerHead;
   (0, _react.useEffect)(function () {
     return setTabIndex(registerHead());
@@ -39,6 +40,7 @@ var Tab = function Tab(_ref) {
   var handleTabClick = (0, _react.useCallback)(function () {
     return setTab(tabIndex);
   }, [tabIndex]);
+  if (!renderTab) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_TabsModule["default"].container, _defineProperty({}, activeTabClassName, tabIndex === tab)),
     onClick: handleTabClick

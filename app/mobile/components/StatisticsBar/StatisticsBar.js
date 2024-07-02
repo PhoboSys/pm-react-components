@@ -83,13 +83,13 @@ var StatisticsBar = function StatisticsBar(_ref) {
     activeTabClassName: _StatisticsBarModule["default"].activeTab
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].head
-  }, /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Predictor"), /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
+  }, (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Predictor"), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$predictor = statistics.predictor) === null || _statistics$predictor === void 0 ? void 0 : _statistics$predictor.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$predictor2 = statistics.predictor) === null || _statistics$predictor2 === void 0 ? void 0 : _statistics$predictor2.tokenStats
-  })), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_MentorTabContent["default"], {
+  })), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_MentorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$mentor = statistics.mentor) === null || _statistics$mentor === void 0 ? void 0 : _statistics$mentor.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$mentor2 = statistics.mentor) === null || _statistics$mentor2 === void 0 ? void 0 : _statistics$mentor2.tokenStats
-  })), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
+  })), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$staker = statistics.staker) === null || _statistics$staker === void 0 ? void 0 : _statistics$staker.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats
   })))));

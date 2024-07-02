@@ -14,6 +14,7 @@ const cellRenderers = {
           currency={row.value.currency}
           convertedAmount={row.value.convertedAmount}
           convertedCurrency={row.value.convertedCurrency}
+          hideConverted={!Number(row.value.convertedAmount)}
         />
       )
     }
