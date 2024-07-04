@@ -24,6 +24,10 @@ const cellRenderers = {
     if (row.name === 'joined') {
       return <DateCell date={row.value} />
     }
+
+    if (row.name === 'last activity') {
+      return <DateCell date={row.value} />
+    }
   },
   claimed: (row) => (
     <TokenCurrencyCell
