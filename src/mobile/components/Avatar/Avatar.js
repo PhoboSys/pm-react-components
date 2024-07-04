@@ -8,6 +8,7 @@ import { numericHash } from '@lib/hash-utils'
 import css from './Avatar.module.scss'
 
 const Avatar = ({ className, account = '', ...props }) => {
+  console.log('account', account)
   return (
     <a
       className={cn(css.container, className)}

@@ -20,6 +20,7 @@ var Avatar = function Avatar(_ref) {
     _ref$account = _ref.account,
     account = _ref$account === void 0 ? '' : _ref$account,
     props = _objectWithoutProperties(_ref, _excluded);
+  console.log('account', account);
   return /*#__PURE__*/_react["default"].createElement("a", _extends({
     className: (0, _clsx["default"])(_AvatarModule["default"].container, className),
     style: {
