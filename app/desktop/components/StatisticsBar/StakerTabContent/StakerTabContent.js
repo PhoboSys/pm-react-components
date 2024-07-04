@@ -32,6 +32,11 @@ var cellRenderers = {
         date: row.value
       });
     }
+    if (row.name === 'last activity') {
+      return /*#__PURE__*/_react["default"].createElement(_cells.DateCell, {
+        date: row.value
+      });
+    }
   },
   claimed: function claimed(row) {
     return /*#__PURE__*/_react["default"].createElement(_cells.TokenCurrencyCell, {
