@@ -147,10 +147,9 @@ const PMGlobalHeader = ({
           onConnectorClick={handleConnectorClick}
         />
         <StatisticsBar
-          account={account}
-          nickname={nickname}
-          statisticsAccount={statisticsAccount}
-          statisticsNickname={statisticsNickname}
+          address={statisticsAccount}
+          username={statisticsNickname}
+          isSelfView={isConnected && (account === statisticsAccount)}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
           statistics={statistics}
           isConnected={isConnected}
