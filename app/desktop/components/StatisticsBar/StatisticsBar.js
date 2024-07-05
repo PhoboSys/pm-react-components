@@ -36,18 +36,13 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var StatisticsBar = function StatisticsBar(_ref) {
   var _statistics$predictor, _statistics$predictor2, _statistics$mentor, _statistics$mentor2, _statistics$staker, _statistics$staker2;
   var isOpened = _ref.isOpened,
-    account = _ref.account,
-    nickname = _ref.nickname,
-    statisticsAccount = _ref.statisticsAccount,
-    statisticsNickname = _ref.statisticsNickname,
+    address = _ref.address,
+    username = _ref.username,
+    isSelfView = _ref.isSelfView,
     statistics = _ref.statistics,
-    isConnected = _ref.isConnected,
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onNicknameChanged = _ref.onNicknameChanged;
-  var isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount);
-  var address = isSelfView ? account : statisticsAccount;
-  var username = (isSelfView ? nickname : statisticsNickname) || '';
   var timeout = 100; //ms
   var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
     _useTransition2 = _slicedToArray(_useTransition, 2),
@@ -122,11 +117,10 @@ var StatisticsBar = function StatisticsBar(_ref) {
 };
 StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,
-  account: _propTypes["default"].string,
-  statisticsAccount: _propTypes["default"].string,
-  connectors: _propTypes["default"].array,
+  address: _propTypes["default"].string,
+  username: _propTypes["default"].string,
+  isSelfView: _propTypes["default"].bool,
   statistics: _propTypes["default"].object,
-  isConnected: _propTypes["default"].bool,
   onCloseClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func,
   onNicknameChanged: _propTypes["default"].func

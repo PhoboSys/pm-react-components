@@ -100,8 +100,8 @@ const PMGlobalHeader = ({
             />
           )}
           <StatisticsBar
-            account={account}
-            statisticsAccount={statisticsAccount}
+            address={statisticsAccount}
+            isSelfView={isConnected && (account === statisticsAccount)}
             isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
             statistics={statistics}
             onCloseClick={handleCloseStatisticsBar}

@@ -19,15 +19,14 @@ import css from './StatisticsBar.module.scss'
 
 const StatisticsBar = ({
   isOpened,
-  account,
-  statisticsAccount,
+  address,
+  isSelfView,
   statistics,
   onCloseClick,
   onDisconnectClick,
 }) => {
-  const accountAddress = statisticsAccount || account
   const timeout = 100 //ms
-  const [mount, opening] = useTransition(isOpened && !!accountAddress, timeout)
+  const [mount, opening] = useTransition(isOpened && !!address, timeout)
 
   useEffect(() => {
     if (isOpened) document.body.style.overflow = 'hidden'
@@ -48,9 +47,7 @@ const StatisticsBar = ({
             className={cn(
               css.action,
               css.disconnect,
-              {
-                [css.hidden]: (!!statisticsAccount && (account !== statisticsAccount)),
-              }
+              { [css.hidden]: !isSelfView }
             )}
             onClick={onDisconnectClick}
           >
@@ -58,13 +55,13 @@ const StatisticsBar = ({
             <Connect/>
           </a>
           <div className={css.account}>
-            <AccountIcon className={css.icon} account={accountAddress} />
+            <AccountIcon className={css.icon} account={address} />
             <Copy
-              text={accountAddress}
+              text={address}
               className={css.address}
               iconClassName={css.copyIcon}
             >
-              {htmlAddress(accountAddress)}
+              {htmlAddress(address)}
             </Copy>
           </div>
           <a
@@ -116,9 +113,8 @@ const StatisticsBar = ({
 
 StatisticsBar.propTypes = {
   isOpened: PropTypes.bool,
-  account: PropTypes.string,
-  statisticsAccount: PropTypes.string,
-  connectors: PropTypes.array,
+  address: PropTypes.string,
+  isSelfView: PropTypes.bool,
   statistics: PropTypes.object,
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,

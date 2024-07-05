@@ -111,8 +111,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isConnecting: isConnecting,
     onClick: handleConnectClick
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
-    account: account,
-    statisticsAccount: statisticsAccount,
+    address: statisticsAccount,
+    isSelfView: isConnected && account === statisticsAccount,
     isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
     statistics: statistics,
     onCloseClick: handleCloseStatisticsBar,

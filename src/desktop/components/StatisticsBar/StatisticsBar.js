@@ -20,19 +20,14 @@ import css from './StatisticsBar.module.scss'
 
 const StatisticsBar = ({
   isOpened,
-  account,
-  nickname,
-  statisticsAccount,
-  statisticsNickname,
+  address,
+  username,
+  isSelfView,
   statistics,
-  isConnected,
   onCloseClick,
   onDisconnectClick,
   onNicknameChanged,
 }) => {
-  const isSelfView = isConnected && (!statisticsAccount || account === statisticsAccount)
-  const address = isSelfView ? account : statisticsAccount
-  const username = (isSelfView ? nickname : statisticsNickname) || ''
 
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
@@ -152,11 +147,10 @@ const StatisticsBar = ({
 
 StatisticsBar.propTypes = {
   isOpened: PropTypes.bool,
-  account: PropTypes.string,
-  statisticsAccount: PropTypes.string,
-  connectors: PropTypes.array,
+  address: PropTypes.string,
+  username: PropTypes.string,
+  isSelfView: PropTypes.bool,
   statistics: PropTypes.object,
-  isConnected: PropTypes.bool,
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
   onNicknameChanged: PropTypes.func,
