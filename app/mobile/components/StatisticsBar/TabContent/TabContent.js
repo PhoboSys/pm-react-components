@@ -8,6 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
+var _lodash = require("lodash");
 var _Table = _interopRequireDefault(require("../Table"));
 var _Achievements = _interopRequireDefault(require("../Achievements"));
 var _TabContentModule = _interopRequireDefault(require("./TabContent.module.scss"));
@@ -46,13 +47,13 @@ var TabContent = function TabContent(_ref3) {
     className: _TabContentModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement(_Achievements["default"], {
     achievements: achievements
-  }), /*#__PURE__*/_react["default"].createElement(_Table["default"], {
+  }), !(0, _lodash.isEmpty)(statsRows) && /*#__PURE__*/_react["default"].createElement(_Table["default"], {
     className: _TabContentModule["default"].statsTable,
     tdClassName: (0, _clsx["default"])(_TabContentModule["default"].tdRight, _TabContentModule["default"].statsTableTd),
     title: "Stats",
     rows: statsRows,
     columns: statsColumns
-  }), /*#__PURE__*/_react["default"].createElement(_Table["default"], {
+  }), !(0, _lodash.isEmpty)(tokenStatsRows) && /*#__PURE__*/_react["default"].createElement(_Table["default"], {
     className: _TabContentModule["default"].tokenStatsTable,
     title: "Token Stats",
     rows: tokenStatsRows,

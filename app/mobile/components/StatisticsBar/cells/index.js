@@ -27,14 +27,7 @@ Object.defineProperty(exports, "TokenCurrencyCell", {
     return _TokenCurrencyCell["default"];
   }
 });
-Object.defineProperty(exports, "WinCell", {
-  enumerable: true,
-  get: function get() {
-    return _WinCell["default"];
-  }
-});
 var _DateCell = _interopRequireDefault(require("./DateCell"));
-var _WinCell = _interopRequireDefault(require("./WinCell"));
 var _FormattedCurrencyCell = _interopRequireDefault(require("./FormattedCurrencyCell"));
 var _TokenCurrencyCell = _interopRequireDefault(require("./TokenCurrencyCell"));
 var _CurrencyCell = _interopRequireDefault(require("./CurrencyCell"));

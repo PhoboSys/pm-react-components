@@ -14,14 +14,16 @@ function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return 
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
 var cellRenderers = {
   stats: function stats(row) {
-    if (row.name === 'wins') {
-      var _row$value, _row$value2;
-      return /*#__PURE__*/_react["default"].createElement(_cells.WinCell, {
-        count: (_row$value = row.value) === null || _row$value === void 0 ? void 0 : _row$value.count,
-        percent: (_row$value2 = row.value) === null || _row$value2 === void 0 ? void 0 : _row$value2.percent
-      });
+    if (row.name === 'predictions') {
+      return row.value;
     }
     if (row.name === 'wagered') {
+      return /*#__PURE__*/_react["default"].createElement(_cells.FormattedCurrencyCell, {
+        amount: row.value.convertedAmount,
+        currency: row.value.convertedCurrency
+      });
+    }
+    if (row.name === 'earned') {
       return /*#__PURE__*/_react["default"].createElement(_cells.FormattedCurrencyCell, {
         amount: row.value.convertedAmount,
         currency: row.value.convertedCurrency
@@ -32,19 +34,24 @@ var cellRenderers = {
         date: row.value
       });
     }
-  },
-  wins: function wins(row) {
-    var _row$value3, _row$value4;
-    return /*#__PURE__*/_react["default"].createElement(_cells.WinCell, {
-      count: (_row$value3 = row.value) === null || _row$value3 === void 0 || (_row$value3 = _row$value3.wins) === null || _row$value3 === void 0 ? void 0 : _row$value3.count,
-      percent: (_row$value4 = row.value) === null || _row$value4 === void 0 || (_row$value4 = _row$value4.wins) === null || _row$value4 === void 0 ? void 0 : _row$value4.percent
-    });
+    if (row.name === 'last activity') {
+      return /*#__PURE__*/_react["default"].createElement(_cells.DateCell, {
+        date: row.value
+      });
+    }
   },
   wagered: function wagered(row) {
-    var _row$value5, _row$value6;
+    var _row$value, _row$value2;
     return /*#__PURE__*/_react["default"].createElement(_cells.TokenCurrencyCell, {
-      amount: (_row$value5 = row.value) === null || _row$value5 === void 0 || (_row$value5 = _row$value5.wagered) === null || _row$value5 === void 0 ? void 0 : _row$value5.amount,
-      currency: (_row$value6 = row.value) === null || _row$value6 === void 0 || (_row$value6 = _row$value6.wagered) === null || _row$value6 === void 0 ? void 0 : _row$value6.currency
+      amount: (_row$value = row.value) === null || _row$value === void 0 || (_row$value = _row$value.wagered) === null || _row$value === void 0 ? void 0 : _row$value.amount,
+      currency: (_row$value2 = row.value) === null || _row$value2 === void 0 || (_row$value2 = _row$value2.wagered) === null || _row$value2 === void 0 ? void 0 : _row$value2.currency
+    });
+  },
+  earned: function earned(row) {
+    var _row$value3, _row$value4;
+    return /*#__PURE__*/_react["default"].createElement(_cells.TokenCurrencyCell, {
+      amount: (_row$value3 = row.value) === null || _row$value3 === void 0 || (_row$value3 = _row$value3.earned) === null || _row$value3 === void 0 ? void 0 : _row$value3.amount,
+      currency: (_row$value4 = row.value) === null || _row$value4 === void 0 || (_row$value4 = _row$value4.earned) === null || _row$value4 === void 0 ? void 0 : _row$value4.currency
     });
   }
 };
@@ -64,11 +71,11 @@ var PredictorTabContent = function PredictorTabContent(_ref) {
       label: 'Name',
       dataKey: 'name'
     }, {
-      label: 'Wins',
-      cellRenderer: cellRenderers.wins
-    }, {
       label: 'Wagered',
       cellRenderer: cellRenderers.wagered
+    }, {
+      label: 'Earned',
+      cellRenderer: cellRenderers.earned
     }];
   }, []);
   return /*#__PURE__*/_react["default"].createElement(_TabContent["default"], {
