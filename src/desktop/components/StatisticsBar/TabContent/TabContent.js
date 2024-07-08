@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
+import { isEmpty } from 'lodash'
 
 import Table from '../Table'
 import Achievements from '../Achievements'
@@ -27,19 +28,23 @@ const TabContent = ({
   return (
     <div className={css.container}>
       <Achievements achievements={achievements} />
-      <Table
-        className={css.statsTable}
-        tdClassName={cn(css.tdRight, css.statsTableTd)}
-        title="Stats"
-        rows={statsRows}
-        columns={statsColumns}
-      />
-      {<Table
-        className={css.tokenStatsTable}
-        title="Token Stats"
-        rows={tokenStatsRows}
-        columns={tokenStatsColumns}
-      />}
+      {!isEmpty(statsRows) && (
+        <Table
+          className={css.statsTable}
+          tdClassName={cn(css.tdRight, css.statsTableTd)}
+          title="Stats"
+          rows={statsRows}
+          columns={statsColumns}
+        />
+      )}
+      {!isEmpty(tokenStatsRows) && (
+        <Table
+          className={css.tokenStatsTable}
+          title="Token Stats"
+          rows={tokenStatsRows}
+          columns={tokenStatsColumns}
+        />
+      )}
     </div>
   )
 }

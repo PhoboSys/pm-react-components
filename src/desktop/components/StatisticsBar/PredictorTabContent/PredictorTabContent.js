@@ -2,15 +2,23 @@ import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
 import { TokenCurrencyCell, DateCell } from '../cells'
-import { WinCell, FormattedCurrencyCell } from '../cells'
+import { FormattedCurrencyCell } from '../cells'
 import TabContent from '../TabContent'
 
 const cellRenderers = {
   stats: (row) => {
-    if (row.name === 'wins') {
-      return <WinCell count={row.value?.count} percent={row.value?.percent} />
+    if (row.name === 'predictions') {
+      return row.value
     }
     if (row.name === 'wagered') {
+      return (
+        <FormattedCurrencyCell
+          amount={row.value.convertedAmount}
+          currency={row.value.convertedCurrency}
+        />
+      )
+    }
+    if (row.name === 'earned') {
       return (
         <FormattedCurrencyCell
           amount={row.value.convertedAmount}
@@ -21,17 +29,20 @@ const cellRenderers = {
     if (row.name === 'joined') {
       return <DateCell date={row.value} />
     }
+    if (row.name === 'last activity') {
+      return <DateCell date={row.value} />
+    }
   },
-  wins: (row) => (
-    <WinCell
-      count={row.value?.wins?.count}
-      percent={row.value?.wins?.percent}
-    />
-  ),
   wagered: (row) => (
     <TokenCurrencyCell
       amount={row.value?.wagered?.amount}
       currency={row.value?.wagered?.currency}
+    />
+  ),
+  earned: (row) => (
+    <TokenCurrencyCell
+      amount={row.value?.earned?.amount}
+      currency={row.value?.earned?.currency}
     />
   ),
 }
@@ -43,8 +54,8 @@ const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
   ], [])
   const tokenStatsColumns = useMemo(() => [
     { label: 'Name', dataKey: 'name' },
-    { label: 'Wins', cellRenderer: cellRenderers.wins },
     { label: 'Wagered', cellRenderer: cellRenderers.wagered },
+    { label: 'Earned', cellRenderer: cellRenderers.earned },
   ], [])
 
   return (
