@@ -23,8 +23,10 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function useToRowsArray() {
   var dataMap = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+  var order = arguments.length > 1 ? arguments[1] : undefined;
   return (0, _react.useMemo)(function () {
-    return Object.entries(dataMap).map(function (_ref) {
+    var rows = Object.entries(dataMap);
+    rows = rows.map(function (_ref) {
       var _ref2 = _slicedToArray(_ref, 2),
         name = _ref2[0],
         value = _ref2[1];
@@ -33,15 +35,22 @@ function useToRowsArray() {
         value: value
       };
     });
-  }, [dataMap]);
+    if (order) {
+      rows = rows.sort(function (s1, s2) {
+        return order.indexOf(s1.name) - order.indexOf(s2.name);
+      });
+    }
+    return rows;
+  }, [dataMap, order]);
 }
 var TabContent = function TabContent(_ref3) {
   var achievements = _ref3.achievements,
     stats = _ref3.stats,
+    statsOrder = _ref3.statsOrder,
     statsColumns = _ref3.statsColumns,
     tokenStats = _ref3.tokenStats,
     tokenStatsColumns = _ref3.tokenStatsColumns;
-  var statsRows = useToRowsArray(stats);
+  var statsRows = useToRowsArray(stats, statsOrder);
   var tokenStatsRows = useToRowsArray(tokenStats);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: _TabContentModule["default"].container
