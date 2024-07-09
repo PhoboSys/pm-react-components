@@ -41,6 +41,7 @@ var cellRenderers = {
     });
   }
 };
+var statsOrder = ['proteges', 'earned', 'joined', 'last activity'];
 var MentorTabContent = function MentorTabContent(_ref) {
   var achievements = _ref.achievements,
     stats = _ref.stats,
@@ -64,6 +65,7 @@ var MentorTabContent = function MentorTabContent(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_TabContent["default"], {
     achievements: achievements,
     stats: stats,
+    statsOrder: statsOrder,
     statsColumns: statsColumns,
     tokenStats: tokenStats,
     tokenStatsColumns: tokenStatsColumns

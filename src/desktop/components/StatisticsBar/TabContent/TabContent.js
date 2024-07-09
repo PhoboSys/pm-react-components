@@ -8,21 +8,29 @@ import Achievements from '../Achievements'
 
 import css from './TabContent.module.scss'
 
-function useToRowsArray(dataMap = {}) {
-  return useMemo(() =>
-    Object.entries(dataMap).map(([name, value]) => ({ name, value })),
-    [dataMap]
-  )
+function useToRowsArray(dataMap = {}, order) {
+  return useMemo(() => {
+    let rows = Object.entries(dataMap)
+
+    rows = rows.map(([name, value]) => ({ name, value }))
+
+    if (order) {
+      rows = rows.sort((s1, s2) => order.indexOf(s1.name) - order.indexOf(s2.name))
+    }
+
+    return rows
+  }, [dataMap, order])
 }
 
 const TabContent = ({
   achievements,
   stats,
+  statsOrder,
   statsColumns,
   tokenStats,
   tokenStatsColumns,
 }) => {
-  const statsRows = useToRowsArray(stats)
+  const statsRows = useToRowsArray(stats, statsOrder)
   const tokenStatsRows = useToRowsArray(tokenStats)
 
   return (

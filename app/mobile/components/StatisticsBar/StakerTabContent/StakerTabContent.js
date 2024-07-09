@@ -45,7 +45,8 @@ var cellRenderers = {
     });
   }
 };
-var PredictorTabContent = function PredictorTabContent(_ref) {
+var statsOrder = ['staked', 'voting', 'joined', 'last activity'];
+var StakerTabContent = function StakerTabContent(_ref) {
   var achievements = _ref.achievements,
     stats = _ref.stats,
     tokenStats = _ref.tokenStats;
@@ -68,15 +69,16 @@ var PredictorTabContent = function PredictorTabContent(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_TabContent["default"], {
     achievements: achievements,
     stats: stats,
+    statsOrder: statsOrder,
     statsColumns: statsColumns,
     tokenStats: tokenStats,
     tokenStatsColumns: tokenStatsColumns
   });
 };
-PredictorTabContent.propTypes = {
+StakerTabContent.propTypes = {
   achievements: _propTypes["default"].array,
   stats: _propTypes["default"].object,
   tokenStats: _propTypes["default"].object
 };
-var _default = exports["default"] = PredictorTabContent;
+var _default = exports["default"] = StakerTabContent;
 //# sourceMappingURL=StakerTabContent.js.map

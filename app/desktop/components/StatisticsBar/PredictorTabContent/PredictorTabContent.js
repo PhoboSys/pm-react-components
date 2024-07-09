@@ -55,6 +55,7 @@ var cellRenderers = {
     });
   }
 };
+var statsOrder = ['predictions', 'wegered', 'earned', 'joined', 'last activity'];
 var PredictorTabContent = function PredictorTabContent(_ref) {
   var achievements = _ref.achievements,
     stats = _ref.stats,
@@ -81,6 +82,7 @@ var PredictorTabContent = function PredictorTabContent(_ref) {
   return /*#__PURE__*/_react["default"].createElement(_TabContent["default"], {
     achievements: achievements,
     stats: stats,
+    statsOrder: statsOrder,
     statsColumns: statsColumns,
     tokenStats: tokenStats,
     tokenStatsColumns: tokenStatsColumns

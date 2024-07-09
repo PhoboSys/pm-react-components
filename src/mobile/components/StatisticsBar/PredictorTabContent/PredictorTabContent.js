@@ -47,6 +47,8 @@ const cellRenderers = {
   ),
 }
 
+const statsOrder = ['predictions', 'wegered', 'earned', 'joined', 'last activity']
+
 const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
   const statsColumns = useMemo(() => [
     { dataKey: 'name' },
@@ -62,6 +64,7 @@ const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
     <TabContent
       achievements={achievements}
       stats={stats}
+      statsOrder={statsOrder}
       statsColumns={statsColumns}
       tokenStats={tokenStats}
       tokenStatsColumns={tokenStatsColumns}
