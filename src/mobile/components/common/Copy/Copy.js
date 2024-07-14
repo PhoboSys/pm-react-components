@@ -1,5 +1,6 @@
 import React, { useCallback, useState, useMemo, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { createPortal } from 'react-dom'
 import cn from 'clsx'
 import { usePopper } from 'react-popper'
 
@@ -14,6 +15,7 @@ const Copy = ({
   text,
   offsetX = 0,
   offsetY = 10,
+  target,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
 
@@ -41,7 +43,8 @@ const Copy = ({
     modifiers,
   })
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback((e) => {
+    e.stopPropagation()
     navigator.clipboard.writeText(text)
     setIsOpen(true)
   }, [text])
@@ -51,6 +54,13 @@ const Copy = ({
     if (isOpen) timeoutid = setTimeout(() => setIsOpen(false), 1000)
     return () => clearTimeout(timeoutid)
   }, [isOpen])
+
+  const renderPopper = () => (
+    <div className={css.popper} ref={setPopperElement} style={styles.popper} {...attributes.popper}>
+      Copied to clipboard!
+      <div className={css.arrow} ref={setArrowElement} style={styles.arrow} />
+    </div>
+  )
 
   return (
     <>
@@ -64,10 +74,7 @@ const Copy = ({
           <CopyIcon />
         </span>
       </span>
-      <div className={css.popper} ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-        Copied to clipboard!
-        <div className={css.arrow} ref={setArrowElement} style={styles.arrow} />
-      </div>
+      {target ? createPortal(renderPopper(), target) : renderPopper()}
     </>
   )
 }
@@ -75,10 +82,11 @@ const Copy = ({
 Copy.propTypes = {
   className: PropTypes.string,
   iconClassName: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.node,
   text: PropTypes.string,
   offsetX: PropTypes.number,
-  offsetY: PropTypes.number
+  offsetY: PropTypes.number,
+  target: PropTypes.instanceOf(Element),
 }
 
 export default Copy

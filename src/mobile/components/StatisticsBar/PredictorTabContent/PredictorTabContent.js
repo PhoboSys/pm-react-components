@@ -47,7 +47,7 @@ const cellRenderers = {
   ),
 }
 
-const statsOrder = ['predictions', 'wegered', 'earned', 'joined', 'last activity']
+const statsOrder = ['predictions', 'wagered', 'earned', 'joined', 'last activity']
 
 const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
   const statsColumns = useMemo(() => [
@@ -56,8 +56,8 @@ const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
   ], [])
   const tokenStatsColumns = useMemo(() => [
     { label: 'Name', dataKey: 'name' },
-    { label: 'Wagered', cellRenderer: cellRenderers.token },
-    { label: 'Earned', cellRenderer: cellRenderers.token },
+    { label: 'Wagered', cellRenderer: cellRenderers.wagered },
+    { label: 'Earned', cellRenderer: cellRenderers.earned },
   ], [])
 
   return (

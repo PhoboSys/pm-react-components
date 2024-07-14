@@ -14,6 +14,7 @@ import AccountIcon from '../AccountIcon'
 import PredictorTabContent from './PredictorTabContent'
 import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
+import InvitationLink from './InvitationLink'
 import Nickname from './Nickname'
 
 import css from './StatisticsBar.module.scss'
@@ -97,49 +98,55 @@ const StatisticsBar = ({
         </a>
       </div>
 
-      <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
-        <div className={css.head}>
-          {statistics?.predictor && <Tab>Oracler</Tab>}
-          {statistics?.mentor && <Tab>Mentor</Tab>}
-          {statistics?.staker && <Tab>Staker</Tab>}
-        </div>
+      <div className={css.content}>
+        {(statistics?.predictor || statistics?.mentor || statistics?.staker) && (
+          <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
+            <div className={css.head}>
+              {statistics?.predictor && <Tab>Oracler</Tab>}
+              {statistics?.mentor && <Tab>Mentor</Tab>}
+              {statistics?.staker && <Tab>Staker</Tab>}
+            </div>
 
-        {statistics?.predictor && (
-          <TabBody>
-            <PredictorTabContent
-              stats={statistics?.predictor?.stats}
-              tokenStats={statistics?.predictor?.tokenStats}
-            />
-          </TabBody>
+            {statistics?.predictor && (
+              <TabBody>
+                <PredictorTabContent
+                  stats={statistics?.predictor?.stats}
+                  tokenStats={statistics?.predictor?.tokenStats}
+                />
+              </TabBody>
+            )}
+            {statistics?.mentor && (
+              <TabBody>
+                <MentorTabContent
+                  stats={statistics?.mentor?.stats}
+                  tokenStats={statistics?.mentor?.tokenStats}
+                />
+              </TabBody>
+            )}
+            {statistics?.staker && (
+              <TabBody>
+                <StakerTabContent
+                  stats={statistics?.staker?.stats}
+                  tokenStats={statistics?.staker?.tokenStats}
+                />
+              </TabBody>
+            )}
+          </Tabs>
         )}
-        {statistics?.mentor && (
-          <TabBody>
-            <MentorTabContent
-              stats={statistics?.mentor?.stats}
-              tokenStats={statistics?.mentor?.tokenStats}
-            />
-          </TabBody>
-        )}
-        {statistics?.staker && (
-          <TabBody>
-            <StakerTabContent
-              stats={statistics?.staker?.stats}
-              tokenStats={statistics?.staker?.tokenStats}
-            />
-          </TabBody>
-        )}
-      </Tabs>
 
-      {isSelfView && (
-        <a
-          title={'Disconnect'}
-          className={cn(css.action, css.disconnect)}
-          onClick={onDisconnectClick}
-        >
-          <Disconnect />
-          Untie wallet
-        </a>
-      )}
+        {isSelfView && <InvitationLink address={address} />}
+
+        {isSelfView && (
+          <a
+            title={'Disconnect'}
+            className={cn(css.action, css.disconnect)}
+            onClick={onDisconnectClick}
+          >
+            <Disconnect />
+            Untie wallet
+          </a>
+        )}
+      </div>
 
     </div>
   )

@@ -6,7 +6,8 @@
       "alias": {
         "@config": "./src/config",
         "@constants": "./src/constants",
-        "@lib": "./src/lib"
+        "@lib": "./src/lib",
+        "@utils": "./src/utils"
       }
     }]
   ]
