@@ -7,12 +7,13 @@
 }
 
 .title {
-  padding: 29px 24px;
+  padding: 25px 24px;
   background: var(--statistics-bar-stats-title-bg);
   font-family: 'Gilroy', sans-serif;
   font-size: 20px;
   font-weight: 600;
   text-transform: capitalize;
+  line-height: 14px;
 }
 
 .nodata {

@@ -31,7 +31,6 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
     currencyFill = _ref.currencyFill,
     hideProfile = _ref.hideProfile,
-    hideNavbar = _ref.hideNavbar,
     featureToggles = _ref.featureToggles,
     mustUserLogin = _ref.mustUserLogin,
     account = _ref.account,
@@ -93,17 +92,14 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, [closeStatisticBar, onDisconnectClick]);
   return /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureTogglesProvider, {
     toggles: featureToggles
-  }, /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
     currencyFill: currencyFill,
     openAuthModal: openAuthModal,
     closeAuthModal: closeAuthModal
   }, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName,
-    basepath: basepath,
-    activeNavigationItem: activeNavigationItem,
     isConnected: isConnected,
     account: account,
-    hideNavbar: hideNavbar,
     hideProfile: hideProfile,
     onProfileClick: handleProfileClick
   }, content), !isConnected && /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
@@ -112,6 +108,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onClick: handleConnectClick
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
     address: statisticsAccount,
+    activeNavigationItem: activeNavigationItem,
     isSelfView: isConnected && account === statisticsAccount,
     isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
     statistics: statistics,
@@ -119,7 +116,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onDisconnectClick: handleDisconnectClick
   }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
     id: _config["default"].modal_id
-  })));
+  }));
 };
 PMGlobalHeader.propTypes = {
   headerClassName: _propTypes["default"].string,

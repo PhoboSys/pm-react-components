@@ -9,7 +9,6 @@ var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
-var _Navbar = _interopRequireDefault(require("../Navbar"));
 var _HeaderModule = _interopRequireDefault(require("./Header.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -17,11 +16,9 @@ function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; 
 var Header = function Header(_ref) {
   var className = _ref.className,
     isConnected = _ref.isConnected,
-    basepath = _ref.basepath,
     account = _ref.account,
     onProfileClick = _ref.onProfileClick,
     hideProfile = _ref.hideProfile,
-    hideNavbar = _ref.hideNavbar,
     children = _ref.children;
   var handleAccountIconClick = (0, _react.useCallback)(function (e) {
     e.stopPropagation();
@@ -29,11 +26,7 @@ var Header = function Header(_ref) {
   }, [account, onProfileClick]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_HeaderModule["default"].header, className)
-  }, !hideNavbar && /*#__PURE__*/_react["default"].createElement("div", {
-    className: _HeaderModule["default"].left
-  }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
-    basepath: basepath
-  })), children, isConnected && !hideProfile && /*#__PURE__*/_react["default"].createElement("div", {
+  }, children, isConnected && !hideProfile && /*#__PURE__*/_react["default"].createElement("div", {
     className: _HeaderModule["default"].right
   }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
     account: account,

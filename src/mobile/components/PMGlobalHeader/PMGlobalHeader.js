@@ -16,7 +16,6 @@ const PMGlobalHeader = ({
   basepath = "/",
   currencyFill,
   hideProfile,
-  hideNavbar,
   featureToggles,
   mustUserLogin,
   account,
@@ -74,44 +73,40 @@ const PMGlobalHeader = ({
 
   return (
     <FeatureTogglesProvider toggles={featureToggles}>
-      <>
-        <PMGlobalHeaderProvider
-          currencyFill={currencyFill}
-          openAuthModal={openAuthModal}
-          closeAuthModal={closeAuthModal}
+      <PMGlobalHeaderProvider
+        currencyFill={currencyFill}
+        openAuthModal={openAuthModal}
+        closeAuthModal={closeAuthModal}
+      >
+        <Header
+          className={headerClassName}
+          isConnected={isConnected}
+          account={account}
+          hideProfile={hideProfile}
+          onProfileClick={handleProfileClick}
         >
-          <Header
-            className={headerClassName}
-            basepath={basepath}
-            activeNavigationItem={activeNavigationItem}
-            isConnected={isConnected}
-            account={account}
-            hideNavbar={hideNavbar}
-            hideProfile={hideProfile}
-            onProfileClick={handleProfileClick}
-          >
-            {content}
-          </Header>
-          {!isConnected && (
-            <Connect 
-              className={connectClassName}
-              isConnecting={isConnecting}
-              onClick={handleConnectClick}
-            />
-          )}
-          <StatisticsBar
-            address={statisticsAccount}
-            isSelfView={isConnected && (account === statisticsAccount)}
-            isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
-            statistics={statistics}
-            onCloseClick={handleCloseStatisticsBar}
-            onDisconnectClick={handleDisconnectClick}
+          {content}
+        </Header>
+        {!isConnected && (
+          <Connect 
+            className={connectClassName}
+            isConnecting={isConnecting}
+            onClick={handleConnectClick}
           />
-          {children}
-          {modal}
-        </PMGlobalHeaderProvider>
-        <div id={config.modal_id} />
-      </>
+        )}
+        <StatisticsBar
+          address={statisticsAccount}
+          activeNavigationItem={activeNavigationItem}
+          isSelfView={isConnected && (account === statisticsAccount)}
+          isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
+          statistics={statistics}
+          onCloseClick={handleCloseStatisticsBar}
+          onDisconnectClick={handleDisconnectClick}
+        />
+        {children}
+        {modal}
+      </PMGlobalHeaderProvider>
+      <div id={config.modal_id} />
     </FeatureTogglesProvider>
   )
 }

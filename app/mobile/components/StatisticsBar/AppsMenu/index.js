@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
-    return _Navbar["default"];
+    return _AppsMenu["default"];
   }
 });
-var _Navbar = _interopRequireDefault(require("./Navbar"));
+var _AppsMenu = _interopRequireDefault(require("./AppsMenu"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 //# sourceMappingURL=index.js.map

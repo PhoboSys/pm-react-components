@@ -20,6 +20,7 @@ var _PredictorTabContent = _interopRequireDefault(require("./PredictorTabContent
 var _MentorTabContent = _interopRequireDefault(require("./MentorTabContent"));
 var _StakerTabContent = _interopRequireDefault(require("./StakerTabContent"));
 var _InvitationLink = _interopRequireDefault(require("./InvitationLink"));
+var _AppsMenu = _interopRequireDefault(require("./AppsMenu"));
 var _StatisticsBarModule = _interopRequireDefault(require("./StatisticsBar.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -39,6 +40,7 @@ var StatisticsBar = function StatisticsBar(_ref) {
     address = _ref.address,
     isSelfView = _ref.isSelfView,
     statistics = _ref.statistics,
+    activeNavigationItem = _ref.activeNavigationItem,
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick;
   var timeout = 100; //ms
@@ -95,8 +97,9 @@ var StatisticsBar = function StatisticsBar(_ref) {
   })), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$staker = statistics.staker) === null || _statistics$staker === void 0 ? void 0 : _statistics$staker.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats
-  }))), isSelfView && /*#__PURE__*/_react["default"].createElement(_InvitationLink["default"], {
-    className: (0, _clsx["default"])(_defineProperty({}, _StatisticsBarModule["default"].topIndent, !shouldRenderTabs)),
+  }))), isSelfView && /*#__PURE__*/_react["default"].createElement(_AppsMenu["default"], {
+    active: activeNavigationItem
+  }), isSelfView && /*#__PURE__*/_react["default"].createElement(_InvitationLink["default"], {
     address: address
   }))));
 };

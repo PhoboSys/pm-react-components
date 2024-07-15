@@ -3,18 +3,15 @@ import PropTypes from 'prop-types'
 import cn from 'clsx'
 
 import AccountIcon from '../AccountIcon'
-import Navbar from '../Navbar'
 
 import css from './Header.module.scss'
 
 const Header = ({
   className,
   isConnected,
-  basepath,
   account,
   onProfileClick,
   hideProfile,
-  hideNavbar,
   children,
 }) => {
   const handleAccountIconClick = useCallback((e) => {
@@ -24,12 +21,6 @@ const Header = ({
 
   return (
     <div className={cn(css.header, className)}>
-      {!hideNavbar && (
-        <div className={css.left}>
-          <Navbar basepath={basepath} />
-        </div>
-      )}
-
       {children}
 
       {isConnected && !hideProfile && (

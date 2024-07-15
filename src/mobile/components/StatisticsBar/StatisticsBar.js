@@ -15,6 +15,7 @@ import PredictorTabContent from './PredictorTabContent'
 import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
 import InvitationLink from './InvitationLink'
+import AppsMenu from './AppsMenu'
 
 import css from './StatisticsBar.module.scss'
 
@@ -23,6 +24,7 @@ const StatisticsBar = ({
   address,
   isSelfView,
   statistics,
+  activeNavigationItem,
   onCloseClick,
   onDisconnectClick,
 }) => {
@@ -113,12 +115,9 @@ const StatisticsBar = ({
             </Tabs>
           )}
 
-          {isSelfView && (
-            <InvitationLink
-              className={cn({ [css.topIndent]: !shouldRenderTabs })}
-              address={address}
-            />
-          )}
+          {isSelfView && <AppsMenu active={activeNavigationItem} />}
+
+          {isSelfView && <InvitationLink address={address} />}
         </div>
 
       </div>
