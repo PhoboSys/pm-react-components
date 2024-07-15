@@ -43,6 +43,9 @@
 - --pm-gh-notification-item-bg
 - --pm-gh-notification-item-icon-bg
 - --pm-gh-notification-item-action-bg
+- --pm-gh-invitation-link-bg
+- --pm-gh-invitation-link-color
+- --pm-gh-invitation-link-icon-fill
 - --header-bg
 - --navbar-bg
 - --navbar-border-color
@@ -119,6 +122,9 @@
 - --pm-gh-copy-icon-color
 - --pm-gh-copy-icon-color-hover
 - --pm-gh-modal-overlay-bg
+- --pm-gh-invitation-link-bg
+- --pm-gh-invitation-link-color
+- --pm-gh-invitation-link-icon-fill
 - --header-bg
 - --navbar-icon-color
 - --connect-button-bg-color

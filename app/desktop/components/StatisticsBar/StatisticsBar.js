@@ -19,6 +19,7 @@ var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
 var _PredictorTabContent = _interopRequireDefault(require("./PredictorTabContent"));
 var _MentorTabContent = _interopRequireDefault(require("./MentorTabContent"));
 var _StakerTabContent = _interopRequireDefault(require("./StakerTabContent"));
+var _InvitationLink = _interopRequireDefault(require("./InvitationLink"));
 var _Nickname = _interopRequireDefault(require("./Nickname"));
 var _StatisticsBarModule = _interopRequireDefault(require("./StatisticsBar.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -95,7 +96,9 @@ var StatisticsBar = function StatisticsBar(_ref) {
     title: 'Close bar',
     className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].close),
     onClick: onCloseClick
-  }, /*#__PURE__*/_react["default"].createElement(_ArrowForward["default"], null))), /*#__PURE__*/_react["default"].createElement(_Tabs.Tabs, {
+  }, /*#__PURE__*/_react["default"].createElement(_ArrowForward["default"], null))), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _StatisticsBarModule["default"].content
+  }, ((statistics === null || statistics === void 0 ? void 0 : statistics.predictor) || (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) || (statistics === null || statistics === void 0 ? void 0 : statistics.staker)) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tabs, {
     className: _StatisticsBarModule["default"].tabs,
     activeTabClassName: _StatisticsBarModule["default"].activeTab
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -109,11 +112,13 @@ var StatisticsBar = function StatisticsBar(_ref) {
   })), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$staker = statistics.staker) === null || _statistics$staker === void 0 ? void 0 : _statistics$staker.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats
-  }))), isSelfView && /*#__PURE__*/_react["default"].createElement("a", {
+  }))), isSelfView && /*#__PURE__*/_react["default"].createElement(_InvitationLink["default"], {
+    address: address
+  }), isSelfView && /*#__PURE__*/_react["default"].createElement("a", {
     title: 'Disconnect',
     className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].disconnect),
     onClick: onDisconnectClick
-  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), "Untie wallet"));
+  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), "Untie wallet")));
 };
 StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,

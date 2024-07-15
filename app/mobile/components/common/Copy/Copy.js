@@ -7,6 +7,7 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
+var _reactDom = require("react-dom");
 var _clsx = _interopRequireDefault(require("clsx"));
 var _reactPopper = require("react-popper");
 var _CopyIcon = _interopRequireDefault(require("../../SVG/CopyIcon"));
@@ -29,7 +30,8 @@ var Copy = function Copy(_ref) {
     _ref$offsetX = _ref.offsetX,
     offsetX = _ref$offsetX === void 0 ? 0 : _ref$offsetX,
     _ref$offsetY = _ref.offsetY,
-    offsetY = _ref$offsetY === void 0 ? 10 : _ref$offsetY;
+    offsetY = _ref$offsetY === void 0 ? 10 : _ref$offsetY,
+    target = _ref.target;
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
@@ -75,7 +77,8 @@ var Copy = function Copy(_ref) {
     }),
     styles = _usePopper.styles,
     attributes = _usePopper.attributes;
-  var handleClick = (0, _react.useCallback)(function () {
+  var handleClick = (0, _react.useCallback)(function (e) {
+    e.stopPropagation();
     navigator.clipboard.writeText(text);
     setIsOpen(true);
   }, [text]);
@@ -88,29 +91,33 @@ var Copy = function Copy(_ref) {
       return clearTimeout(timeoutid);
     };
   }, [isOpen]);
+  var renderPopper = function renderPopper() {
+    return /*#__PURE__*/_react["default"].createElement("div", _extends({
+      className: _CopyModule["default"].popper,
+      ref: setPopperElement,
+      style: styles.popper
+    }, attributes.popper), "Copied to clipboard!", /*#__PURE__*/_react["default"].createElement("div", {
+      className: _CopyModule["default"].arrow,
+      ref: setArrowElement,
+      style: styles.arrow
+    }));
+  };
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("span", {
     className: (0, _clsx["default"])(_CopyModule["default"].container, className)
   }, children, /*#__PURE__*/_react["default"].createElement("span", {
     ref: setReferenceElement,
     className: (0, _clsx["default"])(_CopyModule["default"].icon, iconClassName),
     onClick: handleClick
-  }, /*#__PURE__*/_react["default"].createElement(_CopyIcon["default"], null))), /*#__PURE__*/_react["default"].createElement("div", _extends({
-    className: _CopyModule["default"].popper,
-    ref: setPopperElement,
-    style: styles.popper
-  }, attributes.popper), "Copied to clipboard!", /*#__PURE__*/_react["default"].createElement("div", {
-    className: _CopyModule["default"].arrow,
-    ref: setArrowElement,
-    style: styles.arrow
-  })));
+  }, /*#__PURE__*/_react["default"].createElement(_CopyIcon["default"], null))), target ? /*#__PURE__*/(0, _reactDom.createPortal)(renderPopper(), target) : renderPopper());
 };
 Copy.propTypes = {
   className: _propTypes["default"].string,
   iconClassName: _propTypes["default"].string,
-  children: _propTypes["default"].string,
+  children: _propTypes["default"].node,
   text: _propTypes["default"].string,
   offsetX: _propTypes["default"].number,
-  offsetY: _propTypes["default"].number
+  offsetY: _propTypes["default"].number,
+  target: _propTypes["default"].instanceOf(Element)
 };
 var _default = exports["default"] = Copy;
 //# sourceMappingURL=Copy.js.map

@@ -30,6 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  padding-bottom: 12px;
 }
 
 .action {
@@ -80,11 +81,16 @@
 
 .copyIcon {
   margin-left: 15px;
+}
 
-  svg path {
-    transition: fill .1s linear;
-    fill: var(--pm-gh-copy-icon-color);
-  }
+.content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 24px;
+  min-height: 0;
+  overflow-y: auto;
+  padding-top: 12px;
+  padding-bottom: 24px;
 }
 
 .tabs {
@@ -92,7 +98,6 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  min-height: 0;
 
   .head {
     display: flex;
@@ -101,10 +106,9 @@
     align-items: center;
     width: 100%;
     max-width: 300px;
-    padding: 16px 0;
   
     > div {
-      margin: 16px 0;
+      margin-bottom: 16px;
       padding: 9.5px 20px;
       background-color: var(--statistics-bar-tab-bg-color);
       border-radius: 100px;
@@ -125,4 +129,6 @@
   visibility: hidden;
 }
 
-
+.topIndent {
+  margin-top: 20px;
+}

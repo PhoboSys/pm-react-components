@@ -14,6 +14,7 @@ import { useTransition } from '../../../hooks/useTransition'
 import PredictorTabContent from './PredictorTabContent'
 import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
+import InvitationLink from './InvitationLink'
 
 import css from './StatisticsBar.module.scss'
 
@@ -34,6 +35,8 @@ const StatisticsBar = ({
   }, [isOpened])
 
   const stopPropagation = useCallback((e) => e.stopPropagation(), [])
+
+  const shouldRenderTabs = statistics?.predictor || statistics?.mentor || statistics?.staker
 
   if (!mount) return null
 
@@ -73,39 +76,51 @@ const StatisticsBar = ({
           </a>
         </div>
 
-        <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
-          <div className={css.head}>
-            {statistics?.predictor && <Tab>Predictor</Tab>}
-            {statistics?.mentor && <Tab>Mentor</Tab>}
-            {statistics?.staker && <Tab>Staker</Tab>}
-          </div>
+        <div className={css.content}>
 
-          {statistics?.predictor && (
-            <TabBody>
-              <PredictorTabContent
-                stats={statistics?.predictor?.stats}
-                tokenStats={statistics?.predictor?.tokenStats}
-              />
-            </TabBody>
+          {shouldRenderTabs && (
+            <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
+              <div className={css.head}>
+                {statistics?.predictor && <Tab>Predictor</Tab>}
+                {statistics?.mentor && <Tab>Mentor</Tab>}
+                {statistics?.staker && <Tab>Staker</Tab>}
+              </div>
+
+              {statistics?.predictor && (
+                <TabBody>
+                  <PredictorTabContent
+                    stats={statistics?.predictor?.stats}
+                    tokenStats={statistics?.predictor?.tokenStats}
+                  />
+                </TabBody>
+              )}
+              {statistics?.mentor && (
+                <TabBody>
+                  <MentorTabContent
+                    stats={statistics?.mentor?.stats}
+                    tokenStats={statistics?.mentor?.tokenStats}
+                  />
+                </TabBody>
+              )}
+              {statistics?.staker && (
+                <TabBody>
+                  <StakerTabContent
+                    stats={statistics?.staker?.stats}
+                    tokenStats={statistics?.staker?.tokenStats}
+                  />
+                </TabBody>
+              )}
+            </Tabs>
           )}
-          {statistics?.mentor && (
-            <TabBody>
-              <MentorTabContent
-                stats={statistics?.mentor?.stats}
-                tokenStats={statistics?.mentor?.tokenStats}
-              />
-            </TabBody>
+
+          {isSelfView && (
+            <InvitationLink
+              className={cn({ [css.topIndent]: !shouldRenderTabs })}
+              address={address}
+            />
           )}
-          {statistics?.staker && (
-            <TabBody>
-              <StakerTabContent
-                stats={statistics?.staker?.stats}
-                tokenStats={statistics?.staker?.tokenStats}
-              />
-            </TabBody>
-          )}
-        </Tabs>
-      
+        </div>
+
       </div>
     </div>
   )

@@ -9,6 +9,11 @@
   border-radius: 3px;
   font-size: 12px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 10px 0px;
+  z-index: 9999;
+  font-family: Proxima Nova, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  color: #fff;
 
   &:after {
     content: '';
@@ -45,8 +50,25 @@
   margin-left: 7px;
   cursor: pointer;
 
+  &:hover {
+    svg path {
+      fill: var(--pm-gh-copy-icon-color-hover);
+    }
+  }
+
+  &:active {
+    svg path {
+      fill: var(--pm-gh-copy-icon-color-active);
+    }
+  }
+
   svg {
     width: 20px;
     height: 20px;
+
+    path {
+      transition: fill .1s linear;
+      fill: var(--pm-gh-copy-icon-color);
+    }
   }
 }

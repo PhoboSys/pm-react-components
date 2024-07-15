@@ -55,7 +55,7 @@ var cellRenderers = {
     });
   }
 };
-var statsOrder = ['predictions', 'wegered', 'earned', 'joined', 'last activity'];
+var statsOrder = ['predictions', 'wagered', 'earned', 'joined', 'last activity'];
 var PredictorTabContent = function PredictorTabContent(_ref) {
   var achievements = _ref.achievements,
     stats = _ref.stats,
@@ -73,10 +73,10 @@ var PredictorTabContent = function PredictorTabContent(_ref) {
       dataKey: 'name'
     }, {
       label: 'Wagered',
-      cellRenderer: cellRenderers.token
+      cellRenderer: cellRenderers.wagered
     }, {
       label: 'Earned',
-      cellRenderer: cellRenderers.token
+      cellRenderer: cellRenderers.earned
     }];
   }, []);
   return /*#__PURE__*/_react["default"].createElement(_TabContent["default"], {
