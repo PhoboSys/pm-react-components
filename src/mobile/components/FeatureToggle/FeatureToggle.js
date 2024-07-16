@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types'
 import { isEmpty } from "lodash";
 
 import TogglesIcon from "../SVG/Toggles";
@@ -11,9 +12,14 @@ import { withDevelopmentOnly } from "../../../hocs";
 
 import css from "./FeatureToggle.module.scss";
 
-const FeatureToggle = () => {
+const FeatureToggle = ({ title }) => {
   const { toggles = {} } = useFeatureToggles();
-  const { modal, open } = useModal({ Content: FeatureTogglesModal, toggles });
+  const { modal, open } = useModal({
+    Content: FeatureTogglesModal,
+    toggles,
+    hideClose: true,
+    title,
+  });
 
   if (isEmpty(toggles)) return null;
 
@@ -26,5 +32,9 @@ const FeatureToggle = () => {
     </>
   );
 };
+
+FeatureTogglesModal.propTypes = {
+  title: PropTypes.string,
+}
 
 export default withDevelopmentOnly(React.memo(FeatureToggle));
