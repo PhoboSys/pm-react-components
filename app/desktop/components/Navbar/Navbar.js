@@ -51,7 +51,8 @@ var NavBar = function NavBar(_ref) {
   var basepath = _ref.basepath,
     logoFill = _ref.logoFill,
     logoLabelFill = _ref.logoLabelFill,
-    active = _ref.active;
+    active = _ref.active,
+    featureTogglesTitle = _ref.featureTogglesTitle;
   var _useState = (0, _react.useState)(localStorage.getItem(localStorageSelector) === 'true'),
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
@@ -106,13 +107,16 @@ var NavBar = function NavBar(_ref) {
     }, icon), /*#__PURE__*/_react["default"].createElement("span", {
       className: _NavbarModule["default"].label
     }, label));
-  }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, null))));
+  }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
+    title: featureTogglesTitle
+  }))));
 };
 NavBar.propTypes = {
   basepath: _propTypes["default"].string,
   active: _propTypes["default"].string,
   logoFill: _propTypes["default"].string,
-  logoLabelFill: _propTypes["default"].string
+  logoLabelFill: _propTypes["default"].string,
+  featureTogglesTitle: _propTypes["default"].string
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(NavBar);
 //# sourceMappingURL=Navbar.js.map

@@ -53,6 +53,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     activeNavigationItem = _ref.activeNavigationItem,
     statistics = _ref.statistics,
     featureToggles = _ref.featureToggles,
+    featureTogglesTitle = _ref.featureTogglesTitle,
     onConnectClick = _ref.onConnectClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onNicknameChanged = _ref.onNicknameChanged,
@@ -129,7 +130,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     basepath: basepath,
     logoFill: logoFill,
     logoLabelFill: logoLabelFill,
-    active: activeNavigationItem
+    active: activeNavigationItem,
+    featureTogglesTitle: featureTogglesTitle
   }), /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName
   }, content, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
@@ -192,6 +194,7 @@ PMGlobalHeader.propTypes = {
   activeNavigationItem: _propTypes["default"].string,
   statistics: _propTypes["default"].object,
   featureToggles: _propTypes["default"].object,
+  featureTogglesTitle: _propTypes["default"].string,
   onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func,

@@ -10,17 +10,14 @@
   cursor: pointer;
   user-select: none;
   text-decoration: none;
+  background: var(--pm-gh-feature-toggle);
 
   &:hover {
-    background: var(--navbar-icon-bg-hover);
+    background: var(--pm-gh-feature-toggle-hover);
   }
 
   &:active {
-    background: var(--navbar-icon-bg-active);
-  }
-
-  &:hover {
-    background: var(--navbar-icon-bg-hover);
+    background: var(--pm-gh-feature-toggle-active);
   }
 }
 

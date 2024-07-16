@@ -21,7 +21,13 @@ const menuItems = [
 
 const localStorageSelector = 'pm-global-header-menu-expanded'
 
-const NavBar = ({ basepath, logoFill, logoLabelFill, active }) => {
+const NavBar = ({
+  basepath,
+  logoFill,
+  logoLabelFill,
+  active,
+  featureTogglesTitle,
+}) => {
 
   const [expanded, setExpanded] = useState(localStorage.getItem(localStorageSelector) === 'true')
 
@@ -64,7 +70,7 @@ const NavBar = ({ basepath, logoFill, logoLabelFill, active }) => {
               <span className={css.label}>{label}</span>
             </a>
           ))}
-          <FeatureToggle />
+          <FeatureToggle title={featureTogglesTitle} />
         </div>
       </div>
     </div>
@@ -76,6 +82,7 @@ NavBar.propTypes = {
   active: PropTypes.string,
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
+  featureTogglesTitle: PropTypes.string,
 }
 
 export default React.memo(NavBar)
