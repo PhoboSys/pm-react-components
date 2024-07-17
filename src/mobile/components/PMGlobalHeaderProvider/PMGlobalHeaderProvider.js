@@ -40,8 +40,8 @@ PMGlobalHeaderProvider.propTypes = {
   currencyFill: PropTypes.string,
   openAuthModal: PropTypes.func,
   closeAuthModal: PropTypes.func,
-  maximumFractionDigits: PropTypes.string,
-  maximumFractionDigitsPrecent: PropTypes.string,
+  maximumFractionDigits: PropTypes.number,
+  maximumFractionDigitsPrecent: PropTypes.number,
 }
 
 export default PMGlobalHeaderProvider
