@@ -37,6 +37,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     logoFill = _ref.logoFill,
     logoLabelFill = _ref.logoLabelFill,
     currencyFill = _ref.currencyFill,
+    maximumFractionDigits = _ref.maximumFractionDigits,
+    maximumFractionDigitsPrecent = _ref.maximumFractionDigitsPrecent,
     mustUserLogin = _ref.mustUserLogin,
     isConnecting = _ref.isConnecting,
     isConnected = _ref.isConnected,
@@ -125,7 +127,9 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
     currencyFill: currencyFill,
     openAuthModal: openAuthModal,
-    closeAuthModal: closeAuthModal
+    closeAuthModal: closeAuthModal,
+    maximumFractionDigits: maximumFractionDigits,
+    maximumFractionDigitsPrecent: maximumFractionDigitsPrecent
   }, /*#__PURE__*/_react["default"].createElement(_Navbar["default"], {
     basepath: basepath,
     logoFill: logoFill,
@@ -178,6 +182,8 @@ PMGlobalHeader.propTypes = {
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string,
   currencyFill: _propTypes["default"].string,
+  maximumFractionDigits: _propTypes["default"].string,
+  maximumFractionDigitsPrecent: _propTypes["default"].string,
   mustUserLogin: _propTypes["default"].bool,
   isConnecting: _propTypes["default"].bool,
   isConnected: _propTypes["default"].bool,

@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import { div } from '@lib/calc-utils'
 import { htmlCurrency } from '@lib/html-utils'
 
+import { useGHProvider } from '../../../PMGlobalHeaderProvider'
+
 const formatSymboled = (amount, currency) => {
   const formater = new Intl.NumberFormat(Intl.Locale, {
     style: 'currency',
@@ -14,7 +16,7 @@ const formatSymboled = (amount, currency) => {
   return formater.format(amount)
 }
 
-function formatNumber(num = 0, currency, token) {
+function formatNumber(num = 0, currency, token, maximumFractionDigits) {
   const map = [
     { suffix: 'T', threshold: 1e12 },
     { suffix: 'B', threshold: 1e9 },
@@ -28,14 +30,16 @@ function formatNumber(num = 0, currency, token) {
   const found = map.find((x) => Math.abs(num) >= x.threshold)
   if (found) formatted = div(num, found.threshold)
   if (!token && currency) formatted = formatSymboled(formatted, currency)
-  if (token) formatted = htmlCurrency(formatted)
+  if (token) formatted = htmlCurrency(formatted, maximumFractionDigits)
   if (found) formatted = formatted + found.suffix
 
   return formatted
 }
 
 const FormattedCurrencyCell = ({ amount, currency, token }) => {
-  return formatNumber(amount, currency, token)
+  const { maximumFractionDigits } = useGHProvider()
+
+  return formatNumber(amount, currency, token, maximumFractionDigits)
 }
 
 FormattedCurrencyCell.propTypes = {

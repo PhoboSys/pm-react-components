@@ -15,6 +15,8 @@ const PMGlobalHeader = ({
   connectClassName,
   basepath = "/",
   currencyFill,
+  maximumFractionDigits,
+  maximumFractionDigitsPrecent,
   hideProfile,
   featureToggles,
   mustUserLogin,
@@ -77,6 +79,8 @@ const PMGlobalHeader = ({
         currencyFill={currencyFill}
         openAuthModal={openAuthModal}
         closeAuthModal={closeAuthModal}
+        maximumFractionDigits={maximumFractionDigits}
+        maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
       >
         <Header
           className={headerClassName}
@@ -115,6 +119,8 @@ PMGlobalHeader.propTypes = {
   headerClassName: PropTypes.string,
   basepath: PropTypes.string,
   currencyFill: PropTypes.string,
+  maximumFractionDigits: PropTypes.string,
+  maximumFractionDigitsPrecent: PropTypes.string,
   mustUserLogin: PropTypes.bool,
   account: PropTypes.string,
   statisticsAccount: PropTypes.string,

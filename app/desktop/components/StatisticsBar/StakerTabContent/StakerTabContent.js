@@ -7,7 +7,6 @@ Object.defineProperty(exports, "__esModule", {
 exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _htmlUtils = require("../../../../lib/html-utils");
 var _cells = require("../cells");
 var _TabContent = _interopRequireDefault(require("../TabContent"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -25,7 +24,9 @@ var cellRenderers = {
       });
     }
     if (row.name === 'voting') {
-      return (0, _htmlUtils.htmlPercent)(row.value);
+      return /*#__PURE__*/_react["default"].createElement(_cells.PercentCell, {
+        value: row.value
+      });
     }
     if (row.name === 'joined') {
       return /*#__PURE__*/_react["default"].createElement(_cells.DateCell, {
