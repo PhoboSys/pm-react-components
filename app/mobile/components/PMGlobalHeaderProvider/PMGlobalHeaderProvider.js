@@ -35,8 +35,8 @@ PMGlobalHeaderProvider.propTypes = {
   currencyFill: _propTypes["default"].string,
   openAuthModal: _propTypes["default"].func,
   closeAuthModal: _propTypes["default"].func,
-  maximumFractionDigits: _propTypes["default"].string,
-  maximumFractionDigitsPrecent: _propTypes["default"].string
+  maximumFractionDigits: _propTypes["default"].number,
+  maximumFractionDigitsPrecent: _propTypes["default"].number
 };
 var _default = exports["default"] = PMGlobalHeaderProvider;
 //# sourceMappingURL=PMGlobalHeaderProvider.js.map
