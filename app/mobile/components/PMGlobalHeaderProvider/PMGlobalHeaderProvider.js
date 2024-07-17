@@ -15,14 +15,18 @@ var PMGlobalHeaderProvider = function PMGlobalHeaderProvider(_ref) {
   var currencyFill = _ref.currencyFill,
     children = _ref.children,
     openAuthModal = _ref.openAuthModal,
-    closeAuthModal = _ref.closeAuthModal;
+    closeAuthModal = _ref.closeAuthModal,
+    maximumFractionDigits = _ref.maximumFractionDigits,
+    maximumFractionDigitsPrecent = _ref.maximumFractionDigitsPrecent;
   var value = (0, _react.useMemo)(function () {
     return {
       currencyFill: currencyFill,
       openAuthModal: openAuthModal,
-      closeAuthModal: closeAuthModal
+      closeAuthModal: closeAuthModal,
+      maximumFractionDigits: maximumFractionDigits,
+      maximumFractionDigitsPrecent: maximumFractionDigitsPrecent
     };
-  }, [currencyFill, openAuthModal, closeAuthModal]);
+  }, [currencyFill, openAuthModal, closeAuthModal, maximumFractionDigits, maximumFractionDigitsPrecent]);
   return /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProviderContext["default"].Provider, {
     value: value
   }, children);
@@ -30,7 +34,9 @@ var PMGlobalHeaderProvider = function PMGlobalHeaderProvider(_ref) {
 PMGlobalHeaderProvider.propTypes = {
   currencyFill: _propTypes["default"].string,
   openAuthModal: _propTypes["default"].func,
-  closeAuthModal: _propTypes["default"].func
+  closeAuthModal: _propTypes["default"].func,
+  maximumFractionDigits: _propTypes["default"].string,
+  maximumFractionDigitsPrecent: _propTypes["default"].string
 };
 var _default = exports["default"] = PMGlobalHeaderProvider;
 //# sourceMappingURL=PMGlobalHeaderProvider.js.map

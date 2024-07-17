@@ -7,12 +7,12 @@ export function htmlPercent(percent, precision = 2) {
   return (floor(mul(percent,100), precision) || 0) + '%'
 }
 
-export function htmlCurrency(amount) {
+export function htmlCurrency(amount, maximumFractionDigits = 6) {
   if (isNaN(+amount)) return ''
 
   return CurrencyFormatter.formatDefault(amount, {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 6,
+    maximumFractionDigits,
   })
 }
 

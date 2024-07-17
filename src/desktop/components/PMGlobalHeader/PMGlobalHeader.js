@@ -22,6 +22,8 @@ const PMGlobalHeader = ({
   logoFill,
   logoLabelFill,
   currencyFill,
+  maximumFractionDigits,
+  maximumFractionDigitsPrecent,
   mustUserLogin,
   isConnecting,
   isConnected,
@@ -110,6 +112,8 @@ const PMGlobalHeader = ({
         currencyFill={currencyFill}
         openAuthModal={openAuthModal}
         closeAuthModal={closeAuthModal}
+        maximumFractionDigits={maximumFractionDigits}
+        maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
       >
         <Navbar
           basepath={basepath}
@@ -176,6 +180,8 @@ PMGlobalHeader.propTypes = {
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
   currencyFill: PropTypes.string,
+  maximumFractionDigits: PropTypes.string,
+  maximumFractionDigitsPrecent: PropTypes.string,
   mustUserLogin: PropTypes.bool,
   isConnecting: PropTypes.bool,
   isConnected: PropTypes.bool,

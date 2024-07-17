@@ -30,6 +30,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     _ref$basepath = _ref.basepath,
     basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
     currencyFill = _ref.currencyFill,
+    maximumFractionDigits = _ref.maximumFractionDigits,
+    maximumFractionDigitsPrecent = _ref.maximumFractionDigitsPrecent,
     hideProfile = _ref.hideProfile,
     featureToggles = _ref.featureToggles,
     mustUserLogin = _ref.mustUserLogin,
@@ -95,7 +97,9 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
     currencyFill: currencyFill,
     openAuthModal: openAuthModal,
-    closeAuthModal: closeAuthModal
+    closeAuthModal: closeAuthModal,
+    maximumFractionDigits: maximumFractionDigits,
+    maximumFractionDigitsPrecent: maximumFractionDigitsPrecent
   }, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName,
     isConnected: isConnected,
@@ -122,6 +126,8 @@ PMGlobalHeader.propTypes = {
   headerClassName: _propTypes["default"].string,
   basepath: _propTypes["default"].string,
   currencyFill: _propTypes["default"].string,
+  maximumFractionDigits: _propTypes["default"].string,
+  maximumFractionDigitsPrecent: _propTypes["default"].string,
   mustUserLogin: _propTypes["default"].bool,
   account: _propTypes["default"].string,
   statisticsAccount: _propTypes["default"].string,

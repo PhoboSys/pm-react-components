@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 
-import { htmlPercent } from '@lib/html-utils'
-import { TokenCurrencyCell, DateCell, CurrencyCell } from '../cells'
+import { TokenCurrencyCell, DateCell, CurrencyCell, PercentCell } from '../cells'
 import TabContent from '../TabContent'
 
 const cellRenderers = {
@@ -19,7 +18,7 @@ const cellRenderers = {
       )
     }
     if (row.name === 'voting') {
-      return htmlPercent(row.value)
+      return <PercentCell value={row.value} />
     }
     if (row.name === 'joined') {
       return <DateCell date={row.value} />
