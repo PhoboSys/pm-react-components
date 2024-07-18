@@ -14,6 +14,7 @@ const InvitationLink = ({ address }) => {
 
   const link = getInvitationLink(address)
 
+  const containerRef = useRef()
   const timeoutRef = useRef()
   const [showPopper, setShowPopper] = useState()
 
@@ -25,7 +26,7 @@ const InvitationLink = ({ address }) => {
   }, [link])
 
   return (
-    <div className={css.container}>
+    <div ref={containerRef} className={css.container}>
       <div className={cn(css.popper, { [css.show]: showPopper })}>
         The link is copied to the clipboard
       </div>
@@ -40,7 +41,7 @@ const InvitationLink = ({ address }) => {
           text={link}
           className={css.copy}
           iconClassName={css.copyIcon}
-          target={document.body}
+          target={containerRef.current}
         >
           <span className={css.link}>
             {link.replace(/(.{25}).*(.{5})$/, '$1...$2')}
