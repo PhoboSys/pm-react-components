@@ -8,7 +8,6 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
-var _lodash = require("lodash");
 var _Table = _interopRequireDefault(require("../Table"));
 var _Achievements = _interopRequireDefault(require("../Achievements"));
 var _TabContentModule = _interopRequireDefault(require("./TabContent.module.scss"));
@@ -49,24 +48,27 @@ var TabContent = function TabContent(_ref3) {
     statsOrder = _ref3.statsOrder,
     statsColumns = _ref3.statsColumns,
     tokenStats = _ref3.tokenStats,
-    tokenStatsColumns = _ref3.tokenStatsColumns;
+    tokenStatsColumns = _ref3.tokenStatsColumns,
+    isLoading = _ref3.isLoading;
   var statsRows = useToRowsArray(stats, statsOrder);
   var tokenStatsRows = useToRowsArray(tokenStats);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: _TabContentModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement(_Achievements["default"], {
     achievements: achievements
-  }), !(0, _lodash.isEmpty)(statsRows) && /*#__PURE__*/_react["default"].createElement(_Table["default"], {
+  }), /*#__PURE__*/_react["default"].createElement(_Table["default"], {
     className: _TabContentModule["default"].statsTable,
     tdClassName: (0, _clsx["default"])(_TabContentModule["default"].tdRight, _TabContentModule["default"].statsTableTd),
     title: "Stats",
     rows: statsRows,
-    columns: statsColumns
-  }), !(0, _lodash.isEmpty)(tokenStatsRows) && /*#__PURE__*/_react["default"].createElement(_Table["default"], {
+    columns: statsColumns,
+    isLoading: isLoading
+  }), /*#__PURE__*/_react["default"].createElement(_Table["default"], {
     className: _TabContentModule["default"].tokenStatsTable,
     title: "Token Stats",
     rows: tokenStatsRows,
-    columns: tokenStatsColumns
+    columns: tokenStatsColumns,
+    isLoading: isLoading
   }));
 };
 TabContent.propTypes = {
@@ -74,7 +76,8 @@ TabContent.propTypes = {
   stats: _propTypes["default"].object,
   tokenStats: _propTypes["default"].object,
   statsColumns: _propTypes["default"].array,
-  tokenStatsColumns: _propTypes["default"].array
+  tokenStatsColumns: _propTypes["default"].array,
+  isLoading: _propTypes["default"].bool
 };
 var _default = exports["default"] = TabContent;
 //# sourceMappingURL=TabContent.js.map

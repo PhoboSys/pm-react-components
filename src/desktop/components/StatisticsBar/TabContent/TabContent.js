@@ -1,7 +1,6 @@
 import React, { useMemo } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
-import { isEmpty } from 'lodash'
 
 import Table from '../Table'
 import Achievements from '../Achievements'
@@ -29,6 +28,7 @@ const TabContent = ({
   statsColumns,
   tokenStats,
   tokenStatsColumns,
+  isLoading,
 }) => {
   const statsRows = useToRowsArray(stats, statsOrder)
   const tokenStatsRows = useToRowsArray(tokenStats)
@@ -36,23 +36,21 @@ const TabContent = ({
   return (
     <div className={css.container}>
       <Achievements achievements={achievements} />
-      {!isEmpty(statsRows) && (
-        <Table
-          className={css.statsTable}
-          tdClassName={cn(css.tdRight, css.statsTableTd)}
-          title="Stats"
-          rows={statsRows}
-          columns={statsColumns}
-        />
-      )}
-      {!isEmpty(tokenStatsRows) && (
-        <Table
-          className={css.tokenStatsTable}
-          title="Token Stats"
-          rows={tokenStatsRows}
-          columns={tokenStatsColumns}
-        />
-      )}
+      <Table
+        className={css.statsTable}
+        tdClassName={cn(css.tdRight, css.statsTableTd)}
+        title="Stats"
+        rows={statsRows}
+        columns={statsColumns}
+        isLoading={isLoading}
+      />
+      <Table
+        className={css.tokenStatsTable}
+        title="Token Stats"
+        rows={tokenStatsRows}
+        columns={tokenStatsColumns}
+        isLoading={isLoading}
+      />
     </div>
   )
 }
@@ -63,6 +61,7 @@ TabContent.propTypes = {
   tokenStats: PropTypes.object,
   statsColumns: PropTypes.array,
   tokenStatsColumns: PropTypes.array,
+  isLoading: PropTypes.bool,
 }
 
 export default TabContent

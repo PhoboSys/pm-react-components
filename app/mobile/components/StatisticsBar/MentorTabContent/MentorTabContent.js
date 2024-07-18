@@ -45,7 +45,8 @@ var statsOrder = ['proteges', 'earned', 'joined', 'last activity'];
 var MentorTabContent = function MentorTabContent(_ref) {
   var achievements = _ref.achievements,
     stats = _ref.stats,
-    tokenStats = _ref.tokenStats;
+    tokenStats = _ref.tokenStats,
+    isLoading = _ref.isLoading;
   var statsColumns = (0, _react.useMemo)(function () {
     return [{
       dataKey: 'name'
@@ -68,13 +69,15 @@ var MentorTabContent = function MentorTabContent(_ref) {
     statsOrder: statsOrder,
     statsColumns: statsColumns,
     tokenStats: tokenStats,
-    tokenStatsColumns: tokenStatsColumns
+    tokenStatsColumns: tokenStatsColumns,
+    isLoading: isLoading
   });
 };
 MentorTabContent.propTypes = {
   achievements: _propTypes["default"].array,
   stats: _propTypes["default"].object,
-  tokenStats: _propTypes["default"].object
+  tokenStats: _propTypes["default"].object,
+  isLoading: _propTypes["default"].bool
 };
 var _default = exports["default"] = MentorTabContent;
 //# sourceMappingURL=MentorTabContent.js.map

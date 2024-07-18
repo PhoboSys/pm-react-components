@@ -49,7 +49,7 @@ const cellRenderers = {
 
 const statsOrder = ['predictions', 'wagered', 'earned', 'joined', 'last activity']
 
-const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
+const PredictorTabContent = ({ achievements, stats, tokenStats, isLoading }) => {
   const statsColumns = useMemo(() => [
     { dataKey: 'name' },
     { cellRenderer: cellRenderers.stats },
@@ -68,6 +68,7 @@ const PredictorTabContent = ({ achievements, stats, tokenStats }) => {
       statsColumns={statsColumns}
       tokenStats={tokenStats}
       tokenStatsColumns={tokenStatsColumns}
+      isLoading={isLoading}
     />
   )
 }
@@ -76,6 +77,7 @@ PredictorTabContent.propTypes = {
   achievements: PropTypes.array,
   stats: PropTypes.object,
   tokenStats: PropTypes.object,
+  isLoading: PropTypes.bool,
 }
 
 export default PredictorTabContent

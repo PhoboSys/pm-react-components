@@ -8,6 +8,7 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
+var _Spinner = _interopRequireDefault(require("../../common/Spinner"));
 var _TableModule = _interopRequireDefault(require("./Table.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -17,7 +18,8 @@ var Table = function Table(_ref) {
     tdClassName = _ref.tdClassName,
     title = _ref.title,
     columns = _ref.columns,
-    rows = _ref.rows;
+    rows = _ref.rows,
+    isLoading = _ref.isLoading;
   var shouldRenderTHead = !!columns.filter(function (_ref2) {
     var label = _ref2.label;
     return label;
@@ -50,6 +52,7 @@ var Table = function Table(_ref) {
       "--columsSize": columns.length
     };
   }, [columns.length]);
+  var noData = !rows.length;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_TableModule["default"].container, className)
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -61,9 +64,11 @@ var Table = function Table(_ref) {
     className: _TableModule["default"].headbg
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: _TableModule["default"].line
-  }), renderColumns()), /*#__PURE__*/_react["default"].createElement("span", null), !rows.length && /*#__PURE__*/_react["default"].createElement("div", {
+  }), renderColumns()), /*#__PURE__*/_react["default"].createElement("span", null), isLoading ? /*#__PURE__*/_react["default"].createElement(_Spinner["default"], {
+    className: _TableModule["default"].spinner
+  }) : noData ? /*#__PURE__*/_react["default"].createElement("div", {
     className: _TableModule["default"].nodata
-  }, "No ".concat(title.toLowerCase(), " yet")), rows.map(function (row, i) {
+  }, "No ".concat(title.toLowerCase(), " yet")) : rows.map(function (row, i) {
     return /*#__PURE__*/_react["default"].createElement(_react.Fragment, {
       key: i
     }, !!i && /*#__PURE__*/_react["default"].createElement("div", {
@@ -76,7 +81,8 @@ Table.propTypes = {
   tdClassName: _propTypes["default"].string,
   title: _propTypes["default"].string,
   columns: _propTypes["default"].array,
-  rows: _propTypes["default"].array
+  rows: _propTypes["default"].array,
+  isLoading: _propTypes["default"].bool
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(Table);
 //# sourceMappingURL=Table.js.map

@@ -99,40 +99,35 @@ const StatisticsBar = ({
       </div>
 
       <div className={css.content}>
-        {(statistics?.predictor || statistics?.mentor || statistics?.staker) && (
-          <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
-            <div className={css.head}>
-              {statistics?.predictor && <Tab>Oracler</Tab>}
-              {statistics?.mentor && <Tab>Mentor</Tab>}
-              {statistics?.staker && <Tab>Staker</Tab>}
-            </div>
+        <Tabs className={css.tabs} activeTabClassName={css.activeTab}>
+          <div className={css.head}>
+            <Tab>Oracler</Tab>
+            <Tab>Mentor</Tab>
+            <Tab>Staker</Tab>
+          </div>
 
-            {statistics?.predictor && (
-              <TabBody>
-                <PredictorTabContent
-                  stats={statistics?.predictor?.stats}
-                  tokenStats={statistics?.predictor?.tokenStats}
-                />
-              </TabBody>
-            )}
-            {statistics?.mentor && (
-              <TabBody>
-                <MentorTabContent
-                  stats={statistics?.mentor?.stats}
-                  tokenStats={statistics?.mentor?.tokenStats}
-                />
-              </TabBody>
-            )}
-            {statistics?.staker && (
-              <TabBody>
-                <StakerTabContent
-                  stats={statistics?.staker?.stats}
-                  tokenStats={statistics?.staker?.tokenStats}
-                />
-              </TabBody>
-            )}
-          </Tabs>
-        )}
+          <TabBody>
+            <PredictorTabContent
+              stats={statistics?.predictor?.stats}
+              tokenStats={statistics?.predictor?.tokenStats}
+              isLoading={statistics?.predictor?.isLoading}
+            />
+          </TabBody>
+          <TabBody>
+            <MentorTabContent
+              stats={statistics?.mentor?.stats}
+              tokenStats={statistics?.mentor?.tokenStats}
+              isLoading={statistics?.mentor?.isLoading}
+            />
+          </TabBody>
+          <TabBody>
+            <StakerTabContent
+              stats={statistics?.staker?.stats}
+              tokenStats={statistics?.staker?.tokenStats}
+              isLoading={statistics?.staker?.isLoading}
+            />
+          </TabBody>
+        </Tabs>
 
         {isSelfView && <InvitationLink address={address} />}
 

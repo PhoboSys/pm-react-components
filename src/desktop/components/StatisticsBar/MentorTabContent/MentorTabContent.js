@@ -36,7 +36,7 @@ const cellRenderers = {
 
 const statsOrder = ['proteges', 'earned', 'joined', 'last activity']
 
-const MentorTabContent = ({ achievements, stats, tokenStats }) => {
+const MentorTabContent = ({ achievements, stats, tokenStats, isLoading }) => {
   const statsColumns = useMemo(() => [
     { dataKey: 'name' },
     { cellRenderer: cellRenderers.stats },
@@ -54,6 +54,7 @@ const MentorTabContent = ({ achievements, stats, tokenStats }) => {
       statsColumns={statsColumns}
       tokenStats={tokenStats}
       tokenStatsColumns={tokenStatsColumns}
+      isLoading={isLoading}
     />
   )
 }
@@ -62,6 +63,7 @@ MentorTabContent.propTypes = {
   achievements: PropTypes.array,
   stats: PropTypes.object,
   tokenStats: PropTypes.object,
+  isLoading: PropTypes.bool,
 }
 
 export default MentorTabContent

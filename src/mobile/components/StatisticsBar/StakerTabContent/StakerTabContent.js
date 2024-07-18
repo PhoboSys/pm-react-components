@@ -37,7 +37,7 @@ const cellRenderers = {
 
 const statsOrder = ['staked', 'voting', 'joined', 'last activity']
 
-const StakerTabContent = ({ achievements, stats, tokenStats }) => {
+const StakerTabContent = ({ achievements, stats, tokenStats, isLoading }) => {
   const statsColumns = useMemo(() => [
     { dataKey: 'name' },
     { cellRenderer: cellRenderers.stats },
@@ -55,6 +55,7 @@ const StakerTabContent = ({ achievements, stats, tokenStats }) => {
       statsColumns={statsColumns}
       tokenStats={tokenStats}
       tokenStatsColumns={tokenStatsColumns}
+      isLoading={isLoading}
     />
   )
 }
@@ -63,6 +64,7 @@ StakerTabContent.propTypes = {
   achievements: PropTypes.array,
   stats: PropTypes.object,
   tokenStats: PropTypes.object,
+  isLoading: PropTypes.bool,
 }
 
 export default StakerTabContent
