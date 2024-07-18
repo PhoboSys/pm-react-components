@@ -28,6 +28,7 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var InvitationLink = function InvitationLink(_ref) {
   var address = _ref.address;
   var link = (0, _utils.getInvitationLink)(address);
+  var containerRef = (0, _react.useRef)();
   var timeoutRef = (0, _react.useRef)();
   var _useState = (0, _react.useState)(),
     _useState2 = _slicedToArray(_useState, 2),
@@ -42,6 +43,7 @@ var InvitationLink = function InvitationLink(_ref) {
     setShowPopper(true);
   }, [link]);
   return /*#__PURE__*/_react["default"].createElement("div", {
+    ref: containerRef,
     className: _InvitationLinkModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_InvitationLinkModule["default"].popper, _defineProperty({}, _InvitationLinkModule["default"].show, showPopper))
@@ -57,7 +59,7 @@ var InvitationLink = function InvitationLink(_ref) {
     text: link,
     className: _InvitationLinkModule["default"].copy,
     iconClassName: _InvitationLinkModule["default"].copyIcon,
-    target: document.body
+    target: containerRef.current
   }, /*#__PURE__*/_react["default"].createElement("span", {
     className: _InvitationLinkModule["default"].link
   }, link.replace(/(.{25}).*(.{5})$/, '$1...$2')))));
