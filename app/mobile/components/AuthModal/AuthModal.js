@@ -20,6 +20,11 @@ var AuthModal = function AuthModal(_ref) {
   (0, _react.useEffect)(function () {
     if (isConnected) close();
   }, [isConnected]);
+  var onClick = (0, _react.useCallback)(function (connectorId) {
+    console.log(connectorId);
+    close();
+    onConnectorClick(connectorId);
+  }, [onConnectorClick]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: _AuthModalModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -30,7 +35,7 @@ var AuthModal = function AuthModal(_ref) {
     return /*#__PURE__*/_react["default"].createElement(_Connector["default"], {
       key: connectorId,
       id: connectorId,
-      onClick: onConnectorClick
+      onClick: onClick
     }, connectorId);
   })));
 };

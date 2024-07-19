@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import Connector from '../Connector'
@@ -11,6 +11,12 @@ const AuthModal = ({ close, isConnected, connectors, onConnectorClick }) => {
     if (isConnected) close()
   }, [isConnected])
 
+  const onClick = useCallback((connectorId) => {
+    console.log(connectorId)
+    close()
+    onConnectorClick(connectorId)
+  }, [onConnectorClick])
+
   return (
     <div className={css.container}>
       <div className={css.title}>Connect to Wallet</div>
@@ -19,7 +25,7 @@ const AuthModal = ({ close, isConnected, connectors, onConnectorClick }) => {
           <Connector
             key={connectorId}
             id={connectorId}
-            onClick={onConnectorClick}
+            onClick={onClick}
           >
             {connectorId}
           </Connector>
