@@ -2,6 +2,8 @@ import React, { Fragment, useMemo } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
+import Spinner from '../../common/Spinner'
+
 import css from './Table.module.scss'
 
 const Table = ({
@@ -10,6 +12,7 @@ const Table = ({
   title,
   columns,
   rows,
+  isLoading,
 }) => {
   const shouldRenderTHead = !!(columns.filter(({ label }) => label).length)
 
@@ -32,6 +35,7 @@ const Table = ({
     ))
 
   const scssVars = useMemo(() => ({ "--columsSize": columns.length }), [columns.length])
+  const noData = !rows.length
 
   return (
     <div className={cn(css.container, className)}>
@@ -45,10 +49,11 @@ const Table = ({
           </>
         )}
         <span />
-        {!rows.length && (
+        {isLoading ? (
+          <Spinner className={css.spinner} />
+        ) : noData ? (
           <div className={css.nodata}>{`No ${title.toLowerCase()} yet`}</div>
-        )}
-        {rows.map((row, i) => (
+        ) : rows.map((row, i) => (
           <Fragment key={i}>
             {!!i && <div className={css.line} />}
             {renderRow(row)}
@@ -65,6 +70,7 @@ Table.propTypes = {
   title: PropTypes.string,
   columns: PropTypes.array,
   rows: PropTypes.array,
+  isLoading: PropTypes.bool,
 }
 
 export default React.memo(Table)

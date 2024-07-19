@@ -24,6 +24,12 @@
   font-size: 14px;
 }
 
+.spinner {
+  grid-column-start: 1;
+  grid-column-end: calc(var(--columsSize) + 1);
+  margin: 13px auto;
+}
+
 .table {
   display: grid;
   padding: 0 24px 8px 24px;

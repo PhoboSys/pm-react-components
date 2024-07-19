@@ -35,7 +35,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var StatisticsBar = function StatisticsBar(_ref) {
-  var _statistics$predictor, _statistics$predictor2, _statistics$mentor, _statistics$mentor2, _statistics$staker, _statistics$staker2;
+  var _statistics$predictor, _statistics$predictor2, _statistics$predictor3, _statistics$mentor, _statistics$mentor2, _statistics$mentor3, _statistics$staker, _statistics$staker2, _statistics$staker3;
   var isOpened = _ref.isOpened,
     address = _ref.address,
     isSelfView = _ref.isSelfView,
@@ -54,7 +54,6 @@ var StatisticsBar = function StatisticsBar(_ref) {
   var stopPropagation = (0, _react.useCallback)(function (e) {
     return e.stopPropagation();
   }, []);
-  var shouldRenderTabs = (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) || (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) || (statistics === null || statistics === void 0 ? void 0 : statistics.staker);
   if (!mount) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_StatisticsBarModule["default"].overflow, _defineProperty({}, _StatisticsBarModule["default"].opened, opening)),
@@ -83,20 +82,23 @@ var StatisticsBar = function StatisticsBar(_ref) {
     onClick: onCloseClick
   }, /*#__PURE__*/_react["default"].createElement(_ArrowForward["default"], null))), /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].content
-  }, shouldRenderTabs && /*#__PURE__*/_react["default"].createElement(_Tabs.Tabs, {
+  }, /*#__PURE__*/_react["default"].createElement(_Tabs.Tabs, {
     className: _StatisticsBarModule["default"].tabs,
     activeTabClassName: _StatisticsBarModule["default"].activeTab
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].head
-  }, (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Predictor"), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
+  }, (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Predictor"), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$predictor = statistics.predictor) === null || _statistics$predictor === void 0 ? void 0 : _statistics$predictor.stats,
-    tokenStats: statistics === null || statistics === void 0 || (_statistics$predictor2 = statistics.predictor) === null || _statistics$predictor2 === void 0 ? void 0 : _statistics$predictor2.tokenStats
-  })), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_MentorTabContent["default"], {
+    tokenStats: statistics === null || statistics === void 0 || (_statistics$predictor2 = statistics.predictor) === null || _statistics$predictor2 === void 0 ? void 0 : _statistics$predictor2.tokenStats,
+    isLoading: statistics === null || statistics === void 0 || (_statistics$predictor3 = statistics.predictor) === null || _statistics$predictor3 === void 0 ? void 0 : _statistics$predictor3.isLoading
+  })), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_MentorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$mentor = statistics.mentor) === null || _statistics$mentor === void 0 ? void 0 : _statistics$mentor.stats,
-    tokenStats: statistics === null || statistics === void 0 || (_statistics$mentor2 = statistics.mentor) === null || _statistics$mentor2 === void 0 ? void 0 : _statistics$mentor2.tokenStats
-  })), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
+    tokenStats: statistics === null || statistics === void 0 || (_statistics$mentor2 = statistics.mentor) === null || _statistics$mentor2 === void 0 ? void 0 : _statistics$mentor2.tokenStats,
+    isLoading: statistics === null || statistics === void 0 || (_statistics$mentor3 = statistics.mentor) === null || _statistics$mentor3 === void 0 ? void 0 : _statistics$mentor3.isLoading
+  })), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_StakerTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$staker = statistics.staker) === null || _statistics$staker === void 0 ? void 0 : _statistics$staker.stats,
-    tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats
+    tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats,
+    isLoading: statistics === null || statistics === void 0 || (_statistics$staker3 = statistics.staker) === null || _statistics$staker3 === void 0 ? void 0 : _statistics$staker3.isLoading
   }))), isSelfView && /*#__PURE__*/_react["default"].createElement(_AppsMenu["default"], {
     active: activeNavigationItem
   }), isSelfView && /*#__PURE__*/_react["default"].createElement(_InvitationLink["default"], {

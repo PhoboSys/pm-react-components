@@ -16,6 +16,12 @@
   line-height: 14px;
 }
 
+.spinner {
+  grid-column-start: 1;
+  grid-column-end: calc(var(--columsSize) + 1);
+  margin: 13px auto;
+}
+
 .nodata {
   grid-column-start: 1;
   grid-column-end: calc(var(--columsSize) + 1);

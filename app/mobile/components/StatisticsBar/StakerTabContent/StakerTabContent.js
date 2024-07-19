@@ -50,7 +50,8 @@ var statsOrder = ['staked', 'voting', 'joined', 'last activity'];
 var StakerTabContent = function StakerTabContent(_ref) {
   var achievements = _ref.achievements,
     stats = _ref.stats,
-    tokenStats = _ref.tokenStats;
+    tokenStats = _ref.tokenStats,
+    isLoading = _ref.isLoading;
   var statsColumns = (0, _react.useMemo)(function () {
     return [{
       dataKey: 'name'
@@ -73,13 +74,15 @@ var StakerTabContent = function StakerTabContent(_ref) {
     statsOrder: statsOrder,
     statsColumns: statsColumns,
     tokenStats: tokenStats,
-    tokenStatsColumns: tokenStatsColumns
+    tokenStatsColumns: tokenStatsColumns,
+    isLoading: isLoading
   });
 };
 StakerTabContent.propTypes = {
   achievements: _propTypes["default"].array,
   stats: _propTypes["default"].object,
-  tokenStats: _propTypes["default"].object
+  tokenStats: _propTypes["default"].object,
+  isLoading: _propTypes["default"].bool
 };
 var _default = exports["default"] = StakerTabContent;
 //# sourceMappingURL=StakerTabContent.js.map
