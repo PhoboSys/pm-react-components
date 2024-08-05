@@ -18,8 +18,8 @@
   flex-direction: column;
   width: 100%;
   padding: 16px;
-  height: calc(100vh - var(--top-inset));
-  margin-top: var(--top-inset);
+  height: calc(100vh - env(safe-area-inset-top));
+  margin-top: env(safe-area-inset-top);
   color: #ffffff;
   font-family: 'Proxima Nova', sans-serif;
   background-color: var(--statistics-bar-background-color);
