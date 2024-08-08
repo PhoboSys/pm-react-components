@@ -43,13 +43,15 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isConnecting = _ref.isConnecting,
     isConnected = _ref.isConnected,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
+    showInstallApp = _ref.showInstallApp,
     onProfileClick = _ref.onProfileClick,
     onConnectClick = _ref.onConnectClick,
     onConnectorClick = _ref.onConnectorClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
     content = _ref.content,
-    children = _ref.children;
+    children = _ref.children,
+    onInstallAppClick = _ref.onInstallAppClick;
   var _useModal = (0, _modals.useModal)({
       Content: _AuthModal["default"],
       hideClose: true,
@@ -92,6 +94,10 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     if (onDisconnectClick) onDisconnectClick();
     closeStatisticBar();
   }, [closeStatisticBar, onDisconnectClick]);
+  var openInstallApp = (0, _react.useCallback)(function () {
+    handleCloseStatisticsBar();
+    onInstallAppClick();
+  }, [handleCloseStatisticsBar, onInstallAppClick]);
   return /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureTogglesProvider, {
     toggles: featureToggles
   }, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
@@ -116,8 +122,10 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isSelfView: isConnected && account === statisticsAccount,
     isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
     statistics: statistics,
+    showInstallApp: showInstallApp,
     onCloseClick: handleCloseStatisticsBar,
-    onDisconnectClick: handleDisconnectClick
+    onDisconnectClick: handleDisconnectClick,
+    onInstallAppClick: openInstallApp
   }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
     id: _config["default"].modal_id
   }));
@@ -134,6 +142,7 @@ PMGlobalHeader.propTypes = {
   connectors: _propTypes["default"].array,
   activeNavigationItem: _propTypes["default"].string,
   statistics: _propTypes["default"].object,
+  showInstallApp: _propTypes["default"].bool,
   isConnecting: _propTypes["default"].bool,
   isConnected: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
@@ -142,6 +151,7 @@ PMGlobalHeader.propTypes = {
   onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,
+  onInstallAppClick: _propTypes["default"].func,
   content: _propTypes["default"].node,
   children: _propTypes["default"].node,
   featureToggles: _propTypes["default"].object

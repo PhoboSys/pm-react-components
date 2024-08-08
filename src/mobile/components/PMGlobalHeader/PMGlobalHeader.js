@@ -28,6 +28,7 @@ const PMGlobalHeader = ({
   isConnecting,
   isConnected,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
+  showInstallApp,
   onProfileClick,
   onConnectClick,
   onConnectorClick,
@@ -35,8 +36,8 @@ const PMGlobalHeader = ({
   onStatisticsBarCloseClick,
   content,
   children,
+  onInstallAppClick,
 }) => {
-
   const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
     Content: AuthModal,
     hideClose: true,
@@ -73,6 +74,11 @@ const PMGlobalHeader = ({
     closeStatisticBar()
   }, [closeStatisticBar, onDisconnectClick])
 
+  const openInstallApp = useCallback(() => {
+    handleCloseStatisticsBar()
+    onInstallAppClick()
+  }, [handleCloseStatisticsBar, onInstallAppClick])
+
   return (
     <FeatureTogglesProvider toggles={featureToggles}>
       <PMGlobalHeaderProvider
@@ -104,8 +110,10 @@ const PMGlobalHeader = ({
           isSelfView={isConnected && (account === statisticsAccount)}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
           statistics={statistics}
+          showInstallApp={showInstallApp}
           onCloseClick={handleCloseStatisticsBar}
           onDisconnectClick={handleDisconnectClick}
+          onInstallAppClick={openInstallApp}
         />
         {children}
         {modal}
@@ -127,6 +135,7 @@ PMGlobalHeader.propTypes = {
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
   statistics: PropTypes.object,
+  showInstallApp: PropTypes.bool,
   isConnecting: PropTypes.bool,
   isConnected: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
@@ -135,6 +144,7 @@ PMGlobalHeader.propTypes = {
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,
+  onInstallAppClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
   featureToggles: PropTypes.object,

@@ -16,6 +16,7 @@ import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
 import InvitationLink from './InvitationLink'
 import AppsMenu from './AppsMenu'
+import AppInstallButton from './AppInstallButton/AppInstallButton'
 
 import css from './StatisticsBar.module.scss'
 
@@ -25,8 +26,10 @@ const StatisticsBar = ({
   isSelfView,
   statistics,
   activeNavigationItem,
+  showInstallApp,
   onCloseClick,
   onDisconnectClick,
+  onInstallAppClick,
 }) => {
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
@@ -84,7 +87,7 @@ const StatisticsBar = ({
               {statistics?.mentor && <Tab>Mentor</Tab>}
               {statistics?.staker && <Tab>Staker</Tab>}
             </div>
-
+            {isSelfView && showInstallApp && <AppInstallButton onClick={onInstallAppClick} />}
             <TabBody>
               <PredictorTabContent
                 stats={statistics?.predictor?.stats}
@@ -122,9 +125,11 @@ StatisticsBar.propTypes = {
   isOpened: PropTypes.bool,
   address: PropTypes.string,
   isSelfView: PropTypes.bool,
+  showInstallApp: PropTypes.bool,
   statistics: PropTypes.object,
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
+  onInstallAppClick: PropTypes.func,
 }
 
 export default React.memo(StatisticsBar)
