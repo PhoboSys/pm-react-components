@@ -73,7 +73,7 @@ function formatDistance(datefrom) {
   var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {};
   datefrom = toDate(datefrom);
   dateto = toDate(dateto);
-  if (isEqual(datefrom, INVALID_DATE) || isEqual(dateto, INVALID_DATE)) {
+  if (_isEqual(datefrom, INVALID_DATE) || _isEqual(dateto, INVALID_DATE)) {
     return '';
   }
   return (0, _dateFns.formatDistanceStrict)(datefrom, dateto, _objectSpread(_objectSpread({}, options), {}, {
@@ -88,7 +88,7 @@ function toDate(date) {
   if (isNaN(datetime.getTime())) return INVALID_DATE;
   return datetime;
 }
-var isEqual = function isEqual(first, second) {
+var _isEqual = function isEqual(first, second) {
   if (first === second) {
     return true;
   }
@@ -106,7 +106,7 @@ var isEqual = function isEqual(first, second) {
     }
     var equal = true;
     for (var i in first) {
-      if (!isEqual(first[i], second[i])) {
+      if (!_isEqual(first[i], second[i])) {
         equal = false;
         break;
       }
@@ -126,7 +126,7 @@ var isEqual = function isEqual(first, second) {
           continue; // eslint-disable-line
         }
         if (first[fKeys[_i]] && (first[fKeys[_i]].constructor.name === 'Array' || first[fKeys[_i]].constructor.name === 'Object')) {
-          _equal = isEqual(first[fKeys[_i]], second[fKeys[_i]]);
+          _equal = _isEqual(first[fKeys[_i]], second[fKeys[_i]]);
           if (!_equal) {
             break;
           }

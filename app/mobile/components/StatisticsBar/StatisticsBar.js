@@ -21,6 +21,7 @@ var _MentorTabContent = _interopRequireDefault(require("./MentorTabContent"));
 var _StakerTabContent = _interopRequireDefault(require("./StakerTabContent"));
 var _InvitationLink = _interopRequireDefault(require("./InvitationLink"));
 var _AppsMenu = _interopRequireDefault(require("./AppsMenu"));
+var _AppInstallButton = _interopRequireDefault(require("./AppInstallButton/AppInstallButton"));
 var _StatisticsBarModule = _interopRequireDefault(require("./StatisticsBar.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -41,8 +42,10 @@ var StatisticsBar = function StatisticsBar(_ref) {
     isSelfView = _ref.isSelfView,
     statistics = _ref.statistics,
     activeNavigationItem = _ref.activeNavigationItem,
+    showInstallApp = _ref.showInstallApp,
     onCloseClick = _ref.onCloseClick,
-    onDisconnectClick = _ref.onDisconnectClick;
+    onDisconnectClick = _ref.onDisconnectClick,
+    onInstallAppClick = _ref.onInstallAppClick;
   var timeout = 100; //ms
   var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
     _useTransition2 = _slicedToArray(_useTransition, 2),
@@ -87,7 +90,9 @@ var StatisticsBar = function StatisticsBar(_ref) {
     activeTabClassName: _StatisticsBarModule["default"].activeTab
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].head
-  }, (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Predictor"), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
+  }, (statistics === null || statistics === void 0 ? void 0 : statistics.predictor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Predictor"), (statistics === null || statistics === void 0 ? void 0 : statistics.mentor) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Mentor"), (statistics === null || statistics === void 0 ? void 0 : statistics.staker) && /*#__PURE__*/_react["default"].createElement(_Tabs.Tab, null, "Staker")), isSelfView && showInstallApp && /*#__PURE__*/_react["default"].createElement(_AppInstallButton["default"], {
+    onClick: onInstallAppClick
+  }), /*#__PURE__*/_react["default"].createElement(_Tabs.TabBody, null, /*#__PURE__*/_react["default"].createElement(_PredictorTabContent["default"], {
     stats: statistics === null || statistics === void 0 || (_statistics$predictor = statistics.predictor) === null || _statistics$predictor === void 0 ? void 0 : _statistics$predictor.stats,
     tokenStats: statistics === null || statistics === void 0 || (_statistics$predictor2 = statistics.predictor) === null || _statistics$predictor2 === void 0 ? void 0 : _statistics$predictor2.tokenStats,
     isLoading: statistics === null || statistics === void 0 || (_statistics$predictor3 = statistics.predictor) === null || _statistics$predictor3 === void 0 ? void 0 : _statistics$predictor3.isLoading
@@ -109,9 +114,11 @@ StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,
   address: _propTypes["default"].string,
   isSelfView: _propTypes["default"].bool,
+  showInstallApp: _propTypes["default"].bool,
   statistics: _propTypes["default"].object,
   onCloseClick: _propTypes["default"].func,
-  onConnectorClick: _propTypes["default"].func
+  onConnectorClick: _propTypes["default"].func,
+  onInstallAppClick: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(StatisticsBar);
 //# sourceMappingURL=StatisticsBar.js.map
