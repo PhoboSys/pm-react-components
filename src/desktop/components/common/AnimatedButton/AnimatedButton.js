@@ -71,6 +71,7 @@ const AnimatedButton = (props) => {
       //pass data attributes
       {...htmlattrs}
     >
+      {props.children}
       <span className={css.before}></span>
       <span className={css.overlay}></span>
       <span className={css.after}></span>

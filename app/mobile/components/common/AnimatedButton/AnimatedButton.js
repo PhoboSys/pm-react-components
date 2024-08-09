@@ -63,7 +63,7 @@ var AnimatedButton = function AnimatedButton(props) {
     style: style
 
     //pass data attributes
-  }, htmlattrs), /*#__PURE__*/_react["default"].createElement("span", {
+  }, htmlattrs), props.children, /*#__PURE__*/_react["default"].createElement("span", {
     className: _AnimatedButtonModule["default"].before
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _AnimatedButtonModule["default"].overlay
