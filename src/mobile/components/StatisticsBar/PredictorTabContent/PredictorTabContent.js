@@ -42,7 +42,7 @@ const cellRenderers = {
   earned: (row) => (
     <TokenCurrencyCell
       amount={row.value?.earned?.amount}
-      currency={row.value?.earned?.currency}
+      currency={row.value?.earned?.currency || row.value?.wagered?.currency}
     />
   ),
 }

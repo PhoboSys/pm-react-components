@@ -48,10 +48,10 @@ var cellRenderers = {
     });
   },
   earned: function earned(row) {
-    var _row$value3, _row$value4;
+    var _row$value3, _row$value4, _row$value5;
     return /*#__PURE__*/_react["default"].createElement(_cells.TokenCurrencyCell, {
       amount: (_row$value3 = row.value) === null || _row$value3 === void 0 || (_row$value3 = _row$value3.earned) === null || _row$value3 === void 0 ? void 0 : _row$value3.amount,
-      currency: (_row$value4 = row.value) === null || _row$value4 === void 0 || (_row$value4 = _row$value4.earned) === null || _row$value4 === void 0 ? void 0 : _row$value4.currency
+      currency: ((_row$value4 = row.value) === null || _row$value4 === void 0 || (_row$value4 = _row$value4.earned) === null || _row$value4 === void 0 ? void 0 : _row$value4.currency) || ((_row$value5 = row.value) === null || _row$value5 === void 0 || (_row$value5 = _row$value5.wagered) === null || _row$value5 === void 0 ? void 0 : _row$value5.currency)
     });
   }
 };
