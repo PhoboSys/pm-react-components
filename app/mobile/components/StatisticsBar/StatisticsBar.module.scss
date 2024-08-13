@@ -18,7 +18,7 @@
   flex-direction: column;
   width: 100%;
   padding: 16px;
-  height: calc(100vh - env(safe-area-inset-top));
+  height: calc(100% - env(safe-area-inset-top));
   margin-top: env(safe-area-inset-top);
   color: #ffffff;
   font-family: 'Proxima Nova', sans-serif;
@@ -90,7 +90,7 @@
   min-height: 0;
   overflow-y: auto;
   padding-top: 12px;
-  padding-bottom: 24px;
+  padding-bottom: 80px;
 }
 
 .tabs {
