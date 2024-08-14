@@ -15,7 +15,7 @@ const menuItems = [
 const AppsMenu = ({ active }) => {
 
   const navigate = (path) => {
-    const url = `${window.location.protocol}//${window.location.host}/${path}`
+    const url = `${window.location.protocol}//${window.location.host}${path}`
     window.history.pushState({}, '', url)
     window.location.href = url
   }
