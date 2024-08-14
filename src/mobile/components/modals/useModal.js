@@ -15,12 +15,10 @@ const useModal = ({
   const open = useCallback((props) => {
     setIsOpen(true)
     setProps(props)
-    document.body.style.overflow = 'hidden'
   }, [])
 
   const close = useCallback(() => {
     setIsOpen(false)
-    document.body.style.overflow = 'visible'
   }, [])
 
   const Modal = getModalByType(type)
