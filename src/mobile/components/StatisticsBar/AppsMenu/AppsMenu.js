@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useCallback } from 'react'
 import PropTypes from 'prop-types'
 
 import config from '../../../../config'
@@ -13,6 +13,13 @@ const menuItems = [
 ]
 
 const AppsMenu = ({ active }) => {
+
+  const navigate = (path) => {
+    const url = `${window.location.protocol}//${window.location.host}/${path}`
+    window.history.pushState({}, '', url)
+    window.location.href = url
+  }
+
   return (
     <div className={css.container}>
       <div className={css.title}>Apps</div>
@@ -23,7 +30,7 @@ const AppsMenu = ({ active }) => {
             <Fragment key={name}>
               {index !== 0 && <div />}
               <li>
-                <a href={path}>
+                <a onClick={() => navigate(path)}>
                   <span>{label}</span>
                   <OpenInNewTab />
                 </a>

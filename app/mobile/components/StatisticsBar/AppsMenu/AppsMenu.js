@@ -28,6 +28,11 @@ var menuItems = [{
 }];
 var AppsMenu = function AppsMenu(_ref) {
   var active = _ref.active;
+  var navigate = function navigate(path) {
+    var url = "".concat(window.location.protocol, "//").concat(window.location.host, "/").concat(path);
+    window.history.pushState({}, '', url);
+    window.location.href = url;
+  };
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: _AppsMenuModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -44,7 +49,9 @@ var AppsMenu = function AppsMenu(_ref) {
     return /*#__PURE__*/_react["default"].createElement(_react.Fragment, {
       key: name
     }, index !== 0 && /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("a", {
-      href: path
+      onClick: function onClick() {
+        return navigate(path);
+      }
     }, /*#__PURE__*/_react["default"].createElement("span", null, label), /*#__PURE__*/_react["default"].createElement(_OpenInNewTab["default"], null))));
   })));
 };
