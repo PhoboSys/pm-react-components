@@ -39,11 +39,9 @@ var useModal = function useModal(_ref) {
   var open = (0, _react.useCallback)(function (props) {
     setIsOpen(true);
     setProps(props);
-    document.body.style.overflow = 'hidden';
   }, []);
   var close = (0, _react.useCallback)(function () {
     setIsOpen(false);
-    document.body.style.overflow = 'visible';
   }, []);
   var Modal = (0, _modals.getModalByType)(type);
   return {
