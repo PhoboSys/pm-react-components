@@ -40,6 +40,7 @@
     height: 100%;
     text-decoration: none;
     color: var(--statistics-bar-stats-table-secondary-color);
+    user-select: none;
 
     svg path {
       fill: var(--statistics-bar-stats-table-secondary-color);
