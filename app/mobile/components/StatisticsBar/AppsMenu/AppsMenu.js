@@ -30,9 +30,10 @@ var AppsMenu = function AppsMenu(_ref) {
   var active = _ref.active;
   var navigate = function navigate(path) {
     var url = "".concat(window.location.protocol, "//").concat(window.location.host).concat(path);
-    window.history.pushState({
+    window.history.replaceState({
       forceRefresh: true
-    }, '', url);
+    }, '');
+    window.history.pushState(null, '', url);
     window.location.href = url;
   };
   return /*#__PURE__*/_react["default"].createElement("div", {
