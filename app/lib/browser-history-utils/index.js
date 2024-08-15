@@ -18,7 +18,6 @@ function initForceRefreshOption() {
   }
   window.addEventListener('popstate', forceRefresh);
   return function () {
-    console.log('remove');
     window.removeEventListener('popstate', forceRefresh);
   };
 }

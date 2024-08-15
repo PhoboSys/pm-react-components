@@ -8,7 +8,6 @@ exports["default"] = void 0;
 var _react = _interopRequireWildcard(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _config = _interopRequireDefault(require("../../../config"));
-var _browserHistoryUtils = require("../../../lib/browser-history-utils");
 var _FeatureToggle = require("../FeatureToggle");
 var _PMGlobalHeaderProvider = _interopRequireDefault(require("../PMGlobalHeaderProvider"));
 var _StatisticsBar = _interopRequireDefault(require("../StatisticsBar"));
@@ -99,9 +98,6 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     handleCloseStatisticsBar();
     onInstallAppClick();
   }, [handleCloseStatisticsBar, onInstallAppClick]);
-  (0, _react.useEffect)(function () {
-    return (0, _browserHistoryUtils.initForceRefreshOption)();
-  }, []);
   return /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureTogglesProvider, {
     toggles: featureToggles
   }, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {

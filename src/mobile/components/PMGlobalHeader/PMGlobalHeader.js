@@ -2,7 +2,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
 import config from '@config'
-import { initForceRefreshOption } from '@lib/browser-history-utils'
 
 import { FeatureTogglesProvider } from '../FeatureToggle'
 import PMGlobalHeaderProvider from '../PMGlobalHeaderProvider'
@@ -80,8 +79,6 @@ const PMGlobalHeader = ({
     handleCloseStatisticsBar()
     onInstallAppClick()
   }, [handleCloseStatisticsBar, onInstallAppClick])
-
-  useEffect(() => initForceRefreshOption(), [])
 
   return (
     <FeatureTogglesProvider toggles={featureToggles}>

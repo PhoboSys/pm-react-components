@@ -11,7 +11,6 @@ export function initForceRefreshOption() {
   window.addEventListener('popstate', forceRefresh)
 
   return () => {
-    console.log('remove')
     window.removeEventListener('popstate', forceRefresh)
   }
 }
