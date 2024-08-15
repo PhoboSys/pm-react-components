@@ -21,7 +21,6 @@ var AuthModal = function AuthModal(_ref) {
     if (isConnected) close();
   }, [isConnected]);
   var onClick = (0, _react.useCallback)(function (connectorId) {
-    console.log(connectorId);
     close();
     onConnectorClick(connectorId);
   }, [onConnectorClick]);

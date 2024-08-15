@@ -16,7 +16,7 @@ const AppsMenu = ({ active }) => {
 
   const navigate = (path) => {
     const url = `${window.location.protocol}//${window.location.host}${path}`
-    window.history.pushState({}, '', url)
+    window.history.pushState({ forceRefresh: true }, '', url)
     window.location.href = url
   }
 

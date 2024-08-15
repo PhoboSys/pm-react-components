@@ -12,7 +12,6 @@ const AuthModal = ({ close, isConnected, connectors, onConnectorClick }) => {
   }, [isConnected])
 
   const onClick = useCallback((connectorId) => {
-    console.log(connectorId)
     close()
     onConnectorClick(connectorId)
   }, [onConnectorClick])
