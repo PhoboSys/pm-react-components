@@ -18,7 +18,8 @@ function initForceRefreshOption() {
   }
   window.addEventListener('popstate', forceRefresh);
   return function () {
-    return window.removeEventListener('popstate', forceRefresh);
+    console.log('remove');
+    window.removeEventListener('popstate', forceRefresh);
   };
 }
 //# sourceMappingURL=index.js.map
