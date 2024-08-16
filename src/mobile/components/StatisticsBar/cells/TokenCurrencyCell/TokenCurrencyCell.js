@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 
-import BalanceCurrency from '../../../common/Balance'
+import BalanceCurrency from '../../../common/BalanceCurrency'
 import FormattedCurrencyCell from '../FormattedCurrencyCell'
 import { useGHProvider } from '../../../PMGlobalHeaderProvider'
 
@@ -26,12 +26,12 @@ const TokenCurrencyCell = ({
       containerClassName,
     )}>
       <BalanceCurrency
-        fill={currencyFill}
         className={cn(
           css.icon,
           { [css.left]: placement === 'left', [css.right]: placement === 'right'},
           iconClassName,
         )}
+        fill={currencyFill}
         currency={currency}
         size={iconSize}
       />

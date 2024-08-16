@@ -14,7 +14,7 @@ var _Disconnect = _interopRequireDefault(require("../SVG/Disconnect"));
 var _Connect = _interopRequireDefault(require("../SVG/Connect"));
 var _Copy = _interopRequireDefault(require("../common/Copy"));
 var _Tabs = require("../common/Tabs");
-var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
+var _Avatar = _interopRequireDefault(require("../common/Avatar"));
 var _useTransition3 = require("../../../hooks/useTransition");
 var _PredictorTabContent = _interopRequireDefault(require("./PredictorTabContent"));
 var _MentorTabContent = _interopRequireDefault(require("./MentorTabContent"));
@@ -72,7 +72,7 @@ var StatisticsBar = function StatisticsBar(_ref) {
     onClick: onDisconnectClick
   }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), /*#__PURE__*/_react["default"].createElement(_Connect["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].account
-  }, /*#__PURE__*/_react["default"].createElement(_AccountIcon["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_Avatar["default"], {
     className: _StatisticsBarModule["default"].icon,
     account: address
   }), /*#__PURE__*/_react["default"].createElement(_Copy["default"], {

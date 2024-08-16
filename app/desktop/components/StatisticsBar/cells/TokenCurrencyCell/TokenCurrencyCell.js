@@ -7,7 +7,7 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
-var _Balance = _interopRequireDefault(require("../../../common/Balance"));
+var _BalanceCurrency = _interopRequireDefault(require("../../../common/BalanceCurrency"));
 var _FormattedCurrencyCell = _interopRequireDefault(require("../FormattedCurrencyCell"));
 var _PMGlobalHeaderProvider = require("../../../PMGlobalHeaderProvider");
 var _TokenCurrencyCellModule = _interopRequireDefault(require("./TokenCurrencyCell.module.scss"));
@@ -29,7 +29,7 @@ var TokenCurrencyCell = function TokenCurrencyCell(_ref) {
     currencyFill = _useGHProvider.currencyFill;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].container, _defineProperty({}, _TokenCurrencyCellModule["default"].reverse, placement === 'right'), containerClassName)
-  }, /*#__PURE__*/_react["default"].createElement(_Balance["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_BalanceCurrency["default"], {
     fill: currencyFill,
     className: (0, _clsx["default"])(_TokenCurrencyCellModule["default"].icon, _defineProperty(_defineProperty({}, _TokenCurrencyCellModule["default"].left, placement === 'left'), _TokenCurrencyCellModule["default"].right, placement === 'right'), iconClassName),
     currency: currency,

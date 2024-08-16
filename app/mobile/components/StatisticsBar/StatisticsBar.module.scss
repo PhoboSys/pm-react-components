@@ -110,15 +110,15 @@
     > div {
       margin-bottom: 16px;
       padding: 9.5px 20px;
+      border: 1px solid var(--statistics-bar-tab-border-color);
       background-color: var(--statistics-bar-tab-bg-color);
       border-radius: 100px;
-      border: 2px solid transparent;
       font-size: 15px;
       color: #ffffff;
   
       &.activeTab {
-        border-color: #ffffff;
-        background-color: transparent;
+        background-color: var(--statistics-bar-tab-selected-bg-color);
+        border-color: var(--statistics-bar-tab-selected-bg-color);
       }
     }
   }

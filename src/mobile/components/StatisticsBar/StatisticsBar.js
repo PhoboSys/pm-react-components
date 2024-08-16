@@ -9,7 +9,7 @@ import Disconnect from '../SVG/Disconnect'
 import Connect from '../SVG/Connect'
 import Copy from '../common/Copy'
 import { Tabs, Tab, TabBody } from '../common/Tabs'
-import AccountIcon from '../AccountIcon'
+import Avatar from '../common/Avatar'
 import { useTransition } from '../../../hooks/useTransition'
 import PredictorTabContent from './PredictorTabContent'
 import MentorTabContent from './MentorTabContent'
@@ -61,7 +61,7 @@ const StatisticsBar = ({
             <Connect/>
           </a>
           <div className={css.account}>
-            <AccountIcon className={css.icon} account={address} />
+            <Avatar className={css.icon} account={address} />
             <Copy
               text={address}
               className={css.address}

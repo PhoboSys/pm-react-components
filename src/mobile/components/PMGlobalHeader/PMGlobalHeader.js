@@ -14,11 +14,9 @@ import { useModal } from '../modals';
 const PMGlobalHeader = ({
   headerClassName,
   connectClassName,
-  basepath = "/",
   currencyFill,
   maximumFractionDigits,
   maximumFractionDigitsPrecent,
-  hideProfile,
   featureToggles,
   mustUserLogin,
   account,
@@ -30,7 +28,6 @@ const PMGlobalHeader = ({
   isConnected,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
   showInstallApp,
-  onProfileClick,
   onConnectClick,
   onConnectorClick,
   onDisconnectClick,
@@ -60,11 +57,6 @@ const PMGlobalHeader = ({
     openAuthModal({ hideClose: false, shouldCloseOnOverlayClick: true })
   }, [onConnectClick, openAuthModal])
 
-  const handleProfileClick = useCallback((address) => {
-    onProfileClick && onProfileClick(address)
-    openStatisticBar()
-  }, [openStatisticBar, onProfileClick])
-
   const handleCloseStatisticsBar = useCallback(() => {
     if (onStatisticsBarCloseClick) onStatisticsBarCloseClick()
     closeStatisticBar()
@@ -89,15 +81,7 @@ const PMGlobalHeader = ({
         maximumFractionDigits={maximumFractionDigits}
         maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
       >
-        <Header
-          className={headerClassName}
-          isConnected={isConnected}
-          account={account}
-          hideProfile={hideProfile}
-          onProfileClick={handleProfileClick}
-        >
-          {content}
-        </Header>
+        <Header className={headerClassName}>{content}</Header>
         {!isConnected && (
           <Connect 
             className={connectClassName}
@@ -126,7 +110,6 @@ const PMGlobalHeader = ({
 
 PMGlobalHeader.propTypes = {
   headerClassName: PropTypes.string,
-  basepath: PropTypes.string,
   currencyFill: PropTypes.string,
   maximumFractionDigits: PropTypes.number,
   maximumFractionDigitsPrecent: PropTypes.number,
@@ -141,7 +124,6 @@ PMGlobalHeader.propTypes = {
   isConnected: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
   onConnectorClick: PropTypes.func,
-  onProfileClick: PropTypes.func,
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,
