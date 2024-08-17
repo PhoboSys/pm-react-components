@@ -27,12 +27,9 @@ function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var PMGlobalHeader = function PMGlobalHeader(_ref) {
   var headerClassName = _ref.headerClassName,
     connectClassName = _ref.connectClassName,
-    _ref$basepath = _ref.basepath,
-    basepath = _ref$basepath === void 0 ? "/" : _ref$basepath,
     currencyFill = _ref.currencyFill,
     maximumFractionDigits = _ref.maximumFractionDigits,
     maximumFractionDigitsPrecent = _ref.maximumFractionDigitsPrecent,
-    hideProfile = _ref.hideProfile,
     featureToggles = _ref.featureToggles,
     mustUserLogin = _ref.mustUserLogin,
     account = _ref.account,
@@ -44,7 +41,6 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isConnected = _ref.isConnected,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
     showInstallApp = _ref.showInstallApp,
-    onProfileClick = _ref.onProfileClick,
     onConnectClick = _ref.onConnectClick,
     onConnectorClick = _ref.onConnectorClick,
     onDisconnectClick = _ref.onDisconnectClick,
@@ -82,10 +78,6 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
       shouldCloseOnOverlayClick: true
     });
   }, [onConnectClick, openAuthModal]);
-  var handleProfileClick = (0, _react.useCallback)(function (address) {
-    onProfileClick && onProfileClick(address);
-    openStatisticBar();
-  }, [openStatisticBar, onProfileClick]);
   var handleCloseStatisticsBar = (0, _react.useCallback)(function () {
     if (onStatisticsBarCloseClick) onStatisticsBarCloseClick();
     closeStatisticBar();
@@ -107,11 +99,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     maximumFractionDigits: maximumFractionDigits,
     maximumFractionDigitsPrecent: maximumFractionDigitsPrecent
   }, /*#__PURE__*/_react["default"].createElement(_Header["default"], {
-    className: headerClassName,
-    isConnected: isConnected,
-    account: account,
-    hideProfile: hideProfile,
-    onProfileClick: handleProfileClick
+    className: headerClassName
   }, content), !isConnected && /*#__PURE__*/_react["default"].createElement(_Connect["default"], {
     className: connectClassName,
     isConnecting: isConnecting,
@@ -132,7 +120,6 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
 };
 PMGlobalHeader.propTypes = {
   headerClassName: _propTypes["default"].string,
-  basepath: _propTypes["default"].string,
   currencyFill: _propTypes["default"].string,
   maximumFractionDigits: _propTypes["default"].number,
   maximumFractionDigitsPrecent: _propTypes["default"].number,
@@ -147,7 +134,6 @@ PMGlobalHeader.propTypes = {
   isConnected: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
   onConnectorClick: _propTypes["default"].func,
-  onProfileClick: _propTypes["default"].func,
   onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,

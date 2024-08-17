@@ -14,7 +14,7 @@ function htmlPercent(percent) {
   return ((0, _lodash.floor)((0, _calcUtils.mul)(percent, 100), precision) || 0) + '%';
 }
 function htmlCurrency(amount) {
-  var maximumFractionDigits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 6;
+  var maximumFractionDigits = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 3;
   if (isNaN(+amount)) return '';
   return _currency.CurrencyFormatter.formatDefault(amount, {
     minimumFractionDigits: 0,

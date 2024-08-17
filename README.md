@@ -69,7 +69,7 @@
 - --profilebar-cash-diffrenece-bg
 - --profilebar-cash-increase-color
 - --profilebar-cash-decrease-color
-- --profilebar-cash-currency-bg
+- --profilebar-cash-dropdown-currency-bg
 - --profilebar-account-name-color
 - --profilebar-wallet-address-color
 - --profilebar-currency-popover-color
@@ -131,7 +131,7 @@
 - --connect-bar-connector-background-color
 - --connect-bar-connector-background-color-hover
 - --connect-bar-connector-background-color-active
-- --profilebar-cash-currency-bg
+- --profilebar-cash-dropdown-currency-bg
 - --statistics-bar-background-color
 - --statistics-bar-close-icon-border-color
 - --statistics-bar-close-icon-border-color-hover

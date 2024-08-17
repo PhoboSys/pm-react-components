@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { htmlAddress, htmlCurrency } from '@lib/html-utils'
 import { isPositive, isNegative, sub } from '@lib/calc-utils'
 
-import BalanceCurrency from '../common/Balance'
+import BalanceCurrency from '../common/BalanceCurrency'
 import Spinner from '../common/Spinner'
 import AccountIcon from '../AccountIcon'
 import { useGHProvider } from '../PMGlobalHeaderProvider'

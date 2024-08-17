@@ -1,6 +1,5 @@
 import UNKNOWN_DARK from './UNKNOWN.DARK'
 import ETH_DARK from './ETH.DARK'
-import USDT_DARK from './USDT.DARK'
 import USDC_DARK from './USDC.DARK'
 import DEMO_DARK from './DEMO.DARK'
 import ORCY_DARK from './ORCY.DARK'
@@ -11,7 +10,6 @@ const FUNDS = {
   ETH_DARK,
   DEMO_DARK,
   ORCY_DARK,
-  USDT_DARK,
   USDC_DARK,
 }
 

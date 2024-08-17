@@ -10,7 +10,7 @@ var _clsx = _interopRequireDefault(require("clsx"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _htmlUtils = require("../../../lib/html-utils");
 var _calcUtils = require("../../../lib/calc-utils");
-var _Balance = _interopRequireDefault(require("../common/Balance"));
+var _BalanceCurrency = _interopRequireDefault(require("../common/BalanceCurrency"));
 var _Spinner = _interopRequireDefault(require("../common/Spinner"));
 var _AccountIcon = _interopRequireDefault(require("../AccountIcon"));
 var _PMGlobalHeaderProvider = require("../PMGlobalHeaderProvider");
@@ -127,7 +127,7 @@ var ProfileBar = function ProfileBar(_ref) {
     key: changeid,
     className: (0, _clsx["default"])(_ProfileBarModule["default"].cash, _defineProperty(_defineProperty({}, _ProfileBarModule["default"].increase, difference && (0, _calcUtils.isPositive)(difference)), _ProfileBarModule["default"].decrease, difference && (0, _calcUtils.isNegative)(difference))),
     onClick: handleBalanceClick
-  }, /*#__PURE__*/_react["default"].createElement(_Balance["default"], {
+  }, /*#__PURE__*/_react["default"].createElement(_BalanceCurrency["default"], {
     fill: currencyFill,
     currency: currency
   }), balance && balance !== 0 ? /*#__PURE__*/_react["default"].createElement("span", {
@@ -149,7 +149,7 @@ var ProfileBar = function ProfileBar(_ref) {
       onClick: handleCurrencyChanged
     }, /*#__PURE__*/_react["default"].createElement("span", {
       className: _ProfileBarModule["default"].optionIcon
-    }, /*#__PURE__*/_react["default"].createElement(_Balance["default"], {
+    }, /*#__PURE__*/_react["default"].createElement(_BalanceCurrency["default"], {
       fill: currencyFill,
       currency: option.currency,
       className: _ProfileBarModule["default"].optionBalance
