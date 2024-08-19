@@ -8,7 +8,7 @@ var _react = _interopRequireDefault(require("react"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 var ETH = function ETH(_ref) {
   var _ref$fill = _ref.fill,
-    fill = _ref$fill === void 0 ? '#000000' : _ref$fill,
+    fill = _ref$fill === void 0 ? '#ffffff' : _ref$fill,
     _ref$size = _ref.size,
     size = _ref$size === void 0 ? 1 : _ref$size;
   var width = size * 10;

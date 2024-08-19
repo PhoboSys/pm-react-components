@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ETH = ({ fill = '#000000', size = 1 }) => {
+const ETH = ({ fill = '#ffffff', size = 1 }) => {
   const width = size * 10
   const height = size * 16
   return (
