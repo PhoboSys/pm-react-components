@@ -4,6 +4,7 @@ import cn from 'clsx'
 
 import Avatar from '../common/Avatar'
 import CashDropdown from './CashDropdown'
+import NetworkStatus from './NetworkStatus'
 
 import css from './ProfileBar.module.scss'
 
@@ -12,6 +13,7 @@ const ProfileBar = ({
   currency,
   balance,
   account,
+  networkStatus,
   cashDropdownPopperStyles,
   onCurrencyChanged,
   onIconClick,
@@ -32,11 +34,14 @@ const ProfileBar = ({
         onCurrencyChanged={onCurrencyChanged}
         dropdownPopperStyles={cashDropdownPopperStyles}
       />
-      <Avatar
-        className={css.avatar}
-        account={account}
-        onClick={handleIconClick}
-      />
+      <div className={css.avatarContainer}>
+        <Avatar
+          className={css.avatar}
+          account={account}
+          onClick={handleIconClick}
+        />
+        {networkStatus && <NetworkStatus type={networkStatus} />}
+      </div>
     </div>
   )
 }
@@ -46,6 +51,7 @@ ProfileBar.propTypes = {
   currency: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   account: PropTypes.string,
+  networkStatus: PropTypes.string,
   cashDropdownPopperStyles: PropTypes.object,
   onCurrencyChanged: PropTypes.func,
   onIconClick: PropTypes.func,
