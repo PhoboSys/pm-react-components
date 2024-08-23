@@ -10,6 +10,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _Avatar = _interopRequireDefault(require("../common/Avatar"));
 var _CashDropdown = _interopRequireDefault(require("./CashDropdown"));
+var _NetworkStatus = _interopRequireDefault(require("./NetworkStatus"));
 var _ProfileBarModule = _interopRequireDefault(require("./ProfileBar.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
@@ -19,6 +20,7 @@ var ProfileBar = function ProfileBar(_ref) {
     currency = _ref.currency,
     balance = _ref.balance,
     account = _ref.account,
+    networkStatus = _ref.networkStatus,
     cashDropdownPopperStyles = _ref.cashDropdownPopperStyles,
     onCurrencyChanged = _ref.onCurrencyChanged,
     onIconClick = _ref.onIconClick;
@@ -35,17 +37,22 @@ var ProfileBar = function ProfileBar(_ref) {
     account: account,
     onCurrencyChanged: onCurrencyChanged,
     dropdownPopperStyles: cashDropdownPopperStyles
-  }), /*#__PURE__*/_react["default"].createElement(_Avatar["default"], {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _ProfileBarModule["default"].avatarContainer
+  }, /*#__PURE__*/_react["default"].createElement(_Avatar["default"], {
     className: _ProfileBarModule["default"].avatar,
     account: account,
     onClick: handleIconClick
-  }));
+  }), networkStatus && /*#__PURE__*/_react["default"].createElement(_NetworkStatus["default"], {
+    type: networkStatus
+  })));
 };
 ProfileBar.propTypes = {
   className: _propTypes["default"].string,
   currency: _propTypes["default"].string,
   balance: _propTypes["default"].oneOfType([_propTypes["default"].string, _propTypes["default"].number]),
   account: _propTypes["default"].string,
+  networkStatus: _propTypes["default"].string,
   cashDropdownPopperStyles: _propTypes["default"].object,
   onCurrencyChanged: _propTypes["default"].func,
   onIconClick: _propTypes["default"].func

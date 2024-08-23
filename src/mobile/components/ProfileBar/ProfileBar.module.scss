@@ -8,6 +8,10 @@
   gap: 15px;
 }
 
+.avatarContainer {
+  position: relative;
+}
+
 .avatar {
   box-shadow: inset 0px 0px 0px 0px #ffffff00;
   transition: box-shadow .1s ease-in-out;
