@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import config from '../../../config'
 import { useTransition } from '../../../hooks/useTransition'
 import { FeatureToggle } from '../FeatureToggle';
+import NetworkStatus from '../NetworkStatus'
 import LogoIcon from '../SVG/Logo'
 import TradeIcon from '../SVG/Trade'
 import StakingIcon from '../SVG/Staking'
@@ -27,6 +28,7 @@ const NavBar = ({
   logoLabelFill,
   active,
   featureTogglesTitle,
+  networkStatus,
 }) => {
 
   const [expanded, setExpanded] = useState(localStorage.getItem(localStorageSelector) === 'true')
@@ -70,6 +72,7 @@ const NavBar = ({
               <span className={css.label}>{label}</span>
             </a>
           ))}
+          {networkStatus && <NetworkStatus networkStatus={networkStatus} />}
           <FeatureToggle title={featureTogglesTitle} />
         </div>
       </div>
@@ -83,6 +86,7 @@ NavBar.propTypes = {
   logoFill: PropTypes.string,
   logoLabelFill: PropTypes.string,
   featureTogglesTitle: PropTypes.string,
+  networkStatus: PropTypes.string,
 }
 
 export default React.memo(NavBar)

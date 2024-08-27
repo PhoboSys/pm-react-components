@@ -41,6 +41,7 @@ const PMGlobalHeader = ({
   statistics,
   featureToggles,
   featureTogglesTitle,
+  networkStatus,
   onConnectClick,
   onDisconnectClick,
   onNicknameChanged,
@@ -121,6 +122,7 @@ const PMGlobalHeader = ({
           logoLabelFill={logoLabelFill}
           active={activeNavigationItem}
           featureTogglesTitle={featureTogglesTitle}
+          networkStatus={networkStatus}
         />
         <Header className={headerClassName}>
           {content}
@@ -199,6 +201,7 @@ PMGlobalHeader.propTypes = {
   statistics: PropTypes.object,
   featureToggles: PropTypes.object,
   featureTogglesTitle: PropTypes.string,
+  networkStatus: PropTypes.string,
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onConnectorClick: PropTypes.func,

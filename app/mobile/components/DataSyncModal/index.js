@@ -6,9 +6,9 @@ Object.defineProperty(exports, "__esModule", {
 Object.defineProperty(exports, "default", {
   enumerable: true,
   get: function get() {
-    return _StatusIcon["default"];
+    return _DataSyncModal["default"];
   }
 });
-var _StatusIcon = _interopRequireDefault(require("./StatusIcon"));
+var _DataSyncModal = _interopRequireDefault(require("./DataSyncModal"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 //# sourceMappingURL=index.js.map

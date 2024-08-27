@@ -11,6 +11,7 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _config = _interopRequireDefault(require("../../../config"));
 var _useTransition3 = require("../../../hooks/useTransition");
 var _FeatureToggle = require("../FeatureToggle");
+var _NetworkStatus = _interopRequireDefault(require("../NetworkStatus"));
 var _Logo = _interopRequireDefault(require("../SVG/Logo"));
 var _Trade = _interopRequireDefault(require("../SVG/Trade"));
 var _Staking = _interopRequireDefault(require("../SVG/Staking"));
@@ -52,7 +53,8 @@ var NavBar = function NavBar(_ref) {
     logoFill = _ref.logoFill,
     logoLabelFill = _ref.logoLabelFill,
     active = _ref.active,
-    featureTogglesTitle = _ref.featureTogglesTitle;
+    featureTogglesTitle = _ref.featureTogglesTitle,
+    networkStatus = _ref.networkStatus;
   var _useState = (0, _react.useState)(localStorage.getItem(localStorageSelector) === 'true'),
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
@@ -107,6 +109,8 @@ var NavBar = function NavBar(_ref) {
     }, icon), /*#__PURE__*/_react["default"].createElement("span", {
       className: _NavbarModule["default"].label
     }, label));
+  }), networkStatus && /*#__PURE__*/_react["default"].createElement(_NetworkStatus["default"], {
+    networkStatus: networkStatus
   }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
     title: featureTogglesTitle
   }))));
@@ -116,7 +120,8 @@ NavBar.propTypes = {
   active: _propTypes["default"].string,
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string,
-  featureTogglesTitle: _propTypes["default"].string
+  featureTogglesTitle: _propTypes["default"].string,
+  networkStatus: _propTypes["default"].string
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(NavBar);
 //# sourceMappingURL=Navbar.js.map
