@@ -10,8 +10,8 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _htmlUtils = require("../../../lib/html-utils");
 var _ArrowForward = _interopRequireDefault(require("../SVG/ArrowForward"));
+var _SupportIcon = _interopRequireDefault(require("../SVG/SupportIcon"));
 var _Disconnect = _interopRequireDefault(require("../SVG/Disconnect"));
-var _Connect = _interopRequireDefault(require("../SVG/Connect"));
 var _Copy = _interopRequireDefault(require("../common/Copy"));
 var _Tabs = require("../common/Tabs");
 var _Avatar = _interopRequireDefault(require("../common/Avatar"));
@@ -23,6 +23,7 @@ var _InvitationLink = _interopRequireDefault(require("./InvitationLink"));
 var _AppsMenu = _interopRequireDefault(require("./AppsMenu"));
 var _AppInstallButton = _interopRequireDefault(require("./AppInstallButton/AppInstallButton"));
 var _StatisticsBarModule = _interopRequireDefault(require("./StatisticsBar.module.scss"));
+var _AnimatedButton = _interopRequireDefault(require("../common/AnimatedButton"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
@@ -45,7 +46,8 @@ var StatisticsBar = function StatisticsBar(_ref) {
     showInstallApp = _ref.showInstallApp,
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick,
-    onInstallAppClick = _ref.onInstallAppClick;
+    onInstallAppClick = _ref.onInstallAppClick,
+    onSupportClick = _ref.onSupportClick;
   var timeout = 100; //ms
   var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
     _useTransition2 = _slicedToArray(_useTransition, 2),
@@ -67,10 +69,9 @@ var StatisticsBar = function StatisticsBar(_ref) {
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].top
   }, /*#__PURE__*/_react["default"].createElement("a", {
-    title: 'Disconnect',
-    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _StatisticsBarModule["default"].disconnect, _defineProperty({}, _StatisticsBarModule["default"].hidden, !isSelfView)),
-    onClick: onDisconnectClick
-  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), /*#__PURE__*/_react["default"].createElement(_Connect["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])(_StatisticsBarModule["default"].action, _defineProperty({}, _StatisticsBarModule["default"].hidden, !isSelfView)),
+    onClick: onSupportClick
+  }, /*#__PURE__*/_react["default"].createElement(_SupportIcon["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _StatisticsBarModule["default"].account
   }, /*#__PURE__*/_react["default"].createElement(_Avatar["default"], {
     className: _StatisticsBarModule["default"].icon,
@@ -108,7 +109,10 @@ var StatisticsBar = function StatisticsBar(_ref) {
     active: activeNavigationItem
   }), isSelfView && /*#__PURE__*/_react["default"].createElement(_InvitationLink["default"], {
     address: address
-  }))));
+  }), isSelfView && /*#__PURE__*/_react["default"].createElement(_AnimatedButton["default"], {
+    className: _StatisticsBarModule["default"].disconnect,
+    onClick: onDisconnectClick
+  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), " ", /*#__PURE__*/_react["default"].createElement("span", null, "Untie wallet")))));
 };
 StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,
@@ -118,7 +122,8 @@ StatisticsBar.propTypes = {
   statistics: _propTypes["default"].object,
   onCloseClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func,
-  onInstallAppClick: _propTypes["default"].func
+  onInstallAppClick: _propTypes["default"].func,
+  onSupportClick: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(StatisticsBar);
 //# sourceMappingURL=StatisticsBar.js.map

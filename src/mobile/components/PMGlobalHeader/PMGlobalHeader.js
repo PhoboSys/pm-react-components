@@ -35,6 +35,7 @@ const PMGlobalHeader = ({
   content,
   children,
   onInstallAppClick,
+  onSupportClick,
 }) => {
   const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
     Content: AuthModal,
@@ -99,6 +100,7 @@ const PMGlobalHeader = ({
           onCloseClick={handleCloseStatisticsBar}
           onDisconnectClick={handleDisconnectClick}
           onInstallAppClick={openInstallApp}
+          onSupportClick={onSupportClick}
         />
         {children}
         {modal}
@@ -131,6 +133,7 @@ PMGlobalHeader.propTypes = {
   content: PropTypes.node,
   children: PropTypes.node,
   featureToggles: PropTypes.object,
+  onSupportClick: PropTypes.func,
 }
 
 export default React.memo(PMGlobalHeader)

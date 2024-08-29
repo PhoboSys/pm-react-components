@@ -47,7 +47,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
     content = _ref.content,
     children = _ref.children,
-    onInstallAppClick = _ref.onInstallAppClick;
+    onInstallAppClick = _ref.onInstallAppClick,
+    onSupportClick = _ref.onSupportClick;
   var _useModal = (0, _modals.useModal)({
       Content: _AuthModal["default"],
       hideClose: true,
@@ -113,7 +114,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     showInstallApp: showInstallApp,
     onCloseClick: handleCloseStatisticsBar,
     onDisconnectClick: handleDisconnectClick,
-    onInstallAppClick: openInstallApp
+    onInstallAppClick: openInstallApp,
+    onSupportClick: onSupportClick
   }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
     id: _config["default"].modal_id
   }));
@@ -140,7 +142,8 @@ PMGlobalHeader.propTypes = {
   onInstallAppClick: _propTypes["default"].func,
   content: _propTypes["default"].node,
   children: _propTypes["default"].node,
-  featureToggles: _propTypes["default"].object
+  featureToggles: _propTypes["default"].object,
+  onSupportClick: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(PMGlobalHeader);
 //# sourceMappingURL=PMGlobalHeader.js.map

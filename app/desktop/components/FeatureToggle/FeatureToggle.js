@@ -37,5 +37,5 @@ var FeatureToggle = function FeatureToggle(_ref) {
 _FeatureTogglesModal["default"].propTypes = {
   title: _propTypes["default"].string
 };
-var _default = exports["default"] = (0, _hocs.withDevelopmentOnly)( /*#__PURE__*/_react["default"].memo(FeatureToggle));
+var _default = exports["default"] = (0, _hocs.withDevelopmentOnly)(/*#__PURE__*/_react["default"].memo(FeatureToggle));
 //# sourceMappingURL=FeatureToggle.js.map

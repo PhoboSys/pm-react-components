@@ -5,8 +5,8 @@ import cn from 'clsx'
 import { htmlAddress } from '@lib/html-utils'
 
 import ArrowForward from '../SVG/ArrowForward'
+import SupportIcon from '../SVG/SupportIcon'
 import Disconnect from '../SVG/Disconnect'
-import Connect from '../SVG/Connect'
 import Copy from '../common/Copy'
 import { Tabs, Tab, TabBody } from '../common/Tabs'
 import Avatar from '../common/Avatar'
@@ -19,6 +19,7 @@ import AppsMenu from './AppsMenu'
 import AppInstallButton from './AppInstallButton/AppInstallButton'
 
 import css from './StatisticsBar.module.scss'
+import AnimatedButton from '../common/AnimatedButton'
 
 const StatisticsBar = ({
   isOpened,
@@ -30,6 +31,7 @@ const StatisticsBar = ({
   onCloseClick,
   onDisconnectClick,
   onInstallAppClick,
+  onSupportClick,
 }) => {
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
@@ -49,16 +51,13 @@ const StatisticsBar = ({
 
         <div className={css.top}>
           <a
-            title={'Disconnect'}
             className={cn(
               css.action,
-              css.disconnect,
               { [css.hidden]: !isSelfView }
             )}
-            onClick={onDisconnectClick}
+            onClick={onSupportClick}
           >
-            <Disconnect/>
-            <Connect/>
+            <SupportIcon/>
           </a>
           <div className={css.account}>
             <Avatar className={css.icon} account={address} />
@@ -114,6 +113,9 @@ const StatisticsBar = ({
           {isSelfView && <AppsMenu active={activeNavigationItem} />}
 
           {isSelfView && <InvitationLink address={address} />}
+
+          {isSelfView && <AnimatedButton className={css.disconnect} onClick={onDisconnectClick}><Disconnect/> <span>Untie wallet</span></AnimatedButton>}
+
         </div>
 
       </div>
@@ -130,6 +132,7 @@ StatisticsBar.propTypes = {
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
   onInstallAppClick: PropTypes.func,
+  onSupportClick: PropTypes.func,
 }
 
 export default React.memo(StatisticsBar)

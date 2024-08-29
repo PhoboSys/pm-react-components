@@ -1,11 +1,11 @@
 import React, { useCallback, useState } from 'react'
 import cn from 'clsx'
 import PropTypes from 'prop-types'
-
 import config from '../../../config'
 import { useTransition } from '../../../hooks/useTransition'
 import { FeatureToggle } from '../FeatureToggle';
 import NetworkStatus from '../NetworkStatus'
+import Button from '../common/Button'
 import LogoIcon from '../SVG/Logo'
 import TradeIcon from '../SVG/Trade'
 import StakingIcon from '../SVG/Staking'
@@ -13,6 +13,7 @@ import MentoringIcon from '../SVG/Mentoring'
 import LogoLabel from '../SVG/LogoLabel'
 
 import css from './Navbar.module.scss'
+import SupportIcon from '../SVG/SupportIcon'
 
 const menuItems = [
   { name: 'trade', icon: <TradeIcon />, label: 'Trading', path: config.pm_base_path },
@@ -29,6 +30,7 @@ const NavBar = ({
   active,
   featureTogglesTitle,
   networkStatus,
+  onSupportClick,
 }) => {
 
   const [expanded, setExpanded] = useState(localStorage.getItem(localStorageSelector) === 'true')
@@ -73,7 +75,12 @@ const NavBar = ({
             </a>
           ))}
           {networkStatus && <NetworkStatus networkStatus={networkStatus} />}
-          <FeatureToggle title={featureTogglesTitle} />
+          <div className={css.bottomGrid}>
+            <Button className={supportButton} onClick={onSupportClick}>
+              <SupportIcon />
+            </Button>
+            <FeatureToggle title={featureTogglesTitle} />
+          </div>
         </div>
       </div>
     </div>
@@ -87,6 +94,7 @@ NavBar.propTypes = {
   logoLabelFill: PropTypes.string,
   featureTogglesTitle: PropTypes.string,
   networkStatus: PropTypes.string,
+  onSupportClicked: PropTypes.func,
 }
 
 export default React.memo(NavBar)
