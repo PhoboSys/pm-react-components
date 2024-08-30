@@ -76,7 +76,7 @@ const NavBar = ({
           ))}
           {networkStatus && <NetworkStatus networkStatus={networkStatus} />}
           <div className={css.bottomGrid}>
-            <Button className={supportButton} onClick={onSupportClick}>
+            <Button className={css.supportButton} onClick={onSupportClick}>
               <SupportIcon />
             </Button>
             <FeatureToggle title={featureTogglesTitle} />
