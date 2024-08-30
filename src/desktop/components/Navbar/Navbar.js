@@ -94,7 +94,7 @@ NavBar.propTypes = {
   logoLabelFill: PropTypes.string,
   featureTogglesTitle: PropTypes.string,
   networkStatus: PropTypes.string,
-  onSupportClicked: PropTypes.func,
+  onSupportClick: PropTypes.func,
 }
 
 export default React.memo(NavBar)

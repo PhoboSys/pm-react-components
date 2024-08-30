@@ -130,7 +130,7 @@ NavBar.propTypes = {
   logoLabelFill: _propTypes["default"].string,
   featureTogglesTitle: _propTypes["default"].string,
   networkStatus: _propTypes["default"].string,
-  onSupportClicked: _propTypes["default"].func
+  onSupportClick: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(NavBar);
 //# sourceMappingURL=Navbar.js.map
