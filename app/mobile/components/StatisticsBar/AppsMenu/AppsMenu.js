@@ -27,11 +27,16 @@ var menuItems = [{
   path: _config["default"].mt_base_path
 }];
 var AppsMenu = function AppsMenu(_ref) {
-  var active = _ref.active;
+  var active = _ref.active,
+    closeBar = _ref.closeBar;
   var navigate = function navigate(path) {
     var url = "".concat(window.location.protocol, "//").concat(window.location.host).concat(path);
     window.history.pushState(null, '', url);
     window.location.href = url;
+  };
+  var onMenuItemClick = function onMenuItemClick(path) {
+    closeBar && closeBar();
+    navigate(path);
   };
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: _AppsMenuModule["default"].container
@@ -50,13 +55,14 @@ var AppsMenu = function AppsMenu(_ref) {
       key: name
     }, index !== 0 && /*#__PURE__*/_react["default"].createElement("div", null), /*#__PURE__*/_react["default"].createElement("li", null, /*#__PURE__*/_react["default"].createElement("a", {
       onClick: function onClick() {
-        return navigate(path);
+        return onMenuItemClick(path);
       }
     }, /*#__PURE__*/_react["default"].createElement("span", null, label), /*#__PURE__*/_react["default"].createElement(_OpenInNewTab["default"], null))));
   })));
 };
 AppsMenu.propTypes = {
-  active: _propTypes["default"].string
+  active: _propTypes["default"].string,
+  closeBar: _propTypes["default"].func
 };
-var _default = exports["default"] = AppsMenu;
+var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(AppsMenu);
 //# sourceMappingURL=AppsMenu.js.map

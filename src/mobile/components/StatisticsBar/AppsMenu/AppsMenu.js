@@ -12,12 +12,17 @@ const menuItems = [
   { name: 'mentoring', label: 'Mentoring App', path: config.mt_base_path },
 ]
 
-const AppsMenu = ({ active }) => {
+const AppsMenu = ({ active, closeBar }) => {
 
   const navigate = (path) => {
     const url = `${window.location.protocol}//${window.location.host}${path}`
     window.history.pushState(null, '', url)
     window.location.href = url
+  }
+
+  const onMenuItemClick = (path) => {
+    closeBar && closeBar()
+    navigate(path)
   }
 
   return (
@@ -30,7 +35,7 @@ const AppsMenu = ({ active }) => {
             <Fragment key={name}>
               {index !== 0 && <div />}
               <li>
-                <a onClick={() => navigate(path)}>
+                <a onClick={() => onMenuItemClick(path)}>
                   <span>{label}</span>
                   <OpenInNewTab />
                 </a>
@@ -45,6 +50,7 @@ const AppsMenu = ({ active }) => {
 
 AppsMenu.propTypes = {
   active: PropTypes.string,
+  closeBar: PropTypes.func,
 }
 
-export default AppsMenu
+export default React.memo(AppsMenu)

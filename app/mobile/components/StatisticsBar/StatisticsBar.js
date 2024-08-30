@@ -106,6 +106,7 @@ var StatisticsBar = function StatisticsBar(_ref) {
     tokenStats: statistics === null || statistics === void 0 || (_statistics$staker2 = statistics.staker) === null || _statistics$staker2 === void 0 ? void 0 : _statistics$staker2.tokenStats,
     isLoading: statistics === null || statistics === void 0 || (_statistics$staker3 = statistics.staker) === null || _statistics$staker3 === void 0 ? void 0 : _statistics$staker3.isLoading
   }))), isSelfView && /*#__PURE__*/_react["default"].createElement(_AppsMenu["default"], {
+    closeBar: onCloseClick,
     active: activeNavigationItem
   }), isSelfView && /*#__PURE__*/_react["default"].createElement(_InvitationLink["default"], {
     address: address

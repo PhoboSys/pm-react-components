@@ -110,7 +110,7 @@ const StatisticsBar = ({
             </TabBody>
           </Tabs>
 
-          {isSelfView && <AppsMenu active={activeNavigationItem} />}
+          {isSelfView && <AppsMenu closeBar={onCloseClick} active={activeNavigationItem} />}
 
           {isSelfView && <InvitationLink address={address} />}
 
