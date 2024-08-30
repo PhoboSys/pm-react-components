@@ -12,12 +12,14 @@ var _config = _interopRequireDefault(require("../../../config"));
 var _useTransition3 = require("../../../hooks/useTransition");
 var _FeatureToggle = require("../FeatureToggle");
 var _NetworkStatus = _interopRequireDefault(require("../NetworkStatus"));
+var _Button = _interopRequireDefault(require("../common/Button"));
 var _Logo = _interopRequireDefault(require("../SVG/Logo"));
 var _Trade = _interopRequireDefault(require("../SVG/Trade"));
 var _Staking = _interopRequireDefault(require("../SVG/Staking"));
 var _Mentoring = _interopRequireDefault(require("../SVG/Mentoring"));
 var _LogoLabel = _interopRequireDefault(require("../SVG/LogoLabel"));
 var _NavbarModule = _interopRequireDefault(require("./Navbar.module.scss"));
+var _SupportIcon = _interopRequireDefault(require("../SVG/SupportIcon"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function _getRequireWildcardCache(e) { if ("function" != typeof WeakMap) return null; var r = new WeakMap(), t = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(e) { return e ? t : r; })(e); }
 function _interopRequireWildcard(e, r) { if (!r && e && e.__esModule) return e; if (null === e || "object" != _typeof(e) && "function" != typeof e) return { "default": e }; var t = _getRequireWildcardCache(r); if (t && t.has(e)) return t.get(e); var n = { __proto__: null }, a = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var u in e) if ("default" !== u && {}.hasOwnProperty.call(e, u)) { var i = a ? Object.getOwnPropertyDescriptor(e, u) : null; i && (i.get || i.set) ? Object.defineProperty(n, u, i) : n[u] = e[u]; } return n["default"] = e, t && t.set(e, n), n; }
@@ -54,7 +56,8 @@ var NavBar = function NavBar(_ref) {
     logoLabelFill = _ref.logoLabelFill,
     active = _ref.active,
     featureTogglesTitle = _ref.featureTogglesTitle,
-    networkStatus = _ref.networkStatus;
+    networkStatus = _ref.networkStatus,
+    onSupportClick = _ref.onSupportClick;
   var _useState = (0, _react.useState)(localStorage.getItem(localStorageSelector) === 'true'),
     _useState2 = _slicedToArray(_useState, 2),
     expanded = _useState2[0],
@@ -111,9 +114,14 @@ var NavBar = function NavBar(_ref) {
     }, label));
   }), networkStatus && /*#__PURE__*/_react["default"].createElement(_NetworkStatus["default"], {
     networkStatus: networkStatus
-  }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
+  }), /*#__PURE__*/_react["default"].createElement("div", {
+    className: _NavbarModule["default"].bottomGrid
+  }, /*#__PURE__*/_react["default"].createElement(_Button["default"], {
+    className: supportButton,
+    onClick: onSupportClick
+  }, /*#__PURE__*/_react["default"].createElement(_SupportIcon["default"], null)), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
     title: featureTogglesTitle
-  }))));
+  })))));
 };
 NavBar.propTypes = {
   basepath: _propTypes["default"].string,
@@ -121,7 +129,8 @@ NavBar.propTypes = {
   logoFill: _propTypes["default"].string,
   logoLabelFill: _propTypes["default"].string,
   featureTogglesTitle: _propTypes["default"].string,
-  networkStatus: _propTypes["default"].string
+  networkStatus: _propTypes["default"].string,
+  onSupportClick: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(NavBar);
 //# sourceMappingURL=Navbar.js.map

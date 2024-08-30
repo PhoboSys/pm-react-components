@@ -105,3 +105,29 @@
 .label {
   color: var(--navbar-label-color);
 }
+
+.bottomGrid { 
+  margin-top: auto;
+}
+
+.supportButton {
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  transition: background-color .3s linear;
+  column-gap: calc((var(--navbar-width) - 56px) / 2);
+  min-width: 56px;
+  height: 56px;
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  background: var(--pm-gh-feature-toggle);
+
+  &:hover {
+    background: var(--pm-gh-feature-toggle-hover);
+  }
+
+  &:active {
+    background: var(--pm-gh-feature-toggle-active);
+  }
+}

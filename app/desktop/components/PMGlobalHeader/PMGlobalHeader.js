@@ -66,6 +66,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onStatisticsBarCloseClick = _ref.onStatisticsBarCloseClick,
     onConnectBarCloseClick = _ref.onConnectBarCloseClick,
     onCurrencyChanged = _ref.onCurrencyChanged,
+    onSupportClick = _ref.onSupportClick,
     content = _ref.content,
     children = _ref.children;
   var isConnectBarContolled = isConnectBarOpenedControlled !== undefined;
@@ -137,7 +138,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     logoLabelFill: logoLabelFill,
     active: activeNavigationItem,
     featureTogglesTitle: featureTogglesTitle,
-    networkStatus: networkStatus
+    networkStatus: networkStatus,
+    onSupportClick: onSupportClick
   }), /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName
   }, content, isConnected ? /*#__PURE__*/_react["default"].createElement(_ProfileBar["default"], {
@@ -212,6 +214,7 @@ PMGlobalHeader.propTypes = {
   onConnectBarCloseClick: _propTypes["default"].func,
   onNicknameChanged: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,
+  onSupportClick: _propTypes["default"].func,
   content: _propTypes["default"].node,
   children: _propTypes["default"].node
 };

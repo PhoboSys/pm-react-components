@@ -88,7 +88,7 @@ var NetworkStatus = function NetworkStatus(_ref) {
     onMouseLeave: handleMouseLeave
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _NetworkStatusModule["default"].status
-  }), /*#__PURE__*/_react["default"].createElement(_Sync["default"], null)), /*#__PURE__*/(0, _reactDom.createPortal)( /*#__PURE__*/_react["default"].createElement("div", _extends({
+  }), /*#__PURE__*/_react["default"].createElement(_Sync["default"], null)), /*#__PURE__*/(0, _reactDom.createPortal)(/*#__PURE__*/_react["default"].createElement("div", _extends({
     className: _NetworkStatusModule["default"].popper,
     ref: setPopperElement,
     style: styles.popper
