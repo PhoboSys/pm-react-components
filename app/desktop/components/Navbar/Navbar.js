@@ -117,7 +117,7 @@ var NavBar = function NavBar(_ref) {
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NavbarModule["default"].bottomGrid
   }, /*#__PURE__*/_react["default"].createElement(_Button["default"], {
-    className: supportButton,
+    className: _NavbarModule["default"].supportButton,
     onClick: onSupportClick
   }, /*#__PURE__*/_react["default"].createElement(_SupportIcon["default"], null)), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
     title: featureTogglesTitle
