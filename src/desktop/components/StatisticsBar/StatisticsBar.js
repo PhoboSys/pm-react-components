@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 import { throttle } from 'lodash'
@@ -33,16 +33,33 @@ const StatisticsBar = ({
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
 
+  const containerRef = useRef()
   const [sticky, setSticky] = useState(false)
 
   const handleScroll = useCallback(throttle((e) => {
     e.target.scrollTop > 0 ? setSticky(true) : setSticky(false)
   }, 100), [])
 
+  useEffect(() => {
+    const handler = (e) => {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        onCloseClick && onCloseClick()
+      }
+    }
+
+    if (isOpened) window.addEventListener('click', handler)
+    else window.removeEventListener('click', handler)
+
+    return () => {
+      window.removeEventListener('click', handler)
+    }
+  }, [isOpened, onCloseClick])
+
   if (!mount) return null
 
   return (
     <div
+      ref={containerRef}
       className={cn(css.container, { [css.opened]: opening } )}
       onScroll={handleScroll}
     >

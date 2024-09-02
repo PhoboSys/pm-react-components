@@ -49,6 +49,7 @@ var StatisticsBar = function StatisticsBar(_ref) {
     _useTransition2 = _slicedToArray(_useTransition, 2),
     mount = _useTransition2[0],
     opening = _useTransition2[1];
+  var containerRef = (0, _react.useRef)();
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     sticky = _useState2[0],
@@ -56,8 +57,20 @@ var StatisticsBar = function StatisticsBar(_ref) {
   var handleScroll = (0, _react.useCallback)((0, _lodash.throttle)(function (e) {
     e.target.scrollTop > 0 ? setSticky(true) : setSticky(false);
   }, 100), []);
+  (0, _react.useEffect)(function () {
+    var handler = function handler(e) {
+      if (containerRef.current && !containerRef.current.contains(e.target)) {
+        onCloseClick && onCloseClick();
+      }
+    };
+    if (isOpened) window.addEventListener('click', handler);else window.removeEventListener('click', handler);
+    return function () {
+      window.removeEventListener('click', handler);
+    };
+  }, [isOpened, onCloseClick]);
   if (!mount) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
+    ref: containerRef,
     className: (0, _clsx["default"])(_StatisticsBarModule["default"].container, _defineProperty({}, _StatisticsBarModule["default"].opened, opening)),
     onScroll: handleScroll
   }, /*#__PURE__*/_react["default"].createElement("div", {
