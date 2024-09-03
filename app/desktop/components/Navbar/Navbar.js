@@ -112,14 +112,14 @@ var NavBar = function NavBar(_ref) {
     }, icon), /*#__PURE__*/_react["default"].createElement("span", {
       className: _NavbarModule["default"].label
     }, label));
-  }), networkStatus && /*#__PURE__*/_react["default"].createElement(_NetworkStatus["default"], {
-    networkStatus: networkStatus
   }), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NavbarModule["default"].bottomGrid
   }, /*#__PURE__*/_react["default"].createElement(_Button["default"], {
     className: _NavbarModule["default"].supportButton,
     onClick: onSupportClick
-  }, /*#__PURE__*/_react["default"].createElement(_SupportIcon["default"], null)), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
+  }, /*#__PURE__*/_react["default"].createElement(_SupportIcon["default"], null)), networkStatus && /*#__PURE__*/_react["default"].createElement(_NetworkStatus["default"], {
+    networkStatus: networkStatus
+  }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
     title: featureTogglesTitle
   })))));
 };
