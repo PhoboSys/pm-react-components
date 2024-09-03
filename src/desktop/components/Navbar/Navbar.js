@@ -74,11 +74,11 @@ const NavBar = ({
               <span className={css.label}>{label}</span>
             </a>
           ))}
-          {networkStatus && <NetworkStatus networkStatus={networkStatus} />}
           <div className={css.bottomGrid}>
             <Button className={css.supportButton} onClick={onSupportClick}>
               <SupportIcon />
             </Button>
+            {networkStatus && <NetworkStatus networkStatus={networkStatus} />}
             <FeatureToggle title={featureTogglesTitle} />
           </div>
         </div>
