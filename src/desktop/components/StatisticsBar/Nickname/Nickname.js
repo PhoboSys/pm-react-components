@@ -46,6 +46,11 @@ const Nickname = ({
     setShowHint(false)
   }, [])
 
+  const startEditNickname = useCallback((e) => {
+    e.stopPropagation()
+    setEditNickname(true)
+  }, [])
+
   return (
     <div className={cn(css.container, { [css.collapsed]: collapsed })}>
       <div className={cn(css.nickname, {[css.editing]: isEdit })}>
@@ -82,7 +87,7 @@ const Nickname = ({
             {editable && (
               <a
                 className={css.edit}
-                onClick={setEditNickname}
+                onClick={startEditNickname}
               >
                 <Edit className={css.editicon} />
               </a>

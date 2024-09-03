@@ -68,6 +68,10 @@ var Nickname = function Nickname(_ref) {
     localStorage.setItem(localStorageSelector, true);
     setShowHint(false);
   }, []);
+  var startEditNickname = (0, _react.useCallback)(function (e) {
+    e.stopPropagation();
+    setEditNickname(true);
+  }, []);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_NicknameModule["default"].container, _defineProperty({}, _NicknameModule["default"].collapsed, collapsed))
   }, /*#__PURE__*/_react["default"].createElement("div", {
@@ -90,7 +94,7 @@ var Nickname = function Nickname(_ref) {
     title: username
   }, username), editable && /*#__PURE__*/_react["default"].createElement("a", {
     className: _NicknameModule["default"].edit,
-    onClick: setEditNickname
+    onClick: startEditNickname
   }, /*#__PURE__*/_react["default"].createElement(_Edit["default"], {
     className: _NicknameModule["default"].editicon
   }))), mountHint && !collapsed && editable && /*#__PURE__*/_react["default"].createElement("div", {
