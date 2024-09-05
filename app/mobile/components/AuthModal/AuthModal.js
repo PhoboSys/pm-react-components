@@ -16,7 +16,8 @@ var AuthModal = function AuthModal(_ref) {
   var close = _ref.close,
     isConnected = _ref.isConnected,
     connectors = _ref.connectors,
-    onConnectorClick = _ref.onConnectorClick;
+    onConnectorClick = _ref.onConnectorClick,
+    injectedProviderType = _ref.injectedProviderType;
   (0, _react.useEffect)(function () {
     if (isConnected) close();
   }, [isConnected]);
@@ -34,6 +35,7 @@ var AuthModal = function AuthModal(_ref) {
     return /*#__PURE__*/_react["default"].createElement(_Connector["default"], {
       key: connectorId,
       id: connectorId,
+      injectedProviderType: injectedProviderType,
       onClick: onClick
     }, connectorId);
   })));
@@ -42,6 +44,7 @@ AuthModal.propTypes = {
   close: _propTypes["default"].func.isRequired,
   connectors: _propTypes["default"].array,
   isConnected: _propTypes["default"].bool,
+  injectedProviderType: _propTypes["default"].string,
   onConnectorClick: _propTypes["default"].func.isRequired
 };
 var _default = exports["default"] = AuthModal;

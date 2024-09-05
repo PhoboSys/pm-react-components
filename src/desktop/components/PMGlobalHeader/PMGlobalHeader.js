@@ -29,6 +29,7 @@ const PMGlobalHeader = ({
   isConnected,
   isConnectBarOpened: isConnectBarOpenedControlled,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
+  injectedProviderType,
   account,
   nickname,
   statisticsAccount,
@@ -106,6 +107,7 @@ const PMGlobalHeader = ({
     onConnectorClick,
     connectors,
     isConnected,
+    injectedProviderType,
   })
 
   return (
@@ -155,6 +157,7 @@ const PMGlobalHeader = ({
           connectors={connectors}
           onCloseClick={handleConnectBarCloseClick}
           onConnectorClick={handleConnectorClick}
+          injectedProviderType={injectedProviderType}
         />
         <StatisticsBar
           address={statisticsAccount}
@@ -191,6 +194,7 @@ PMGlobalHeader.propTypes = {
   isConnected: PropTypes.bool,
   isConnectBarOpened: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
+  injectedProviderType: PropTypes.string,
   account: PropTypes.string,
   nickname: PropTypes.string,
   statisticsAccount: PropTypes.string,

@@ -24,6 +24,7 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var ConnectBar = function ConnectBar(_ref) {
   var connectors = _ref.connectors,
+    injectedProviderType = _ref.injectedProviderType,
     isOpened = _ref.isOpened,
     onCloseClick = _ref.onCloseClick,
     onConnectorClick = _ref.onConnectorClick;
@@ -44,6 +45,7 @@ var ConnectBar = function ConnectBar(_ref) {
     return /*#__PURE__*/_react["default"].createElement(_Connector["default"], {
       key: connectorId,
       id: connectorId,
+      injectedProviderType: injectedProviderType,
       onClick: onConnectorClick
     });
   })), /*#__PURE__*/_react["default"].createElement("p", {
@@ -61,6 +63,7 @@ var ConnectBar = function ConnectBar(_ref) {
 ConnectBar.propTypes = {
   isOpened: _propTypes["default"].bool,
   connectors: _propTypes["default"].array,
+  injectedProviderType: _propTypes["default"].string,
   onCloseClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func
 };
