@@ -64,18 +64,19 @@ const ValueRenderer = ({
   balance,
   difference,
   currencyFill,
+  maximumFractionDigits,
 }) => {
   return (
     <>
       <BalanceCurrency className={css.currency} fill={currencyFill} currency={currency} />
       {balance || balance === 0 ? (
-        <span className={css.value}>{htmlCurrency(balance)}</span>
+        <span className={css.value}>{htmlCurrency(balance, maximumFractionDigits)}</span>
       ) : (
         <Spinner className={css.spinner} />
       )}
       <span className={css.difference}>
         <span>+</span>
-        {htmlCurrency(difference)}
+        {htmlCurrency(difference, maximumFractionDigits)}
       </span>
     </>
   )
@@ -89,7 +90,7 @@ const CashDropdown = ({
   onCurrencyChanged,
 }) => {
 
-  const { currencyFill } = useGHProvider()
+  const { currencyFill, maximumFractionDigits } = useGHProvider()
 
   const [difference, changeid] = useChangeERC20(account, balance, currency)
 
@@ -101,8 +102,9 @@ const CashDropdown = ({
       balance={balance}
       difference={difference}
       currencyFill={currencyFill}
+      maximumFractionDigits={maximumFractionDigits}
     />
-  ), [difference, balance, currencyFill, changeid])
+  ), [difference, balance, currencyFill, changeid, maximumFractionDigits])
 
   const optionRenderer = useCallback((option) => <OptionRenderer option={option} />, [])
 

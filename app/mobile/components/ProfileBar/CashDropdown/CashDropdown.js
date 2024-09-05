@@ -84,18 +84,19 @@ var ValueRenderer = function ValueRenderer(_ref2) {
   var currency = _ref2.currency,
     balance = _ref2.balance,
     difference = _ref2.difference,
-    currencyFill = _ref2.currencyFill;
+    currencyFill = _ref2.currencyFill,
+    maximumFractionDigits = _ref2.maximumFractionDigits;
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_BalanceCurrency["default"], {
     className: _CashDropdownModule["default"].currency,
     fill: currencyFill,
     currency: currency
   }), balance || balance === 0 ? /*#__PURE__*/_react["default"].createElement("span", {
     className: _CashDropdownModule["default"].value
-  }, (0, _htmlUtils.htmlCurrency)(balance)) : /*#__PURE__*/_react["default"].createElement(_Spinner["default"], {
+  }, (0, _htmlUtils.htmlCurrency)(balance, maximumFractionDigits)) : /*#__PURE__*/_react["default"].createElement(_Spinner["default"], {
     className: _CashDropdownModule["default"].spinner
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CashDropdownModule["default"].difference
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference)));
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference, maximumFractionDigits)));
 };
 var CashDropdown = function CashDropdown(_ref3) {
   var currency = _ref3.currency,
@@ -104,7 +105,8 @@ var CashDropdown = function CashDropdown(_ref3) {
     dropdownPopperStyles = _ref3.dropdownPopperStyles,
     onCurrencyChanged = _ref3.onCurrencyChanged;
   var _useGHProvider = (0, _PMGlobalHeaderProvider.useGHProvider)(),
-    currencyFill = _useGHProvider.currencyFill;
+    currencyFill = _useGHProvider.currencyFill,
+    maximumFractionDigits = _useGHProvider.maximumFractionDigits;
   var _useChangeERC = useChangeERC20(account, balance, currency),
     _useChangeERC2 = _slicedToArray(_useChangeERC, 2),
     difference = _useChangeERC2[0],
@@ -118,9 +120,10 @@ var CashDropdown = function CashDropdown(_ref3) {
       currency: value.currency,
       balance: balance,
       difference: difference,
-      currencyFill: currencyFill
+      currencyFill: currencyFill,
+      maximumFractionDigits: maximumFractionDigits
     });
-  }, [difference, balance, currencyFill, changeid]);
+  }, [difference, balance, currencyFill, changeid, maximumFractionDigits]);
   var optionRenderer = (0, _react.useCallback)(function (option) {
     return /*#__PURE__*/_react["default"].createElement(OptionRenderer, {
       option: option

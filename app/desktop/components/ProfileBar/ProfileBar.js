@@ -77,7 +77,8 @@ var ProfileBar = function ProfileBar(_ref) {
     onCurrencyChanged = _ref.onCurrencyChanged,
     onIconClick = _ref.onIconClick;
   var _useGHProvider = (0, _PMGlobalHeaderProvider.useGHProvider)(),
-    currencyFill = _useGHProvider.currencyFill;
+    currencyFill = _useGHProvider.currencyFill,
+    maximumFractionDigits = _useGHProvider.maximumFractionDigits;
   var _useChangeERC = useChangeERC20(account, balance, currency),
     _useChangeERC2 = _slicedToArray(_useChangeERC, 2),
     difference = _useChangeERC2[0],
@@ -132,13 +133,13 @@ var ProfileBar = function ProfileBar(_ref) {
     currency: currency
   }), balance && balance !== 0 ? /*#__PURE__*/_react["default"].createElement("span", {
     className: _ProfileBarModule["default"].value
-  }, (0, _htmlUtils.htmlCurrency)(balance)) : /*#__PURE__*/_react["default"].createElement(_Spinner["default"], {
+  }, (0, _htmlUtils.htmlCurrency)(balance, maximumFractionDigits)) : /*#__PURE__*/_react["default"].createElement(_Spinner["default"], {
     className: _ProfileBarModule["default"].spinner
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _ProfileBarModule["default"].dropdownIcon
   }, /*#__PURE__*/_react["default"].createElement(_DropdownIcon["default"], null)), /*#__PURE__*/_react["default"].createElement("span", {
     className: _ProfileBarModule["default"].difference
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference)), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference, maximumFractionDigits)), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
     ref: popover,
     className: _ProfileBarModule["default"].popover
   }, options.map(function (option, idx) {

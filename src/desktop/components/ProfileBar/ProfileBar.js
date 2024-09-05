@@ -61,7 +61,7 @@ const ProfileBar = ({
   onCurrencyChanged,
   onIconClick,
 }) => {
-  const { currencyFill } = useGHProvider()
+  const { currencyFill, maximumFractionDigits } = useGHProvider()
 
   const [difference, changeid] = useChangeERC20(account, balance, currency)
 
@@ -117,14 +117,14 @@ const ProfileBar = ({
 
           <BalanceCurrency fill={currencyFill} currency={currency} />
           {balance && balance !== 0 ? (
-            <span className={css.value}>{htmlCurrency(balance)}</span>
+            <span className={css.value}>{htmlCurrency(balance, maximumFractionDigits)}</span>
           ) : (
             <Spinner className={css.spinner} />
           )}
           <span className={css.dropdownIcon}><DropdownIcon /></span>
           <span className={css.difference}>
             <span>+</span>
-            {htmlCurrency(difference)}
+            {htmlCurrency(difference, maximumFractionDigits)}
           </span>
           {popoverPop &&
           <div ref={popover} className={css.popover}>
