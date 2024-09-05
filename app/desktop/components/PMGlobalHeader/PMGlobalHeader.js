@@ -44,6 +44,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isConnected = _ref.isConnected,
     isConnectBarOpenedControlled = _ref.isConnectBarOpened,
     isStatisticsBarOpenedControlled = _ref.isStatisticsBarOpened,
+    injectedProviderType = _ref.injectedProviderType,
     account = _ref.account,
     nickname = _ref.nickname,
     statisticsAccount = _ref.statisticsAccount,
@@ -119,7 +120,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
       openOnMount: mustUserLogin,
       onConnectorClick: onConnectorClick,
       connectors: connectors,
-      isConnected: isConnected
+      isConnected: isConnected,
+      injectedProviderType: injectedProviderType
     }),
     modal = _useModal.modal,
     openAuthModal = _useModal.open,
@@ -162,7 +164,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     isOpened: isConnectBarContolled ? isConnectBarOpenedControlled : isConnectBarOpened,
     connectors: connectors,
     onCloseClick: handleConnectBarCloseClick,
-    onConnectorClick: handleConnectorClick
+    onConnectorClick: handleConnectorClick,
+    injectedProviderType: injectedProviderType
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
     address: statisticsAccount,
     username: statisticsNickname,
@@ -193,6 +196,7 @@ PMGlobalHeader.propTypes = {
   isConnected: _propTypes["default"].bool,
   isConnectBarOpened: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
+  injectedProviderType: _propTypes["default"].string,
   account: _propTypes["default"].string,
   nickname: _propTypes["default"].string,
   statisticsAccount: _propTypes["default"].string,

@@ -10,6 +10,7 @@ import css from './ConnectBar.module.scss'
 
 const ConnectBar = ({
   connectors,
+  injectedProviderType,
   isOpened,
   onCloseClick,
   onConnectorClick,
@@ -36,6 +37,7 @@ const ConnectBar = ({
           <Connector
             key={connectorId}
             id={connectorId}
+            injectedProviderType={injectedProviderType}
             onClick={onConnectorClick}
           />
         )}
@@ -48,6 +50,7 @@ const ConnectBar = ({
 ConnectBar.propTypes = {
   isOpened: PropTypes.bool,
   connectors: PropTypes.array,
+  injectedProviderType: PropTypes.string,
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
 }

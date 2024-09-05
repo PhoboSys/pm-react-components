@@ -5,7 +5,7 @@ import Connector from '../Connector'
 
 import css from './AuthModal.module.scss'
 
-const AuthModal = ({ close, isConnected, connectors, onConnectorClick }) => {
+const AuthModal = ({ close, isConnected, connectors, onConnectorClick, injectedProviderType }) => {
 
   useEffect(() => {
     if (isConnected) close()
@@ -19,6 +19,7 @@ const AuthModal = ({ close, isConnected, connectors, onConnectorClick }) => {
           <Connector
             key={connectorId}
             id={connectorId}
+            injectedProviderType={injectedProviderType}
             onClick={onConnectorClick}
           >
             {connectorId}
@@ -33,7 +34,8 @@ AuthModal.propTypes = {
   close: PropTypes.func.isRequired,
   connectors: PropTypes.array,
   isConnected: PropTypes.bool,
-  onConnectorClick: PropTypes.func.isRequired
+  onConnectorClick: PropTypes.func.isRequired,
+  injectedProviderType: PropTypes.string,
 }
 
 export default AuthModal

@@ -48,7 +48,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     content = _ref.content,
     children = _ref.children,
     onInstallAppClick = _ref.onInstallAppClick,
-    onSupportClick = _ref.onSupportClick;
+    onSupportClick = _ref.onSupportClick,
+    injectedProviderType = _ref.injectedProviderType;
   var _useModal = (0, _modals.useModal)({
       Content: _AuthModal["default"],
       hideClose: true,
@@ -56,7 +57,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
       openOnMount: mustUserLogin,
       onConnectorClick: onConnectorClick,
       connectors: connectors,
-      isConnected: isConnected
+      isConnected: isConnected,
+      injectedProviderType: injectedProviderType
     }),
     modal = _useModal.modal,
     openAuthModal = _useModal.open,
@@ -143,7 +145,8 @@ PMGlobalHeader.propTypes = {
   content: _propTypes["default"].node,
   children: _propTypes["default"].node,
   featureToggles: _propTypes["default"].object,
-  onSupportClick: _propTypes["default"].func
+  onSupportClick: _propTypes["default"].func,
+  injectedProviderType: _propTypes["default"].string
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(PMGlobalHeader);
 //# sourceMappingURL=PMGlobalHeader.js.map

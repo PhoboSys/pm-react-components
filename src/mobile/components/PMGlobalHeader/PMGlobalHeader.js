@@ -36,6 +36,7 @@ const PMGlobalHeader = ({
   children,
   onInstallAppClick,
   onSupportClick,
+  injectedProviderType,
 }) => {
   const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
     Content: AuthModal,
@@ -45,6 +46,7 @@ const PMGlobalHeader = ({
     onConnectorClick,
     connectors,
     isConnected,
+    injectedProviderType,
   })
 
   const isStatisticsBarContolled = isStatisticsBarOpenedControlled !== undefined
@@ -134,6 +136,7 @@ PMGlobalHeader.propTypes = {
   children: PropTypes.node,
   featureToggles: PropTypes.object,
   onSupportClick: PropTypes.func,
+  injectedProviderType: PropTypes.string,
 }
 
 export default React.memo(PMGlobalHeader)
