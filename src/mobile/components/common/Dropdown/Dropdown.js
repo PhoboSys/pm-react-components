@@ -11,6 +11,10 @@ import { getModifiers } from './Dropdown.utils'
 
 import css from './Dropdown.module.scss'
 
+const defaultOptionRenderer = (value) => value.label
+const defaultValueRenderer = (value) => value.label
+const defaultCheckOptionSelected = (value, option) => value === option
+
 const Dropdown = ({
   containerClassName,
   headerClassName,
@@ -18,21 +22,28 @@ const Dropdown = ({
   bodyClassName,
   valueClassName,
   optionClassName,
+  selectedOptionClassName,
+  placeholder,
   iconColor,
   options,
   value,
   popperStyles,
+  popperModifiers,
   showIcon = true,
   targetBody = false,
   onChange,
-  valueRenderer = (value) => value.label,
-  optionRenderer,
+  valueRenderer = defaultValueRenderer,
+  optionRenderer = defaultOptionRenderer,
+  checkOptionSelected = defaultCheckOptionSelected,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const containerElement = useRef(null)
   const [referenceElement, setReferenceElement] = useState(null)
   const [popperElement, setPopperElement] = useState(null)
-  const modifiers = useMemo(() => getModifiers({ isOpen, popperStyles }), [isOpen, popperStyles])
+  const modifiers = useMemo(() => [
+    ...getModifiers({ isOpen, popperStyles }),
+    ...(popperModifiers || [])
+  ], [isOpen, popperStyles, popperModifiers])
   const { styles, attributes } = usePopper(referenceElement, popperElement, { modifiers, placement: 'bottom' })
 
   const handleClick = useCallback(() => {
@@ -58,22 +69,26 @@ const Dropdown = ({
 
   const renderPopper = () => (
     <div className={cn(css.body, bodyClassName)} ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-      {options.map((option, index) => (
-        <DropdownOption
-          key={index}
-          className={optionClassName}
-          option={option}
-          onClick={handleChange}
-          renderer={optionRenderer}
-        />
-      ))}
+      {options.map((option, index) => {
+        const selected = checkOptionSelected(value, option)
+        return (
+          <DropdownOption
+            key={index}
+            className={cn(optionClassName, { [selectedOptionClassName]: selected })}
+            option={option}
+            selected={selected}
+            onClick={handleChange}
+            renderer={optionRenderer}
+          />
+        )
+      })}
     </div>
   )
 
   return (
     <div ref={containerElement} className={cn(css.container, containerClassName)}>
       <div className={cn(css.header, headerClassName)} ref={setReferenceElement} onClick={handleClick}>
-        <div className={cn(css.value, valueClassName)}>{value && valueRenderer(value)}</div>
+        <div className={cn(css.value, valueClassName)}>{value && valueRenderer(value) || placeholder}</div>
         {showIcon && <div className={cn(css.icon, iconClassName)}><DropdownIcon fill={iconColor} /></div>}
       </div>
 
@@ -89,15 +104,19 @@ Dropdown.propTypes = {
   bodyClassName: PropTypes.string,
   valueClassName: PropTypes.string,
   optionClassName: PropTypes.string,
+  selectedOptionClassName: PropTypes.string,
+  placeholder: PropTypes.node,
   iconColor: PropTypes.string,
   options: PropTypes.array,
   value: PropTypes.any,
   popperStyles: PropTypes.object,
+  popperModifiers: PropTypes.array,
   showIcon: PropTypes.bool,
   targetBody: PropTypes.bool,
   onChange: PropTypes.func,
   valueRenderer: PropTypes.func,
   optionRenderer: PropTypes.func,
+  checkOptionSelected: PropTypes.func,
 }
 
 export default React.memo(Dropdown)

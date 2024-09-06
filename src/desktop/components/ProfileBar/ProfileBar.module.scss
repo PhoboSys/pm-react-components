@@ -36,7 +36,6 @@
       display: flex;
       align-self: stretch;
       align-items: center;
-      min-width: 105px;
       padding: 0 15px 0 10px;
       background: var(--profilebar-cash-bg);
       border-radius: 77px;
@@ -285,6 +284,7 @@
 
 .spinner {
   margin: 0 auto;
+  margin-left: 14px;
 }
 
 .dropdownIcon {
