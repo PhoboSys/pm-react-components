@@ -7,7 +7,8 @@ import css from './DropdownOption.module.scss'
 const DropdownOption = ({
   className,
   option,
-  renderer = (value) => value.label,
+  selected,
+  renderer,
   onClick
 }) => {
   return (
@@ -15,7 +16,7 @@ const DropdownOption = ({
       className={cn(css.option, className)}
       onClick={() => onClick(option)}
     >
-      {renderer(option)}
+      {renderer(option, selected)}
     </div>
   )
 }
@@ -23,6 +24,7 @@ const DropdownOption = ({
 DropdownOption.propTypes = {
   className: PropTypes.string,
   option: PropTypes.any,
+  selected: PropTypes.bool,
   onClick: PropTypes.func,
   renderer: PropTypes.func,
 }
