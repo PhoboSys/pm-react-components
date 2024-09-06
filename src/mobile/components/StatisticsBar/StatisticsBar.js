@@ -114,7 +114,16 @@ const StatisticsBar = ({
 
           {isSelfView && <InvitationLink address={address} />}
 
-          {isSelfView && <AnimatedButton className={css.disconnect} onClick={onDisconnectClick}><Disconnect/> <span>Untie wallet</span></AnimatedButton>}
+          {isSelfView && (
+            <AnimatedButton
+              className={css.disconnect}
+              onClick={onDisconnectClick}
+              borderWidth="1px"
+            >
+              <Disconnect/>
+              <span>Untie wallet</span>
+            </AnimatedButton>
+          )}
 
         </div>
 

@@ -111,8 +111,9 @@ var StatisticsBar = function StatisticsBar(_ref) {
     address: address
   }), isSelfView && /*#__PURE__*/_react["default"].createElement(_AnimatedButton["default"], {
     className: _StatisticsBarModule["default"].disconnect,
-    onClick: onDisconnectClick
-  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), " ", /*#__PURE__*/_react["default"].createElement("span", null, "Untie wallet")))));
+    onClick: onDisconnectClick,
+    borderWidth: "1px"
+  }, /*#__PURE__*/_react["default"].createElement(_Disconnect["default"], null), /*#__PURE__*/_react["default"].createElement("span", null, "Untie wallet")))));
 };
 StatisticsBar.propTypes = {
   isOpened: _propTypes["default"].bool,
