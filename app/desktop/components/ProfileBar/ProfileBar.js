@@ -119,6 +119,8 @@ var ProfileBar = function ProfileBar(_ref) {
       window.removeEventListener('click', handler);
     };
   }, []);
+  var htmldifference = (0, _htmlUtils.htmlCurrency)(difference, maximumFractionDigits);
+  if (htmldifference.includes('<-')) htmldifference = "-<".concat(htmldifference.slice(2));
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_ProfileBarModule["default"].profilebar, className),
     onClick: handleClick
@@ -139,7 +141,7 @@ var ProfileBar = function ProfileBar(_ref) {
     className: _ProfileBarModule["default"].dropdownIcon
   }, /*#__PURE__*/_react["default"].createElement(_DropdownIcon["default"], null)), /*#__PURE__*/_react["default"].createElement("span", {
     className: _ProfileBarModule["default"].difference
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference, maximumFractionDigits)), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), htmldifference), popoverPop && /*#__PURE__*/_react["default"].createElement("div", {
     ref: popover,
     className: _ProfileBarModule["default"].popover
   }, options.map(function (option, idx) {
