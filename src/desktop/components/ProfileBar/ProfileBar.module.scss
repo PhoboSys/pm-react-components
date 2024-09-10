@@ -187,6 +187,9 @@
   font-size: 18px;
   left: 50%;
   pointer-events: none;
+  background: var(--profilebar-cash-diffrenece-bg);
+  padding: 8px 10px 8px 8px;
+  text-wrap: nowrap;
 }
 
 .increase {
@@ -198,8 +201,6 @@
 
   .difference {
     display: block;
-    background: var(--profilebar-cash-diffrenece-bg);
-    padding: 8px 10px 8px 8px;
     color: var(--profilebar-cash-increase-color);
     animation: fadeUp 15s cubic-bezier(0, 0, 0.4, 1) 1;
     transform: translateY(0);
@@ -243,8 +244,6 @@
 
   .difference {
     display: block;
-    background: #212233;
-    padding: 8px 10px 8px 8px;
     color: var(--profilebar-cash-decrease-color);
     animation: fadeDown 10s cubic-bezier(0, 0, 0.4, 1) 1;
     transform: translateY(0);

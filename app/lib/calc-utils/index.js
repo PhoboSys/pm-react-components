@@ -4,8 +4,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.div = div;
+exports.eq = eq;
+exports.gt = gt;
+exports.gte = gte;
 exports.isNegative = isNegative;
 exports.isPositive = isPositive;
+exports.lt = lt;
+exports.lte = lte;
 exports.mul = mul;
 exports.sub = sub;
 var _lodash = require("lodash");
@@ -47,5 +52,35 @@ function isPositive(number) {
 function isNegative(number) {
   if (!__inNumbers(number)) return undefined;
   return (0, _big["default"])(number).s === -1;
+}
+function gt(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined;
+  number1 = (0, _big["default"])(number1);
+  number2 = (0, _big["default"])(number2);
+  return number1.gt(number2);
+}
+function gte(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined;
+  number1 = (0, _big["default"])(number1);
+  number2 = (0, _big["default"])(number2);
+  return number1.gte(number2);
+}
+function eq(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined;
+  number1 = (0, _big["default"])(number1);
+  number2 = (0, _big["default"])(number2);
+  return number1.eq(number2);
+}
+function lt(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined;
+  number1 = (0, _big["default"])(number1);
+  number2 = (0, _big["default"])(number2);
+  return number1.lt(number2);
+}
+function lte(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined;
+  number1 = (0, _big["default"])(number1);
+  number2 = (0, _big["default"])(number2);
+  return number1.lte(number2);
 }
 //# sourceMappingURL=index.js.map

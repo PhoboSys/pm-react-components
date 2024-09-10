@@ -54,3 +54,48 @@ export function isNegative(number) {
 
   return Big(number).s === -1
 }
+
+export function gt(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined
+
+  number1 = Big(number1)
+  number2 = Big(number2)
+
+  return number1.gt(number2)
+}
+
+export function gte(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined
+
+  number1 = Big(number1)
+  number2 = Big(number2)
+
+  return number1.gte(number2)
+}
+
+export function eq(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined
+
+  number1 = Big(number1)
+  number2 = Big(number2)
+
+  return number1.eq(number2)
+}
+
+export function lt(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined
+
+  number1 = Big(number1)
+  number2 = Big(number2)
+
+  return number1.lt(number2)
+}
+
+export function lte(number1, number2) {
+  if (!__inNumbers(number1, number2)) return undefined
+
+  number1 = Big(number1)
+  number2 = Big(number2)
+
+  return number1.lte(number2)
+}

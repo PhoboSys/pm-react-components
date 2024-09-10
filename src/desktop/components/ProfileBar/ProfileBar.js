@@ -102,6 +102,9 @@ const ProfileBar = ({
     }
   }, [])
 
+  let htmldifference = htmlCurrency(difference, maximumFractionDigits)
+  if (htmldifference.includes('<-')) htmldifference = `-<${htmldifference.slice(2)}`
+
   return (
     <div className={cn(css.profilebar, className)} onClick={handleClick}>
       <div className={cn(css.inner, innerClassName)}>
@@ -124,7 +127,7 @@ const ProfileBar = ({
           <span className={css.dropdownIcon}><DropdownIcon /></span>
           <span className={css.difference}>
             <span>+</span>
-            {htmlCurrency(difference, maximumFractionDigits)}
+            {htmldifference}
           </span>
           {popoverPop &&
           <div ref={popover} className={css.popover}>

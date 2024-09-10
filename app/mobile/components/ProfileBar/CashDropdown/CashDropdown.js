@@ -86,6 +86,8 @@ var ValueRenderer = function ValueRenderer(_ref2) {
     difference = _ref2.difference,
     currencyFill = _ref2.currencyFill,
     maximumFractionDigits = _ref2.maximumFractionDigits;
+  var htmldifference = (0, _htmlUtils.htmlCurrency)(difference, maximumFractionDigits);
+  if (htmldifference.includes('<-')) htmldifference = "-<".concat(htmldifference.slice(2));
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement(_BalanceCurrency["default"], {
     className: _CashDropdownModule["default"].currency,
     fill: currencyFill,
@@ -96,7 +98,7 @@ var ValueRenderer = function ValueRenderer(_ref2) {
     className: _CashDropdownModule["default"].spinner
   }), /*#__PURE__*/_react["default"].createElement("span", {
     className: _CashDropdownModule["default"].difference
-  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), (0, _htmlUtils.htmlCurrency)(difference, maximumFractionDigits)));
+  }, /*#__PURE__*/_react["default"].createElement("span", null, "+"), htmldifference));
 };
 var CashDropdown = function CashDropdown(_ref3) {
   var currency = _ref3.currency,
@@ -117,6 +119,7 @@ var CashDropdown = function CashDropdown(_ref3) {
   var valueRenderer = (0, _react.useCallback)(function () {
     var value = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
     return /*#__PURE__*/_react["default"].createElement(ValueRenderer, {
+      key: changeid,
       currency: value.currency,
       balance: balance,
       difference: difference,

@@ -66,6 +66,10 @@ const ValueRenderer = ({
   currencyFill,
   maximumFractionDigits,
 }) => {
+
+  let htmldifference = htmlCurrency(difference, maximumFractionDigits)
+  if (htmldifference.includes('<-')) htmldifference = `-<${htmldifference.slice(2)}`
+
   return (
     <>
       <BalanceCurrency className={css.currency} fill={currencyFill} currency={currency} />
@@ -76,7 +80,7 @@ const ValueRenderer = ({
       )}
       <span className={css.difference}>
         <span>+</span>
-        {htmlCurrency(difference, maximumFractionDigits)}
+        {htmldifference}
       </span>
     </>
   )
@@ -98,6 +102,7 @@ const CashDropdown = ({
 
   const valueRenderer = useCallback((value = {}) => (
     <ValueRenderer
+      key={changeid}
       currency={value.currency}
       balance={balance}
       difference={difference}
