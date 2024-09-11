@@ -22,6 +22,7 @@ var _StakerTabContent = _interopRequireDefault(require("./StakerTabContent"));
 var _InvitationLink = _interopRequireDefault(require("./InvitationLink"));
 var _AppsMenu = _interopRequireDefault(require("./AppsMenu"));
 var _AppInstallButton = _interopRequireDefault(require("./AppInstallButton/AppInstallButton"));
+var _Nickname = _interopRequireDefault(require("./Nickname"));
 var _StatisticsBarModule = _interopRequireDefault(require("./StatisticsBar.module.scss"));
 var _AnimatedButton = _interopRequireDefault(require("../common/AnimatedButton"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -40,6 +41,7 @@ var StatisticsBar = function StatisticsBar(_ref) {
   var _statistics$predictor, _statistics$predictor2, _statistics$predictor3, _statistics$mentor, _statistics$mentor2, _statistics$mentor3, _statistics$staker, _statistics$staker2, _statistics$staker3;
   var isOpened = _ref.isOpened,
     address = _ref.address,
+    username = _ref.username,
     isSelfView = _ref.isSelfView,
     statistics = _ref.statistics,
     activeNavigationItem = _ref.activeNavigationItem,
@@ -47,7 +49,8 @@ var StatisticsBar = function StatisticsBar(_ref) {
     onCloseClick = _ref.onCloseClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onInstallAppClick = _ref.onInstallAppClick,
-    onSupportClick = _ref.onSupportClick;
+    onSupportClick = _ref.onSupportClick,
+    onNicknameChanged = _ref.onNicknameChanged;
   var timeout = 100; //ms
   var _useTransition = (0, _useTransition3.useTransition)(isOpened && !!address, timeout),
     _useTransition2 = _slicedToArray(_useTransition, 2),
@@ -76,6 +79,11 @@ var StatisticsBar = function StatisticsBar(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_Avatar["default"], {
     className: _StatisticsBarModule["default"].icon,
     account: address
+  }), /*#__PURE__*/_react["default"].createElement(_Nickname["default"], {
+    address: address,
+    username: username,
+    editable: isSelfView,
+    onNicknameChanged: onNicknameChanged
   }), /*#__PURE__*/_react["default"].createElement(_Copy["default"], {
     text: address,
     className: _StatisticsBarModule["default"].address,
