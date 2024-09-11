@@ -17,6 +17,7 @@ import StakerTabContent from './StakerTabContent'
 import InvitationLink from './InvitationLink'
 import AppsMenu from './AppsMenu'
 import AppInstallButton from './AppInstallButton/AppInstallButton'
+import Nickname from './Nickname'
 
 import css from './StatisticsBar.module.scss'
 import AnimatedButton from '../common/AnimatedButton'
@@ -24,6 +25,7 @@ import AnimatedButton from '../common/AnimatedButton'
 const StatisticsBar = ({
   isOpened,
   address,
+  username,
   isSelfView,
   statistics,
   activeNavigationItem,
@@ -32,6 +34,7 @@ const StatisticsBar = ({
   onDisconnectClick,
   onInstallAppClick,
   onSupportClick,
+  onNicknameChanged,
 }) => {
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
@@ -61,6 +64,13 @@ const StatisticsBar = ({
           </a>
           <div className={css.account}>
             <Avatar className={css.icon} account={address} />
+
+            <Nickname
+              address={address}
+              username={username}
+              editable={isSelfView}
+              onNicknameChanged={onNicknameChanged}
+            />
             <Copy
               text={address}
               className={css.address}

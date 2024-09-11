@@ -21,6 +21,7 @@ const PMGlobalHeader = ({
   mustUserLogin,
   account,
   statisticsAccount,
+  statisticsNickname,
   statistics,
   connectors,
   activeNavigationItem,
@@ -36,6 +37,7 @@ const PMGlobalHeader = ({
   children,
   onInstallAppClick,
   onSupportClick,
+  onNicknameChanged,
   injectedProviderType,
 }) => {
   const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
@@ -75,6 +77,10 @@ const PMGlobalHeader = ({
     onInstallAppClick()
   }, [handleCloseStatisticsBar, onInstallAppClick])
 
+  const handleNicknameChange = useCallback((e) => {
+    if (onNicknameChanged) onNicknameChanged(e)
+  }, [onNicknameChanged])
+
   return (
     <FeatureTogglesProvider toggles={featureToggles}>
       <PMGlobalHeaderProvider
@@ -94,6 +100,7 @@ const PMGlobalHeader = ({
         )}
         <StatisticsBar
           address={statisticsAccount}
+          username={statisticsNickname}
           activeNavigationItem={activeNavigationItem}
           isSelfView={isConnected && (account === statisticsAccount)}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
@@ -103,6 +110,7 @@ const PMGlobalHeader = ({
           onDisconnectClick={handleDisconnectClick}
           onInstallAppClick={openInstallApp}
           onSupportClick={onSupportClick}
+          onNicknameChanged={handleNicknameChange}
         />
         {children}
         {modal}
@@ -120,6 +128,7 @@ PMGlobalHeader.propTypes = {
   mustUserLogin: PropTypes.bool,
   account: PropTypes.string,
   statisticsAccount: PropTypes.string,
+  statisticsNickname: PropTypes.string,
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
   statistics: PropTypes.object,
@@ -128,6 +137,7 @@ PMGlobalHeader.propTypes = {
   isConnected: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
   onConnectorClick: PropTypes.func,
+  onNicknameChanged: PropTypes.func,
   onConnectClick: PropTypes.func,
   onDisconnectClick: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,

@@ -34,6 +34,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     mustUserLogin = _ref.mustUserLogin,
     account = _ref.account,
     statisticsAccount = _ref.statisticsAccount,
+    statisticsNickname = _ref.statisticsNickname,
     statistics = _ref.statistics,
     connectors = _ref.connectors,
     activeNavigationItem = _ref.activeNavigationItem,
@@ -49,6 +50,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     children = _ref.children,
     onInstallAppClick = _ref.onInstallAppClick,
     onSupportClick = _ref.onSupportClick,
+    onNicknameChanged = _ref.onNicknameChanged,
     injectedProviderType = _ref.injectedProviderType;
   var _useModal = (0, _modals.useModal)({
       Content: _AuthModal["default"],
@@ -93,6 +95,9 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     handleCloseStatisticsBar();
     onInstallAppClick();
   }, [handleCloseStatisticsBar, onInstallAppClick]);
+  var handleNicknameChange = (0, _react.useCallback)(function (e) {
+    if (onNicknameChanged) onNicknameChanged(e);
+  }, [onNicknameChanged]);
   return /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureTogglesProvider, {
     toggles: featureToggles
   }, /*#__PURE__*/_react["default"].createElement(_PMGlobalHeaderProvider["default"], {
@@ -109,6 +114,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onClick: handleConnectClick
   }), /*#__PURE__*/_react["default"].createElement(_StatisticsBar["default"], {
     address: statisticsAccount,
+    username: statisticsNickname,
     activeNavigationItem: activeNavigationItem,
     isSelfView: isConnected && account === statisticsAccount,
     isOpened: isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened,
@@ -117,7 +123,8 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     onCloseClick: handleCloseStatisticsBar,
     onDisconnectClick: handleDisconnectClick,
     onInstallAppClick: openInstallApp,
-    onSupportClick: onSupportClick
+    onSupportClick: onSupportClick,
+    onNicknameChanged: handleNicknameChange
   }), children, modal), /*#__PURE__*/_react["default"].createElement("div", {
     id: _config["default"].modal_id
   }));
@@ -130,6 +137,7 @@ PMGlobalHeader.propTypes = {
   mustUserLogin: _propTypes["default"].bool,
   account: _propTypes["default"].string,
   statisticsAccount: _propTypes["default"].string,
+  statisticsNickname: _propTypes["default"].string,
   connectors: _propTypes["default"].array,
   activeNavigationItem: _propTypes["default"].string,
   statistics: _propTypes["default"].object,
@@ -138,6 +146,7 @@ PMGlobalHeader.propTypes = {
   isConnected: _propTypes["default"].bool,
   isStatisticsBarOpened: _propTypes["default"].bool,
   onConnectorClick: _propTypes["default"].func,
+  onNicknameChanged: _propTypes["default"].func,
   onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onStatisticsBarCloseClick: _propTypes["default"].func,
