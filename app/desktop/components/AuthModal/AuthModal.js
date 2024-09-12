@@ -21,6 +21,12 @@ var AuthModal = function AuthModal(_ref) {
   (0, _react.useEffect)(function () {
     if (isConnected) close();
   }, [isConnected]);
+  (0, _react.useEffect)(function () {
+    if (connectors.length === 1 && !isConnected) {
+      close();
+      onConnectorClick(connectors[0]);
+    }
+  }, [connectors.length, isConnected]);
   return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, /*#__PURE__*/_react["default"].createElement("div", {
     className: _AuthModalModule["default"].title
   }, "Connect to Wallet"), /*#__PURE__*/_react["default"].createElement("ul", {
