@@ -25,6 +25,11 @@ var AuthModal = function AuthModal(_ref) {
     close();
     onConnectorClick(connectorId);
   }, [onConnectorClick]);
+  (0, _react.useEffect)(function () {
+    if (connectors.length === 1 && !isConnected) {
+      onClick(connectors[0]);
+    }
+  }, [connectors.length, isConnected]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: _AuthModalModule["default"].container
   }, /*#__PURE__*/_react["default"].createElement("div", {

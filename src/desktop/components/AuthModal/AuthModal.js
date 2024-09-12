@@ -11,6 +11,13 @@ const AuthModal = ({ close, isConnected, connectors, onConnectorClick, injectedP
     if (isConnected) close()
   }, [isConnected])
 
+  useEffect(() => {
+    if (connectors.length === 1 && !isConnected) {
+      close()
+      onConnectorClick(connectors[0])
+    }
+  }, [connectors.length, isConnected])
+
   return (
     <>
       <div className={css.title}>Connect to Wallet</div>
