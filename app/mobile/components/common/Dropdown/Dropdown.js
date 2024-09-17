@@ -58,6 +58,7 @@ var Dropdown = function Dropdown(_ref) {
     showIcon = _ref$showIcon === void 0 ? true : _ref$showIcon,
     _ref$targetBody = _ref.targetBody,
     targetBody = _ref$targetBody === void 0 ? false : _ref$targetBody,
+    disabled = _ref.disabled,
     onChange = _ref.onChange,
     _ref$valueRenderer = _ref.valueRenderer,
     valueRenderer = _ref$valueRenderer === void 0 ? defaultValueRenderer : _ref$valueRenderer,
@@ -91,14 +92,16 @@ var Dropdown = function Dropdown(_ref) {
     styles = _usePopper.styles,
     attributes = _usePopper.attributes;
   var handleClick = (0, _react.useCallback)(function () {
+    if (disabled) return;
     setIsOpen(function (isOpen) {
       return !isOpen;
     });
-  }, []);
+  }, [disabled]);
   var handleChange = (0, _react.useCallback)(function (option) {
+    if (disabled) return;
     setIsOpen(false);
     onChange && onChange(option);
-  }, [onChange]);
+  }, [disabled, onChange]);
   (0, _react.useEffect)(function () {
     var handler = function handler(e) {
       if (containerElement.current && !containerElement.current.contains(e.target)) {
@@ -158,6 +161,7 @@ Dropdown.propTypes = {
   popperModifiers: _propTypes["default"].array,
   showIcon: _propTypes["default"].bool,
   targetBody: _propTypes["default"].bool,
+  disabled: _propTypes["default"].bool,
   onChange: _propTypes["default"].func,
   valueRenderer: _propTypes["default"].func,
   optionRenderer: _propTypes["default"].func,
