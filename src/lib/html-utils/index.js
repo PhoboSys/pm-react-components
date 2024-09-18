@@ -1,8 +1,8 @@
 import { floor, toLower } from 'lodash'
 import Big from 'big.js'
+import { eq, lt, gt, mul } from 'pm-libs/calc-utils'
 
 import { CurrencyFormatter } from './currency'
-import { eq, lt, gt, mul } from '../calc-utils'
 
 export function htmlPercent(percent, precision = 2) {
   return (floor(mul(percent,100), precision) || 0) + '%'
