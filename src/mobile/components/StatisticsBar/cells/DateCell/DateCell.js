@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
-import { timeSinceUnixTS } from '@lib/date-utils'
+import { timeSinceUnixTS } from 'pm-libs/date-utils'
 
 import css from './DateCell.module.scss'
 
