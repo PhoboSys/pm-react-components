@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 var _propTypes = _interopRequireDefault(require("prop-types"));
-var _calcUtils = require("../../../../../lib/calc-utils");
+var _calcUtils = require("pm-libs/calc-utils");
 var _htmlUtils = require("../../../../../lib/html-utils");
 var _PMGlobalHeaderProvider = require("../../../PMGlobalHeaderProvider");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
