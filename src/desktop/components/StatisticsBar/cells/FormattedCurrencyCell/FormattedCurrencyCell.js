@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import { div } from 'pm-libs/calc-utils'
+import { div } from '@oracly/pm-libs/calc-utils'
 
 import { htmlCurrency } from '@lib/html-utils'
 

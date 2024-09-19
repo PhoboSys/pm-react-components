@@ -1,6 +1,6 @@
 import { floor, toLower } from 'lodash'
 import Big from 'big.js'
-import { eq, lt, gt, mul } from 'pm-libs/calc-utils'
+import { eq, lt, gt, mul } from '@oracly/pm-libs/calc-utils'
 
 import { CurrencyFormatter } from './currency'
 

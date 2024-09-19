@@ -8,7 +8,7 @@ exports.htmlCurrency = htmlCurrency;
 exports.htmlPercent = htmlPercent;
 var _lodash = require("lodash");
 var _big = _interopRequireDefault(require("big.js"));
-var _calcUtils = require("pm-libs/calc-utils");
+var _calcUtils = require("@oracly/pm-libs/calc-utils");
 var _currency = require("./currency");
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
 function htmlPercent(percent) {

@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 
 import cn from 'clsx'
 import PropTypes from 'prop-types'
-import { isPositive, isNegative, sub } from 'pm-libs/calc-utils'
+import { isPositive, isNegative, sub } from '@oracly/pm-libs/calc-utils'
 
 import { htmlAddress, htmlCurrency } from '@lib/html-utils'
 
