@@ -1,8 +1,10 @@
 {
-  "name": "pm-global-header",
-  "version": "0.1.0",
-  "description": "Application's global header with header, navigation bar and connect bar",
-  "private": true,
+  "name": "pm-react-components",
+  "version": "1.0.0",
+  "author": "Oracly Team",
+  "license": "MIT",
+  "private": false,
+  "description": "oraclyv1 dapp's common react components such as van bar and connect bar",
   "main": "app/index.js",
   "scripts": {
     "build:lde": "./bin/dev.sh",
@@ -13,8 +15,6 @@
     "autolink:mt": "npm link && cd ../pm-webmentoring && npm link pm-global-header",
     "autolink:all": "npm link && cd ../pm-webtrader && npm link pm-global-header && cd ../pm-webstaking && npm link pm-global-header && cd ../pm-webmentoring && npm link pm-global-header"
   },
-  "author": "Phobosys",
-  "license": "UNLICENSED",
   "files": [
     "app"
   ],
