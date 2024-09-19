@@ -58,6 +58,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     featureToggles = _ref.featureToggles,
     featureTogglesTitle = _ref.featureTogglesTitle,
     networkStatus = _ref.networkStatus,
+    onNetworkStatusClick = _ref.onNetworkStatusClick,
     onConnectClick = _ref.onConnectClick,
     onDisconnectClick = _ref.onDisconnectClick,
     onNicknameChanged = _ref.onNicknameChanged,
@@ -141,6 +142,7 @@ var PMGlobalHeader = function PMGlobalHeader(_ref) {
     active: activeNavigationItem,
     featureTogglesTitle: featureTogglesTitle,
     networkStatus: networkStatus,
+    onNetworkStatusClick: onNetworkStatusClick,
     onSupportClick: onSupportClick
   }), /*#__PURE__*/_react["default"].createElement(_Header["default"], {
     className: headerClassName
@@ -210,6 +212,7 @@ PMGlobalHeader.propTypes = {
   featureToggles: _propTypes["default"].object,
   featureTogglesTitle: _propTypes["default"].string,
   networkStatus: _propTypes["default"].string,
+  onNetworkStatusClick: _propTypes["default"].func,
   onConnectClick: _propTypes["default"].func,
   onDisconnectClick: _propTypes["default"].func,
   onConnectorClick: _propTypes["default"].func,

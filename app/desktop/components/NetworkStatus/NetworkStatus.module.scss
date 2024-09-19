@@ -12,6 +12,7 @@
   border-radius: 50%;
   transition: background-color 0.15s linear;
   margin: 0 auto;
+  cursor: pointer;
 
   &:hover {
     background-color: var(--pm-gh-network-status-bg-hover);

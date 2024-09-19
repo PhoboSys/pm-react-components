@@ -30,6 +30,7 @@ const NavBar = ({
   active,
   featureTogglesTitle,
   networkStatus,
+  onNetworkStatusClick,
   onSupportClick,
 }) => {
 
@@ -78,7 +79,12 @@ const NavBar = ({
             <Button className={css.supportButton} onClick={onSupportClick}>
               <SupportIcon />
             </Button>
-            {networkStatus && <NetworkStatus networkStatus={networkStatus} />}
+            {networkStatus && (
+              <NetworkStatus
+                onClick={onNetworkStatusClick}
+                networkStatus={networkStatus}
+              />
+            )}
             <FeatureToggle title={featureTogglesTitle} />
           </div>
         </div>
@@ -94,6 +100,7 @@ NavBar.propTypes = {
   logoLabelFill: PropTypes.string,
   featureTogglesTitle: PropTypes.string,
   networkStatus: PropTypes.string,
+  onNetworkStatusClick: PropTypes.func,
   onSupportClick: PropTypes.func,
 }
 

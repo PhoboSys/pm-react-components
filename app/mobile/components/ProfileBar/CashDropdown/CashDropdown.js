@@ -29,9 +29,6 @@ function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" !=
 function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 var options = [{
   label: 'Oracly',
-  currency: 'ORCY'
-}, {
-  label: 'Oracly',
   currency: 'DEMO'
 }, {
   label: 'USD Coin',

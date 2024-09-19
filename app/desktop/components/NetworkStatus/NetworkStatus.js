@@ -36,7 +36,8 @@ var NetworkStatus = function NetworkStatus(_ref) {
   var className = _ref.className,
     networkStatus = _ref.networkStatus,
     _ref$popperOffset = _ref.popperOffset,
-    popperOffset = _ref$popperOffset === void 0 ? defaultPopperOffset : _ref$popperOffset;
+    popperOffset = _ref$popperOffset === void 0 ? defaultPopperOffset : _ref$popperOffset,
+    onClick = _ref.onClick;
   var _useState = (0, _react.useState)(false),
     _useState2 = _slicedToArray(_useState, 2),
     isOpen = _useState2[0],
@@ -79,13 +80,17 @@ var NetworkStatus = function NetworkStatus(_ref) {
   var handleMouseLeave = (0, _react.useCallback)(function () {
     return setIsOpen(false);
   }, []);
+  var handleClick = (0, _react.useCallback)(function () {
+    return onClick && onClick();
+  }, [onClick]);
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_NetworkStatusModule["default"].container, _defineProperty(_defineProperty(_defineProperty({}, _NetworkStatusModule["default"].success, networkStatus === _constants.NETWORK_STATUS.SUCCESS), _NetworkStatusModule["default"].warning, networkStatus === _constants.NETWORK_STATUS.WARNING), _NetworkStatusModule["default"].error, networkStatus === _constants.NETWORK_STATUS.ERROR), className)
   }, /*#__PURE__*/_react["default"].createElement("div", {
     ref: setReferenceElement,
     className: _NetworkStatusModule["default"].header,
     onMouseEnter: handleMouseEnter,
-    onMouseLeave: handleMouseLeave
+    onMouseLeave: handleMouseLeave,
+    onClick: handleClick
   }, /*#__PURE__*/_react["default"].createElement("div", {
     className: _NetworkStatusModule["default"].status
   }), /*#__PURE__*/_react["default"].createElement(_Sync["default"], null)), /*#__PURE__*/(0, _reactDom.createPortal)(/*#__PURE__*/_react["default"].createElement("div", _extends({
@@ -98,7 +103,9 @@ var NetworkStatus = function NetworkStatus(_ref) {
 };
 NetworkStatus.propTypes = {
   className: _propTypes["default"].string,
-  networkStatus: _propTypes["default"].string
+  networkStatus: _propTypes["default"].string,
+  popperOffset: _propTypes["default"].array,
+  onClick: _propTypes["default"].func
 };
 var _default = exports["default"] = NetworkStatus;
 //# sourceMappingURL=NetworkStatus.js.map

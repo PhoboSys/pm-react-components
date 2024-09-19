@@ -57,6 +57,7 @@ var NavBar = function NavBar(_ref) {
     active = _ref.active,
     featureTogglesTitle = _ref.featureTogglesTitle,
     networkStatus = _ref.networkStatus,
+    onNetworkStatusClick = _ref.onNetworkStatusClick,
     onSupportClick = _ref.onSupportClick;
   var _useState = (0, _react.useState)(localStorage.getItem(localStorageSelector) === 'true'),
     _useState2 = _slicedToArray(_useState, 2),
@@ -118,6 +119,7 @@ var NavBar = function NavBar(_ref) {
     className: _NavbarModule["default"].supportButton,
     onClick: onSupportClick
   }, /*#__PURE__*/_react["default"].createElement(_SupportIcon["default"], null)), networkStatus && /*#__PURE__*/_react["default"].createElement(_NetworkStatus["default"], {
+    onClick: onNetworkStatusClick,
     networkStatus: networkStatus
   }), /*#__PURE__*/_react["default"].createElement(_FeatureToggle.FeatureToggle, {
     title: featureTogglesTitle
@@ -130,6 +132,7 @@ NavBar.propTypes = {
   logoLabelFill: _propTypes["default"].string,
   featureTogglesTitle: _propTypes["default"].string,
   networkStatus: _propTypes["default"].string,
+  onNetworkStatusClick: _propTypes["default"].func,
   onSupportClick: _propTypes["default"].func
 };
 var _default = exports["default"] = /*#__PURE__*/_react["default"].memo(NavBar);
