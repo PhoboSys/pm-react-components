@@ -12,7 +12,6 @@ import { useGHProvider } from '../../PMGlobalHeaderProvider'
 import css from './CashDropdown.module.scss'
 
 const options = [
-  { label: 'Oracly', currency: 'ORCY' },
   { label: 'Oracly', currency: 'DEMO' },
   { label: 'USD Coin', currency: 'USDC' },
 ]

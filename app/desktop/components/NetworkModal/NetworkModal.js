@@ -9,8 +9,9 @@ var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
 var _constants = require("../../../constants");
 var _Button = _interopRequireDefault(require("../common/Button"));
-var _Sync = _interopRequireDefault(require("../SVG/Sync"));
+var _WiFiSuccess = _interopRequireDefault(require("../SVG/WiFiSuccess"));
 var _WiFiWarning = _interopRequireDefault(require("../SVG/WiFiWarning"));
+var _WiFiError = _interopRequireDefault(require("../SVG/WiFiError"));
 var _CloseIcon = _interopRequireDefault(require("../SVG/CloseIcon"));
 var _NetworkModalModule = _interopRequireDefault(require("./NetworkModal.module.scss"));
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
@@ -24,7 +25,6 @@ var NetworkModal = function NetworkModal(_ref) {
     close = _ref.close,
     rows = _ref.rows;
   if (!networkStatus) return null;
-  if (networkStatus === _constants.NETWORK_STATUS.SUCCESS) return null;
   return /*#__PURE__*/_react["default"].createElement("div", {
     className: (0, _clsx["default"])(_NetworkModalModule["default"].container, className)
   }, /*#__PURE__*/_react["default"].createElement(_Button["default"], {
@@ -33,10 +33,10 @@ var NetworkModal = function NetworkModal(_ref) {
   }, /*#__PURE__*/_react["default"].createElement(_CloseIcon["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NetworkModalModule["default"].content
   }, /*#__PURE__*/_react["default"].createElement("div", {
-    className: (0, _clsx["default"])(_NetworkModalModule["default"].wifi, _defineProperty(_defineProperty({}, _NetworkModalModule["default"].error, networkStatus === _constants.NETWORK_STATUS.ERROR), _NetworkModalModule["default"].warning, networkStatus === _constants.NETWORK_STATUS.WARNING))
-  }, networkStatus === _constants.NETWORK_STATUS.WARNING && /*#__PURE__*/_react["default"].createElement(_Sync["default"], null), networkStatus === _constants.NETWORK_STATUS.ERROR && /*#__PURE__*/_react["default"].createElement(_WiFiWarning["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
+    className: (0, _clsx["default"])(_NetworkModalModule["default"].wifi, _defineProperty(_defineProperty(_defineProperty({}, _NetworkModalModule["default"].error, networkStatus === _constants.NETWORK_STATUS.ERROR), _NetworkModalModule["default"].warning, networkStatus === _constants.NETWORK_STATUS.WARNING), _NetworkModalModule["default"].success, networkStatus === _constants.NETWORK_STATUS.SUCCESS))
+  }, networkStatus === _constants.NETWORK_STATUS.SUCCESS && /*#__PURE__*/_react["default"].createElement(_WiFiSuccess["default"], null), networkStatus === _constants.NETWORK_STATUS.WARNING && /*#__PURE__*/_react["default"].createElement(_WiFiWarning["default"], null), networkStatus === _constants.NETWORK_STATUS.ERROR && /*#__PURE__*/_react["default"].createElement(_WiFiError["default"], null)), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NetworkModalModule["default"].description
-  }, networkStatus === _constants.NETWORK_STATUS.WARNING && 'Data is currently out of date. Please wait while it is syncing...', networkStatus === _constants.NETWORK_STATUS.ERROR && 'Unable to sync data. Check internet connection'), /*#__PURE__*/_react["default"].createElement("div", {
+  }, networkStatus === _constants.NETWORK_STATUS.WARNING && 'Data is currently out of date. Please wait while it is syncing...', networkStatus === _constants.NETWORK_STATUS.ERROR && 'Unable to sync data. Check internet connection', networkStatus === _constants.NETWORK_STATUS.SUCCESS && 'Synchronized data'), /*#__PURE__*/_react["default"].createElement("div", {
     className: _NetworkModalModule["default"].table
   }, rows.map(function (_ref2) {
     var name = _ref2.name,

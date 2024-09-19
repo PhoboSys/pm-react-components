@@ -18,7 +18,12 @@ const statuses = {
 
 const defaultPopperOffset = [45, 5]
 
-const NetworkStatus = ({ className, networkStatus, popperOffset = defaultPopperOffset }) => {
+const NetworkStatus = ({
+  className,
+  networkStatus,
+  popperOffset = defaultPopperOffset,
+  onClick,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const [referenceElement, setReferenceElement] = useState(null)
   const [popperElement, setPopperElement] = useState(null)
@@ -45,6 +50,7 @@ const NetworkStatus = ({ className, networkStatus, popperOffset = defaultPopperO
 
   const handleMouseEnter = useCallback(() => setIsOpen(true), [])
   const handleMouseLeave = useCallback(() => setIsOpen(false), [])
+  const handleClick = useCallback(() => onClick && onClick(), [onClick])
 
   return (
     <div className={cn(css.container, {
@@ -57,6 +63,7 @@ const NetworkStatus = ({ className, networkStatus, popperOffset = defaultPopperO
         className={css.header}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
+        onClick={handleClick}
       >
         <div className={css.status} />
         <Sync />
@@ -81,6 +88,8 @@ const NetworkStatus = ({ className, networkStatus, popperOffset = defaultPopperO
 NetworkStatus.propTypes = {
   className: PropTypes.string,
   networkStatus: PropTypes.string,
+  popperOffset: PropTypes.array,
+  onClick: PropTypes.func,
 }
 
 export default NetworkStatus

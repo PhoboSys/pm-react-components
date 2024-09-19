@@ -15,7 +15,6 @@ import css from './ProfileBar.module.scss'
 
 const options = [
   { label: 'USD Coin', currency: 'USDC' },
-  { label: 'Oracly', currency: 'ORCY' },
   { label: 'Oracly', currency: 'DEMO' },
 ]
 
