@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types'
-
-import { htmlPercent } from '@lib/html-utils'
+import { htmlPercent } from '@oracly/pm-libs/html-utils'
 
 import { useGHProvider } from '../../../PMGlobalHeaderProvider'
 

@@ -1,8 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
-
-import { htmlAddress } from '@lib/html-utils'
+import { htmlAddress } from '@oracly/pm-libs/html-utils'
 
 import ArrowForward from '../SVG/ArrowForward'
 import SupportIcon from '../SVG/SupportIcon'

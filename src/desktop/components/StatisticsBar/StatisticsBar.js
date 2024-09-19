@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useState, useRef } from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
 import { throttle } from 'lodash'
+import { htmlAddress } from '@oracly/pm-libs/html-utils'
 
-import { htmlAddress } from '../../../lib/html-utils'
 import { useTransition } from '../../../hooks/useTransition'
 
 import ArrowForward from '../SVG/ArrowForward'
