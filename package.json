@@ -33,6 +33,7 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@oracly/pm-libs": "1.0.1",
     "big.js": "^6.1.1",
     "clsx": "^2.0.0",
     "prop-types": "^15.8.1",

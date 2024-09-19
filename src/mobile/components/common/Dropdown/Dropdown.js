@@ -31,6 +31,7 @@ const Dropdown = ({
   popperModifiers,
   showIcon = true,
   targetBody = false,
+  disabled,
   onChange,
   valueRenderer = defaultValueRenderer,
   optionRenderer = defaultOptionRenderer,
@@ -47,13 +48,15 @@ const Dropdown = ({
   const { styles, attributes } = usePopper(referenceElement, popperElement, { modifiers, placement: 'bottom' })
 
   const handleClick = useCallback(() => {
+    if (disabled) return
     setIsOpen((isOpen) => !isOpen)
-  }, [])
+  }, [disabled])
 
   const handleChange = useCallback((option) => {
+    if (disabled) return
     setIsOpen(false)
     onChange && onChange(option)
-  }, [onChange])
+  }, [disabled, onChange])
 
   useEffect(() => {
     const handler = (e) => {
@@ -113,6 +116,7 @@ Dropdown.propTypes = {
   popperModifiers: PropTypes.array,
   showIcon: PropTypes.bool,
   targetBody: PropTypes.bool,
+  disabled: PropTypes.bool,
   onChange: PropTypes.func,
   valueRenderer: PropTypes.func,
   optionRenderer: PropTypes.func,
