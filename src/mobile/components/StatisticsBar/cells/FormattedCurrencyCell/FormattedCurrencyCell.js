@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import { div } from '@oracly/pm-libs/calc-utils'
-
-import { htmlCurrency } from '@lib/html-utils'
+import { htmlCurrency } from '@oracly/pm-libs/html-utils'
 
 import { useGHProvider } from '../../../PMGlobalHeaderProvider'
 

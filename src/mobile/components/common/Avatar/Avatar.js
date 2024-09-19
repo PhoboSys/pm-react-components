@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import cn from 'clsx'
+import { numericHash } from '@oracly/pm-libs/hash-utils'
 
 import config from '@config'
-import { numericHash } from '@lib/hash-utils'
 
 import css from './Avatar.module.scss'
 

@@ -3,8 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import cn from 'clsx'
 import PropTypes from 'prop-types'
 import { isPositive, isNegative, sub } from '@oracly/pm-libs/calc-utils'
-
-import { htmlAddress, htmlCurrency } from '@lib/html-utils'
+import { htmlAddress, htmlCurrency } from '@oracly/pm-libs/html-utils'
 
 import BalanceCurrency from '../common/BalanceCurrency'
 import Spinner from '../common/Spinner'

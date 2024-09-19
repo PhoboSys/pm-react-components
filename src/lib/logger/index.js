@@ -1,23 +1,5 @@
-import factory from 'debug'
+import logger from '@oracly/pm-libs/logger'
 
-export default class Logger {
+logger.setNS('pm:rc:')
 
-    static ns = 'pm:gh:'
-    static #debuginfo = factory(Logger.ns + 'info')
-    static #debugwarn = factory(Logger.ns + 'warn')
-    static #debugerror = factory(Logger.ns + 'error')
-
-    static info(...args) {
-        Logger.#debuginfo(...args)
-    }
-
-    static error(...args) {
-        Logger.#debugerror(...args)
-        console.error(...args) // eslint-disable-line
-    }
-
-    static warn(...args) {
-        Logger.#debugwarn(...args)
-    }
-
-}
+export default logger

@@ -7,8 +7,8 @@ exports["default"] = void 0;
 var _react = _interopRequireDefault(require("react"));
 var _propTypes = _interopRequireDefault(require("prop-types"));
 var _clsx = _interopRequireDefault(require("clsx"));
+var _hashUtils = require("@oracly/pm-libs/hash-utils");
 var _config = _interopRequireDefault(require("../../../../config"));
-var _hashUtils = require("../../../../lib/hash-utils");
 var _AvatarModule = _interopRequireDefault(require("./Avatar.module.scss"));
 var _excluded = ["className", "account"];
 function _interopRequireDefault(e) { return e && e.__esModule ? e : { "default": e }; }
