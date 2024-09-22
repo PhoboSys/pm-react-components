@@ -21,7 +21,7 @@ const menuItems = [
   { name: 'mentoring', icon: <MentoringIcon />, label: 'Mentoring', path: config.mt_base_path },
 ]
 
-const localStorageSelector = 'pm-global-header-menu-expanded'
+const localStorageSelector = 'pm-react-components-menu-expanded'
 
 const NavBar = ({
   basepath,

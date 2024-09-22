@@ -49,7 +49,7 @@ var menuItems = [{
   label: 'Mentoring',
   path: _config["default"].mt_base_path
 }];
-var localStorageSelector = 'pm-global-header-menu-expanded';
+var localStorageSelector = 'pm-react-components-menu-expanded';
 var NavBar = function NavBar(_ref) {
   var basepath = _ref.basepath,
     logoFill = _ref.logoFill,

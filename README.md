@@ -1,4 +1,4 @@
-# pm-global-header
+# pm-react-components
 
 ## SCSS variables:
 

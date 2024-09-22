@@ -11,7 +11,7 @@ import { useTransition } from '../../../../hooks/useTransition'
 
 import css from './Nickname.module.scss';
 
-const localStorageSelector = 'pm-global-header-username-hint-closed'
+const localStorageSelector = 'pm-react-components-username-hint-closed'
 
 const Nickname = ({
   address,
