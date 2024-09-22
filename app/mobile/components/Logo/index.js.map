@@ -1,1 +1,0 @@
-{"version":3,"file":"index.js","names":["_Logo","_interopRequireDefault","require","e","__esModule"],"sources":["../../../../src/mobile/components/Logo/index.js"],"sourcesContent":["export { default } from './Logo';"],"mappings":";;;;;;;;;;;AAAA,IAAAA,KAAA,GAAAC,sBAAA,CAAAC,OAAA;AAAiC,SAAAD,uBAAAE,CAAA,WAAAA,CAAA,IAAAA,CAAA,CAAAC,UAAA,GAAAD,CAAA,gBAAAA,CAAA","ignoreList":[]}

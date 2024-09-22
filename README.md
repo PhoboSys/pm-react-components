@@ -1,4 +1,9 @@
-# pm-react-components
+# Oracly V1 Shared React Components
+
+Run
+```
+docker-compose up
+```
 
 ## SCSS variables:
 
