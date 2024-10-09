@@ -56,6 +56,10 @@ const AnimatedButton = (props) => {
     '--hover-box-shadow-color': props.shadowColor,
     '--hover-color': props.hoverColor,
     '--border-width': props.borderWidth,
+    '--border-radius': props.borderRadius,
+    '--border-color': props.borderColor,
+    '--hover-focus-border-color': props.hoverBorderColor,
+    '--active-border-color': props.activeBorderColor,
   }
 
   return (
@@ -72,6 +76,7 @@ const AnimatedButton = (props) => {
       {...htmlattrs}
     >
       {props.children}
+      <span className={css.border}></span>
       <span className={css.before}></span>
       <span className={css.overlay}></span>
       <span className={css.after}></span>
