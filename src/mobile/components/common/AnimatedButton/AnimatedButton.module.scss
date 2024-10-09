@@ -30,6 +30,10 @@
       transition: transform .2s;
     }
 
+    .border {
+      background-color: var(--hover-focus-border-color, --border-color, transparent);
+    }
+
     .before {
       opacity: var(--hover-focus-border-circle, 0.33);
       transform: translate(-50%, -50%) scale(1.5);
@@ -46,6 +50,9 @@
       opacity: var(--active-inner-circle, 0.18);
       transform: translate(-50%, -50%) scale(3);
       transition: opacity .1s, transform .1s;
+    }
+    .border {
+      background-color: var(--active-border-color, --border-color, transparent);
     }
     .before {
       opacity: var(--active-border-circle, 0.52);
@@ -94,9 +101,22 @@
     left: var(--border-width, 2px);
     right: var(--border-width, 2px);
     background: inherit;
-    border-radius: inherit;
+    border-radius: var(--border-radius, inherit);
     opacity: 1;
     transition: opacity 0.2s;
+  }
+
+  .border {
+    left: var(--hover-before-left);
+    top: var(--hover-before-top);
+    content: '';
+    position: absolute;
+    pointer-events: none;
+    width: 60px; /* Circle size */
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--border-color, transparent);
+    transform: translate(-50%, -50%) scale(5);
   }
 
   .before {
