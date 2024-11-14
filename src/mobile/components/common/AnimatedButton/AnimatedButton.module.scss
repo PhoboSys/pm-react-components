@@ -67,6 +67,10 @@
   &.disabled {
     cursor: not-allowed;
 
+    .border {
+      opacity: 0;
+    }
+
     .after {
       opacity: 0;
     }
@@ -116,7 +120,7 @@
     height: 60px;
     border-radius: 50%;
     background-color: var(--border-color, transparent);
-    transform: translate(-50%, -50%) scale(5);
+    transform: translate(-50%, -50%) scale(var(--border-scale, 5));
   }
 
   .before {
