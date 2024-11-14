@@ -58,6 +58,7 @@ const AnimatedButton = (props) => {
     '--border-width': props.borderWidth,
     '--border-radius': props.borderRadius,
     '--border-color': props.borderColor,
+    '--border-scale': props.borderScale,
     '--hover-focus-border-color': props.hoverBorderColor,
     '--active-border-color': props.activeBorderColor,
   }
