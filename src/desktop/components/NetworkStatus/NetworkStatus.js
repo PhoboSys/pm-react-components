@@ -20,6 +20,8 @@ const defaultPopperOffset = [45, 5]
 
 const NetworkStatus = ({
   className,
+  headerClassName,
+  statusClassName,
   networkStatus,
   popperOffset = defaultPopperOffset,
   onClick,
@@ -53,19 +55,19 @@ const NetworkStatus = ({
   const handleClick = useCallback(() => onClick && onClick(), [onClick])
 
   return (
-    <div className={cn(css.container, {
+    <div className={cn({
       [css.success]: networkStatus === NETWORK_STATUS.SUCCESS,
       [css.warning]: networkStatus === NETWORK_STATUS.WARNING,
       [css.error]: networkStatus === NETWORK_STATUS.ERROR,
     }, className)}>
       <div
         ref={setReferenceElement}
-        className={css.header}
+        className={cn(css.header, headerClassName)}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         onClick={handleClick}
       >
-        <div className={css.status} />
+        <div className={cn(css.status, statusClassName)} />
         <Sync />
       </div>
       {createPortal((
@@ -87,6 +89,8 @@ const NetworkStatus = ({
 
 NetworkStatus.propTypes = {
   className: PropTypes.string,
+  headerClassName: PropTypes.string,
+  statusClassName: PropTypes.string,
   networkStatus: PropTypes.string,
   popperOffset: PropTypes.array,
   onClick: PropTypes.func,

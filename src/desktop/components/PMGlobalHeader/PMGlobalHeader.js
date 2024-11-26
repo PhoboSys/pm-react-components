@@ -54,6 +54,7 @@ const PMGlobalHeader = ({
   onConnectBarCloseClick,
   onCurrencyChanged,
   onSupportClick,
+  onLeaderboardClick,
   content,
   children,
 }) => {
@@ -128,6 +129,7 @@ const PMGlobalHeader = ({
           featureTogglesTitle={featureTogglesTitle}
           networkStatus={networkStatus}
           onNetworkStatusClick={onNetworkStatusClick}
+          onLeaderboardClick={onLeaderboardClick}
           onSupportClick={onSupportClick}
         />
         <Header className={headerClassName}>
@@ -220,6 +222,7 @@ PMGlobalHeader.propTypes = {
   onNicknameChanged: PropTypes.func,
   onStatisticsBarCloseClick: PropTypes.func,
   onSupportClick: PropTypes.func,
+  onLeaderboardClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
 }

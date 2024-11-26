@@ -1,5 +1,4 @@
 export const getModifiers = ({ isOpen, popperStyles = {} }) => {
-
   return [
     { name: 'eventListeners', options: { scroll: false } },
     {
@@ -13,7 +12,7 @@ export const getModifiers = ({ isOpen, popperStyles = {} }) => {
       },
     },
     {
-      name: 'styles',
+      name: 'body-position',
       enabled: true,
       phase: 'beforeWrite',
       requires: ['computeStyles'],

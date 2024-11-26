@@ -11,6 +11,7 @@ import TradeIcon from '../SVG/Trade'
 import StakingIcon from '../SVG/Staking'
 import MentoringIcon from '../SVG/Mentoring'
 import LogoLabel from '../SVG/LogoLabel'
+import LeaderboardIcon from '../SVG/LeaderboardIcon'
 
 import css from './Navbar.module.scss'
 import SupportIcon from '../SVG/SupportIcon'
@@ -32,6 +33,7 @@ const NavBar = ({
   networkStatus,
   onNetworkStatusClick,
   onSupportClick,
+  onLeaderboardClick,
 }) => {
 
   const [expanded, setExpanded] = useState(localStorage.getItem(localStorageSelector) === 'true')
@@ -75,17 +77,24 @@ const NavBar = ({
               <span className={css.label}>{label}</span>
             </a>
           ))}
-          <div className={css.bottomGrid}>
-            <Button className={css.supportButton} onClick={onSupportClick}>
+          <div className={css.bottomMenu}>
+            {onLeaderboardClick && (
+              <Button className={css.bottomMenuItem} onClick={onLeaderboardClick}>
+                <LeaderboardIcon />
+              </Button>
+            )}
+            <Button className={css.bottomMenuItem} onClick={onSupportClick}>
               <SupportIcon />
             </Button>
             {networkStatus && (
               <NetworkStatus
+                headerClassName={css.bottomMenuItem}
+                statusClassName={css.networkStatusIcon}
                 onClick={onNetworkStatusClick}
                 networkStatus={networkStatus}
               />
             )}
-            <FeatureToggle title={featureTogglesTitle} />
+            <FeatureToggle className={css.bottomMenuItem} title={featureTogglesTitle} />
           </div>
         </div>
       </div>
@@ -102,6 +111,7 @@ NavBar.propTypes = {
   networkStatus: PropTypes.string,
   onNetworkStatusClick: PropTypes.func,
   onSupportClick: PropTypes.func,
+  onLeaderboardClick: PropTypes.func,
 }
 
 export default React.memo(NavBar)
