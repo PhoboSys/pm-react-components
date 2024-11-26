@@ -106,28 +106,31 @@
   color: var(--navbar-label-color);
 }
 
-.bottomGrid { 
+.bottomMenu { 
   margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.supportButton {
+.bottomMenuItem {
   display: flex;
   align-items: center;
-  border-radius: 20px;
-  transition: background-color .3s linear;
-  column-gap: calc((var(--navbar-width) - 56px) / 2);
-  min-width: 56px;
+  justify-content: center;
+  width: 56px;
   height: 56px;
-  cursor: pointer;
-  user-select: none;
-  text-decoration: none;
-  background: var(--pm-gh-feature-toggle);
+  border-radius: 20px;
 
   &:hover {
-    background: var(--pm-gh-feature-toggle-hover);
+    background: var(--navbar-icon-bg-hover);
   }
 
   &:active {
-    background: var(--pm-gh-feature-toggle-active);
+    background: var(--navbar-icon-bg-active);
   }
+}
+
+.networkStatusIcon {
+  right: 12px;
+  top: 13px;
 }

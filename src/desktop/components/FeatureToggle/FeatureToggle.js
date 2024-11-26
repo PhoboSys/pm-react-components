@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { isEmpty } from 'lodash'
+import cn from 'clsx'
 
 import TogglesIcon from '../SVG/Toggles'
 import { useModal } from '../modals';
@@ -12,7 +13,7 @@ import { withDevelopmentOnly } from '../../../hocs';
 
 import css from './FeatureToggle.module.scss'
 
-const FeatureToggle = ({ title }) => {
+const FeatureToggle = ({ className, title }) => {
   const { toggles = {} } = useFeatureToggles()
   const { modal, open } = useModal({
     Content: FeatureTogglesModal,
@@ -25,7 +26,7 @@ const FeatureToggle = ({ title }) => {
 
   return (
     <>
-      <Button className={css.button} onClick={open}>
+      <Button className={cn(css.button, className)} onClick={open}>
         <TogglesIcon />
       </Button>
       {modal}
@@ -34,6 +35,7 @@ const FeatureToggle = ({ title }) => {
 }
 
 FeatureTogglesModal.propTypes = {
+  className: PropTypes.string,
   title: PropTypes.string,
 }
 
