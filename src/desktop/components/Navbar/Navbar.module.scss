@@ -34,6 +34,10 @@
 
   svg {
     flex-shrink: 0;
+
+    path {
+      fill: var(--logo-fill, #FFFFFF);
+    }
   }
 }
 
@@ -91,6 +95,10 @@
       background: var(--navbar-icon-bg-selected);
     }
   }
+
+  svg path {
+    fill: var(--navbar-icon-fill);
+  }
 }
 
 .icon {
@@ -127,6 +135,10 @@
 
   &:active {
     background: var(--navbar-icon-bg-active);
+  }
+
+  svg path {
+    fill: var(--navbar-icon-fill);
   }
 }
 

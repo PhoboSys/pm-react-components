@@ -14,7 +14,6 @@ import { useModal } from '../modals';
 const PMGlobalHeader = ({
   headerClassName,
   connectClassName,
-  currencyFill,
   maximumFractionDigits,
   maximumFractionDigitsPrecent,
   featureToggles,
@@ -84,7 +83,6 @@ const PMGlobalHeader = ({
   return (
     <FeatureTogglesProvider toggles={featureToggles}>
       <PMGlobalHeaderProvider
-        currencyFill={currencyFill}
         openAuthModal={openAuthModal}
         closeAuthModal={closeAuthModal}
         maximumFractionDigits={maximumFractionDigits}
@@ -122,7 +120,6 @@ const PMGlobalHeader = ({
 
 PMGlobalHeader.propTypes = {
   headerClassName: PropTypes.string,
-  currencyFill: PropTypes.string,
   maximumFractionDigits: PropTypes.number,
   maximumFractionDigitsPrecent: PropTypes.number,
   mustUserLogin: PropTypes.bool,

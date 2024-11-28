@@ -4,7 +4,6 @@ import cn from 'clsx'
 
 import BalanceCurrency from '../../../common/BalanceCurrency'
 import FormattedCurrencyCell from '../FormattedCurrencyCell'
-import { useGHProvider } from '../../../PMGlobalHeaderProvider'
 
 import css from './TokenCurrencyCell.module.scss'
 
@@ -17,7 +16,6 @@ const TokenCurrencyCell = ({
   iconSize,
   placement = 'left',
 }) => {
-  const { currencyFill } = useGHProvider()
 
   return (
     <div className={cn(
@@ -31,7 +29,6 @@ const TokenCurrencyCell = ({
           { [css.left]: placement === 'left', [css.right]: placement === 'right'},
           iconClassName,
         )}
-        fill={currencyFill}
         currency={currency}
         size={iconSize}
       />

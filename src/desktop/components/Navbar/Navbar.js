@@ -26,8 +26,6 @@ const localStorageSelector = 'pm-react-components-menu-expanded'
 
 const NavBar = ({
   basepath,
-  logoFill,
-  logoLabelFill,
   active,
   featureTogglesTitle,
   networkStatus,
@@ -60,9 +58,9 @@ const NavBar = ({
       <div className={css.navbar}>
         <a href={basepath} className={css.logo} tabIndex={-1}>
           <span className={css.logoIcon}>
-            <LogoIcon fill={logoFill} />
+            <LogoIcon />
           </span>
-          <LogoLabel fill={logoLabelFill} />
+          <LogoLabel />
         </a>
         <div className={css.menu}>
           {menuItems.map(({ name, label, icon, path }) => (
@@ -105,8 +103,6 @@ const NavBar = ({
 NavBar.propTypes = {
   basepath: PropTypes.string,
   active: PropTypes.string,
-  logoFill: PropTypes.string,
-  logoLabelFill: PropTypes.string,
   featureTogglesTitle: PropTypes.string,
   networkStatus: PropTypes.string,
   onNetworkStatusClick: PropTypes.func,

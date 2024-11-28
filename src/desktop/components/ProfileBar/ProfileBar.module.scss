@@ -294,3 +294,9 @@
     fill: var(--profilebar-cash-dropdown-icon-color);
   }
 }
+
+.currency {
+  svg path {
+    fill: var(--gh-profilebar-currency-icon-fill);
+  }
+}

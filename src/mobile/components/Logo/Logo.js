@@ -5,17 +5,16 @@ import LogoIcon from '../SVG/Logo'
 
 import css from './Logo.module.scss'
 
-const Logo = ({ basepath, logoFill }) => {
+const Logo = ({ basepath }) => {
   return (
     <a href={basepath} className={css.container} tabIndex={-1}>
-      <LogoIcon fill={logoFill} />
+      <LogoIcon />
     </a>
   )
 }
 
 Logo.propTypes = {
   basepath: PropTypes.string,
-  logoFill: PropTypes.string,
 }
 
 export default Logo

@@ -59,7 +59,7 @@ const ProfileBar = ({
   onCurrencyChanged,
   onIconClick,
 }) => {
-  const { currencyFill, maximumFractionDigits } = useGHProvider()
+  const { maximumFractionDigits } = useGHProvider()
 
   const [difference, changeid] = useChangeERC20(account, balance, currency)
 
@@ -116,7 +116,10 @@ const ProfileBar = ({
           onClick={handleBalanceClick}
         >
 
-          <BalanceCurrency fill={currencyFill} currency={currency} />
+          <BalanceCurrency
+            className={css.currency}
+            currency={currency}
+          />
           {balance && balance !== 0 ? (
             <span className={css.value}>{htmlCurrency(balance, maximumFractionDigits)}</span>
           ) : (
@@ -138,7 +141,10 @@ const ProfileBar = ({
                 onClick={handleCurrencyChanged}
               >
                 <span className={css.optionIcon}>
-                  <BalanceCurrency fill={currencyFill} currency={option.currency} className={css.optionBalance} />
+                  <BalanceCurrency
+                    className={cn(css.optionBalance, css.currency)}
+                    currency={option.currency}
+                  />
                 </span>
                 <span className={css.optionLabel}>{option.label}</span>
                 <span className={css.optionCurrency}>{`(${option.currency})`}</span>

@@ -33,6 +33,10 @@
 .currency {
   width: 24px;
   height: 24px;
+
+  svg path {
+    fill: var(--gh-profilebar-currency-icon-fill);
+  }
 }
 
 .value {

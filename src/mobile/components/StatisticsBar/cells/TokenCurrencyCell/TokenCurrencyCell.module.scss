@@ -10,6 +10,10 @@
 .icon {
   width: 22px;
   height: 22px;
+
+  svg path {
+    fill: var(--pm-gh-token-cell-currency-icon-fill);
+  }
 }
 
 .amount {

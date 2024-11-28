@@ -19,9 +19,6 @@ const PMGlobalHeader = ({
   profileBarClassName,
   profileBarInnerClassName,
   basepath = "/",
-  logoFill,
-  logoLabelFill,
-  currencyFill,
   maximumFractionDigits,
   maximumFractionDigitsPrecent,
   mustUserLogin,
@@ -115,7 +112,6 @@ const PMGlobalHeader = ({
   return (
     <FeatureTogglesProvider toggles={featureToggles}>
       <PMGlobalHeaderProvider
-        currencyFill={currencyFill}
         openAuthModal={openAuthModal}
         closeAuthModal={closeAuthModal}
         maximumFractionDigits={maximumFractionDigits}
@@ -123,8 +119,6 @@ const PMGlobalHeader = ({
       >
         <Navbar
           basepath={basepath}
-          logoFill={logoFill}
-          logoLabelFill={logoLabelFill}
           active={activeNavigationItem}
           featureTogglesTitle={featureTogglesTitle}
           networkStatus={networkStatus}
@@ -188,9 +182,6 @@ PMGlobalHeader.propTypes = {
   profileBarClassName: PropTypes.string,
   profileBarInnerClassName: PropTypes.string,
   basepath: PropTypes.string,
-  logoFill: PropTypes.string,
-  logoLabelFill: PropTypes.string,
-  currencyFill: PropTypes.string,
   maximumFractionDigits: PropTypes.number,
   maximumFractionDigitsPrecent: PropTypes.number,
   mustUserLogin: PropTypes.bool,
