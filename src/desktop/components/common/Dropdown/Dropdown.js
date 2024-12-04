@@ -79,7 +79,7 @@ const Dropdown = ({
         return (
           <DropdownOption
             key={index}
-            className={cn(optionClassName, { [selectedOptionClassName]: selected })}
+            className={cn(optionClassName, { [selectedOptionClassName]: selected && selectedOptionClassName })}
             option={option}
             selected={selected}
             onClick={handleChange}

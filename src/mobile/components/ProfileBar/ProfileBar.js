@@ -27,7 +27,6 @@ const ProfileBar = ({
   return (
     <div className={cn(css.container, className)}>
       <CashDropdown
-        className={css.cash}
         currency={currency}
         balance={balance}
         account={account}

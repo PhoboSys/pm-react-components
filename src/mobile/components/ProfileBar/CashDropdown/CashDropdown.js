@@ -45,15 +45,15 @@ const useChangeERC20 = (account, number, currency) => {
   return [state.diff, state.changeid]
 }
 
-const OptionRenderer = ({ className, option }) => {
+const OptionRenderer = ({ option }) => {
   return (
-    <span className={cn(css.optionRenderer, className)}>
+    <>
       <span className={css.optionIcon}>
         <BalanceCurrency className={css.optionBalance} currency={option.currency} />
       </span>
       <span className={css.optionLabel}>{option.label}</span>
       <span className={css.optionCurrency}>{`(${option.currency})`}</span>
-    </span>
+    </>
   )
 }
 
@@ -122,6 +122,8 @@ const CashDropdown = ({
         [css.decrease]: difference && isNegative(difference),
       })}
       bodyClassName={css.body}
+      selectedOptionClassName={css.selectedOption}
+      optionClassName={css.option}
       value={option}
       options={options}
       popperStyles={dropdownPopperStyles}

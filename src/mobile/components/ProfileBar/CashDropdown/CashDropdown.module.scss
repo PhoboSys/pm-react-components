@@ -28,6 +28,8 @@
 
 .body {
   width: calc(100% - 16px);
+  background-color: var(--profilebar-cash-dropdown-bg);
+  padding: 8px;
 }
 
 .currency {
@@ -147,11 +149,16 @@
   }
 }
 
-.optionRenderer {
+.option {
   display: flex;
   align-items: center;
   padding-right: 16px;
   padding-left: 8px;
+  background-color: var(--profilebar-cash-dropdown-option-bg);
+
+  &:active {
+    background-color: var(--profilebar-cash-dropdown-option-bg-active);
+  }
 }
 
 .optionBalance {
@@ -177,4 +184,8 @@
   color: var(--profilebar-cash-dropdown-option-currency-color);
   font-size: 15px;
   font-weight: 400;
+}
+
+.selectedOption {
+  background-color: var(--profilebar-cash-dropdown-option-bg-active);
 }
