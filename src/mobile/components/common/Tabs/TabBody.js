@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { TabContext } from './Tabs';
 
-const TabBody = ({ children }) => {
+const TabBody = ({ children = '' }) => {
   const [tabIndex, setTabIndex] = useState()
   const { tab, registerBody } = useContext(TabContext);
   useEffect(() => setTabIndex(registerBody()), [])
