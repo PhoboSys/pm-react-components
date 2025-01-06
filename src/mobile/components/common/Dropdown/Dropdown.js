@@ -1,3 +1,4 @@
+import { isEmpty, map } from 'lodash'
 import React, { useCallback, useEffect, useState, useRef, useMemo } from 'react'
 import { createPortal } from 'react-dom'
 import PropTypes from 'prop-types'
@@ -6,6 +7,7 @@ import { usePopper } from 'react-popper'
 
 import DropdownIcon from '../../SVG/DropdownIcon'
 
+import DropdownNoOptionsRenderer from './DropdownNoOptionsRenderer'
 import DropdownOption from './DropdownOption'
 import { getModifiers } from './Dropdown.utils'
 
@@ -14,6 +16,7 @@ import css from './Dropdown.module.scss'
 const defaultOptionRenderer = (value) => value.label
 const defaultValueRenderer = (value) => value.label
 const defaultCheckOptionSelected = (value, option) => value === option
+const defaultEmptyRenderer = () => <DropdownNoOptionsRenderer />
 
 const Dropdown = ({
   containerClassName,
@@ -37,6 +40,7 @@ const Dropdown = ({
   valueRenderer = defaultValueRenderer,
   optionRenderer = defaultOptionRenderer,
   checkOptionSelected = defaultCheckOptionSelected,
+  emptyRenderer = defaultEmptyRenderer,
 }) => {
   const [isOpen, setIsOpen] = useState(false)
   const containerElement = useRef(null)
@@ -74,11 +78,11 @@ const Dropdown = ({
 
   const renderPopper = () => (
     <div className={cn(css.body, bodyClassName)} ref={setPopperElement} style={styles.popper} {...attributes.popper}>
-      {options.map((option, index) => {
+      {isEmpty(options) ? emptyRenderer() : map(options, (option, key) => {
         const selected = checkOptionSelected(value, option)
         return (
           <DropdownOption
-            key={index}
+            key={key}
             className={cn(optionClassName, { [selectedOptionClassName]: selected && selectedOptionClassName })}
             option={option}
             selected={selected}
@@ -112,7 +116,7 @@ Dropdown.propTypes = {
   selectedOptionClassName: PropTypes.string,
   placeholder: PropTypes.node,
   iconColor: PropTypes.string,
-  options: PropTypes.array,
+  options: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
   value: PropTypes.any,
   popperStyles: PropTypes.object,
   popperModifiers: PropTypes.array,
