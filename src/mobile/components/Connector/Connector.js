@@ -41,7 +41,7 @@ const Connector = ({ id, injectedProviderType, onClick }) => {
     connector = supportedConnectors[id]
   }
 
-  const recommend = id === 'injected' && injectedProviderType === 'uniswap'
+  const recommend = id === 'injected' && injectedProviderType === 'metamask'
 
   if (!connector) return null
 
