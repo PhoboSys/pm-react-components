@@ -25,7 +25,7 @@ const classes = {
 const mergeClasses = (c1, c2) => mergeWith({}, c1, c2, (objValue, srcValue) => cn(objValue, srcValue))
 
 const SecondaryModal = ({
-  className,
+  className: containerClassName,
   contentClassName,
   modalClasses,
   modalOverlayClasses,
@@ -57,7 +57,7 @@ const SecondaryModal = ({
       parentSelector={parentSelector}
       {...modalProps}
     >
-      <div className={cn(css.container, className)}>
+      <div className={cn(css.container, containerClassName)}>
         <div className={cn(css.content, contentClassName)}>{children}</div>
         <Button onClick={close} className={css.close}>
           Close
