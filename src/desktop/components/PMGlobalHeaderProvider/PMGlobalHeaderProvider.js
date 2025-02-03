@@ -9,6 +9,8 @@ const PMGlobalHeaderProvider = ({
   closeAuthModal,
   maximumFractionDigits,
   maximumFractionDigitsPrecent,
+  currency,
+  currencyDecimals,
 }) => {
 
   const value = useMemo(
@@ -17,12 +19,16 @@ const PMGlobalHeaderProvider = ({
       closeAuthModal,
       maximumFractionDigits,
       maximumFractionDigitsPrecent,
+      currency,
+      currencyDecimals,
     }),
     [
       openAuthModal,
       closeAuthModal,
       maximumFractionDigits,
       maximumFractionDigitsPrecent,
+      currency,
+      currencyDecimals,
     ]
   );
 
@@ -38,6 +44,8 @@ PMGlobalHeaderProvider.propTypes = {
   closeAuthModal: PropTypes.func,
   maximumFractionDigits: PropTypes.number,
   maximumFractionDigitsPrecent: PropTypes.number,
+  currency: PropTypes.string,
+  currencyDecimals: PropTypes.number,
 }
 
 export default PMGlobalHeaderProvider

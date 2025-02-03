@@ -1,0 +1,158 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  padding-top: 24px;
+}
+
+.username {
+  margin-top: 22px;
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 38px;
+}
+
+.accountIcon {
+  width: 80px;
+  height: 80px;
+}
+
+.address {
+  font-family: 'Roboto', sans-serif;
+  margin-top: 6px;
+  line-height: 1;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--pm-gh-tip-modal-user-address-color);
+}
+
+.copyIcon {
+  margin-left: 10px;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.content {
+  display: flex;
+  column-gap: 32px;
+  border-radius: 16px;
+  background: var(--pm-gh-tip-modal-content-bg);
+  padding: 16px 16px 16px 24px;
+  width: 100%;
+  margin-top: 32px;
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    margin-right: 4px;
+  }
+}
+
+.title {
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.amount {
+  display: flex;
+  height: 68px;
+}
+
+.input {
+  filter: none;
+  opacity: 1;
+  transition: opacity 250ms ease-in-out 0s;
+  text-align: left;
+  text-overflow: ellipsis;
+  pointer-events: auto;
+  width: 0px;
+  position: relative;
+  outline: none;
+  border: none;
+  flex: 1 1 auto;
+  background-color: transparent;
+  font-size: 28px;
+  white-space: nowrap;
+  overflow: hidden;
+  padding: 0px;
+  appearance: textfield;
+  color: inherit;
+  font-family: 'Gilroy', sans-serif;
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1;
+
+  &:disabled {
+    opacity: .3;
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: #FFF;
+  }
+}
+
+.currency {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+
+  .icon {
+    width: 24px;
+    height: 24px;
+
+    svg path {
+      fill: var(--pm-gh-tip-modal-currency-icon-fill);
+    }
+  }
+
+  .name {
+    font-family: 'Proxima Nova', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1;
+  }
+}
+
+.balance {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  font-family: 'Proxima Nova', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+
+  .spinner {
+    width: 18px;
+    height: 18px;
+    border-color: var(--pm-gh-tip-modal-balance-spinner-color);
+  }
+}
+
+.send {
+  width: 100%;
+  height: 56px;
+  background-color: var(--pm-gh-tip-modal-send-bg);
+  margin-top: auto;
+  border-radius: 28px;
+
+  .spinner {
+    border-color: var(--pm-gh-tip-modal-balance-spinner-color);
+  }
+}

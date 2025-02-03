@@ -2,12 +2,12 @@ import { mergeWith } from 'lodash'
 import React, { useCallback, useMemo } from 'react'
 import Modal from 'react-modal'
 import cn from 'clsx'
+import PropTypes from 'prop-types'
 
-import config from '../../../../config'
-import CloseIcon from '../../SVG/CloseIcon'
-import AnimatedButton from '../../common/AnimatedButton'
+import config from '@config'
+import Button from '@components/common/Button'
 
-import css from './PrimaryModal.module.scss'
+import css from './SecondaryModal.module.scss'
 
 const classes = {
   modalClasses: {
@@ -24,12 +24,14 @@ const classes = {
 
 const mergeClasses = (c1, c2) => mergeWith({}, c1, c2, (objValue, srcValue) => cn(objValue, srcValue))
 
-const PrimaryModal = ({
-  children,
-  close,
-  hideClose,
+const SecondaryModal = ({
+  className,
+  contentClassName,
   modalClasses,
   modalOverlayClasses,
+  close,
+  hideClose,
+  children,
   ...modalProps
 }) => {
   const parentSelector = useCallback(() => document.getElementById(config.modal_id), [])
@@ -48,26 +50,31 @@ const PrimaryModal = ({
   return (
     <Modal
       appElement={appEl}
-      closeTimeoutMS={300}
+      closeTimeoutMS={200}
       className={className}
       overlayClassName={overlayClassName}
       onRequestClose={close}
       parentSelector={parentSelector}
       {...modalProps}
     >
-      {!hideClose && (
-        <AnimatedButton
-          className={css.close}
-          onClick={close}
-          borderWidth="1px"
-          borderRadius="11px"
-        >
-          <CloseIcon />
-        </AnimatedButton>
-      )}
-      {children}
+      <div className={cn(css.container, className)}>
+        <div className={cn(css.content, contentClassName)}>{children}</div>
+        <Button onClick={close} className={css.close}>
+          Close
+        </Button>
+      </div>
     </Modal>
   )
 }
 
-export default PrimaryModal
+SecondaryModal.propTypes = {
+  className: PropTypes.string,
+  contentClassName: PropTypes.string,
+  close: PropTypes.func,
+  hideClose: PropTypes.bool,
+  modalClasses: PropTypes.object,
+  modalOverlayClasses: PropTypes.object,
+  children: PropTypes.node,
+}
+
+export default SecondaryModal
