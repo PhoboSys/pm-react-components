@@ -27,6 +27,8 @@ const PMGlobalHeader = ({
   isConnecting,
   isConnected,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
+  isSendTipConfirming,
+  isSendTipPropagating,
   showInstallApp,
   onConnectClick,
   onConnectorClick,
@@ -34,9 +36,13 @@ const PMGlobalHeader = ({
   onStatisticsBarCloseClick,
   content,
   children,
+  balance,
+  currency,
+  currencyDecimals,
   onInstallAppClick,
   onSupportClick,
   onNicknameChanged,
+  onSendTipClick,
   injectedProviderType,
 }) => {
   const { modal, open: openAuthModal, close: closeAuthModal } = useModal({
@@ -87,6 +93,8 @@ const PMGlobalHeader = ({
         closeAuthModal={closeAuthModal}
         maximumFractionDigits={maximumFractionDigits}
         maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
+        currency={currency}
+        currencyDecimals={currencyDecimals}
       >
         <Header className={headerClassName}>{content}</Header>
         {!isConnected && (
@@ -97,11 +105,14 @@ const PMGlobalHeader = ({
           />
         )}
         <StatisticsBar
+          balance={balance}
           address={statisticsAccount}
           username={statisticsNickname}
           activeNavigationItem={activeNavigationItem}
           isSelfView={isConnected && (account === statisticsAccount)}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
+          isSendTipConfirming={isSendTipConfirming}
+          isSendTipPropagating={isSendTipPropagating}
           statistics={statistics}
           showInstallApp={showInstallApp}
           onCloseClick={handleCloseStatisticsBar}
@@ -109,6 +120,7 @@ const PMGlobalHeader = ({
           onInstallAppClick={openInstallApp}
           onSupportClick={onSupportClick}
           onNicknameChanged={handleNicknameChange}
+          onSendTipClick={onSendTipClick}
         />
         {children}
         {modal}
@@ -133,6 +145,8 @@ PMGlobalHeader.propTypes = {
   isConnecting: PropTypes.bool,
   isConnected: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
+  isSendTipConfirming: PropTypes.bool,
+  isSendTipPropagating: PropTypes.bool,
   onConnectorClick: PropTypes.func,
   onNicknameChanged: PropTypes.func,
   onConnectClick: PropTypes.func,
@@ -141,8 +155,12 @@ PMGlobalHeader.propTypes = {
   onInstallAppClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
+  balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  currency: PropTypes.string,
+  currencyDecimals: PropTypes.number,
   featureToggles: PropTypes.object,
   onSupportClick: PropTypes.func,
+  onSendTipClick: PropTypes.func,
   injectedProviderType: PropTypes.string,
 }
 

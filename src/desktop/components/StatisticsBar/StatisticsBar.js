@@ -16,11 +16,15 @@ import MentorTabContent from './MentorTabContent'
 import StakerTabContent from './StakerTabContent'
 import InvitationLink from './InvitationLink'
 import Nickname from './Nickname'
+import Tip from '../Tip'
 
 import css from './StatisticsBar.module.scss'
 
 const StatisticsBar = ({
+  balance,
   isOpened,
+  isSendTipConfirming,
+  isSendTipPropagating,
   address,
   username,
   isSelfView,
@@ -28,6 +32,7 @@ const StatisticsBar = ({
   onCloseClick,
   onDisconnectClick,
   onNicknameChanged,
+  onSendTipClick,
 }) => {
 
   const timeout = 100 //ms
@@ -79,6 +84,18 @@ const StatisticsBar = ({
           </Copy>
         </div>
 
+        {!isSelfView && (
+          <Tip
+            className={css.tip}
+            balance={balance}
+            toaddress={address}
+            tousername={username}
+            isSendConfirming={isSendTipConfirming}
+            isSendPropagating={isSendTipPropagating}
+            onSendTipClick={onSendTipClick}
+          />
+        )}
+
         <a
           title={'Close bar'}
           className={cn(css.action, css.close)}
@@ -89,6 +106,18 @@ const StatisticsBar = ({
       </div>
 
       <div className={cn(css.header, {[css.hidden]: sticky})}>
+        {!isSelfView && (
+          <Tip
+            className={css.tip}
+            balance={balance}
+            toaddress={address}
+            tousername={username}
+            isSendConfirming={isSendTipConfirming}
+            isSendPropagating={isSendTipPropagating}
+            onSendTipClick={onSendTipClick}
+          />
+        )}
+
         <AccountIcon className={css.icon} account={address} />
 
         <Nickname
@@ -165,7 +194,10 @@ const StatisticsBar = ({
 }
 
 StatisticsBar.propTypes = {
+  balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isOpened: PropTypes.bool,
+  isSendTipConfirming: PropTypes.bool,
+  isSendTipPropagating: PropTypes.bool,
   address: PropTypes.string,
   username: PropTypes.string,
   isSelfView: PropTypes.bool,
@@ -173,6 +205,7 @@ StatisticsBar.propTypes = {
   onCloseClick: PropTypes.func,
   onConnectorClick: PropTypes.func,
   onNicknameChanged: PropTypes.func,
+  onSendTipClick: PropTypes.func,
 }
 
 export default React.memo(StatisticsBar)

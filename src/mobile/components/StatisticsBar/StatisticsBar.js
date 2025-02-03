@@ -17,12 +17,16 @@ import InvitationLink from './InvitationLink'
 import AppsMenu from './AppsMenu'
 import AppInstallButton from './AppInstallButton/AppInstallButton'
 import Nickname from './Nickname'
+import Tip from '../Tip'
 
 import css from './StatisticsBar.module.scss'
 import AnimatedButton from '../common/AnimatedButton'
 
 const StatisticsBar = ({
+  balance,
   isOpened,
+  isSendTipConfirming,
+  isSendTipPropagating,
   address,
   username,
   isSelfView,
@@ -34,6 +38,7 @@ const StatisticsBar = ({
   onInstallAppClick,
   onSupportClick,
   onNicknameChanged,
+  onSendTipClick,
 }) => {
   const timeout = 100 //ms
   const [mount, opening] = useTransition(isOpened && !!address, timeout)
@@ -52,15 +57,24 @@ const StatisticsBar = ({
       <div className={css.container} onClick={stopPropagation}>
 
         <div className={css.top}>
-          <a
-            className={cn(
-              css.action,
-              { [css.hidden]: !isSelfView }
-            )}
-            onClick={onSupportClick}
-          >
-            <SupportIcon/>
-          </a>
+          {isSelfView && (
+            <a className={css.action} onClick={onSupportClick}>
+              <SupportIcon/>
+            </a>
+          )}
+
+          {!isSelfView && (
+            <Tip
+              className={css.tip}
+              balance={balance}
+              toaddress={address}
+              tousername={username}
+              isSendConfirming={isSendTipConfirming}
+              isSendPropagating={isSendTipPropagating}
+              onSendTipClick={onSendTipClick}
+            />
+          )}
+
           <div className={css.account}>
             <Avatar className={css.icon} account={address} />
 
@@ -142,7 +156,10 @@ const StatisticsBar = ({
 }
 
 StatisticsBar.propTypes = {
+  balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   isOpened: PropTypes.bool,
+  isSendTipConfirming: PropTypes.bool,
+  isSendTipPropagating: PropTypes.bool,
   address: PropTypes.string,
   isSelfView: PropTypes.bool,
   showInstallApp: PropTypes.bool,
@@ -151,6 +168,7 @@ StatisticsBar.propTypes = {
   onConnectorClick: PropTypes.func,
   onInstallAppClick: PropTypes.func,
   onSupportClick: PropTypes.func,
+  onSendTipClick: PropTypes.func,
 }
 
 export default React.memo(StatisticsBar)

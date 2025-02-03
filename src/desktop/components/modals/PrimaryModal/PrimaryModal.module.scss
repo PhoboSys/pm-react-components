@@ -46,28 +46,14 @@
 }
 
 .close {
+  --border-color: var(--pm-gh-modal-close-border-color);
+
   position: absolute;
-  right: 5px;
-  top: 5px;
+  right: 24px;
+  top: 32px;
   width: 40px;
   height: 40px;
-  transition: transform .5s cubic-bezier(.36,.66,.04,1);
-
-  svg {
-    transform: scale(1.2);
-
-    path {
-      fill: #67707B;
-      width: 100;
-      height: 100;
-    }
-  }
-
-  &:hover {
-    transform: rotate(-90deg);
-
-    svg path {
-      fill: #fff;
-    }
-  }
+  border-radius: 12px;
+  background-color: inherit;
+  margin-left: auto;
 }

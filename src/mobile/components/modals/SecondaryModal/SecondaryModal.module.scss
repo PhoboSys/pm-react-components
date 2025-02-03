@@ -1,0 +1,59 @@
+.base {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  height: calc(100% - 60px - env(safe-area-inset-top));
+  border: none;
+  outline: none;
+  transition: transform 200ms ease-in-out;
+  transform: translate(-50%, 0);
+  box-shadow: 0px 16px 80px 0px #00000080;
+  border-top-right-radius: 24px;
+  border-top-left-radius: 24px;
+  background-color: var(--pm-gh-modal-bg);
+}
+
+.afterOpen {
+  transform: translate(-50%, -100%);
+
+}
+
+.beforeClose {
+  transform: translate(-50%, 0);
+}
+
+.overlayBase {
+  position: fixed;
+  z-index: 9999;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--pm-gh-modal-overlay-bg);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 16px;
+  row-gap: 10px;
+  color: #FFFFFF;
+}
+
+.content {
+  flex-grow: 1;
+  height: calc(100% - 66px);
+  overflow-y: auto;
+}
+
+.close {
+  flex-grow: 0;
+  width: 100%;
+  height: 56px;
+  border: 1px solid var(--pm-gh-modal-secondary-close-border);
+  font-size: 17px;
+  font-weight: 600;
+  border-radius: 100px;
+}

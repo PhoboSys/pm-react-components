@@ -15,6 +15,15 @@
   opacity: 0;
 }
 
+.afterOpen {
+  opacity: 1;
+  transition: opacity 300ms ease-in-out;
+}
+
+.beforeClose {
+  opacity: 0;
+}
+
 .overlayBase {
   position: fixed;
   top: 0;
@@ -24,15 +33,6 @@
   background-color: var(--pm-gh-modal-overlay-bg);
   opacity: 0;
   z-index: 9999;
-}
-
-.afterOpen {
-  opacity: 1;
-  transition: opacity 300ms ease-in-out;
-}
-
-.beforeClose {
-  opacity: 0;
 }
 
 .afterOpenOverlay {

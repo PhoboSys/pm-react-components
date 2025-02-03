@@ -63,6 +63,12 @@
     width: 80px;
     height: 80px;
   }
+
+  .tip {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+  }
 }
 
 .stickyHeader {
@@ -112,6 +118,10 @@
     flex-shrink: 0;
     width: 48px;
     height: 48px;
+  }
+
+  .tip {
+    align-self: center;
   }
 }
 
@@ -208,5 +218,11 @@
         border-color: var(--statistics-bar-tab-selected-bg-color);
       }
     }
+  }
+}
+
+.tip {
+  &:global(.propagating) {
+    position: absolute;
   }
 }

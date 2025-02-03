@@ -26,6 +26,8 @@ const PMGlobalHeader = ({
   isConnected,
   isConnectBarOpened: isConnectBarOpenedControlled,
   isStatisticsBarOpened: isStatisticsBarOpenedControlled,
+  isSendTipConfirming,
+  isSendTipPropagating,
   injectedProviderType,
   account,
   nickname,
@@ -33,6 +35,7 @@ const PMGlobalHeader = ({
   statisticsNickname,
   balance,
   currency,
+  currencyDecimals,
   chainName,
   connectors,
   activeNavigationItem,
@@ -52,6 +55,7 @@ const PMGlobalHeader = ({
   onCurrencyChanged,
   onSupportClick,
   onLeaderboardClick,
+  onSendTipClick,
   content,
   children,
 }) => {
@@ -116,6 +120,8 @@ const PMGlobalHeader = ({
         closeAuthModal={closeAuthModal}
         maximumFractionDigits={maximumFractionDigits}
         maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
+        currency={currency}
+        currencyDecimals={currencyDecimals}
       >
         <Navbar
           basepath={basepath}
@@ -158,15 +164,20 @@ const PMGlobalHeader = ({
           injectedProviderType={injectedProviderType}
         />
         <StatisticsBar
+          balance={balance}
+          currency={currency}
           address={statisticsAccount}
           username={statisticsNickname}
           isSelfView={isConnected && (account === statisticsAccount)}
           isOpened={isStatisticsBarContolled ? isStatisticsBarOpenedControlled : isStatisticsBarOpened}
+          isSendTipConfirming={isSendTipConfirming}
+          isSendTipPropagating={isSendTipPropagating}
           statistics={statistics}
           isConnected={isConnected}
           onCloseClick={handleCloseStatisticsBar}
           onDisconnectClick={handleDisconnectClick}
           onNicknameChanged={handleNicknameChange}
+          onSendTipClick={onSendTipClick}
         />
         {children}
         {modal}
@@ -189,6 +200,8 @@ PMGlobalHeader.propTypes = {
   isConnected: PropTypes.bool,
   isConnectBarOpened: PropTypes.bool,
   isStatisticsBarOpened: PropTypes.bool,
+  isSendTipConfirming: PropTypes.bool,
+  isSendTipPropagating: PropTypes.bool,
   injectedProviderType: PropTypes.string,
   account: PropTypes.string,
   nickname: PropTypes.string,
@@ -196,6 +209,7 @@ PMGlobalHeader.propTypes = {
   statisticsNickname: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   currency: PropTypes.string,
+  currencyDecimals: PropTypes.number,
   chainName: PropTypes.string,
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
@@ -214,6 +228,7 @@ PMGlobalHeader.propTypes = {
   onStatisticsBarCloseClick: PropTypes.func,
   onSupportClick: PropTypes.func,
   onLeaderboardClick: PropTypes.func,
+  onSendTipClick: PropTypes.func,
   content: PropTypes.node,
   children: PropTypes.node,
 }
