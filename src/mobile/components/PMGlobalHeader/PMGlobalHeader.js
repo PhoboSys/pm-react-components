@@ -37,8 +37,8 @@ const PMGlobalHeader = ({
   content,
   children,
   balance,
+  currencies,
   currency,
-  currencyDecimals,
   onInstallAppClick,
   onSupportClick,
   onNicknameChanged,
@@ -93,8 +93,8 @@ const PMGlobalHeader = ({
         closeAuthModal={closeAuthModal}
         maximumFractionDigits={maximumFractionDigits}
         maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
+        currencies={currencies}
         currency={currency}
-        currencyDecimals={currencyDecimals}
       >
         <Header className={headerClassName}>{content}</Header>
         {!isConnected && (
@@ -156,8 +156,8 @@ PMGlobalHeader.propTypes = {
   content: PropTypes.node,
   children: PropTypes.node,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  currencies: PropTypes.object.isRequired,
   currency: PropTypes.string,
-  currencyDecimals: PropTypes.number,
   featureToggles: PropTypes.object,
   onSupportClick: PropTypes.func,
   onSendTipClick: PropTypes.func,

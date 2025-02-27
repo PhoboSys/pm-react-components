@@ -59,7 +59,6 @@ docker-compose up
 - --navbar-icon-bg-selected
 - --navbar-label-color
 - --navbar-label-color-selected
-- --navbar-expanded-box-shadow
 - --profilebar-bg-hover
 - --profilebar-bg-active
 - --profilebar-border-color

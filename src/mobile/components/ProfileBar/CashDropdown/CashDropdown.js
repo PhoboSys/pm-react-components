@@ -11,11 +11,6 @@ import { useGHProvider } from '../../PMGlobalHeaderProvider'
 
 import css from './CashDropdown.module.scss'
 
-const options = [
-  { label: 'Oracly', currency: 'DEMO' },
-  { label: 'USD Coin', currency: 'USDC' },
-]
-
 const useChangeERC20 = (account, number, currency) => {
   const prevNumberRef = useRef(number)
   const prevCurrencyRef = useRef(currency)
@@ -91,11 +86,11 @@ const CashDropdown = ({
   onCurrencyChanged,
 }) => {
 
-  const { maximumFractionDigits } = useGHProvider()
+  const { maximumFractionDigits, currencies } = useGHProvider()
 
   const [difference, changeid] = useChangeERC20(account, balance, currency)
 
-  const option = options.find((option) => option.currency === currency)
+  const option = currencies[currency]
 
   const valueRenderer = useCallback((value = {}) => (
     <ValueRenderer
@@ -125,7 +120,7 @@ const CashDropdown = ({
       selectedOptionClassName={css.selectedOption}
       optionClassName={css.option}
       value={option}
-      options={options}
+      options={currencies}
       popperStyles={dropdownPopperStyles}
       onChange={handleChange}
       valueRenderer={valueRenderer}

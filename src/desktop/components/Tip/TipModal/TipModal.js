@@ -29,12 +29,13 @@ const TipModal = (props) => {
   
   const [value, setValue] = useState('')
   const id = useMemo(() => uuidv4(), [])
-  const { currency, currencyDecimals } = useGHProvider()
+  const { currency, currencies } = useGHProvider()
 
   const balanceLoading = !balance && balance !== 0
   const inputDisabled = balanceLoading || isSendConfirming
   const sendDisabled = isSendConfirming || !value
-  const dp = currencyDecimals || 3
+  const currencyDecimals = currencies[currency].decimals
+  const dp = (currencyDecimals || currencyDecimals === 0) ? currencyDecimals : 3
 
   const handleAddjust = useCallback((newvalue) => {
     const maxvalue = balance
