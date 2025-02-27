@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react'
+import { map } from 'lodash'
 
 import cn from 'clsx'
 import PropTypes from 'prop-types'
@@ -12,11 +13,6 @@ import { useGHProvider } from '../PMGlobalHeaderProvider'
 import DropdownIcon from '../SVG/DropdownIcon'
 
 import css from './ProfileBar.module.scss'
-
-const options = [
-  { label: 'USD Coin', currency: 'USDC' },
-  { label: 'Oracly', currency: 'DEMO' },
-]
 
 const useChangeERC20 = (account, number, currency) => {
   const prevNumberRef = useRef(number)
@@ -59,7 +55,7 @@ const ProfileBar = ({
   onCurrencyChanged,
   onIconClick,
 }) => {
-  const { maximumFractionDigits } = useGHProvider()
+  const { currencies, maximumFractionDigits } = useGHProvider()
 
   const [difference, changeid] = useChangeERC20(account, balance, currency)
 
@@ -132,8 +128,7 @@ const ProfileBar = ({
           </span>
           {popoverPop &&
           <div ref={popover} className={css.popover}>
-            {options.map((option, idx) => (
-
+            {map(currencies, (option, idx) => (
               <div
                 key={idx}
                 className={cn(css.option, { [css.active]: option.currency === currency })}

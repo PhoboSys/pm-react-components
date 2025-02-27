@@ -34,8 +34,8 @@ const PMGlobalHeader = ({
   statisticsAccount,
   statisticsNickname,
   balance,
+  currencies,
   currency,
-  currencyDecimals,
   chainName,
   connectors,
   activeNavigationItem,
@@ -120,8 +120,8 @@ const PMGlobalHeader = ({
         closeAuthModal={closeAuthModal}
         maximumFractionDigits={maximumFractionDigits}
         maximumFractionDigitsPrecent={maximumFractionDigitsPrecent}
+        currencies={currencies}
         currency={currency}
-        currencyDecimals={currencyDecimals}
       >
         <Navbar
           basepath={basepath}
@@ -208,8 +208,8 @@ PMGlobalHeader.propTypes = {
   statisticsAccount: PropTypes.string,
   statisticsNickname: PropTypes.string,
   balance: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  currencies: PropTypes.object.isRequired,
   currency: PropTypes.string,
-  currencyDecimals: PropTypes.number,
   chainName: PropTypes.string,
   connectors: PropTypes.array,
   activeNavigationItem: PropTypes.string,
