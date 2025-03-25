@@ -5,7 +5,8 @@ import cn from 'clsx'
 import PropTypes from 'prop-types'
 
 import config from '@config'
-import Button from '@components/common/Button'
+
+import Button from '../../common/Button'
 
 import css from './SecondaryModal.module.scss'
 
